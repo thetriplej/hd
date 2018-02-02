@@ -1,0 +1,256 @@
+﻿.myslider
+{
+	width:1080x;
+	height:460px;
+	display:block;
+	position:relative;
+}
+
+.slider_img01
+{
+	width:1080px;
+	height:460px;
+	position:absolute;
+}
+
+.slider_img02
+{
+	width:1080px;
+	height:460px;
+	position:absolute;
+	display:none;
+}
+
+.slider_img03
+{
+	width:1080px;
+	height:460px;
+	position:absolute;
+	display:none;
+}
+
+.slider_img04
+{
+	width:1080px;
+	height:460px;
+	position:relative;
+	display:none;
+}
+
+.mysliderb
+{
+	width:337x;
+	height:393px;
+	display:block;
+	position:relative;
+}
+
+.sliderb_img01
+{
+	width:337x;
+	height:393px;
+	position:absolute;
+}
+
+.sliderb_img02
+{
+	width:337x;
+	height:393px;
+	position:absolute;
+	/*display:none;*/
+}
+
+.sliderb_img03
+{
+	width:337x;
+	height:393px;
+	position:absolute;
+	display:none;
+}
+
+.sliderb_img04
+{
+	width:337x;
+	height:393px;
+	position:absolute;
+	display:none;
+}
+
+.mysliderc
+{
+	width:1080x;
+	height:460px;
+	display:block;
+	position:relative;
+}
+
+.sliderc_img01
+{
+	width:1080px;
+	height:460px;
+	position:absolute;
+}
+
+.sliderc_img02
+{
+	width:1080px;
+	height:460px;
+	position:absolute;
+	display:none;
+}
+
+
+/* /////// 가로 슬라이드 20170222
+.myslider
+{
+	width:4320px;
+	height:460px;
+	display:block;
+	position:relative;
+}
+
+.slider_img01
+{
+	width:1080px;
+	height:460px;
+	position:relative;
+	float:left;
+}
+
+.slider_img02
+{
+	width:1080px;
+	height:460px;
+	position:relative;
+	float:left;
+}
+
+.slider_img03
+{
+	width:1080px;
+	height:460px;
+	position:relative;
+	float:left;
+}
+
+.slider_img04
+{
+	width:1080px;
+	height:460px;
+	position:relative;
+	float:left;
+}
+*/
+
+
+#bx-point
+{
+	position:absolute;
+	margin: 0 auto;
+	z-index:1007;
+	float:right;
+	top:420px;
+	left:50%;
+	margin-left:454px;
+	overflow:hidden;
+	width:100px;
+	height:15px;
+}
+
+#bx-point-news
+{
+	position:absolute;
+	margin: 0 auto;
+	z-index:1011;
+	float:right;
+	top:26px;
+	right:14px;
+	overflow:hidden;
+	width:44px;
+	height:15px;
+}
+
+#bx-point-review
+{
+	position:absolute;
+	margin: 0 auto;
+	z-index:1011;
+	float:right;
+	top:26px;
+	right:20px;
+	overflow:hidden;
+	width:60px;
+	height:15px;
+}
+
+#bt_point01{
+	background:url('../img/pagepointbk.png') 0 -13px no-repeat;
+	width:20px;
+	height:12px;
+	float:left;
+}
+#bt_point02{
+	background:url('../img/pagepointbk.png') 0 0 no-repeat;
+	width:20px;
+	height:12px;
+	float:left;
+}
+
+#bt_point03{
+	background:url('../img/pagepointbk.png') 0 0 no-repeat;
+	width:20px;
+	height:12px;
+	float:left;
+}
+
+#bt_pointb01{
+	background:url('../img/pagepointbk.png') 0 -13px no-repeat;
+	width:20px;
+	height:12px;
+	float:left;
+}
+#bt_pointb02{
+	background:url('../img/pagepointbk.png') 0 0 no-repeat;
+	width:20px;
+	height:12px;
+	float:left;
+}
+
+#bt_pointb03{
+	background:url('../img/pagepointbk.png') 0 0 no-repeat;
+	width:20px;
+	height:12px;
+	float:left;
+}
+#bt_pointb04{
+	background:url('../img/pagepointbk.png') 0 0 no-repeat;
+	width:20px;
+	height:12px;
+	float:left;
+}
+
+#bt_pointc01{
+	background:url('../img/pagepointbk.png') 0 -13px no-repeat;
+	width:20px;
+	height:12px;
+	float:left;
+}
+#bt_pointc02{
+	background:url('../img/pagepointbk.png') 0 0 no-repeat;
+	width:20px;
+	height:12px;
+	float:left;
+}
+
+#bt_pointc03{
+	background:url('../img/pagepointbk.png') 0 0 no-repeat;
+	width:20px;
+	height:12px;
+	float:left;
+}
+
+.bgupdown
+{
+	background-position:0 -20px;
+	background-color:#ede;
+}
