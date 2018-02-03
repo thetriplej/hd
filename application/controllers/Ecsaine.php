@@ -24,28 +24,28 @@ class Ecsaine extends CI_Controller {
     }
 
     function _remap($method) {
-        $this->load->view('frame_top.html');
+        $this->load->view('frame_top.phtml');
         $this->{$method}();
-        $this->load->view('frame_bottom.html');
+        $this->load->view('frame_bottom.phtml');
     }
 
     public function index()
     {
         //echo phpinfo();
 
-        $this->load->view('index.html');
+        $this->material();
 
     }
     public function material()
     {
-        $this->load->view('ecsaine/material.html');
+        $this->load->view('ecsaine/material.phtml');
     }
     public function strongpoint()
     {
-        $this->load->view('ecsaine/strongpoint.html');
+        $this->load->view('ecsaine/strongpoint.phtml');
     }
     public function maintain()
     {
-        $this->load->view('ecsaine/maintain.html');
+        $this->load->view('ecsaine/maintain.phtml');
     }
 }

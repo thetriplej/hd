@@ -24,9 +24,9 @@ class About extends CI_Controller {
     }
 
     function _remap($method) {
-        $this->load->view('frame_top.html');
+        $this->load->view('frame_top.phtml');
         $this->{$method}();
-        $this->load->view('frame_bottom.html');
+        $this->load->view('frame_bottom.phtml');
     }
 
     public function index()
@@ -38,18 +38,18 @@ class About extends CI_Controller {
     }
     public function company()
     {
-        $this->load->view('aboutus/company.html');
+        $this->load->view('aboutus/company.phtml');
     }
     public function brand()
     {
-        $this->load->view('aboutus/brand.html');
+        $this->load->view('aboutus/brand.phtml');
     }
     public function ceo()
     {
-        $this->load->view('aboutus/ceo.html');
+        $this->load->view('aboutus/ceo.phtml');
     }
     public function shop_info()
     {
-        $this->load->view('aboutus/shop_info.html');
+        $this->load->view('aboutus/shop_info.phtml');
     }
 }

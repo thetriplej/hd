@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Notice extends CI_Controller {
+class Other extends CI_Controller {
 
     /**
      * Index Page for this controller.
@@ -31,11 +31,23 @@ class Notice extends CI_Controller {
 
     public function index()
     {
-        $this->customer();
-    }
+        //echo phpinfo();
 
-    public function customer()
+    }
+    public function b2b()
     {
-        $this->load->view('index.phtml');
+        $this->load->view('etc/b2b.phtml');
+    }
+    public function recruit()
+    {
+        $this->load->view('etc/recruit.phtml');
+    }
+    public function law()
+    {
+        $this->load->view('etc/law.phtml');
+    }
+    public function privacy()
+    {
+        $this->load->view('etc/privacy.phtml');
     }
 }

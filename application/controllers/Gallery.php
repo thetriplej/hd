@@ -24,16 +24,17 @@ class Gallery extends CI_Controller {
     }
 
     function _remap($method) {
-        $this->load->view('frame_top.html');
+        $this->load->view('frame_top.phtml');
         $this->{$method}();
-        $this->load->view('frame_bottom.html');
+        $this->load->view('frame_bottom.phtml');
     }
 
     public function index()
     {
-        //echo phpinfo();
-
-        $this->load->view('index.html');
-
+        $this->customerWrite();
+    }
+    public function customerWrite()
+    {
+        $this->load->view('gallery/customer.phtml');
     }
 }
