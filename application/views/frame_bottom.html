@@ -1,22 +1,36 @@
-<div id="" class="wrap_bottom_menu">
-    <ul>
-        <li><a href="http://www.hassed.kr/index.asp" class="bottom_menu01">logo</a></li>
-        <li><a href="hab2b.asp" class="bottom_menu02">B2B</a></li>
-        <li><a href="harecruit.asp" class="bottom_menu03">Recruit</a></li>
-        <li><a href="halaw.asp" class="bottom_menu04">law</a></li>
-        <li><a href="haprivacy.asp" class="bottom_menu05">Privacy</a></li>
-        <li><a href="http://www.hassed.kr/haboard06.asp" class="bottom_menu06">faq</a></li>
-        <li class="wrap_bottom_space"></li>
-        <li><a href="http://cafe.naver.com/hassedhouse" target="_blink" class="bottom_menu07">cafe</a></li>
-        <li><a href="https://www.instagram.com/hassed_kr/" target="_blink" class="bottom_menu08">instar</a></li>
-        <li><a href="http://blog.naver.com/hassed_kr" target="_blink" class="bottom_menu09">blog</a></li>
-    </ul>
-</div>
-<div id="" class="wrap_copyright">
+<div id="" class="wrap_bottom">
+    <div id="" class="wrap_bottom_menu">
+        <ul>
+            <li><a href="http://www.hassed.kr/index.asp" class="bottom_menu01">logo</a></li>
+            <li><a href="hab2b.asp" class="bottom_menu02">B2B</a></li>
+            <li><a href="harecruit.asp" class="bottom_menu03">Recruit</a></li>
+            <li><a href="halaw.asp" class="bottom_menu04">law</a></li>
+            <li><a href="haprivacy.asp" class="bottom_menu05">Privacy</a></li>
+            <li><a href="http://www.hassed.kr/haboard06.asp" class="bottom_menu06">faq</a></li>
+            <li class="wrap_bottom_space"></li>
+            <li><a href="http://cafe.naver.com/hassedhouse" target="_blink" class="bottom_menu07">cafe</a></li>
+            <li><a href="https://www.instagram.com/hassed_kr/" target="_blink" class="bottom_menu08">instar</a></li>
+            <li><a href="http://blog.naver.com/hassed_kr" target="_blink" class="bottom_menu09">blog</a></li>
+        </ul>
+    </div>
+    <div id="" class="wrap_copyright">
     (주)헷세드   서울시 송파구 오금동 33-6번지 헷세드빌딩  &nbsp;&nbsp;&nbsp;&nbsp;  <span style="font-weight:bold; display:inline-block;">02 401 5073</span>   &nbsp;&nbsp;&nbsp;&nbsp;   hassed_kr@naver.com      <br>
     대표이사 김기욱 &nbsp;&nbsp;&nbsp;&nbsp; 사업자등록번호 132-86-14687  &nbsp;&nbsp;&nbsp;&nbsp;   ⓒ 2010 HASSED all right reserved
+    </div>
 </div>
+<script>
+    var tmpUser = navigator.userAgent;
 
+    if (tmpUser.indexOf("iPhone") > 0 || tmpUser.indexOf("iPad") > 0 || tmpUser.indexOf("Android ") > 0 || tmpUser.indexOf("BlackBerry ") > 0 || tmpUser.indexOf("Windows CE ") > 0 || tmpUser.indexOf("LG ") > 0 || tmpUser.indexOf("MOT ") > 0 || tmpUser.indexOf("SAMSUNG ") > 0 || tmpUser.indexOf("SonyEricsson ") > 0 ){
+
+        var src="PageLog.asp?mode=m";
+    }else{
+        var src="PageLog.asp?mode=pc";
+    }
+
+    $("#PageLog").prop("src",src);
+
+</script>
 <!-- 공통 적용 스크립트 , 모든 페이지에 노출되도록 설치. 단 전환페이지 설정값보다 항상 하단에 위치해야함 -->
 <script type="text/javascript" src="http://wcs.naver.net/wcslog.js"></script>
 <script type="text/javascript">

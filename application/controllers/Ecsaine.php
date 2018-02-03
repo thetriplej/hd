@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Index extends CI_Controller {
+class Ecsaine extends CI_Controller {
 
     /**
      * Index Page for this controller.
@@ -35,5 +35,17 @@ class Index extends CI_Controller {
 
         $this->load->view('index.html');
 
+    }
+    public function material()
+    {
+        $this->load->view('ecsaine/material.html');
+    }
+    public function strongpoint()
+    {
+        $this->load->view('ecsaine/strongpoint.html');
+    }
+    public function maintain()
+    {
+        $this->load->view('ecsaine/maintain.html');
     }
 }
