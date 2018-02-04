@@ -7,6 +7,7 @@
 <script>
     $(document).ready(function () {
         //$('.main_img_toggle1').fadeOut(10);
+
         $('.main_img_toggle2').fadeOut(10);
         $('.main_img_toggle3').fadeOut(10);
 
@@ -118,15 +119,20 @@
         });
 
 
-        $("#bt_depart").click(function(event){
+        $(".bt_depart").click(function(event){
             var offset_top = 3000;
             $('html, body').animate({scrollTop: offset_top}, 500);
         });
 
-        $("#bt_store").click(function(event){
+        $(".bt_store").click(function(event){
             var offset_top = 600;
             $('html, body').animate({scrollTop: offset_top}, 500);
         });
+        <?php if(!empty($type) && $type =='point_store'){ ?>
+            $(".bt_store").click();
+        <?php }else if(!empty($type) && $type =='point_depart'){ ?>
+         $(".bt_depart").click();
+        <?php } ?>
 
     });//ready end ////////////////
 
@@ -179,11 +185,11 @@
     </div>
 
     <div id="" class="box_2dept_menu">
-        <div id="" class="bt_2dept_left_menu">
-            <a href="#ss">road shop</a>
+        <div class="bt_2dept_left_menu bt_store bt_store">
+            <a href="#">road shop</a>
         </div>
-        <div id="bt_depart" class="bt_2dept_right_menu">
-            <a href="#dd">department store</a>
+        <div class="bt_2dept_right_menu bt_depart bt_depart">
+            <a href="#">department store</a>
         </div>
     </div>
 
@@ -412,11 +418,11 @@
 
 
     <div id="" class="box_2dept_menu">
-        <div id="bt_store" class="bt_2dept_left_menu">
-            <a href="#ss">road shop</a>
+        <div id="" class="bt_2dept_left_menu bt_store">
+            <a href="#">road shop</a>
         </div>
-        <div id="" class="bt_2dept_right_menu">
-            <a href="#dd">department store</a>
+        <div id="" class="bt_2dept_right_menu bt_depart">
+            <a href="#">department store</a>
         </div>
     </div>
 

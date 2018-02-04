@@ -75,10 +75,14 @@ class About extends CI_Controller {
     }
     public function shop_info()
     {
+        $type = $this->input->get('location');
+        $send_data = array(
+            'type' => $type
+        );
         if($this->lang_type == 'en') {
-            $this->load->view('aboutus/e_shop_info.phtml');
+            $this->load->view('aboutus/e_shop_info.phtml',$send_data);
         }else{
-            $this->load->view('aboutus/shop_info.phtml');
+            $this->load->view('aboutus/shop_info.phtml',$send_data);
         }
     }
 }

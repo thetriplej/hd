@@ -70,7 +70,7 @@ a{text-decoration:none;
 
 .faqboxs > ul > li.on
 	{
-		background:url('../img/bt_faq_on.jpg') 0 0 no-repeat;
+		background:url('/public_html/img/bt_faq_on.jpg') 0 0 no-repeat;
 		color:#000;
 	}
 
@@ -118,4 +118,4 @@ a{text-decoration:none;
 		max-height:250px;
 	}
 
-}
+.qa {cursor: pointer;}

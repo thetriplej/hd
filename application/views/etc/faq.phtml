@@ -1,0 +1,63 @@
+<link rel="stylesheet" type="text/css" href="/public_html/css/faq_2017.css" />
+<div id="" class="wrap_middle">
+    <div class="sub_img">
+        <img src="/public_html/img/img_faq.jpg" border="0" alt="">
+    </div>
+    <div class="box_outline_faq">
+        <div id="" class="faq_list">
+            <div class="faqboxs">
+                <ul>
+                    <li class='qa'>
+                        <div style="margin-top:10px;">
+                            제품의 색상은 <br>얼마나 되나요?
+                        </div>
+                    </li>
+                    <li class='qa'>
+                        <div style="margin-top:10px;">소파의 유형은<br>
+                            어떻게 되나요?
+                        </div>
+                    </li>
+                    <li class='qa'>
+                        <div style="margin-top:10px;">
+                            주문부터 배송까지 <br>얼마나 걸리나요?
+                        </div>
+                    </li>
+                    <li class='qa'>
+                        <div style="margin-top:10px;">
+                            유사품과 어떤<br>차이가 있나요?
+                        </div>
+                    </li>
+                    <li class='qa'>
+                        <div style="margin-top:10px;">
+                            A/S 기간은 <br>얼마나 되나요?
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="faq_contents">
+            <img id='content' src="/public_html/img/img_answer01.jpg" border="0" alt="">
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+       $(".qa").eq(0).click();
+    });
+    $(document).on('click','.qa', function(){
+        $('.qa').removeClass("on");
+        $(this).addClass("on");
+        var qa_select = $(this).index();
+        if(qa_select == 0){
+            $('#content').attr('src','/public_html/img/img_answer01.jpg');
+        }else if(qa_select == 1){
+            $('#content').attr('src','/public_html/img/img_answer02.jpg');
+        }else if(qa_select == 2){
+            $('#content').attr('src','/public_html/img/img_answer03.jpg');
+        }else if(qa_select == 3){
+            $('#content').attr('src','/public_html/img/img_answer04.jpg');
+        }else if(qa_select == 4){
+            $('#content').attr('src','/public_html/img/img_answer05.jpg');
+        }
+    });
+</script>

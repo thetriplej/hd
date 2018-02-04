@@ -1,0 +1,64 @@
+<link rel="stylesheet" type="text/css" href="/public_html/css_e/faq_2017.css" />
+<div id="" class="wrap_middle">
+    <div class="sub_img">
+        <img src="/public_html/img_e/img_faq.jpg" border="0" alt="">
+    </div>
+    <div class="box_outline_faq">
+        <div id="" class="faq_list">
+            <div class="faqboxs">
+                <ul>
+                    <li class='qa'>
+                        <div style="margin-top:10px;">
+                            What color <br>is the product?
+                        </div>
+                    </li>
+                    <li class='qa'>
+                        <div style="margin-top:10px;">What is the<br>
+                            type of sofa?
+                        </div>
+                    </li>
+                    <li class='qa'>
+                        <div style="margin-top:10px;">
+                            How long does it <br>take delivery?
+                        </div>
+                    </li>
+                    <li class='qa'>
+                        <div style="margin-top:10px;">
+                            What's the difference<br> with imitation?
+                        </div>
+                    </li>
+                    <li class='qa'>
+                        <div style="margin-top:10px;">
+                            How long does it <br>take for A/S period?
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="faq_contents">
+            <img id='content' src="/public_html/img_e/img_answer01.jpg"border="0" alt="">
+        </div>
+    </div>
+
+</div>
+<script>
+    $(document).ready(function(){
+        $(".qa").eq(0).click();
+    });
+    $(document).on('click','.qa', function(){
+        $('.qa').removeClass("on");
+        $(this).addClass("on");
+        var qa_select = $(this).index();
+        if(qa_select == 0){
+            $('#content').attr('src','/public_html/img_e/img_answer01.jpg');
+        }else if(qa_select == 1){
+            $('#content').attr('src','/public_html/img_e/img_answer02.jpg');
+        }else if(qa_select == 2){
+            $('#content').attr('src','/public_html/img_e/img_answer03.jpg');
+        }else if(qa_select == 3){
+            $('#content').attr('src','/public_html/img_e/img_answer04.jpg');
+        }else if(qa_select == 4){
+            $('#content').attr('src','/public_html/img_e/img_answer05.jpg');
+        }
+    });
+</script>
