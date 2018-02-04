@@ -21,35 +21,64 @@ class About extends CI_Controller {
     public function  __construct() {
         parent::__construct();
         $this->load->helper('url'); //Loading url helper
+        $this->load->library('utilcommon');
+        if($this->utilcommon->get_mobile_check() === true){
+          //  echo "<script>alert('mobile')</script>";
+        }else{
+         //   echo "<script>alert('PC')</script>";
+        }
+        $this->load->library('user_agent');
+        //var_dump($this->agent->referrer());
+        $this->lang_type = get_cookie('tj_lang_type');
     }
 
     function _remap($method) {
-        $this->load->view('frame_top.phtml');
-        $this->{$method}();
-        $this->load->view('frame_bottom.phtml');
+
+        if($this->lang_type == 'en' ){
+            $this->load->view('e_frame_top.phtml');
+            $this->{$method}();
+            $this->load->view('e_frame_bottom.phtml');
+        }else {
+            $this->load->view('frame_top.phtml');
+            $this->{$method}();
+            $this->load->view('frame_bottom.phtml');
+        }
     }
 
     public function index()
     {
-        //echo phpinfo();
-
         $this->company();
-
     }
     public function company()
     {
-        $this->load->view('aboutus/company.phtml');
+        if($this->lang_type == 'en') {
+            $this->load->view('aboutus/e_company.phtml');
+        }else{
+            $this->load->view('aboutus/company.phtml');
+        }
     }
     public function brand()
     {
-        $this->load->view('aboutus/brand.phtml');
+        if($this->lang_type == 'en') {
+            $this->load->view('aboutus/e_brand.phtml');
+        }else{
+            $this->load->view('aboutus/brand.phtml');
+        }
     }
     public function ceo()
     {
-        $this->load->view('aboutus/ceo.phtml');
+        if($this->lang_type == 'en') {
+            $this->load->view('aboutus/e_ceo.phtml');
+        }else{
+            $this->load->view('aboutus/ceo.phtml');
+        }
     }
     public function shop_info()
     {
-        $this->load->view('aboutus/shop_info.phtml');
+        if($this->lang_type == 'en') {
+            $this->load->view('aboutus/e_shop_info.phtml');
+        }else{
+            $this->load->view('aboutus/shop_info.phtml');
+        }
     }
 }
