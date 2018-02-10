@@ -83,3 +83,15 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+$base_url = "http://" . $_SERVER['HTTP_HOST'];
+define('CSS_DIR', '/public_html/css');
+define('CSS_DIR_E', '/public_html/css_e');
+define('IMG_DIR', '/public_html/images');
+define('JS_DIR', '/public_html/js');
+define('HOST_DIR', $base_url);
+
+define('CSS_MOBILE_DIR', '/mobile/css');
+define('IMG_MOBILE_DIR', '/mobile/images');
+define('JS_MOBILE_DIR', '/mobile/js');
+

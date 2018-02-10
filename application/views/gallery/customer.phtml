@@ -1,7 +1,44 @@
-<link rel="stylesheet" type="text/css" href="/public_html/css/h_product.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/h_product.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/board_hassed_2017.css" />
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="/public_html/js/autoScrollTo_2017.js"></script>
+<script src="<?php echo JS_DIR; ?>/slider/jquery.bxslider.min.js"></script>
+<link href="<?php echo CSS_DIR; ?>/slider/jquery.bxslider.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(document).ready(function(){
+        var slider = $('.bxslider').bxSlider({
+            mode: 'horizontal',
+            speed: 700,
+            pause: 4000,
+            auto : true,
+            autoStart : true,
+            pager: false,
+            captions: true,  //캡션
+            controls:false, //전 후 콘트롤 보이기 안보이기
+            minSlides: 1,
+            maxSlides: 3,
+            moveSlides: 1,
+            slideWidth: 310,
+            slideMargin: 50,
+            nextSelector: '#slider-next',
+            prevSelector: '#slider-prev',
+            nextText: '<div class="bt_next"></div>',
+            prevText: '<div class="bt_pre"></div>'
+        });
+
+        $('.bt_next, .bt_pre').click(function(){
+            // time to wait (in ms)
+            var wait = 3000;
+            setTimeout(function(){
+                slider.startAuto();
+            }, wait);
+        });
+
+
+    });
+</script>
+<?php echo form_open(); ?>
+</form>
 <div id="wrap_middle" class="" style="margin-top:140px;">
     <div id="" class="box_full">
         <div class="sub_img">
@@ -10,11 +47,571 @@
         <div id="" class="" style="width:100%; height:308px; position:absolute; background-color:#faf8f6; display:block; z-index:-10; margin-top:-570px;">
         </div>
     </div>
+
     <div id="" class="box_full_in_center">
         <!--contents_info-->
         <div id="">
+            <input type="hidden" id="B_Code" value="<%=B_Code%>">
+            <div class="wrap_board" id="tj_content">
+                <!-- Password 입력 팝업 -->
+                <div id="in_pass" class="popup_pw popup_box" style="display:none;">
+                    <form name="passwd" id="passwd" method = "post">
+                        <input type="hidden" name="ck_lock" id="ck_lock">
+                        <img src="/public_html/images/bg/in_pass_01.png" title="Password" style="vertical-align:top;">
+                        <div style="margin:0 24px 10px;overflow:hidden;">
+                            <div class="box_pw">비밀번호 &gt;</div>
+                            <input type="password" size="10" name="pw" id="pw" style="float:left;">
+                        </div>
+                        <div class="checkbt">
+                            <input type="button" class="btn_pw" title="확인" onclick="CheckPW();">
+                            <input type="button" class="btn_cancel" title="취소" onclick="cancel();">
+                        </div>
+                    </form>
+                </div>
+                <!-- Password 입력 팝업 // -->
+                <div class="board_area">
+                    <div id="" class="">
+                        <img src="/public_html/img/title_parpula.png" width="1080" height="48" border="0" alt="">
+                    </div>
+                    <div class="gallery_pop_out">
+                        <div class="imglist">
+                            <div class="setbox">
+                                <div id="slider-prev"></div>
+                                <div class="centerlist">
+                                    <div class="bx-wrapper" style="max-width: 1030px; margin: 0px auto;">
+                                        <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 193px;">
+                                            <ul class="bxslider" style="width: 1415%; position: relative; transition-duration: 0.7s; transform: translate3d(-1800px, 0px, 0px);">
+                                                <li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;" class="bx-clone">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=18991&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', '5197')">
+                                                        <img src="http://hassed.kr/upload2/2017119_1510225584zyq.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        칼릭스 사우스비치 후기예요~~^^
+                                                    </div>
+                                                </li><li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;" class="bx-clone">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=19221&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', '1111')">
+                                                        <img src="http://hassed.kr/upload2/20171110_1510350716qs0.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        너무 이쁜 쇼파
+                                                    </div>
+                                                </li><li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;" class="bx-clone">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=19596&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', '~!shs660320')">
+                                                        <img src="http://hassed.kr/upload2/20171230_1514675295vwk.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        플로리아 입성 6개월
+                                                    </div>
+                                                </li>
 
+                                                <li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=14744&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', '3746')">
+                                                        <img src="http://hassed.kr/upload2/1529_1.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        헷세드는 사랑입니다^^
+                                                    </div>
+                                                </li>
+
+                                                <li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=15972&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', 'hi7878')">
+                                                        <img src="http://hassed.kr/upload2/201683_14702223161y0.png" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        여름에도 뽀송한 헷세드침대
+                                                    </div>
+                                                </li>
+
+                                                <li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=17570&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', 'woo306woo306')">
+                                                        <img src="http://hassed.kr/upload2/2017329_1490823513d5g.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        가치를 더하다 / 헷세드 쇼파
+                                                    </div>
+                                                </li>
+
+                                                <li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=17632&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', 'asdf')">
+                                                        <img src="http://hassed.kr/upload2/201743_14912414974pq.JPG" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        고양이 두 마리, 아기와 함...
+                                                    </div>
+                                                </li>
+
+                                                <li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=17982&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', '3692')">
+                                                        <img src="http://hassed.kr/upload2/2017515_14948827025ag.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        동화같은 분위기의 아리바~
+                                                    </div>
+                                                </li>
+
+                                                <li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=18204&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', 'kks0108')">
+                                                        <img src="http://hassed.kr/upload2/2017119_15102283008nb.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        헷세드가 들어오고... 마침표...
+                                                    </div>
+                                                </li>
+
+                                                <li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=18326&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', '1164')">
+                                                        <img src="http://hassed.kr/upload2/201771_1498925233tbo.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        .
+                                                    </div>
+                                                </li>
+
+                                                <li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=18852&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', '5022')">
+                                                        <img src="http://hassed.kr/upload2/2017915_1505479023133.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        우연한 만남에서 마지막사랑...
+                                                    </div>
+                                                </li>
+
+                                                <li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=18981&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', 'kknw#0111')">
+                                                        <img src="http://hassed.kr/upload2/2017930_15067848283ax.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        3년 공들인 소파, 헷세드 크...
+                                                    </div>
+                                                </li>
+
+                                                <li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=18991&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', '5197')">
+                                                        <img src="http://hassed.kr/upload2/2017119_1510225584zyq.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        칼릭스 사우스비치 후기예요~~^^
+                                                    </div>
+                                                </li>
+                                                <li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=19221&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', '1111')">
+                                                        <img src="http://hassed.kr/upload2/20171110_1510350716qs0.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        너무 이쁜 쇼파
+                                                    </div>
+                                                </li>
+                                                <li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=19596&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', '~!shs660320')">
+                                                        <img src="http://hassed.kr/upload2/20171230_1514675295vwk.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        플로리아 입성 6개월
+                                                    </div>
+                                                </li>
+                                                <li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;" class="bx-clone">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=14744&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', '3746')">
+                                                        <img src="http://hassed.kr/upload2/1529_1.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        헷세드는 사랑입니다^^
+                                                    </div>
+                                                </li><li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;" class="bx-clone">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=15972&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', 'hi7878')">
+                                                        <img src="http://hassed.kr/upload2/201683_14702223161y0.png" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        여름에도 뽀송한 헷세드침대
+                                                    </div>
+                                                </li><li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;" class="bx-clone">
+                                                    <div class="bimg" onclick="javascript:Send('View.asp?RealPage=&amp;B_Index=17570&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=', 'woo306woo306')">
+                                                        <img src="http://hassed.kr/upload2/2017329_1490823513d5g.jpg" width="310" height="193" valign="center" alt="">
+                                                    </div>
+                                                    <div class="btxt">
+                                                        가치를 더하다 / 헷세드 쇼파
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="slider-next"></div>
+                            </div><!-- setbox end -->
+                        </div><!-- imglist end -->
+                    </div>
+                    <div id="" class="gallery_copyright">
+                        헷세드는 지난 8년간 상업적인 광고없이 고객님의  감동으로 성장하였습니다.<br>
+                        가정의 멋진 아름다움과 행복을 후기로 공유해주세요!
+                    </div>
+                    <!-- 고객후기 list -->
+                    <div id="" class="gallery_title">
+                        <img src="/public_html/img/title_customer_review.jpg" width="1080" height="48" border="0" alt="">
+                    </div>
+                    <!-- 글쓰기 버튼 // -->
+                    <div id="" class="gallery_write">
+                        <div class="bt_write">
+                            <a href="Write_j.asp?RealPage=14&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue="><!-- <img src="./images/bg/btn_write_new.png" width="66" height="66" border="0" alt="글쓰기"> --><img src="/public_html/img/bt_review.png" border="0" alt="글쓰기"></a>
+                        </div>
+                    </div>
+                    <div class="gallery_out">
+                        <div class="gallery_set">
+                            <ul class="gallery_list" onclick="goto('View.asp?RealPage=1&amp;B_Index=19863&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=',event);">
+                                <li class="thumb">
+                                    <img src="http://hassed.kr/upload2/201825_1517863813lzm_145x90.png" width="145" height="90" valign="center">
+                                </li>
+                                <li class="title ellipsis">
+                                    헷세드 콩깍지^^
+                                </li>
+                                <li class="info" style="margin-top:10px;">
+                                    <span class="name ellipsis" style="font-size:15px;">위녕</span>
+                                    <span style="vertical-align:text-top; position: inline-block;"></span>
+                                </li>
+                                <li style="position:relative;">
+                                    <span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">2018-02-05</span>
+                                    <span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">view 11 </span>
+                                </li>
+                            </ul>
+                            <ul class="gallery_list" onclick="goto('View.asp?RealPage=1&amp;B_Index=19808&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=',event);">
+                                <li class="thumb">
+                                    <img src="http://hassed.kr/upload2/2018129_1517265291z54_145x90.jpg" width="145" height="90" valign="center">
+                                </li>
+                                <li class="title ellipsis">
+                                    고혹적인 분위기에도 안성맞춤!
+                                </li>
+                                <li class="info" style="margin-top:10px;">
+                                    <span class="name ellipsis" style="font-size:15px;">함가람</span>
+                                    <span style="vertical-align:text-top; position: inline-block;"><img src="/public_html/images/icon/icon_re.png" title="reply"></span>
+                                </li>
+                                <li style="position:relative;">
+                                    <span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">2018-01-29</span>
+                                    <span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">view<span>208</span></span>
+                                </li>
+                            </ul>
+                            <ul class="gallery_list" onclick="goto('View.asp?RealPage=1&amp;B_Index=19807&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=',event);">
+                                <li class="thumb">
+                                    <img src="http://hassed.kr/upload2/2018129_151725751370e_145x90.jpg" width="145" height="90" valign="center">
+                                </li>
+                                <li class="title ellipsis">
+                                    저희집 베키를 소개합니다. ^^
+                                </li>
+                                <li class="info" style="margin-top:10px;">
+							<span class="name ellipsis" style="font-size:15px;">
+								김소진
+							</span>
+                                    <span style="vertical-align:text-top; position: inline-block;">
+
+								<img src="/public_html/images/icon/icon_re.png" title="reply">
+
+							</span>
+                                </li>
+                                <li style="position:relative;">
+							<span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">
+								2018-01-29
+							</span>
+
+
+                                    <span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">
+								view
+								<span>250</span>
+							</span>
+                                </li>
+                            </ul>
+                            <ul class="gallery_list" onclick="goto('View.asp?RealPage=1&amp;B_Index=19767&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=',event);">
+                                <li class="thumb">
+                                    <img src="http://hassed.kr/upload2/2018123_1516702842135_145x90.jpg" width="145" height="90" valign="center">
+                                </li>
+                                <li class="title ellipsis">
+                                    저에게 온 헷세드
+                                </li>
+                                <li class="info" style="margin-top:10px;">
+							<span class="name ellipsis" style="font-size:15px;">
+								권영선
+							</span>
+                                    <span style="vertical-align:text-top; position: inline-block;">
+
+								<img src="/public_html/images/icon/icon_re.png" title="reply">
+
+							</span>
+                                </li>
+                                <li style="position:relative;">
+							<span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">
+								2018-01-23
+							</span>
+
+
+                                    <span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">
+								view
+								<span>345</span>
+							</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="gallery_set">
+                            <ul class="gallery_list" onclick="goto('View.asp?RealPage=1&amp;B_Index=19729&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=',event);">
+                                <li class="thumb">
+                                    <img src="http://hassed.kr/upload2/2018116_1516064995wdv_145x90.JPG" width="145" height="90" valign="center">
+                                </li>
+                                <li class="title ellipsis">
+                                    우리에게 사치라 생각했습니다
+                                </li>
+                                <li class="info" style="margin-top:10px;">
+							<span class="name ellipsis" style="font-size:15px;">
+								심현우
+							</span>
+                                    <span style="vertical-align:text-top; position: inline-block;">
+
+								<img src="/public_html/images/icon/icon_re.png" title="reply">
+
+							</span>
+                                </li>
+                                <li style="position:relative;">
+							<span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">
+								2018-01-16
+							</span>
+
+
+                                    <span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">
+								view
+								<span>565</span>
+							</span>
+                                </li>
+                            </ul>
+                            <ul class="gallery_list" onclick="goto('View.asp?RealPage=1&amp;B_Index=19718&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=',event);">
+                                <li class="thumb">
+                                    <img src="http://hassed.kr/upload2/2018114_151595683677q_145x90.jpg" width="145" height="90" valign="center">
+                                </li>
+                                <li class="title ellipsis">
+                                    드디어 도착한 헷세드
+                                </li>
+                                <li class="info" style="margin-top:10px;">
+							<span class="name ellipsis" style="font-size:15px;">
+								한애정
+							</span>
+                                    <span style="vertical-align:text-top; position: inline-block;">
+
+								<img src="/public_html/images/icon/icon_re.png" title="reply">
+
+							</span>
+                                </li>
+                                <li style="position:relative;">
+							<span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">
+								2018-01-14
+							</span>
+
+
+                                    <span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">
+								view
+								<span>431</span>
+							</span>
+                                </li>
+                            </ul>
+                            <ul class="gallery_list" onclick="goto('View.asp?RealPage=1&amp;B_Index=19693&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=',event);">
+                                <li class="thumb">
+                                    <img src="http://hassed.kr/upload2/2018110_1515593389o3x_145x90.jpg" width="145" height="90" valign="center">
+                                </li>
+                                <li class="title ellipsis">
+                                    기대하면 실망한다는데......기대이상입니다~~~~!!
+                                </li>
+                                <li class="info" style="margin-top:10px;">
+							<span class="name ellipsis" style="font-size:15px;">
+								홍가령
+							</span>
+                                    <span style="vertical-align:text-top; position: inline-block;">
+
+								<img src="/public_html/images/icon/icon_re.png" title="reply">
+
+							</span>
+                                </li>
+                                <li style="position:relative;">
+							<span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">
+								2018-01-10
+							</span>
+
+
+                                    <span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">
+								view
+								<span>537</span>
+							</span>
+                                </li>
+                            </ul>
+                            <ul class="gallery_list" onclick="goto('View.asp?RealPage=1&amp;B_Index=19673&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=',event);">
+                                <li class="thumb">
+                                    <img src="http://hassed.kr/upload2/201818_1515423521m7q_145x90.jpg" width="145" height="90" valign="center">
+                                </li>
+                                <li class="title ellipsis">
+                                    드디어 헷세드!!
+                                </li>
+                                <li class="info" style="margin-top:10px;">
+							<span class="name ellipsis" style="font-size:15px;">
+								이나경
+							</span>
+                                    <span style="vertical-align:text-top; position: inline-block;">
+
+								<img src="/public_html/images/icon/icon_re.png" title="reply">
+
+							</span>
+                                </li>
+                                <li style="position:relative;">
+							<span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">
+								2018-01-08
+							</span>
+
+
+                                    <span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">
+								view
+								<span>632</span>
+							</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="gallery_set">
+                            <ul class="gallery_list" onclick="goto('View.asp?RealPage=1&amp;B_Index=19644&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=',event);">
+                                <li class="thumb">
+                                    <img src="http://hassed.kr/upload2/201813_1515009494qh5_145x90.jpg" width="145" height="90" valign="center">
+                                </li>
+                                <li class="title ellipsis">
+                                    플로리아 스카이블루 구매후기
+                                </li>
+                                <li class="info" style="margin-top:10px;">
+							<span class="name ellipsis" style="font-size:15px;">
+								김연화
+							</span>
+                                    <span style="vertical-align:text-top; position: inline-block;">
+
+								<img src="/public_html/images/icon/icon_re.png" title="reply">
+
+							</span>
+                                </li>
+                                <li style="position:relative;">
+							<span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">
+								2018-01-03
+							</span>
+
+
+                                    <span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">
+								view
+								<span>578</span>
+							</span>
+                                </li>
+                            </ul>
+                            <ul class="gallery_list" onclick="goto('View.asp?RealPage=1&amp;B_Index=19640&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=',event);">
+                                <li class="thumb">
+                                    <img src="http://hassed.kr/upload2/201813_1515006681o3l_145x90.jpg" width="145" height="90" valign="center">
+                                </li>
+                                <li class="title ellipsis">
+                                    우리집 인테리어 꽃 헷세드 쇼파~♡
+                                </li>
+                                <li class="info" style="margin-top:10px;">
+							<span class="name ellipsis" style="font-size:15px;">
+								정환욱
+							</span>
+                                    <span style="vertical-align:text-top; position: inline-block;">
+
+								<img src="/public_html/images/icon/icon_re.png" title="reply">
+
+							</span>
+                                </li>
+                                <li style="position:relative;">
+							<span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">
+								2018-01-03
+							</span>
+
+
+                                    <span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">
+								view
+								<span>368</span>
+							</span>
+                                </li>
+                            </ul>
+                            <ul class="gallery_list" onclick="goto('View.asp?RealPage=1&amp;B_Index=19638&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=',event);">
+                                <li class="thumb">
+                                    <img src="http://hassed.kr/upload2/201813_15149942104ax_145x90.jpg" width="145" height="90" valign="center">
+                                </li>
+                                <li class="title ellipsis">
+                                    저희집의 화룡점정을 장식한 헷세드 소파에요~~~^^ 혼자보기 아까워요
+                                </li>
+                                <li class="info" style="margin-top:10px;">
+							<span class="name ellipsis" style="font-size:15px;">
+								뿌이이이잉
+							</span>
+                                    <span style="vertical-align:text-top; position: inline-block;">
+
+								<img src="/public_html/images/icon/icon_re.png" title="reply">
+
+							</span>
+                                </li>
+                                <li style="position:relative;">
+							<span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">
+								2018-01-03
+							</span>
+
+
+                                    <span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">
+								view
+								<span>986</span>
+							</span>
+                                </li>
+                            </ul>
+                            <ul class="gallery_list" onclick="goto('View.asp?RealPage=1&amp;B_Index=19637&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=',event);">
+                                <li class="thumb">
+                                    <img src="http://hassed.kr/upload2/201813_1514984640u50_145x90.jpg" width="145" height="90" valign="center">
+                                </li>
+                                <li class="title ellipsis">
+                                    너 내꺼 하기 힘들었다
+                                </li>
+                                <li class="info" style="margin-top:10px;">
+							<span class="name ellipsis" style="font-size:15px;">
+								캔디123
+							</span>
+                                    <span style="vertical-align:text-top; position: inline-block;">
+
+								<img src="/public_html/images/icon/icon_re.png" title="reply">
+
+							</span>
+                                </li>
+                                <li style="position:relative;">
+							<span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">
+								2018-01-03
+							</span>
+
+
+                                    <span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">
+								view
+								<span>632</span>
+							</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--//contents_info-->
         </div>
-        <!--//contents_info-->
     </div>
-</div>
+    <div id="blind"></div>
+    <script>
+        getlist();
+        function getlist(){
+            $.ajax({
+                type: "POST",
+                url : "/ajax/board/get_porpula_list",
+                data: "csrf_token="+$('input[name=csrf_token]').val(),
+                cache: false,
+                success : function(result) {
+                    console.log(result);
+                    // var html = '<div class="gallery_set">';
+                    // html =+ '   <ul class="gallery_list" onclick="goto(View.asp?RealPage=1&amp;B_Index=19644&amp;B_Code=CEPILOGUE0&amp;searchType=&amp;searchValue=,event);">';
+                    // html =+ '       <li class="thumb"><img src="http://hassed.kr/upload2/201813_1515009494qh5_145x90.jpg" width="145" height="90" valign="center"></li>';
+                    // html =+ '       <li class="title ellipsis">플로리아 스카이블루 구매후기</li>';
+                    // html =+ '       <li class="info" style="margin-top:10px;"><span class="name ellipsis" style="font-size:15px;">김연화</span><span style="vertical-align:text-top; position: inline-block;"><img src="/public_html/images/icon/icon_re.png" title="reply"></span></li>';
+                    // html =+ '      <li style="position:relative;"><span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">2018-01-03</span><span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">view 578</span></li>';
+                    // html =+ '   </ul>';
+                    // html =+ '</div>';
+                },
+                error : function() {
+                    alert("다시 시도해 주세요.");
+                }
+            });
+
+        }
+    </script>

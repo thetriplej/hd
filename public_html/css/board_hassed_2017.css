@@ -163,12 +163,12 @@ input[type=button].btn_swhite {width:56px;height:19px;padding-top:2px;background
 
 .gallery_copyright {width:1080px; height:200px; font-size:16px; color:#545250; text-align:center; line-height:28px;}
 .gallery_title {height:50px; overflow:hidden;font-size:18px; color:#545250; text-align:center; line-height:50px;}
-.gallery_write {width:1080px; height:100%; position:relative; z-index:999;}
-.gallery_write > .bt_write {width:70px; height:20px; z-index:900; position:absolute; left:1010px; top:-50px;}
-.gallery_write > .bt_writebot {position:absolute; right:50px; width:70px; height:20px;  z-index:900; left:1010px; top:-20px;}
+.gallery_write {width:1080px; height:30px; position:relative;}
+.gallery_write > .bt_write {width:70px; height:20px;  z-index:900; position:absolute; left:1010px; top:-50px;}
+.gallery_write > .bt_writebot {position:absolute; right:50px; width:70px; height:20px;  z-index:900; left:1010px; top:20px;}
 
-.gallery_out {width:1080px; overflow:hidden;}
-.gallery_set {width:1130px; margin:0 auto; padding-left:10px; padding-bottom:40px;} /* border-bottom:1px solid #dfdfdf; */
+.gallery_out {width:1080px;}
+.gallery_set {width:1110px; overflow:hidden; margin:0 auto; padding-left:10px; padding-bottom:40px;} /* border-bottom:1px solid #dfdfdf; */
 .gallery_list {float:left; width:226px; height:285px; margin-top:40px; margin-right:49px; padding:18px; border-style:solid; border-width: 1px; border-color:#d6d3ce; border-radius:0px;}
 .gallery_list:hover {background:#f2eeeb;}
 .gallery_list > .thumb {width:187px; height:119px; background:#fff; margin-bottom:5px;}
@@ -187,7 +187,7 @@ input[type=button].btn_swhite {width:56px;height:19px;padding-top:2px;background
 .gallery_pop_out {width:1080px; height:280px; }
 .gallery_pop_out > .imglist {width:1080px; height:280px;}
 .gallery_pop_out > .imglist > .popula {width:134px; height:90px; position:absolute; left:30px; top:30px;}
-.gallery_pop_out > .imglist > .setbox {width:1080px; height:300px; position:absolute; top:90px;}
+.gallery_pop_out > .imglist > .setbox {width:1080px; height:300px; top:90px;}
 .bt_pre {width:13px; height:126px; float:left; background:url(/public_html/images/bt_pre.png) 0 0px no-repeat;}
 .bt_pre:hover {background:url(/public_html/images/bt_pre.png) -13px 0px no-repeat;}
 .gallery_pop_out > .imglist > .setbox > .centerlist {width:1080px; height:240px; float:left; display:block; margin-left:6px;}
