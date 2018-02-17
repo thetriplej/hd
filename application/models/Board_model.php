@@ -39,16 +39,17 @@ class Board_model extends CI_Model {
             $like_word = "";
         }
 
-        $query = "SELECT board.B_Title,board.B_Board_Type,board.B_Code,board.B_Index,board.B_Hit,DATE_FORMAT(board.B_RegDate,'%Y-%m-%d') B_RegDate,board.B_Writer,board.B_Board_Type,group_cnt.cnt as reply,boardfile.F_Name,boardfile.list_img,boardfile.f_index  
+        $query = "SELECT board.B_Title,board.B_Board_Type,board.B_Code,board.B_Index,board.B_Hit,
+                    DATE_FORMAT(board.B_RegDate,'%Y-%m-%d') B_RegDate,board.B_Writer,board.B_Board_Type,tmp_boardfile.F_Name,
+                    tmp_boardfile.list_img,tmp_boardfile.f_index,(select count(*) from board tmp where tmp.b_parentindex = board.b_index) as reply
                     FROM Board as board 
-                    left join (select count(B_Group)as cnt ,B_Group from Board group by B_Group ) as group_cnt on board.B_Group = group_cnt.B_Group
-                    left join  boardfile on board.B_Index = boardfile.B_Index
-                    where board.b_code = ? AND board.B_Sequence = '1' 
-                    #and RIGHT(F_Type, 3) IN ('jpg', 'gif', 'png', 'bmp')
-                    and boardfile.list_img = 'Y'
-                    AND board.B_Depth = '0'".$where."
-                    ORDER BY board.B_Group DESC, board.B_Sequence ASC limit ".$start_row.",".$end_row;
-
+                    left join  (select F_Name,list_img,f_index,B_Index from boardfile where boardfile.list_img='Y') as tmp_boardfile on board.B_Index = tmp_boardfile.B_Index
+                    where 
+                      board.b_code = ? AND
+                      board.b_parentindex = 0 and
+                      board.B_Sequence =1 
+                      ".$like_word."
+                    ORDER BY board.B_index desc limit ".$start_row.",".$list_rows;
         return $this->db->query($query,array($board_type))->result();
     }
 
@@ -58,6 +59,7 @@ class Board_model extends CI_Model {
         $board_type = $params['board_type'];
         $search_type = $params['search_type'];
         $search_value	= $params['search_value'];
+        $where="";
 
 
         if(!empty($search_value)){ //게시물 검색어
@@ -66,8 +68,11 @@ class Board_model extends CI_Model {
         }else{
             $like_word = "";
         }
+        if($board_type == "CEPILOGUE0"){
+            $where = " and B_Sequence = '1' and B_Depth = '0'";
+        }
 
-        $main_query ="select b_index from ".$table_name. " where  b_code = '".$board_type. "'".$like_word;
+        $main_query ="select b_index from ".$table_name. " where  b_code = '".$board_type."' ".$where.$like_word;
         $tot_rows = $this->db->query($main_query)->num_rows();
 
         return $tot_rows;

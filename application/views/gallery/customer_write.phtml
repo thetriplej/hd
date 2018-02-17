@@ -1,8 +1,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/board_hassed_2017.css" />
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="/public_html/se2/js/HuskyEZCreator.js" charset="utf-8"></script>
-
+<link rel="stylesheet" href="/public_html/d_editor/css/editor.css" type="text/css" charset="euc-kr"/>
+<script src="/public_html/d_editor/js/editor_loader.js" type="text/javascript" charset="utf-8"></script>
 
 
 <div id="wrap_middle" class="" style="margin-top:140px;">
@@ -19,7 +19,7 @@
         <div id="" style="width:1080px;height:879px">
             <div class="wrap_board">
                 <div class="board_area">
-                    <?php echo form_open_multipart('/gallery/customerStore/'); ?>
+                    <?php echo form_open_multipart('/gallery/customerStore/',array('name'=>"tx_editor_form", 'id'=>"tx_editor_form")); ?>
                         <input type="hidden" id="B_Code" name="B_Code" value="<%=B_Code%>" />
                         <input type="hidden" name="ProcType" id="ProcType" value="NW">
                         <input type="hidden" name="B_Depth" value="0">
@@ -53,11 +53,11 @@
                             </select>
                         </div>
                         <div style="margin-bottom:20px;">
-                            <input type="checkbox" name="B_Locked" class="textbox" value="Y" <%'If B_Code = "QANDA0" Then Response.write "checked"%>>
+                            <input type="checkbox" name="B_Locked" class="textbox" value="Y" <?php ($b_code = "QANDA0")?"checked" : ""?>>
                             <font color="blue">※ 답변을 확인하실때 입력하신 비밀번호로 확인이 가능합니다.</font></br>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">※ 사진을 첨부하신 뒤, 하단 파일첨부 영역에서 이미지 이름을 클릭하여, 메인이미지를 설정해주세요.</font>
                         </div>
-                        <textarea name="ir1" id="ir1" rows="10" cols="500" style="width:700px;"></textarea>
+                        <?php $this->load->view('editor.phtml');?>
                         <div style="height:25px;overflow:hidden;">
                             <span style="float:right;">
                                 <input type="button" class="btn_gray" id="clear" value="다시작성">
@@ -73,26 +73,296 @@
         <!--//contents_info-->
     </div>
 </div>
+<!-- 에디터 끝 -->
 <script type="text/javascript">
-
-    var oEditors = [];
-
-    nhn.husky.EZCreator.createInIFrame({
-        oAppRef: oEditors,
-        elPlaceHolder: "ir1",
-        sSkinURI: "/public_html/se2/SmartEditor2Skin.html",
-        fCreator: "createSEditor2",
-        htParams : {
-            bUseToolbar : true,             // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-            bUseVerticalResizer : true,     // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-            bUseModeChanger : true,         // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-            bSkipXssFilter : true,      // client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
-            //aAdditionalFontList : aAdditionalFontSet,     // 추가 글꼴 목록
-            fOnBeforeUnload : function(){
-                //alert("완료!");
+    var config = {
+        txHost: '', /* 런타임 시 리소스들을 로딩할 때 필요한 부분으로, 경로가 변경되면 이 부분 수정이 필요. ex) http://xxx.xxx.com */
+        txPath: '', /* 런타임 시 리소스들을 로딩할 때 필요한 부분으로, 경로가 변경되면 이 부분 수정이 필요. ex) /xxx/xxx/ */
+        txService: 'sample', /* 수정필요없음. */
+        txProject: 'sample', /* 수정필요없음. 프로젝트가 여러개일 경우만 수정한다. */
+        initializedId: "", /* 대부분의 경우에 빈문자열 */
+        wrapper: "tx_trex_container", /* 에디터를 둘러싸고 있는 레이어 이름(에디터 컨테이너) */
+        form: 'tx_editor_form'+"", /* 등록하기 위한 Form 이름 */
+        txIconPath: "images/icon/editor/", /*에디터에 사용되는 이미지 디렉터리, 필요에 따라 수정한다. */
+        txDecoPath: "images/deco/contents/", /*본문에 사용되는 이미지 디렉터리, 서비스에서 사용할 때는 완성된 컨텐츠로 배포되기 위해 절대경로로 수정한다. */
+        canvas: {
+            styles: {
+                color: "#123456", /* 기본 글자색 */
+                fontFamily: "굴림", /* 기본 글자체 */
+                fontSize: "10pt", /* 기본 글자크기 */
+                backgroundColor: "#fff", /*기본 배경색 */
+                lineHeight: "1.5", /*기본 줄간격 */
+                padding: "8px" /* 위지윅 영역의 여백 */
             },
-
+            showGuideArea: false
+        },
+        events: {
+            preventUnload: false
+        },
+        sidebar: {
+            attachbox: {
+                show: true,
+                confirmForDeleteAll: true
+            }
+        },
+        size: {
+            contentWidth: 700 /* 지정된 본문영역의 넓이가 있을 경우에 설정 */
         }
+    };
+
+    EditorJSLoader.ready(function(Editor) {
+        var editor = new Editor(config);
     });
 
+</script>
+<script type="text/javascript">
+    /* 예제용 함수 */
+    function saveContent() {
+        if($('#B_Index').val()){
+            $.ajax({
+                type: "POST",
+                url: "./ajax/check_pass.asp",
+                data: {id : $('#B_Index').val() , pass :$('#B_Password').val()} ,
+                success: function(result) {
+                    if(result == "fail"){
+                        alert('비밀번호가 틀렸습니다.');
+                        return;
+                    }else if(result == "success"){
+                        Editor.save(); // 이 함수를 호출하여 글을 등록하면 된다.
+                    }
+
+                }
+            });
+        }else{
+            Editor.save(); // 이 함수를 호출하여 글을 등록하면 된다.
+        }
+
+    }
+
+    function validForm(editor) {
+        var validator = new Trex.Validator();
+        var content = editor.getContent();
+
+
+        if($('#B_Writer').val() == "") {
+            alert('고객명을 입력해 주세요.');
+            B_Writer.focus();
+            return;
+        }
+        if($('#B_Password').val() == "") {
+            alert('비밀번호를 입력해 주세요.');
+            B_Password.focus();
+            return;
+        }
+        if($('#B_Title').val() == "") {
+            alert('제목을 입력해 주세요.');
+            B_Title.focus();
+            return;
+        }
+        if($('#B_Email1').val() == "" || $('#B_Email2').val() == "") {
+            alert('이메일을 입력해 주세요.');
+            B_Email1.focus();
+            return;
+        }
+        if (!validator.exists(content)) {
+            alert('내용을 입력하세요');
+            return false;
+        }
+        $('#B_Board_Type').val('1');
+        if($('#tx_switchertoggle').attr('class') == 'tx-switchtoggle-pushed') { // html 사용안함
+            $('#B_Board_Type').val('0');
+        }
+
+        return true;
+    }
+
+    function setForm(editor) {
+        var i, input;
+        var form = editor.getForm();
+        var content = editor.getContent();
+
+        var textarea = document.createElement('textarea');
+
+        textarea.name = 'B_Content';
+        $(textarea).css('display','none');
+        textarea.value = content;
+        form.createField(textarea);
+        //var images = editor.getAttachments('image');
+        var images = Editor.getSidebar().getAttachments("image");
+        for (i = 0; i < images.length; i++) {
+            // existStage는 현재 본문에 존재하는지 여부
+            // if (images[i].existStage) {
+            var entry = images[i];
+            if( entry.deletedMark == false ){
+                // data는 팝업에서 execAttach 등을 통해 넘긴 데이터
+                //alert('attachment information - image[' + i + '] \r\n' + JSON.stringify(images[i].data));
+                input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'attach_image';
+                input.value = images[i].data.filename;  // 예에서는 이미지경로만 받아서 사용
+                input.value =  images[i].data.filename + '|'+  images[i].data.mimeType + '|'+  images[i].data.imageWidth + '|'+  images[i].data.filesize;  // 예에서는 이미지경로만 받아서 사용
+                form.createField(input);
+            }
+        }
+
+        var files = editor.getAttachments('file');
+        for (i = 0; i < files.length; i++) {
+            input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'attach_file';
+            //input.value = files[i].data.attachurl;
+            //input.value = files[i].data.filename;
+            //  alert('attachment information - image[' + i + '] \r\n' + JSON.stringify(files[i].data));
+            input.value =  files[i].data.filename + '|'+  files[i].data.mimeType + '|'+  files[i].data.imageWidth + '|'+  files[i].data.filesize+ '|'+  files[i].data.attachurl ;  // 예에서는 이미지경로만 받아서 사용
+            form.createField(input);
+        }
+        return true;
+    }
+</script>
+<script type="text/javascript">
+    <!--
+    // 폼 초기화
+    $('#clear').click(function(){
+        if (confirm("작성하던 내용을 모두 삭제 하시겠습니까?") == true){    //확인
+            $('#B_Writer').val("");
+            $('#B_Password').val("");
+            $('#B_Title').val("") ;
+            $('#B_Email1').val("") ;
+            $('#B_Email2').val("");
+            $('#s_email').val("");
+        }
+        //window.location.reload();
+    });
+
+    $(function(){
+        var B_Contents =  '<%=toJSON(rows) %>';
+        //	$('#tx_canvas_text').text(B_Contents);
+        if('<%= request("B_Index")%>' != "") {
+            getContents();
+        }
+
+    });
+
+    function getContents() {
+        $.ajax({
+            type: "POST",
+            url: "./getContnets.asp",
+            dataType: 'json',
+            data: {seq : '<%= request("B_Index")%>', act:'list'} ,
+            beforeSubmit: function (data, frm, opt) {
+                console.log('데이타를 불러오는 중입니다.');
+            },
+            success: function(responseDetail, status) {
+                //console.log(response);
+                if(responseDetail.code == 1000) {
+                    if(responseDetail.B_Board_Type == 1) {
+                        if(responseDetail.F_Cnt > 0) {
+                            // 첨부 있을때
+                            getFileList(responseDetail);
+                        } else {
+                            // 첨부 없을때
+                            loadContents(responseDetail);
+                        }
+                    } else{
+                        loadContents(responseDetail);
+                    }
+                } else {
+                    // TODO 실패에 따른 처리
+                    alert( responseDetail.msg);
+                    history.back();
+                }
+            }
+        });
+    }
+
+    function getFileList(qData) {
+        $.ajax({
+            type: "POST",
+            url: "./getContnets.asp",
+            dataType: 'json',
+            data: {seq : '<%= request("B_Index")%>', act:'file'} ,
+            beforeSubmit: function (data, frm, opt) {
+                console.log('데이타를 불러오는 중입니다.');
+            },
+            success: function(responseFile, status) {
+                if(responseFile !=  null) {
+                    if(responseFile.length > 0) {
+                        loadContents(qData, responseFile);
+                    } else {
+                        loadContents(qData);
+                    }
+                } else {
+                    loadContents(qData);
+                }
+            }
+        });
+    }
+
+    function loadContents(reDate, files) {
+
+        var attachments = {};
+        attachments['image'] = [];
+        attachments['file'] = [];
+
+        if(typeof(files) != "undefined") {
+            $.each(files, function(i, obj) {
+                if(obj[0] != null ) {
+                    tmp_type = obj[3].split('/');
+                    if(tmp_type[0] == "image") {
+                        //console.log(obj[8]);
+                        attachments['image'].push({
+                            'attacher': 'image',
+                            'data': {
+                                'imageurl': obj[7],
+                                'filename': obj[8],
+                                'filesize': obj[11],
+                                'originalurl': obj[9],
+                                'thumburl': obj[10]
+                            }
+                        });
+                    } else {
+                        attachments['file'].push({
+                            'attacher': 'file',
+                            'data': {
+                                'attachurl': obj[7],
+                                'filemime': obj[3],
+                                'filename': obj[8],
+                                'filesize': obj[11]
+                            }
+                        });
+                    }
+                }
+            });
+        }
+
+        //console.log(attachments);
+        $('#B_Writer').val(reDate.B_Writer);
+        $('#B_Title').val(reDate.B_Title);
+        var _Email = reDate.B_Email.split('@');
+        $('#B_Email1').val(_Email[0]);
+        $('#B_Email2').val(_Email[1]);
+        $('#ProcType').val("M");
+        /* 저장된 컨텐츠를 불러오기 위한 함수 호출 */
+        Editor.modify({
+            "attachments": function () { /* 저장된 첨부가 있을 경우 배열로 넘김, 위의 부분을 수정하고 아래 부분은 수정없이 사용 */
+                var allattachments = [];
+                for (var i in attachments) {
+                    allattachments = allattachments.concat(attachments[i]);
+                }
+                return allattachments;
+            }(),
+            "content": reDate.B_Content	/* 내용 문자열, 주어진 필드(textarea) 엘리먼트 */
+        });
+    }
+
+    //-->
+    $(document).ready(function(){
+        $(document).on('click',".tx-name",function(){
+
+            alert("현재 이미지를 대표이미지로 선택합니다.");
+            var index = $( ".tx-name" ).index( this );
+            $("#select_img").val(index);
+        });
+
+    });
 </script>

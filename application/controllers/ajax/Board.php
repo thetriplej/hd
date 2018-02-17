@@ -24,8 +24,11 @@ class Board extends CI_Controller {
 
     function _remap($method) {
         // ajax call아니면 차단
-        if(!$this->input->is_ajax_request()) exit;
-        $this->{$method}();
+        if(!$this->input->is_ajax_request()){
+            exit;
+        }
+        $this->{"{$method}"}();
+
     }
 
     public function get_porpula_list(){
@@ -46,13 +49,14 @@ class Board extends CI_Controller {
     public function get_gallery_list(){
 
         $post = $this->input->post(null, true);
+
         $p_data = array(
             'table_name' 	=> 'board',
             'search_type'	=> $post['search_type'],
             'search_value'   => $post['search_value'],
             'page'			=> $post['page'],
             'board_type'    => 'CEPILOGUE0',
-            'list_rows'		=> 16,
+            'list_rows'		=> 12,
             'page_no'		=> 10,
 
         );
@@ -77,7 +81,8 @@ class Board extends CI_Controller {
             }else{
                 $path = '/public_html/upload/upload2/';
             }
-            $value->F_Name = $path.$value->F_Name;
+            $temp_fname = explode ('.',$value->F_Name);
+            $value->F_Name = $path.$temp_fname[0]."_145x90.".$temp_fname[1];
         }
 //        $result = array(
 //            'list_rows' 	=> $list_rows,
@@ -95,7 +100,7 @@ class Board extends CI_Controller {
         //pagination(result.current_page, result.last_page, result.per_page, result.total, 10);
         $page_navi = array(
             'current_page' => $result['page'],
-            'last_page' => $result['next_page'],
+            'last_page' => $result['tot_page'],
             'per_page' => $result['list_rows'],
             'total' => $result['total_rows'],
         );
@@ -146,7 +151,7 @@ class Board extends CI_Controller {
         if($now_page_group < $tot_page_group){
             $next_page = $end_page + 1;
         }else{
-            // $html .= "";
+            $next_page='';
         }
 
         $result = array(
@@ -165,6 +170,58 @@ class Board extends CI_Controller {
         return $result;
 
     }
+
+    public function gallery_file_upload(){
+
+        $post = $this->input->post(null, true);
+        var_dump($post);exit;
+// default redirection
+        $url = 'callback.html?callback_func='.$_REQUEST["callback_func"];
+
+        $upload_file    = $_FILES['attachFile']['name'];
+        $upload_tmp        = $_FILES['attachFile']['tmp_name'];
+        $upload_type    = $_FILES['attachFile']['type'];
+
+        $fCnt = count($upload_file);
+
+        for($i=0;$i<$fCnt;$i++)
+        {
+            $bSuccessUpload = is_uploaded_file($_FILES['attachFile']['tmp_name']);
+            $today = date('Y-m');
+// SUCCESSFUL
+            if(bSuccessUpload) {
+                $tmp_name = $_FILES['attachFile']['tmp_name'];
+                $name = $_FILES['attachFile']['name'];
+
+                $filename_ext = strtolower(array_pop(explode('.',$name)));
+                $allow_file = array("jpg", "png", "bmp", "gif");
+
+                if(!in_array($filename_ext, $allow_file)) {
+                    $url .= '&errstr='.$name;
+                } else {
+                    $uploadDir = '/public_html/upload/upload2/'.$today;
+                    if(!is_dir($uploadDir)){
+                        mkdir($uploadDir, 0777);
+                    }
+
+                    $newPath = $uploadDir.urlencode($_FILES['attachFile']['name']);
+
+                    @move_uploaded_file($tmp_name, $newPath);
+
+                    $url .= "&bNewLine=true";
+                    $url .= "&sFileName=".urlencode(urlencode($name));
+                    $url .= "&sFileURL=/public_html/upload/upload2/".$today."/".urlencode(urlencode($name));
+                }
+            }
+// FAILED
+            else {
+                $url .= '&errstr=error';
+            }
+        }
+
+        header('Location: '. $url);
+    }
+
 
 
 }
