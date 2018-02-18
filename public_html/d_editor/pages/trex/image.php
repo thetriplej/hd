@@ -10,22 +10,6 @@
 <script type="text/javascript">
 // <![CDATA[
 
-	function done() {
-		if (typeof(execAttach) == 'undefined') { //Virtual Function
-	        return;
-	    }
-
-		var _mockdata = {
-			'imageurl': 'http://cfile284.uf.daum.net/image/116E89154AA4F4E2838948',
-			'filename': 'editor_bi.gif',
-			'filesize': 640,
-			'imagealign': 'C',
-			'originalurl': 'http://cfile284.uf.daum.net/original/116E89154AA4F4E2838948',
-			'thumburl': 'http://cfile284.uf.daum.net/P150x100/116E89154AA4F4E2838948'
-		};
-		execAttach(_mockdata);
-		closeWindow();
-	}
 
 	function initUploader(){
 	    var _opener = PopupUtil.getOpener();
@@ -88,37 +72,39 @@ $(function(){
 		},
 		//submit이후의 처리
 		success: function(response, status) {
-
 			$('#ajaxBusy').hide();
-			if(response.code == 1000) {
-				if(response.ImageWidth > 600) {
-					var rate = (600/response.ImageWidth) ;
-					var imgH = response.ImageHeight *rate;
-					var imgW = response.ImageWidth *rate;
-				} else {
-					var imgH = response.ImageHeight;
-					var imgW = response.ImageWidth;
-				}
+			if(response.result == 'success') {
+                $.each( response._mockdata, function( key, value ) {
 
+                    if (key.image_width > 600) {
+                        var rate = (600 / key.image_width);
+                        var imgH = value.image_height * rate;
+                        var imgW = value.image_width * rate;
+                    } else {
+                        var imgH = value.image_height;
+                        var imgW = value.image_width;
+                    }
 
-				var _mockdata = {
-					'imageurl': response.originalurl,
-					'F_ReName': response.F_ReName,
-					'filename': response.fileName,
-					'filesize': response.FileLength,
-					'imagealign': 'C',
-					'originalurl': response.originalurl,
-					'thumburl': response.thumburl,
-					'mimeType' : response.MimeType,
-					'imageWidth' : response.ImageWidth,
-					'width' : parseInt(imgW),
-					'height' :parseInt(imgH),
+                    var _mockdata = {
+                        'imageurl': value.originalurl,
+                        'F_ReName': value.f_rename,
+                        'filename': value.filename,
+                        'filesize': value.filesize,
+                        'imagealign': 'C',
+                        'originalurl': value.originalurl,
+                        'thumburl': value.thumburl,
+                        'mimeType': value.mime_type,
+                        'imageWidth': value.image_width,
+                        'width': parseInt(imgW),
+                        'height': parseInt(imgH),
 
-				}
-
-				execAttach(_mockdata);
+                    };
+                    execAttach(_mockdata);
+                });
 				$("#attachFile").val('');
 				$("#msg").html("<font color='red'>사진이 등록되었습니다.</font>");
+				closeWindow();
+
 
 			} else {
 				alert(response.msg) ;
@@ -147,7 +133,7 @@ $(function(){
 		    <dt>사진 첨부 확인</dt>
 		    <dd>
 		    	확인을 누르시면 임시 데이터가 사진첨부 됩니다.<br />
-				<Form name="ajaxform" id="ajaxform"  method="post"  action="ajax/board/gallery_file_upload'"  enctype="multipart/form-data">
+				<Form name="ajaxform" id="ajaxform"  method="post"  action="/ajax/board/gallery_file_upload"  enctype="multipart/form-data">
 					<Input Type="file" name="attachFile[]" id="attachFile" size='80' multiple>
 					<input type="hidden" id="attachType" name="attachType[]" value="image" />
 				</Form>
@@ -157,7 +143,8 @@ $(function(){
 	<div class="footer">
 		<p><a href="#" onclick="closeWindow();" title="닫기" class="close">닫기</a></p>
 		<ul>
-			<li class="submit"><a href="#" onclick="done();" title="등록" class="btnlink">등록</a> </li>
+<!--			<li class="submit"><a href="#" onclick="done();" title="등록" class="btnlink">등록</a> </li>-->
+			<li class="submit"><a href="#" id="submit" title="등록" class="btnlink">등록</a> </li>
 			<li class="cancel"><a href="#" onclick="closeWindow();" title="취소" class="btnlink">취소</a></li>
 		</ul>
 	</div>

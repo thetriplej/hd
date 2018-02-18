@@ -80,7 +80,7 @@
     height:148px; /*메뉴백 높이*/
     display:none;
     padding-top:16px;
-	background: url('../img/submenu_tr.png') 0 0 repeat;
+	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
 	z-index:1000;
 }
 
@@ -106,7 +106,7 @@
 #sub_gnb01 > ul > li >a:hover{
     display:block;
     /*background-color:#7f746a;*/
-	background: url('../img/submenu_tr.png') 0 0 repeat;
+	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
     color:#fff;
 }
 
@@ -126,7 +126,7 @@
     display:none;
     padding-top:16px;
     margin-left:0px;
-	background: url('../img/submenu_tr.png') 0 0 repeat;
+	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
 	z-index:1001;
 }
 
@@ -149,7 +149,7 @@
 
 #sub_gnb02 > ul > li >a:hover{
     display:block;
-	background: url('../img/submenu_tr.png') 0 0 repeat;
+	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
     color:#fff;
 }
 
@@ -167,7 +167,7 @@
     height:459px; /*메뉴백 높이*/
     display:none;
     padding-top:16px;
-	background: url('../img/submenu_tr.png') 0 0 repeat;
+	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
 	z-index:1002;
 }
 
@@ -192,7 +192,7 @@
 #sub_gnb03 > ul > li >a:hover{
     display:block;
     color:#fff;
-	background: url('../img/submenu_tr.png') 0 0 repeat;
+	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
 }
 
 /*sub manu aes list*/
@@ -208,7 +208,7 @@
     display:none; 
 	padding-top:16px;
     margin-left:0px;
-	background: url('../img/submenu_tr.png') 0 0 repeat;
+	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
 	z-index:1004;
 }
 
@@ -233,7 +233,7 @@
 #sub_gnb04 > ul > li >a:hover{
     display:block;
     color:#fff;
-	background: url('../img/submenu_tr.png') 0 0 repeat;
+	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
 }
 
 
@@ -249,7 +249,7 @@
     display:none; 
 	padding-top:16px;
     margin-left:0px;
-	background: url('../img/submenu_tr.png') 0 0 repeat;
+	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
 	z-index:1005;
 }
 
@@ -273,7 +273,7 @@
 #sub_gnb05 > ul > li >a:hover{
     display:block;
     color:#fff;
-	background: url('../img/submenu_tr.png') 0 0 repeat;
+	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
 }
 
 
@@ -294,7 +294,7 @@
 
 .bottom_menu01
 {
-	background:url('../img/logo_hassed_bottom.png') 0 0 no-repeat;
+	background:url('/public_html/img/logo_hassed_bottom.png') 0 0 no-repeat;
 	width:252px;
 	height:74px;
 	display: block;
@@ -309,7 +309,7 @@
 
 .bottom_menu02
 {
-	background:url('../img/bt_b2b.png') 0 0 no-repeat;
+	background:url('/public_html/img/bt_b2b.png') 0 0 no-repeat;
 	width:98px;
 	height:74px;
 	display: block;
@@ -324,7 +324,7 @@
 
 .bottom_menu03
 {
-	background:url('../img/bt_Recruit.png') 0 0 no-repeat;
+	background:url('/public_html/img/bt_Recruit.png') 0 0 no-repeat;
 	width:98px;
 	height:74px;
 	display: block;
@@ -339,7 +339,7 @@
 
 .bottom_menu04
 {
-	background:url('../img/bt_law.png') 0 0 no-repeat;
+	background:url('/public_html/img/bt_law.png') 0 0 no-repeat;
 	width:116px;
 	height:74px;
 	display: block;
@@ -354,7 +354,7 @@
 
 .bottom_menu05
 {
-	background:url('../img/bt_Privacy.png') 0 0 no-repeat;
+	background:url('/public_html/img/bt_Privacy.png') 0 0 no-repeat;
 	width:176px;
 	height:74px;
 	display: block;
@@ -368,7 +368,7 @@
 
 .bottom_menu06
 {
-	background:url('../img/bt_faq.png') 0 0 no-repeat;
+	background:url('/public_html/img/bt_faq.png') 0 0 no-repeat;
 	width:91px;
 	height:74px;
 	display: block;
@@ -382,7 +382,7 @@
 
 .bottom_menu07
 {
-	background:url('../img/bt_cafe2.png') 0 0 no-repeat;
+	background:url('/public_html/img/bt_cafe2.png') 0 0 no-repeat;
 	width:52px;
 	height:74px;
 	display: block;
@@ -396,7 +396,7 @@
 
 .bottom_menu08
 {
-	background:url('../img/bt_instar2.png') 0 0 no-repeat;
+	background:url('/public_html/img/bt_instar2.png') 0 0 no-repeat;
 	width:45px;
 	height:74px;
 	display: block;
@@ -410,7 +410,7 @@
 
 .bottom_menu09
 {
-	background:url('../img/bt_blog2.png') 0 0 no-repeat;
+	background:url('/public_html/img/bt_blog2.png') 0 0 no-repeat;
 	width:47px;
 	height:74px;
 	display: block;

@@ -171,55 +171,231 @@ class Board extends CI_Controller {
 
     }
 
-    public function gallery_file_upload(){
-
+    public function get_page(){
         $post = $this->input->post(null, true);
-        var_dump($post);exit;
-// default redirection
-        $url = 'callback.html?callback_func='.$_REQUEST["callback_func"];
+        $send_data = array();
+        echo json_encode($send_data);
+    }
+
+    public function check_pass(){
+        $post = $this->input->post(null, true);
+        $send_data = array();
+        echo json_encode($send_data);
+    }
+
+
+    public function gallery_file_upload(){
+        ini_set("memory_limit", "-1");
+
+        //$url = '/public_html/d_editor/pages/trex/image.php?callback_func='.$_REQUEST["callback_func"];
 
         $upload_file    = $_FILES['attachFile']['name'];
-        $upload_tmp        = $_FILES['attachFile']['tmp_name'];
+        $upload_tmp     = $_FILES['attachFile']['tmp_name'];
         $upload_type    = $_FILES['attachFile']['type'];
 
+        $send_data = array();
         $fCnt = count($upload_file);
+        $_mockdata = array();
 
-        for($i=0;$i<$fCnt;$i++)
-        {
-            $bSuccessUpload = is_uploaded_file($_FILES['attachFile']['tmp_name']);
-            $today = date('Y-m');
-// SUCCESSFUL
-            if(bSuccessUpload) {
-                $tmp_name = $_FILES['attachFile']['tmp_name'];
-                $name = $_FILES['attachFile']['name'];
+        for($i=0;$i<$fCnt;$i++){
+            $bSuccessUpload = is_uploaded_file($_FILES['attachFile']['tmp_name'][$i]);
+            $img_info = array();
+            if($bSuccessUpload) {
+                $tmp_name = $_FILES['attachFile']['tmp_name'][$i];
+                $name = $_FILES['attachFile']['name'][$i];
+                $size = $_FILES['attachFile']['size'][$i];
+                $upload_type = $_FILES['attachFile']['type'][$i];
 
-                $filename_ext = strtolower(array_pop(explode('.',$name)));
-                $allow_file = array("jpg", "png", "bmp", "gif");
+                $filename_ext = strtolower(substr(strrchr($name,"."),1));	//확장자앞 .을 제거하기 위하여 substr()함수를 이용
+
+                $allow_file = array("jpg", "png", "bmp", "gif","jpeg");
 
                 if(!in_array($filename_ext, $allow_file)) {
-                    $url .= '&errstr='.$name;
+                    $send_data['result'] = 'fail';
+                    break;
                 } else {
-                    $uploadDir = '/public_html/upload/upload2/'.$today;
-                    if(!is_dir($uploadDir)){
-                        mkdir($uploadDir, 0777);
+                    $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/temp/';
+
+                    if(!is_dir($upload_dir)){
+                        mkdir($upload_dir, 0777);
                     }
+                    $img_rename = date("Ymd")."_".time().rand(0,100000);
+                    $setPath = $upload_dir.$img_rename;
+                    $set_width_array = array(300,600);
 
-                    $newPath = $uploadDir.urlencode($_FILES['attachFile']['name']);
 
-                    @move_uploaded_file($tmp_name, $newPath);
+                    $return_thum = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,300);
+                    $return = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,600);
+                    (!empty($return_thum) && !empty($return))? $status = 'success' : $status = 'fail';
 
-                    $url .= "&bNewLine=true";
-                    $url .= "&sFileName=".urlencode(urlencode($name));
-                    $url .= "&sFileURL=/public_html/upload/upload2/".$today."/".urlencode(urlencode($name));
+                    $img_600 = $upload_dir.$img_rename.'.'.$filename_ext;
+                    list($width, $height) = getimagesize($img_600);
+
+                    $img_info = array(
+                        'f_rename'    =>  $img_rename.'.'.$filename_ext,
+                        'filename'    => $name,
+                        'filesize'    => $size,
+                        'imagealign'  => 'C',
+                        'originalurl' => $return['originalurl'],
+                        'thumburl'    => $return_thum['thumburl'],
+                        'mime_type'   => $upload_type,
+                        'image_width' => intval($width),
+                        'image_height' => intval($height),
+                        'status'      => $status
+                    );
+                    //@move_uploaded_file($tmp_name, $setPath.'.'.$filename_ext);
+
+                    $send_data['result'] = $status;
+                    $send_data['_mockdata'][$i] = $img_info;
+
                 }
-            }
-// FAILED
-            else {
-                $url .= '&errstr=error';
+            }else {
+                $send_data['result'] = 'fail';
+                break;
             }
         }
 
-        header('Location: '. $url);
+
+        echo json_encode($send_data);
+
+    }
+
+    private function get_image_resource_from_file($path_file){
+
+        if (!is_file($path_file)) {//파일이 아니라면
+            $GLOBALS['errormsg'] = $path_file . '은 파일이 아닙니다.';
+            return Array();
+        }
+
+        $size = @getimagesize($path_file);
+        if (empty($size[2])) {//이미지 타입이 없다면
+            $GLOBALS['errormsg'] = $path_file . '은 이미지 파일이 아닙니다.';
+            return Array();
+        }
+
+        if ($size[2] != 1 && $size[2] != 2 && $size[2] != 3) {//지원하는 이미지 타입이 아니라면
+            $GLOBALS['errormsg'] = $path_file . '은 gif 나 jpg, png 파일이 아닙니다.';
+            return Array();
+        }
+
+        switch($size[2]){
+
+            case 1 : //gif
+                $im = @imagecreatefromgif($path_file);
+                break;
+
+            case 2 : //jpg
+                $im = @imagecreatefromjpeg($path_file);
+                break;
+
+            case 3 : //png
+                $im = @imagecreatefrompng($path_file);
+                break;
+        }
+
+        if ($im === false) {//이미지 리소스를 가져오기에 실패하였다면
+            $GLOBALS['errormsg'] = $path_file . ' 에서 이미지 리소스를 가져오는 것에 실패하였습니다.';
+            return Array();
+        }
+        else {//이미지 리소스를 가져오기에 성공하였다면
+
+            $return = $size;
+            $return[0] = $im;
+            $return[1] = $size[0];//너비
+            $return[2] = $size[1];//높이
+            $return[3] = $size[2];//이미지타입
+            $return[4] = $size[3];//이미지 attr
+
+            return $return;
+        }
+    }
+
+    private function save_image_from_resource ($im, $path_save_file){
+
+        $path_save_dir = dirname($path_save_file);
+        if (!is_dir($path_save_dir)) {
+            $GLOBALS['errormsg'] = $path_save_dir . '은 디렉토리가 아닙니다.';
+            return false;
+        }
+
+        if (!is_writable($path_save_dir)){
+            $GLOBALS['errormsg'] = $path_save_dir . '에 이미지를 저장할 권한이 없습니다.';
+            return false;
+        }
+
+        if (is_file($path_save_file) || is_dir($path_save_file)) {
+            $GLOBALS['errormsg'] = $path_save_file . '은 이미 존재하는 파일이거나 디렉토리입니다.';
+            return false;
+        }
+
+        $extension = strtolower(substr($path_save_file, strrpos($path_save_file, '.') + 1));
+
+        switch($extension){
+            case 'gif' :
+                $result_save = @imagegif($im, $path_save_file);
+                break;
+
+            case 'jpg' :
+            case 'jpeg' :
+                $result_save = @imagejpeg($im, $path_save_file);
+                break;
+
+            default : //확장자 png 또는 확장자가 없는 경우, 정의되지 않는 확장자인 경우는 모두 png로 저장
+                $result_save = @imagepng($im, $path_save_file);
+        }
+
+        if ($result_save === false) {//이미지 저장에 실패
+            $GLOBALS['errormsg'] = $path_save_file . '의 저장에 실패하였습니다.';
+            return false;
+        }else {//이미지 저장에 성공
+            return true;
+        }
+    }
+
+    private function image_resize($originfile,$renamefile,$filename_ext,$upload_dir,$width){
+        $dst_w = $width;//만들어질 이미지의 너비 지정, 픽셀단위의 0이상의 정수를 지정
+        $setPath = $upload_dir.$renamefile;
+
+        $path_file = $originfile;//원본파일
+        $send_temp_dir = '/public_html/upload/upload2/temp/';
+        if($width == 300){
+            $newPath = $setPath.'_145x90.'.$filename_ext;
+            $sen_data = array(
+                'thumburl' =>   $send_temp_dir.$renamefile.'_145x90.'.$filename_ext
+            );
+        }else{
+            $newPath = $setPath.'.'.$filename_ext;
+            $sen_data = array(
+                'originalurl' =>   $send_temp_dir.$renamefile.'.'.$filename_ext
+            );
+        }
+
+        $path_resizefile = $newPath;//리사이즈되어 저장될 파일 경로
+
+        //이미지 리소스를 받아온다.
+        list($src, $src_w, $src_h) = $this->get_image_resource_from_file($path_file);
+        if (empty($src)) die($GLOBALS['errormsg'] . "<br />\n");
+        //만들어질 이미지의 높이를 결정한다.
+        $resize_rule = $dst_w / $src_w;
+
+        $dst_h = ($width == 300)? 188 :ceil($resize_rule * $src_h);//소숫점이 나올것을 대비하여 무조건 올림을 한다.
+        $dst = @imagecreatetruecolor($dst_w, $dst_h);//만드어질 $dst_w , $dst_h 크기의 이미지 리소스를 생성한다.
+        if ($dst === false) die("$dst_w , $dst_h 크기의 썸네일 이미지의 리소스를 생성하지 못했습니다.<br />\n");
+        $result_resize = imagecopyresampled($dst, $src, 0, 0, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
+        if ($result_resize === false) die("리사이즈에 실패하였습니다.<br />\n");
+
+        $result_save = $this->save_image_from_resource($dst, $path_resizefile);//저장
+        if ($result_save === false) die($GLOBALS['errormsg'] . "<br />\n");
+
+        @imagedestroy($src);
+        @imagedestroy($dst);
+
+
+
+        return $sen_data;
+
+
+
     }
 
 

@@ -96,7 +96,7 @@ b {display:inline;}
 .bgcolor-gray { background-color:#d6d3ce; }
 .bgcolor-whitegray { background-color:#f3f2ef; }
 .bgcolorbl	{background-color:#000;}
-.bg_history { background:url('../img/bg_history.jpg'); }
+.bg_history { background:url('/public_html/img/bg_history.jpg'); }
 .bgcolor_history	{background-color:#f8f4ee;}
 
 
@@ -117,7 +117,7 @@ b {display:inline;}
 {
     width:100%;
     height:110px;
-	background:url('../img/top_menubar.png');
+	background:url('/public_html/img/top_menubar.png');
 	z-index:1010;
 }
 
@@ -189,7 +189,7 @@ b {display:inline;}
 {
     width:820px;
     height:96px;
-	background:url('../img/sasun.png') 0 50px no-repeat;
+	background:url('/public_html/img/sasun.png') 0 50px no-repeat;
 	float:right;
 	padding-right:17px;
 }
@@ -762,7 +762,7 @@ margin: 0 auto;}
 	height:250px;
 	margin:0px 28px 58px 28px;
 	position:relative;
-	background: url('../img/brand_img03_1.jpg') no-repeat;
+	background: url('/public_html/img/brand_img03_1.jpg') no-repeat;
 }
 
 .bt_pluse{ 
@@ -772,7 +772,7 @@ margin: 0 auto;}
 	width:22px;
 	height:22px;
 	overflow:hidden;
-	background: url('../img/bt_since.jpg') no-repeat;
+	background: url('/public_html/img/bt_since.jpg') no-repeat;
 	display:block;
 	}
 

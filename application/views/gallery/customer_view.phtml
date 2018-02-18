@@ -1,0 +1,374 @@
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/reset_style.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/default_hassed_2017.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/menuf_2017.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/main_2017.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/board_hassed_2017.css">
+<script src="<?php echo JS_DIR; ?>/bbs.js"></script>
+<link rel="stylesheet" type="text/css" href="/public_html/video/css/site.css">
+<link rel="stylesheet" type="text/css" href="/public_html/video/ovp-min.css" />
+<script type="text/javascript" src="/public_html/video/ovp_jquery.js"></script>
+<script type="text/javascript" src="<?php echo JS_DIR; ?>/video.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/video-js.css" rel="stylesheet">
+<style type="text/css">
+    video {
+        background-color:black;
+    }
+</style>
+
+
+
+<div id="wrap_middle" class="" style="margin-top:140px;">
+    <div id="" class="box_full">
+        <div class="sub_img">
+            <img src="/public_html/img/img_board_main.png" border="0" alt="">
+        </div>
+        <div id="" class="" style="width:100%; height:308px; position:absolute; background-color:#faf8f6; display:block; z-index:-10; margin-top:-570px;">
+        </div>
+    </div>
+
+    <div id="" class="box_full_in_center">
+        <!--contents_info-->
+        <div id="" style="width:1080px;height:879px">
+            <div class="wrap_board">
+    <div class="board_area">
+        <div id="" class="bbstitlebar">
+            <div class="bbs_view">
+                <h1 class="tit">
+                    <img src="images/icon/review_tit.png" style="vertical-align:middle;"><%=Rs("B_Title")%>
+                </h1>
+                <ul class="info">
+                    <li class="name">
+                        <span><%=Rs("B_Writer")%></span>
+                    </li>
+                    <li class="date">
+                        등록일 :
+                        <span><%= Left(Rs("B_RegDate"), 10)%></span>
+                    </li>
+                    <li class="count">
+                        조회 :
+                        <span><%=Rs("B_Hit")%></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="bbs_content" id="tj_content">
+            <div class="boxmv_bic" align="center" style="height:500px;margin-bottom:10px;">
+                <video width="700px" height="480" class="video-js vjs-default-skin" data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }' autoplay preload="none">
+                    <source src="http://www.hassed.kr/upload/<%=SubRs("F_Name")%>" type="video/mp4" />
+                </video>
+            </div>
+
+            <%
+            SubRs.MoveNext
+            Loop
+            SubRs.Close
+            Set SubRs = Nothing
+            %>
+
+            <%
+            'mp3, wma, wmv, asf, avi, wav, mid, swf
+
+            Set SubRs = Server.CreateObject("ADODB.RecordSet")
+            SQL = "SELECT * FROM BoardFile WHERE B_Index = '"&B_Index&"' AND F_Position = 'T' AND LEFT(F_Type, 5) = 'image' ORDER BY F_Index ASC"
+
+            SubRs.Open SQL, Db, 1
+            Do Until SubRs.Eof
+            %>
+            <div align="center" style="text-align: center;">
+                <% If LCase(Right(SubRs("F_Name"), 3)) = "jpg" Or LCase(Right(SubRs("F_Name"), 3)) = "gif" Or LCase(Right(SubRs("F_Name"), 3)) = "png" Or LCase(Right(SubRs("F_Name"), 3)) = "bmp" Then %>
+                <img style="text-align: center;" src="/upload/<%=SubRs("F_Name")%>" width="<% If SubRs("F_Width") > 600 Then Response.write "600" Else Response.write SubRs("F_Width") End If %>"><br><br>
+                <!--a href="Download.asp?FileName=<%=temp&SubRs("F_Name")%>&Mode=0"><img src="/images/icon_down.gif"></a> | <a href="Zoom.asp?FileName=<%=temp&SubRs("F_Name")%>" target="_new"><img src="/images/icon_zoom.gif"></a--><br><br>
+                <% End If %>
+            </div>
+
+            <%
+            SubRs.MoveNext
+            Loop
+            SubRs.Close
+            Set SubRs = Nothing
+            %>
+
+            <%= Replace(htmlspecialchars_decode(Rs("B_Content")), chr(13)&chr(10), "<br />") %>
+
+            <%
+            Set SubRs = Server.CreateObject("ADODB.RecordSet")
+            SQL = "SELECT * FROM BoardFile WHERE B_Index = '"&B_Index&"' AND F_Position = 'B' AND LEFT(F_Type, 5) = 'image' ORDER BY F_Index ASC"
+
+            SubRs.Open SQL, Db, 1
+            Do Until SubRs.Eof
+            %>
+            <div align="center">
+                <% If Right(SubRs("F_Name"), 3) = "jpg" Or Right(SubRs("F_Name"), 3) = "gif" Or Right(SubRs("F_Name"), 3) = "png" Or Right(SubRs("F_Name"), 3) = "bmp" Then %><img src="/upload/<%=SubRs("F_Name")%>" width="<% If SubRs("F_Width") > 600 Then Response.write "600" Else Response.write SubRs("F_Width") End If %>"><br><br>
+                <!--a href="Download.asp?FileName=<%=temp&SubRs("F_Name")%>&Mode=0"><img src="/images/icon_down.gif"></a>
+            | <a href="Zoom.asp?FileName=<%=temp&SubRs("F_Name")%>" target="_new"><img src="/images/icon_zoom.gif"></a--><br><br>
+                <% End If %>
+            </div>
+
+
+            <%
+            SubRs.MoveNext
+            Loop
+            SubRs.Close
+            Set SubRs = Nothing
+            %>
+            <%
+            Set SubRs = Server.CreateObject("ADODB.RecordSet")
+            SQL = "SELECT * FROM BoardFile WHERE B_Index = '"&B_Index&"' AND LEFT(F_Type, 5) <> 'image' AND RIGHT(F_Name, 3) NOT IN('mp4', 'wma', 'wmv', 'asf', 'avi', 'wav', 'mid', 'swf') ORDER BY F_Index ASC"
+
+            SubRs.Open SQL, Db, 1
+            Do Until SubRs.Eof
+            %>
+            <div align="center"><%=SubRs("F_Name")%><br /><!--a href="Download.asp?FileName=<%=temp&SubRs("F_Name")%>&Mode=0"><img src="/images/icon_down.gif"></a> | <a href="Zoom.asp?FileName=<%=temp&SubRs("F_Name")%>" target="_new"><img src="/images/icon_zoom.gif"></a--><br><br></div>
+
+            <%
+            SubRs.MoveNext
+            Loop
+            SubRs.Close
+            Set SubRs = Nothing
+            %>
+
+            <%
+            Rs.Close
+            Set Rs = Nothing
+            Else
+
+            %>
+            <%
+            'mp4, wma, wmv, asf, avi, wav, mid, swf
+            temp = ""
+            Set SubRs = Server.CreateObject("ADODB.RecordSet")
+            SQL = "SELECT * FROM BoardFile WHERE B_Index = '"&B_Index&"' AND F_Position = 'T' AND RIGHT(F_Name, 3) IN('mp4', 'wma', 'wmv', 'asf', 'avi', 'wav', 'mid', 'swf','flv') ORDER BY F_Index ASC"
+
+            SubRs.Open SQL, Db, 1
+            Do Until SubRs.Eof
+            %>
+
+            <div class="boxmv_bic" align="center" style="height:500px;margin-bottom:10px;">
+                <video width="700px" height="480px" class="video-js vjs-default-skin" data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }' autoplay preload="none">
+                    <source src="http://www.hassed.kr/upload2/<%=SubRs("F_Name")%>" type="video/mp4" />
+                </video>
+            </div>
+            <%
+            SubRs.MoveNext
+            Loop
+            SubRs.Close
+            Set SubRs = Nothing
+            %>
+
+            <%= Replace(htmlspecialchars_decode(Rs("B_Content")), chr(13)&chr(10), "")) '<br /> 제거 2016-02-01 TJ %>
+            <%
+            'mp4, wma, wmv, asf, avi, wav, mid, swf
+            temp = ""
+            Set SubRs = Server.CreateObject("ADODB.RecordSet")
+            SQL = "SELECT * FROM BoardFile WHERE B_Index = '"&B_Index&"' AND F_Position = 'B' AND RIGHT(F_Name, 3) IN('mp4', 'wma', 'wmv', 'asf', 'avi', 'wav', 'mid', 'swf','flv') ORDER BY F_Index ASC"
+
+            SubRs.Open SQL, Db, 1
+            Do Until SubRs.Eof
+            %>
+
+            <div class="boxmv_bic" align="center" style="height:500px;margin-bottom:10px;">
+                <video width="700px" height="480px" class="video-js vjs-default-skin" data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }' autoplay preload="none">
+                    <source src="http://www.hassed.kr/upload2/<%=SubRs("F_Name")%>" type="video/mp4" />
+                </video>
+            </div>
+            <%
+            SubRs.MoveNext
+            Loop
+            SubRs.Close
+            Set SubRs = Nothing
+            %>
+            <%
+            Set SubRs = Server.CreateObject("ADODB.RecordSet")
+            SQL = "SELECT * FROM BoardFile WHERE B_Index = '"&B_Index&"' AND LEFT(F_Type, 5) <> 'image' AND RIGHT(F_Name, 3) NOT IN('mp4', 'wma', 'wmv', 'asf', 'avi', 'wav', 'mid', 'swf') ORDER BY F_Index ASC"
+
+            SubRs.Open SQL, Db, 1
+            Do Until SubRs.Eof
+            %>
+            <div align="center"><%=SubRs("F_Name")%><br /><!--a href="Download.asp?FileName=<%=temp&SubRs("F_Name")%>&Mode=1"><img src="/images/icon_down.gif"></a--> <br><br></div>
+
+            <%
+            SubRs.MoveNext
+            Loop
+            SubRs.Close
+            Set SubRs = Nothing
+            %>
+            <% End If %>
+            <div style="float:right;">
+
+                http://hassed.kr/haboard03.asp?B_Index=<%= B_Index %>
+
+            </div>
+        </div>
+
+        <div class="bbs_move" style="clear:both;display:none;">
+            <p class="prev">
+                <span>이전 글</span>
+                <%
+                SQL = " SELECT TOP 1 * FROM Board WHERE B_Code = '"&B_Code&"'  and B_Sequence = '1'"
+                SQL = SQL & " AND (( B_Group = '"&B_Group&"' AND B_Sequence > '"&B_Sequence&"') OR ( B_Group < '"&B_Group&"')) "
+                SQL = SQL & " ORDER BY B_Group DESC, B_Sequence Asc "
+
+                Set Rs = Server.CreateObject("ADODB.RecordSet")
+                Rs.Open SQL, Db
+                If Rs.Bof Or Rs.Eof Then
+                %>
+
+                이전 글이 존재하지 않습니다.
+
+                <%
+                Else
+                If Rs("B_Locked") = "Y" Then
+                URL = "javascript:Send('View.asp?RealPage="&RealPage&"&B_Index="&Rs("B_Index")&"&B_Code="& Rs("B_Code") &"&searchType="& InjectionGuard(request("searchType")) &"&searchValue="& InjectionGuard(request("searchValue"))&"',event, '"&Rs("B_Locked")&"')"
+                Else
+                URL = "View.asp?RealPage="&RealPage&"&B_Index="&Rs("B_Index")&"&B_Code="& Rs("B_Code") &"&searchType="& InjectionGuard(request("searchType")) &"&searchValue="& InjectionGuard(request("searchValue"))
+                End If
+                %>
+                <a href="<%= URL %>"><%= Rs("B_Title") %></a>
+
+                <%
+                End If
+                Rs.Close
+                Set Rs = Nothing
+                %>
+            </p>
+            <p class="next">
+                <span>다음 글</span>
+                <%
+
+                SQL = " SELECT TOP 1 * FROM Board WHERE B_Code = '"&B_Code&"' and B_Sequence = '1'"
+                ' AND bb1.B_Sequence = '1' AND bb1.B_Depth = '0'
+                SQL = SQL & " AND (( B_Group = '"&B_Group&"' AND B_Sequence < '"&B_Sequence&"') OR ( B_Group > '"&B_Group&"')) "
+                SQL = SQL & " ORDER BY B_Group ASC, B_Sequence DESC "
+
+                Set Rs = Server.CreateObject("ADODB.RecordSet")
+                Rs.Open SQL, Db
+                If Rs.Bof Or Rs.Eof Then
+                %>
+                다음 글이 존재하지 않습니다.
+                <%
+                Else
+                If Rs("B_Locked") = "Y" Then
+                URL = "javascript:Send('View.asp?RealPage="&RealPage&"&B_Index="&Rs("B_Index")&"&B_Code="& Rs("B_Code") &"&searchType="& InjectionGuard(request("searchType")) &"&searchValue="& InjectionGuard(request("searchValue"))&"',event , '"&Rs("B_Locked")&"')"
+                Else
+                URL = "View.asp?RealPage="&RealPage&"&B_Index="&Rs("B_Index")&"&B_Code="& Rs("B_Code") &"&searchType="& InjectionGuard(request("searchType")) &"&searchValue="& InjectionGuard(request("searchValue"))
+                End If
+                %>
+                <a href="<%= URL %>"><%= Rs("B_Title") %></a>
+                <%
+                End If
+                Rs.Close
+                Set Rs = Nothing
+                %>
+
+            </p>
+
+        </div>
+        <div id="buttons" style="height:25px;overflow:hidden;clear:both;">
+
+
+            <% If B_Code = "CEPILOGUE0" Or  B_Code = "QANDA0" Then %>
+            <span style="float:left;">
+				<input type="button" class="btn_blue" value="수정" onclick="Send('Write_j.asp?B_Index=<%= B_Index %>&RealPage=<%= InjectionGuard(request("RealPage")) %>&B_Code=<%= B_Code %>&searchType=<%= InjectionGuard(request("searchType")) %>&searchValue=<%= InjectionGuard(request("searchValue")) %>',event, 'Y');">
+				<input type="button" class="btn_blue" value="삭제" onclick="Send('Proc_j.asp?ProcType=D&B_Index=<%= B_Index %>&RealPage=<%= InjectionGuard(request("RealPage")) %>&B_Code=<%= B_Code %>&searchType=<%= InjectionGuard(request("searchType")) %>&searchValue=<%= InjectionGuard(request("searchValue")) %>',event, 'Y');">
+			</span>
+            <% End If %>
+
+
+            <span style="float:right;">
+			<input type="button" class="btn_gray" value="목록보기" onclick="goto('List.asp?RealPage=<%= InjectionGuard(request("RealPage")) %>&B_Code=<%= B_Code %>&searchType=<%= InjectionGuard(request("searchType")) %>&searchValue=<%= InjectionGuard(request("searchValue")) %>');">
+                <!--input type="button" class="btn_gray" value="댓글작성"-->
+			</span>
+
+        </div>
+
+        <div id="" class="bbstitlebar_re">
+            <div class="bbs_view" style="margin-top:0px;">
+
+                <h1 class="tit_re">
+                    <img src="images/icon/icon_reply.png" title="reply" style="vertical-align:middle;">
+                    <%=repRs("B_Title")%>
+                </h1>
+                <ul class="info">
+                    <li  style="float:right;" class="date">
+                        등록일 :
+                        <span><%= Left(repRs("B_RegDate"), 10)%></span>
+                    </li>
+                    <!--<li class="count">
+                        조회 :
+                        <span><%=repRs("B_Hit")%></span>
+                    </li-->
+                </ul>
+            </div>
+        </div>
+        <div class="bbs_content">
+
+
+            <div class="boxmv_bic" align="center" style="height:500px;margin-bottom:10px;">
+                <video width="700px" height="480px" class="video-js vjs-default-skin" data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }' autoplay preload="none">
+                    <source src="http://www.hassed.kr/upload2/<%=SubRs("F_Name")%>" type="video/mp4" />
+                </video>
+            </div>
+
+            <div align="center">
+                <% If LCase(Right(SubRs("F_Name"), 3)) = "jpg" Or LCase(Right(SubRs("F_Name"), 3)) = "gif" Or LCase(Right(SubRs("F_Name"), 3)) = "png" Or LCase(Right(SubRs("F_Name"), 3)) = "bmp" Then %>
+                <img src="/upload/<%=SubRs("F_Name")%>" width="<% If SubRs("F_Width") > 600 Then Response.write "600" Else Response.write SubRs("F_Width") End If %>"><br><br>
+                <!--a href="Download.asp?FileName=<%=temp&SubRs("F_Name")%>"><img src="/images/icon_down.gif"></a> | <a href="Zoom.asp?FileName=<%=temp&SubRs("F_Name")%>" target="_new"><img src="/images/icon_zoom.gif"></a--><br><br>
+                <% End If %>
+            </div>
+
+            <div align="center">
+                <% If Right(SubRs("F_Name"), 3) = "jpg" Or Right(SubRs("F_Name"), 3) = "gif" Or Right(SubRs("F_Name"), 3) = "png" Or Right(SubRs("F_Name"), 3) = "bmp" Then %>
+                <img src="/upload/<%=SubRs("F_Name")%>" width="<% If SubRs("F_Width") > 600 Then Response.write "600" Else Response.write SubRs("F_Width") End If %>"><br><br>
+                <!--a href="Download.asp?FileName=<%=temp&SubRs("F_Name")%>"><img src="/images/icon_down.gif"></a>
+            | <a href="Zoom.asp?FileName=<%=temp&SubRs("F_Name")%>" target="_new"><img src="/images/icon_zoom.gif"></a--><br><br>
+                <% End If %>
+            </div>
+
+            <div align="center"><%=SubRs("F_Name")%><br /><a href="Download.asp?FileName=<%=temp&SubRs("F_Name")%>"><img src="/images/icon_down.gif"></a> <!--| <a href="Zoom.asp?FileName=<%=temp&SubRs("F_Name")%>" target="_new"><img src="/images/icon_zoom.gif"></a--><br><br></div>
+
+
+        </div>
+
+
+        <div class="boxmv_bic" align="center" style="height:500px;margin-bottom:10px;">
+            <video width="700px" height="480px" class="video-js vjs-default-skin" data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }' autoplay preload="none">
+                <source src="http://www.hassed.kr/upload2/<%=SubRs("F_Name")%>" type="video/mp4" />
+            </video>
+        </div>
+
+
+        <div class="boxmv_bic" align="center" style="height:500px;margin-bottom:10px;">
+            <video width="700px" height="480px" class="video-js vjs-default-skin" data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }' autoplay preload="none">
+                <source src="http://www.hassed.kr/upload2/<%=SubRs("F_Name")%>" type="video/mp4" />
+            </video>
+        </div>
+
+        <div align="center"><%=SubRs("F_Name")%><br /><a href="Download.asp?FileName=<%=temp&SubRs("F_Name")%>&Mode=1"><img src="/images/icon_down.gif"></a><br><br></div>
+
+    </div>
+    <% End If %>
+    <!-- 댓글 view // -->
+
+</div>
+        </div>
+        <!--//contents_info-->
+    </div>
+</div>
+
+</div>
+<!-- Password 입력 팝업 -->
+<div id="in_pass" class="popup_pw popup_box" style="display:none;">
+    <form name="passwd" id="passwd" method = "post">
+        <input type="hidden" name="ck_lock" id="ck_lock">
+        <img src="images/bg/in_pass_01.png" title="Password" style="vertical-align:top;">
+        <div style="margin:0 24px 10px;overflow:hidden;">
+            <div class="box_pw">비밀번호 &gt;</div>
+            <input type="password" size="12" name="pw" id="pw" style="float:left;">
+        </div>
+        <div class="checkbt">
+            <input type="button" class="btn_pw" title="확인" onclick="CheckPW();">
+            <input type="button" class="btn_cancel" title="취소" onclick="cancel();">
+        </div>
+    </form>
+</div>
+<!-- Password 입력 팝업 // -->

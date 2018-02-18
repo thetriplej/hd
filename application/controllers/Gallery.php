@@ -6,6 +6,7 @@ class Gallery extends CI_Controller {
     public function  __construct() {
         parent::__construct();
         $this->load->helper('url'); //Loading url helper
+        $this->load->helper(array('form', 'url'));
         $this->load->library('utilcommon');
         if($this->utilcommon->get_mobile_check() === true){
             //  echo "<script>alert('mobile')</script>";
@@ -45,7 +46,7 @@ class Gallery extends CI_Controller {
 
     }
 
-    public function customerwWrite()
+    public function customer_write()
     {
         $page = $_GET['page'];
         $b_code = $_GET['b_code'];
@@ -58,11 +59,34 @@ class Gallery extends CI_Controller {
             'search_type' => $search_type,
             'search_value' => $search_value,
         );
+
         if($this->lang_type == 'en') {
-            $this->load->view('gallery/e_customer_write.phtml',array($send_data));
+            $this->load->view('gallery/e_customer_write.phtml',$send_data);
         }else{
-            $this->load->view('gallery/customer_write.phtml',array($send_data));
+            $this->load->view('gallery/customer_write.phtml',$send_data);
         }
 
     }
+
+
+    public function customer_store(){
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '100';
+        $config['max_width']  = '1024';
+        $config['max_height']  = '768';
+
+        $this->load->library('upload', $config);
+        var_dump(1);
+        $post = $this->input->post(null, true);
+        var_dump($post);exit;
+        $send_data = array();
+        //echo json_encode($send_data);
+    }
+
+    public function customer_view(){
+        //SQL = "UPDATE Board SET B_Hit = B_Hit + 1 WHERE B_Index = '"&B_Index&"'"
+    }
+
+
 }

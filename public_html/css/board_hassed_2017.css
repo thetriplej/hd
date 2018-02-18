@@ -163,9 +163,9 @@ input[type=button].btn_swhite {width:56px;height:19px;padding-top:2px;background
 
 .gallery_copyright {width:1080px; height:200px; font-size:16px; color:#545250; text-align:center; line-height:28px;}
 .gallery_title {height:50px; overflow:hidden;font-size:18px; color:#545250; text-align:center; line-height:50px;}
-.gallery_write {width:1080px; height:30px; position:relative;}
-.gallery_write > .bt_write {width:70px; height:20px;  z-index:900; position:absolute; left:1010px; top:-50px;}
-.gallery_write > .bt_writebot {position:absolute; right:50px; width:70px; height:20px;  z-index:900; left:1010px; top:20px;}
+.gallery_write {width:1080px; height:100%; position:relative; z-index:999;}
+.gallery_write > .bt_write {width:70px; height:20px; z-index:900; position:absolute; left:1010px; top:-50px;}
+.gallery_write > .bt_writebot {position:absolute; right:50px; width:70px; height:20px;  z-index:900; left:1010px; top:-20px;}
 
 .gallery_out {width:1080px;}
 .gallery_set {width:1110px; overflow:hidden; margin:0 auto; padding-left:10px; padding-bottom:40px;} /* border-bottom:1px solid #dfdfdf; */

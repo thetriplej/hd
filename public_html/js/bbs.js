@@ -114,13 +114,14 @@ function pagination(current_page, total_last_page, per_page, total, page_num){
 
 	//html += (prev_page > 0) ? '<input type="button" class="btn_prev" onclick="get_list(1);" name="prev">' : '';
 
-	//html += (prev_block > 0) ? "<a href='javascript:getPage("+prev_block_page+");' class='prev'></a>" : "";
-    html += '<input type="button" class="btn_prev" onclick="get_list(1);" name="prev">';
+	html += (prev_page > 0) ? '<input type="button" class="btn_prev" onclick="get_list('+prev_block_page+');" name="prev" style="vertical-align: middle">' : '<input type="button" class="btn_prev" onclick="get_list(1);" name="prev" style="vertical-align: middle">';
+
 	for (var i = first_page; i <= last_page; i++) {
 		html += (i != current_page) ? '<span>[<a href="javascript:get_list('+ i + ');">'+i+'</a>]</span>' : '<span>[<a class="on" style="color:red;" href="javascript:void();">'+i+'</a>]</span>';
 
 	}
-    html += '<input type="button" class="btn_next" name="next" onclick="get_list('+next_block_page+');" alt="다음 페이지 블럭">';
+
+	html += (next_block <= total_page) ? '<input type="button" class="btn_next" name="next" onclick="get_list('+next_block_page+');" alt="다음 페이지 블럭" style="vertical-align: middle">' : '';
 	//html += (next_block <= total_block) ? "<a href='javascript:getPage("+next_block_page+");' class='next'></a>" : "";
 	//html += (next_page <= total_page) ? '<input type="button" class="btn_next" name="next" onclick="get_list("+total_last_page+");" alt="다음 페이지 블럭">' : '';
 

@@ -52,7 +52,7 @@
                     <!-- 글쓰기 버튼 // -->
                     <div id="" class="gallery_write">
                         <div class="bt_write">
-                            <a href="/gallery/customerwWrite/?page=12&b_code=CEPILOGUE0&search_type=&search_value"><!-- <img src="./images/bg/btn_write_new.png" width="66" height="66" border="0" alt="글쓰기"> --><img src="/public_html/img/bt_review.png" border="0" alt="글쓰기"></a>
+                            <a href="javascript:write();"><!-- <img src="./images/bg/btn_write_new.png" width="66" height="66" border="0" alt="글쓰기"> --><img src="/public_html/img/bt_review.png" border="0" alt="글쓰기"></a>
                         </div>
                     </div>
                     <div class="gallery_out"></div>
@@ -64,8 +64,8 @@
                     <!-- Pagination -->
                     <div class="bbs_page paging"></div>
                     <!-- Pagination // -->
-                    <div id="" class="gallery_write">
-                        <div class="bt_writebot"><a href="/gallery/customerwWrite/?page=12&b_code=CEPILOGUE0&search_type=&search_value="><img src="/public_html/img/bt_review.png" border="0" alt="글쓰기"></a></div>
+                    <div id="" class="gallery_write" style="height:0px;">
+                        <div class="bt_writebot"><a href="javascript:write();"><img src="/public_html/img/bt_review.png" border="0" alt="글쓰기"></a></div>
                     </div>
                     <!-- BBS_find //-->
                     <div class="find_div"> <!-- style="height:22px;text-align:center;"-->
@@ -161,6 +161,10 @@
 
     });
 
+    function write(){
+        location.href = '/gallery/customer_write/?page='+$("#page").val()+'&b_code='+$("#b_code").val()+'&search_type='+$("#search_type option:selected").val()+'&search_value'+$("#search_value").val()
+    }
+
     function get_list(page){
         var html_list ='';
 
@@ -206,7 +210,7 @@
                 pagination(data.page_navi.current_page, data.page_navi.last_page, data.page_navi.per_page, data.page_navi.total, 10);
                 var msg ="Total " + data.page_navi.total + " 건 " +data.page_navi.current_page+ " 페이지";
                 $("#total_page").text(msg);
-                $("#page").val(result.current_page);
+                $("#page").val(page);
             },
             error : function() {
                 alert("다시 시도해 주세요.");

@@ -24,7 +24,7 @@
 	border-top:solid 1px #000;
 	border-bottom:solid 1px #000;
 	overflow:hidden;
-	background:url('../img/2deptmenu_back.jpg') no-repeat;
+	background:url('/public_html/img/2deptmenu_back.jpg') no-repeat;
 }
 
 .bt_2dept_left_menu
@@ -99,7 +99,7 @@
 	width:354px;
 	height:106px;
 	background-color:#484659;
-	background:url('../img/store_select_back.jpg') no-repeat;
+	background:url('/public_html/img/store_select_back.jpg') no-repeat;
 	color:#fff;
 	padding-left:20px;
 	padding-top:26px;

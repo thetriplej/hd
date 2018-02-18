@@ -35,7 +35,7 @@
 	overflow:hidden;
 	left:130px;
 	top:280px;
-	background: url('../img/br_slide_bt_l.png') 0 -100px no-repeat;
+	background: url('/public_html/img/br_slide_bt_l.png') 0 -100px no-repeat;
 	z-index:30;
 }
 
@@ -46,7 +46,7 @@
 	overflow:hidden;
 	left:820px;
 	top:280px;
-	background: url('../img/br_slide_bt_r.png') 0 -100px no-repeat;
+	background: url('/public_html/img/br_slide_bt_r.png') 0 -100px no-repeat;
 	z-index:31;
 }
 .txtform01{ width:500px; line-height:29px;}
@@ -68,7 +68,7 @@
 	overflow:hidden;
 	left:130px;
 	top:280px;
-	background: url('../img/br_slide_bt_lN.png') 0 -100px no-repeat;
+	background: url('/public_html/img/br_slide_bt_lN.png') 0 -100px no-repeat;
 	z-index:30;
 }
 
@@ -79,7 +79,7 @@
 	overflow:hidden;
 	left:820px;
 	top:280px;
-	background: url('../img/br_slide_bt_rN.png') 0 -100px no-repeat;
+	background: url('/public_html/img/br_slide_bt_rN.png') 0 -100px no-repeat;
 	z-index:31;
 }
 

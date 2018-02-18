@@ -1,7 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/board_hassed_2017.css" />
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<link rel="stylesheet" href="/public_html/d_editor/css/editor.css" type="text/css" charset="euc-kr"/>
+<link rel="stylesheet" href="/public_html/d_editor/css/editor.css" type="text/css" charset="utf-8"/>
 <script src="/public_html/d_editor/js/editor_loader.js" type="text/javascript" charset="utf-8"></script>
 
 
@@ -19,27 +18,28 @@
         <div id="" style="width:1080px;height:879px">
             <div class="wrap_board">
                 <div class="board_area">
-                    <?php echo form_open_multipart('/gallery/customerStore/',array('name'=>"tx_editor_form", 'id'=>"tx_editor_form")); ?>
-                        <input type="hidden" id="B_Code" name="B_Code" value="<%=B_Code%>" />
-                        <input type="hidden" name="ProcType" id="ProcType" value="NW">
-                        <input type="hidden" name="B_Depth" value="0">
-                        <input type="hidden" name="B_ParentIndex" value="">
-                        <input type="hidden" name="B_Board_Type" id="B_Board_Type" value="1">
-                        <input type="hidden" id="B_Index" name="B_Index" value="">
+                    <?php echo form_open_multipart('/gallery/customer_store/',array('name'=>"tx_editor_form", 'id'=>"tx_editor_form")); ?>
+                        <input type="hidden" id="b_code" name="b_code" value="<?php echo($b_code);?>" />
+                        <input type="hidden" id="page" name="page" value="<?php echo($page);?>" />
+                        <input type="hidden" name="proc_type" id="proc_type" value="NW">
+                        <input type="hidden" name="b_depth" value="0">
+                        <input type="hidden" name="b_parentindex" value="">
+                        <input type="hidden" name="b_board_type" id="b_board_type" value="1">
+                        <input type="hidden" id="b_index" name="b_index" value="">
                         <input type="hidden" name="select_img" id="select_img">
                         <div style="margin:0 0 14px;">
                             <label class="input_tit">고객명</label>
-                            <input type="text" attr="1" name="B_Writer" id="B_Writer"  class="input_txt" style="width:200px;margin-right:206px;" value="<%=B_Writer %>"/>
+                            <input type="text" attr="1" name="b_writer" id="b_writer"  class="input_txt" style="width:200px;margin-right:206px;" value=""/>
                             <label class="input_tit">비밀번호</label>
-                            <input type="password" attr="1" name="B_Password" id="B_Password" class="input_txt" style="width:200px;">
+                            <input type="password" attr="1" name="b_password" id="b_password" class="input_txt" style="width:200px;">
                         </div>
                         <div style="margin-bottom:14px;">
                             <label class="input_tit" style="margin-right:13px;" >제목</label>
-                            <input type="text" attr="1" id="B_Title" name="B_Title" class="input_txt" style="width:365px;margin-right:50px;" placeholder="제목을 입력해주세요"  value="<%=B_Title%>" />
+                            <input type="text" attr="1" id="b_title" name="b_title" class="input_txt" style="width:365px;margin-right:50px;" placeholder="제목을 입력해주세요"  value="" />
                             <label class="input_tit">E-mail</label>
-                            <input type="text" attr="1"  name="B_Email1" id="B_Email1"  class="input_txt" style="width:66px;"   value="" />
+                            <input type="text" attr="1"  name="b_email1" id="b_email1"  class="input_txt" style="width:66px;"   value="" />
                             @
-                            <input type="text" attr="1" id="B_Email2" name="B_Email2" class="input_txt" style="width:138px;" value="" />
+                            <input type="text" attr="1" id="b_email2" name="b_email2" class="input_txt" style="width:138px;" value="" />
                             <select id="s_email" attr="1" title="E-Mail 선택" class="input_sel" style="width:80px;height:26px;" onChange="if(this.value==''){with(document.tx_editor_form){B_Email2.readOnly=false;B_Email2.value='';B_Email2.focus();}}else{with(document.tx_editor_form){B_Email2.readOnly=true;B_Email2.value=this.value;}}">
                                 <option value="">직접입력</option>
                                 <option value="gmail.com">G메일</option>
@@ -53,7 +53,7 @@
                             </select>
                         </div>
                         <div style="margin-bottom:20px;">
-                            <input type="checkbox" name="B_Locked" class="textbox" value="Y" <?php ($b_code = "QANDA0")?"checked" : ""?>>
+                            <input type="checkbox" name="b_locked" class="textbox" value="Y" <?php ($b_code = "QANDA0")?"checked" : ""?>>
                             <font color="blue">※ 답변을 확인하실때 입력하신 비밀번호로 확인이 가능합니다.</font></br>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">※ 사진을 첨부하신 뒤, 하단 파일첨부 영역에서 이미지 이름을 클릭하여, 메인이미지를 설정해주세요.</font>
                         </div>
@@ -103,11 +103,22 @@
             attachbox: {
                 show: true,
                 confirmForDeleteAll: true
-            }
+
+            },
+            attacher:{
+                image: {
+                    features:{left:250, top:250, width:500, height:188},
+                    checksize: false
+                }
+            },
+            capacity:{maximum: 1014572800 }
         },
+
         size: {
             contentWidth: 700 /* 지정된 본문영역의 넓이가 있을 경우에 설정 */
         }
+
+
     };
 
     EditorJSLoader.ready(function(Editor) {
@@ -118,11 +129,15 @@
 <script type="text/javascript">
     /* 예제용 함수 */
     function saveContent() {
-        if($('#B_Index').val()){
+        if($('#b_index').val()){
             $.ajax({
-                type: "POST",
-                url: "./ajax/check_pass.asp",
-                data: {id : $('#B_Index').val() , pass :$('#B_Password').val()} ,
+                type : "POST",
+                url : "/ajax/board/check_pass",
+                data: {
+                    csrf_token: $('input[name=csrf_token]').val(),
+                    id : $('#b_index').val() ,
+                    pass :$('#B_Password').val()
+                },
                 success: function(result) {
                     if(result == "fail"){
                         alert('비밀번호가 틀렸습니다.');
@@ -144,22 +159,22 @@
         var content = editor.getContent();
 
 
-        if($('#B_Writer').val() == "") {
+        if($('#b_writer').val() == "") {
             alert('고객명을 입력해 주세요.');
-            B_Writer.focus();
+            b_writer.focus();
             return;
         }
-        if($('#B_Password').val() == "") {
+        if($('#b_password').val() == "") {
             alert('비밀번호를 입력해 주세요.');
-            B_Password.focus();
+            b_password.focus();
             return;
         }
-        if($('#B_Title').val() == "") {
+        if($('#b_title').val() == "") {
             alert('제목을 입력해 주세요.');
-            B_Title.focus();
+            b_title.focus();
             return;
         }
-        if($('#B_Email1').val() == "" || $('#B_Email2').val() == "") {
+        if($('#b_email1').val() == "" || $('#b_email2').val() == "") {
             alert('이메일을 입력해 주세요.');
             B_Email1.focus();
             return;
@@ -168,9 +183,9 @@
             alert('내용을 입력하세요');
             return false;
         }
-        $('#B_Board_Type').val('1');
+        $('#b_board_type').val('1');
         if($('#tx_switchertoggle').attr('class') == 'tx-switchtoggle-pushed') { // html 사용안함
-            $('#B_Board_Type').val('0');
+            $('#b_board_type').val('0');
         }
 
         return true;
@@ -183,7 +198,7 @@
 
         var textarea = document.createElement('textarea');
 
-        textarea.name = 'B_Content';
+        textarea.name = 'b_content';
         $(textarea).css('display','none');
         textarea.value = content;
         form.createField(textarea);
@@ -224,11 +239,11 @@
     // 폼 초기화
     $('#clear').click(function(){
         if (confirm("작성하던 내용을 모두 삭제 하시겠습니까?") == true){    //확인
-            $('#B_Writer').val("");
-            $('#B_Password').val("");
-            $('#B_Title').val("") ;
-            $('#B_Email1').val("") ;
-            $('#B_Email2').val("");
+            $('#b_writer').val("");
+            $('#b_password').val("");
+            $('#b_title').val("") ;
+            $('#b_email1').val("") ;
+            $('#b_email2').val("");
             $('#s_email').val("");
         }
         //window.location.reload();
@@ -237,7 +252,7 @@
     $(function(){
         var B_Contents =  '<%=toJSON(rows) %>';
         //	$('#tx_canvas_text').text(B_Contents);
-        if('<%= request("B_Index")%>' != "") {
+        if('<%= request("b_index")%>' != "") {
             getContents();
         }
 
@@ -246,9 +261,9 @@
     function getContents() {
         $.ajax({
             type: "POST",
-            url: "./getContnets.asp",
+            url: "ajax/board/get_page",
             dataType: 'json',
-            data: {seq : '<%= request("B_Index")%>', act:'list'} ,
+            data: {seq : '<%= request("b_index")%>', act:'list'} ,
             beforeSubmit: function (data, frm, opt) {
                 console.log('데이타를 불러오는 중입니다.');
             },
@@ -280,7 +295,7 @@
             type: "POST",
             url: "./getContnets.asp",
             dataType: 'json',
-            data: {seq : '<%= request("B_Index")%>', act:'file'} ,
+            data: {seq : '<%= request("b_index")%>', act:'file'} ,
             beforeSubmit: function (data, frm, opt) {
                 console.log('데이타를 불러오는 중입니다.');
             },
@@ -336,12 +351,12 @@
         }
 
         //console.log(attachments);
-        $('#B_Writer').val(reDate.B_Writer);
-        $('#B_Title').val(reDate.B_Title);
+        $('#b_writer').val(reDate.b_writer);
+        $('#b_title').val(reDate.b_title);
         var _Email = reDate.B_Email.split('@');
-        $('#B_Email1').val(_Email[0]);
-        $('#B_Email2').val(_Email[1]);
-        $('#ProcType').val("M");
+        $('#b_email1').val(_Email[0]);
+        $('#b_email2').val(_Email[1]);
+        $('#proc_type').val("M");
         /* 저장된 컨텐츠를 불러오기 위한 함수 호출 */
         Editor.modify({
             "attachments": function () { /* 저장된 첨부가 있을 경우 배열로 넘김, 위의 부분을 수정하고 아래 부분은 수정없이 사용 */
