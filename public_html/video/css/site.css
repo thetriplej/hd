@@ -1,0 +1,36 @@
+
+.content {
+	
+	padding:10px 0;
+	margin:auto;
+	text-align:center;
+}
+.orange {
+	font-weight:bold;
+	color:#ff9933;
+}
+.blue {
+	font-weight:bold;
+	color:#0099cc;
+}
+.example_button {
+	padding: 10px;
+	display: inline;
+}
+
+#player-container {
+	color:#ffffff;
+	display:block;
+	margin:auto;
+	max-width:640px;
+}
+#footer {
+	font-color:#aaa;
+	font-size:62%;
+	font-style:italic;
+	margin-top:5em;
+	padding-bottom:1em;
+}
+select {
+	margin:10px;
+}

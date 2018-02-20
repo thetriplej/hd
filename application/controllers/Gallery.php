@@ -7,7 +7,7 @@ class Gallery extends CI_Controller {
         parent::__construct();
         $this->load->helper('url'); //Loading url helper
         $this->load->helper(array('form', 'url'));
-        $this->load->library('utilcommon');
+        $this->load->library('Utilcommon');
         if($this->utilcommon->get_mobile_check() === true){
             //  echo "<script>alert('mobile')</script>";
         }else{
@@ -70,16 +70,35 @@ class Gallery extends CI_Controller {
 
 
     public function customer_store(){
-        $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '100';
-        $config['max_width']  = '1024';
-        $config['max_height']  = '768';
 
-        $this->load->library('upload', $config);
-        var_dump(1);
         $post = $this->input->post(null, true);
-        var_dump($post);exit;
+        $b_code         =   $post["b_code"];
+        $page           =   $post["page"];
+        $proc_type      =   $post["proc_type"];
+        $b_depth        =   $post["b_depth"];
+        $b_parentindex  =   $post["b_parentindex"];
+        $b_board_type   =   $post["b_board_type"];
+        $b_index        =   $post["b_index"];
+        $select_img     =   $post["select_img"];
+        $b_writer       =   $post["b_writer"];
+        $b_password     =   $post["b_password"];
+        $b_title        =   $post["b_title"];
+        $b_email1       =   $post["b_email1"];
+        $b_email2       =   $post["b_email2"];
+        $b_content      =   $post["b_content"];
+        $b_password     =   $post["b_password"];
+
+        if($proc_type == "NW"){
+            If(empty($b_title)) $b_title = '.';
+            if($b_board_type != '0'){
+                $b_content = htmlspecialchars($b_content);  //에디터 사용
+            }else{
+                $b_content = $b_content;
+            }
+        }
+
+
+        var_dump(htmlspecialchars($b_content));exit;
         $send_data = array();
         //echo json_encode($send_data);
     }
