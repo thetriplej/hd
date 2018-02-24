@@ -6,7 +6,7 @@
 <link href="<?php echo JS_DIR; ?>/slider/jquery.bxslider.css" rel="stylesheet" />
 
 <?php echo form_open(); ?>
-<input type="hidden" id="page">
+<input type="hidden" id="page" value="<?php echo($page);?>">
 <input type="hidden" id="b_code" value="<?php echo($b_code);?>">
 </form>
 <div id="wrap_middle" class="" style="margin-top:140px;">
@@ -70,11 +70,11 @@
                     <!-- BBS_find //-->
                     <div class="find_div"> <!-- style="height:22px;text-align:center;"-->
                         <select name="search_type" id="search_type" class="find_sel">
-                            <option value="B_Title">제목</option>
-                            <option value="B_Content">내용</option>
-                            <option value="B_Writer">글쓴이</option>
+                            <option value="b_title" <?php if($search_type == "b_title") echo "selected";?>>제목</option>
+                            <option value="b_content" <?php if($search_type == "b_content") echo "selected";?>>내용</option>
+                            <option value="b_writer" <?php if($search_type == "b_writer") echo "selected";?>>글쓴이</option>
                         </select>
-                        <input type="text" name="search_value" id="search_value" class="input_find" style="width:90px;" value="">
+                        <input type="text" name="search_value" id="search_value" class="input_find" style="width:90px;" value="<?php echo $search_value;?>">
                         <input type="button" class="btn_find" title="찾아보기" onclick="get_list(1);" style="vertical-align: bottom">
                     </div>
                     <!-- BBS_find // -->
@@ -100,7 +100,11 @@
 </div>
 <!-- Password 입력 팝업 // -->
 <script type="text/javascript">
-    get_list(1);
+    if($("#page").val() == "") {
+        get_list(1);
+    }else{
+        get_list($("#page").val());
+    }
     $(document).ready(function(){
         var html ='';
 
@@ -117,8 +121,8 @@
                 var data   = $.parseJSON(result);
                 $.each( data, function( key, value ) {
                     html += '<li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;" class="bx-clone">';
-                    html += '<div class="bimg" onclick="javascript:Send(' + value.B_Index + ')"><img src="' + value.F_Name + '" width="310" height="193" valign="center" alt=""></div>';
-                    html += '<div class="btxt">' + value.B_Title + '</div>';
+                    html += '<div class="bimg" onclick="javascript:page_view(' + value.b_index + ')"><img src="' + value.f_name + '" width="310" height="193" valign="center" alt=""></div>';
+                    html += '<div class="btxt">' + value.b_title + '</div>';
                     html += '</li>';
 
                 });
@@ -190,11 +194,11 @@
                     if(list_cnt == '0') {
                         html_list += '<div class="gallery_set">';
                     }
-                    html_list += '   <ul class="gallery_list" onclick="page_view(' + value.B_Index + ');">';
-                    html_list += '       <li class="thumb"><img src="' + value.F_Name + '" width="145" height="90" valign="center"></li>';
-                    html_list += '       <li class="title ellipsis">' + value.B_Title + '</li>';
-                    html_list += '       <li class="info" style="margin-top:10px;"><span class="name ellipsis" style="font-size:15px;">' + value.B_Writer + '</span><span style="vertical-align:text-top; position: inline-block;"><img src="/public_html/images/icon/icon_re.png" title="reply"></span></li>';
-                    html_list += '      <li style="position:relative;"><span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">' + value.B_RegDate + '</span><span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">view ' + value.B_Hit + '</span></li>';
+                    html_list += '   <ul class="gallery_list" onclick="page_view(' + value.b_index + ');">';
+                    html_list += '       <li class="thumb"><img src="' + value.f_name + '" width="145" height="90" valign="center"></li>';
+                    html_list += '       <li class="title ellipsis">' + value.b_title + '</li>';
+                    html_list += '       <li class="info" style="margin-top:10px;"><span class="name ellipsis" style="font-size:15px;">' + value.b_writer + '</span><span style="vertical-align:text-top; position: inline-block;"><img src="/public_html/images/icon/icon_re.png" title="reply"></span></li>';
+                    html_list += '      <li style="position:relative;"><span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">' + value.b_regdate + '</span><span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">view ' + value.b_hit + '</span></li>';
                     html_list += '   </ul>';
                     if(list_cnt == '3') {
                         html_list += '</div>';
@@ -216,6 +220,31 @@
                 alert("다시 시도해 주세요.");
             }
         });
+    }
+
+    function page_view(id){
+        $.ajax({
+            type : "POST",
+            url : "/ajax/board/get_permission_check",
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+                b_index : id
+            },
+            cache : false,
+            success : function(result) {
+                var data   = $.parseJSON(result);
+                if(data.lock == 'Y'){
+
+                }else{
+                    location.href = '/gallery/customer_view?b_index='+id;
+                }
+
+            },
+            error : function() {
+                alert("다시 시도해 주세요.");
+            }
+        });
+
     }
 
 </script>

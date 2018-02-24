@@ -1,25 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Board extends CI_Controller {
+require_once APPPATH . 'controllers/common.php';
+class Board extends Common {
 
 
     public function  __construct() {
         parent::__construct();
-        $this->load->helper('url'); //Loading url helper
-        $this->load->library('utilcommon');
 
-        if($this->utilcommon->get_mobile_check() === true){
-            //  echo "<script>alert('mobile')</script>";
-        }else{
-            //   echo "<script>alert('PC')</script>";
-        }
-        $this->load->library('user_agent');
-        //var_dump($this->agent->referrer());
-        $this->lang_type = get_cookie('tj_lang_type');
         $this->load->model(array('board_model'));
-        $this->load->library('pagination');
-
     }
 
     function _remap($method) {
@@ -35,12 +23,12 @@ class Board extends CI_Controller {
 
         $list =  $this->board_model->get_porpula_list();
         foreach ( $list as $key => $value){
-            if($value->B_Board_Type == 0){
+            if($value->b_board_type == 0){
                 $path = '/public_html/upload/upload/';
             }else{
                 $path = '/public_html/upload/upload2/';
             }
-            $value->F_Name = $path.$value->F_Name;
+            $value->f_name = $path.$value->f_name;
         }
 
         echo json_encode($list);
@@ -53,7 +41,7 @@ class Board extends CI_Controller {
         $p_data = array(
             'table_name' 	=> 'board',
             'search_type'	=> $post['search_type'],
-            'search_value'   => $post['search_value'],
+            'search_value'  => $post['search_value'],
             'page'			=> $post['page'],
             'board_type'    => 'CEPILOGUE0',
             'list_rows'		=> 12,
@@ -68,7 +56,7 @@ class Board extends CI_Controller {
             'page' 			=> $result['page'],
             'page_no' 		=> $result['page_no'],
             'search_type'	=> $post['search_type'],
-            'search_value'   => $post['search_value'],
+            'search_value'  => $post['search_value'],
             'board_type'    => 'CEPILOGUE0',
         );
 
@@ -76,13 +64,13 @@ class Board extends CI_Controller {
 
 
         foreach ( $list as $key => $value){
-            if($value->B_Board_Type == 0){
+            if($value->b_board_type == "0"){
                 $path = '/public_html/upload/upload/';
             }else{
                 $path = '/public_html/upload/upload2/';
             }
-            $temp_fname = explode ('.',$value->F_Name);
-            $value->F_Name = $path.$temp_fname[0]."_145x90.".$temp_fname[1];
+            $temp_fname = explode ('.',$value->f_name);
+            $value->f_name = $path.$temp_fname[0]."_145x90.".$temp_fname[1];
         }
 //        $result = array(
 //            'list_rows' 	=> $list_rows,
@@ -177,6 +165,23 @@ class Board extends CI_Controller {
         echo json_encode($send_data);
     }
 
+    public function get_permission_check(){
+        $post = $this->input->post(null, true);
+        $send_date = array(
+            'b_index'   =>  $post['b_index']
+        );
+
+        $result =  $this->board_model->get_permission_check($send_date);
+        $send_data = array();
+        if($result->b_locked == 'Y'){
+            $send_data['lock'] = 'Y';
+        }else{
+            $send_data['lock'] = 'N';
+        }
+
+        echo json_encode($send_data);
+    }
+
     public function check_pass(){
         $post = $this->input->post(null, true);
         $send_data = array();
@@ -214,7 +219,7 @@ class Board extends CI_Controller {
                     $send_data['result'] = 'fail';
                     break;
                 } else {
-                    $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/temp/';
+                    $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/temp/';
 
                     if(!is_dir($upload_dir)){
                         mkdir($upload_dir, 0777);
@@ -357,7 +362,7 @@ class Board extends CI_Controller {
         $setPath = $upload_dir.$renamefile;
 
         $path_file = $originfile;//원본파일
-        $send_temp_dir = '/public_html/upload/upload2/temp/';
+        $send_temp_dir = '/public_html/upload/temp/';
         if($width == 300){
             $newPath = $setPath.'_145x90.'.$filename_ext;
             $sen_data = array(
@@ -397,6 +402,11 @@ class Board extends CI_Controller {
 
 
     }
+
+
+
+
+
 
 
 

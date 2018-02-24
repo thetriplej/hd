@@ -10,7 +10,7 @@ function goto(url, option) {
 var checkURL;
 var agt = navigator.userAgent.toLowerCase();
 
-function Send(sendURL, e, Locked){
+function send(sendURL, e, Locked){
 	//화면의 높이와 너비를 구한다.
 	var maskHeight = $(document).height();
 	var maskWidth = $(window).width();

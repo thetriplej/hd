@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Index extends CI_Controller {
+class Index extends Common {
 
     function __construct()
     {

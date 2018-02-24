@@ -1,14 +1,25 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Common extends CI_Controller {
+class Common extends CI_Controller
+{
 
     function __construct()
     {
         parent::__construct();
-        $this->load->library('utilcommon');
-        $this->load->helper('cookie');
-        $this->load->library('user_agent');
 
+        $this->load->helper(array('form', 'url', 'cookie'));
+        $this->load->library(array('utilcommon', 'user_agent', 'pagination'));
+
+
+        if ($this->utilcommon->get_mobile_check() === true) {
+            //  echo "<script>alert('mobile')</script>";
+        } else {
+            //   echo "<script>alert('PC')</script>";
+        }
+
+        //var_dump($this->agent->referrer());
+
+        $this->lang_type = get_cookie('tj_lang_type');
 
     }
 
@@ -16,47 +27,52 @@ class Common extends CI_Controller {
     {
 
     }
+
     public function get_lang()
     {
         $lang_type = get_cookie('tj_lang_type');
         return $lang_type;
     }
 
-    public function set_lang(){
-        $domain = $this->config->item('base_url');
+    public function set_lang()
+    {
+        $domain = $_SERVER["HTTP_HOST"];
         $lang_type = get_cookie('tj_lang_type');
         $cookie = array(
-            'name'   => 'lang_type',
-            'value'  => 'ko',
+            'name' => 'lang_type',
+            'value' => 'ko',
             'expire' => 86000,
             'domain' => $domain,
-            'path'   => '/',
+            'path' => '/',
             'prefix' => 'tj_'
 
         );
 
-        if(empty($lang_type)) {
+        if (empty($lang_type)) {
             $cookie = array(
-                'name'   => 'lang_type',
-                'value'  => 'ko',
+                'name' => 'lang_type',
+                'value' => 'ko',
                 'expire' => 86000,
                 'domain' => $domain,
-                'path'   => '/',
+                'path' => '/',
                 'prefix' => 'tj_'
             );
-        }else{
+        } else {
             delete_cookie("tj_lang_type");
-            if($lang_type == "ko"){
+            if ($lang_type == "ko") {
                 $cookie['value'] = 'en';
-            }else if($lang_type == 'en'){
+            } else if ($lang_type == 'en') {
                 $cookie['value'] = 'ko';
             }
 
         }
         $this->input->set_cookie($cookie);
-        //var_dump($cookie);
+
         redirect($this->agent->referrer());
     }
+
+
+
 
 
 

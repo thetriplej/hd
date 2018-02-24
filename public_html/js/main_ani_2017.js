@@ -3,41 +3,41 @@ $(window).ready(function(){
 	/* fadinout action
 
 
-		var simg = 1;
+	 var simg = 1;
 
-			setInterval(function() {
-				
-				 if(simg == 1){
-					$('#slider_b').fadeOut(2000);
-				  }
-				  else{
-					$('#slider_b').fadeIn(2000);
-				  }
+	 setInterval(function() {
 
-				  simg *= -1; // ¸Å 5ÃÊ¸¶´Ù ¼ıÀÚ -1À» sum º¯¼ö¿¡ °öÇÕ´Ï´Ù.
+	 if(simg == 1){
+	 $('#slider_b').fadeOut(2000);
+	 }
+	 else{
+	 $('#slider_b').fadeIn(2000);
+	 }
 
-			}, 5000); // 5000ms(5ÃÊ)°¡ °æ°úÇÏ¸é ÀÌ ÇÔ¼ö°¡ ½ÇÇàÇÕ´Ï´Ù.
+	 simg *= -1; // ë§¤ 5ì´ˆë§ˆë‹¤ ìˆ«ì -1ì„ sum ë³€ìˆ˜ì— ê³±í•©ë‹ˆë‹¤.
 
-	/* fadinout action*/
+	 }, 5000); // 5000ms(5ì´ˆ)ê°€ ê²½ê³¼í•˜ë©´ ì´ í•¨ìˆ˜ê°€ ì‹¤í–‰í•©ë‹ˆë‹¤.
 
-	/* fadinout action*/
-
-
-		var btimg = 1;
-
-			setInterval(function() {
-				
-				 if(btimg == 1){
-					$('#slider_review').fadeOut(500);
-				  }
-				  else{
-					$('#slider_review').fadeIn(500);
-				  }
-
-				  btimg *= -1; // ¸Å 5ÃÊ¸¶´Ù ¼ıÀÚ -1À» sum º¯¼ö¿¡ °öÇÕ´Ï´Ù.
-
-			}, 1000); // 5000ms(5ÃÊ)°¡ °æ°úÇÏ¸é ÀÌ ÇÔ¼ö°¡ ½ÇÇàÇÕ´Ï´Ù.
+	 /* fadinout action*/
 
 	/* fadinout action*/
- }); 
+
+
+	var btimg = 1;
+
+	setInterval(function() {
+
+		if(btimg == 1){
+			$('#slider_review').fadeOut(500);
+		}
+		else{
+			$('#slider_review').fadeIn(500);
+		}
+
+		btimg *= -1; // ë§¤ 5ì´ˆë§ˆë‹¤ ìˆ«ì -1ì„ sum ë³€ìˆ˜ì— ê³±í•©ë‹ˆë‹¤.
+
+	}, 1000); // 5000ms(5ì´ˆ)ê°€ ê²½ê³¼í•˜ë©´ ì´ í•¨ìˆ˜ê°€ ì‹¤í–‰í•©ë‹ˆë‹¤.
+
+	/* fadinout action*/
+});
 

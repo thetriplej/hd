@@ -87,7 +87,7 @@ $(function(){
 
                     var _mockdata = {
                         'imageurl': value.originalurl,
-                        'F_ReName': value.f_rename,
+                        'f_rename': value.f_rename,
                         'filename': value.filename,
                         'filesize': value.filesize,
                         'imagealign': 'C',

@@ -213,9 +213,9 @@
                 //alert('attachment information - image[' + i + '] \r\n' + JSON.stringify(images[i].data));
                 input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'attach_image';
+                input.name = 'attach_image[]';
                 input.value = images[i].data.filename;  // 예에서는 이미지경로만 받아서 사용
-                input.value =  images[i].data.filename + '|'+  images[i].data.mimeType + '|'+  images[i].data.imageWidth + '|'+  images[i].data.filesize;  // 예에서는 이미지경로만 받아서 사용
+                input.value =  images[i].data.f_rename + '|' +images[i].data.filename + '|'+  images[i].data.mimeType + '|'+  images[i].data.imageWidth + '|'+  images[i].data.filesize;  // 예에서는 이미지경로만 받아서 사용
                 form.createField(input);
             }
         }
@@ -252,9 +252,9 @@
     $(function(){
         var B_Contents =  '<%=toJSON(rows) %>';
         //	$('#tx_canvas_text').text(B_Contents);
-        if('<%= request("b_index")%>' != "") {
+        <?php if(!empty($b_index)) { ?>
             getContents();
-        }
+        <?php }?>
 
     });
 
