@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require_once APPPATH . 'controllers/common.php';
+require_once APPPATH . 'controllers/Common.php';
 class Product extends Common {
 
 
