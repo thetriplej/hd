@@ -32,6 +32,7 @@
                 <div class="board_area">
                     <div id="" class="bbstitlebar">
                         <div class="bbs_view">
+                            <input type="hidden" name="b_index" id="b_index" value="<?php echo $view_data->b_index;?>">
                             <h1 class="tit"><img src="/public_html/images/icon/review_tit.png" style="vertical-align:middle;"><?php echo $view_data->b_title;?></h1>
                             <ul class="info">
                                 <li class="name"><span><?php echo $view_data->b_writer;?></span></li>
@@ -113,8 +114,8 @@ if(!empty($movie_data)){
                     <div id="buttons" style="height:25px;overflow:hidden;clear:both;">
     <?php if($b_code == "CEPILOGUE0" ||  $b_code = "QANDA0"){?>
                         <span style="float:left;">
-                            <input type="button" class="btn_blue" value="수정" onclick="send('<?=$b_index?>','<?=$page?>','<?=$b_code?>','<?=$search_type?>','<?=$search_value?>','edit');">
-                            <input type="button" class="btn_blue" value="삭제" onclick="send('<?=$b_index?>','<?=$page?>','<?=$b_code?>','<?=$search_type?>','<?=$search_value?>','del');">
+                            <input type="button" class="btn_blue" value="수정" onclick="send('<?='/gallery/customer_write/?b_index='.$view_data->b_index.'&page='.$page.'&b_code='.$b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','edit');">
+                            <input type="button" class="btn_blue" value="삭제" onclick="send('<?='/gallery/customer_write/?b_index='.$view_data->b_index.'&page='.$page.'&b_code='.$b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','del');">
                         </span>
     <?php }?>
                         <span style="float:right;">
@@ -207,19 +208,3 @@ if(!empty($movie_data)){
     </div>
 </div>
 
-<!--<!-- Password 입력 팝업 -->
-<!--<div id="in_pass" class="popup_pw popup_box" style="display:none;">-->
-<!--    <form name="passwd" id="passwd" method = "post">-->
-<!--        <input type="hidden" name="ck_lock" id="ck_lock">-->
-<!--        <img src="images/bg/in_pass_01.png" title="Password" style="vertical-align:top;">-->
-<!--        <div style="margin:0 24px 10px;overflow:hidden;">-->
-<!--            <div class="box_pw">비밀번호 &gt;</div>-->
-<!--            <input type="password" size="12" name="pw" id="pw" style="float:left;">-->
-<!--        </div>-->
-<!--        <div class="checkbt">-->
-<!--            <input type="button" class="btn_pw" title="확인" onclick="CheckPW();">-->
-<!--            <input type="button" class="btn_cancel" title="취소" onclick="cancel();">-->
-<!--        </div>-->
-<!--    </form>-->
-<!--</div>-->
-<!--<!-- Password 입력 팝업 // -->

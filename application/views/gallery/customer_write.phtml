@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="/public_html/d_editor/css/editor.css" type="text/css" charset="utf-8"/>
 <script src="/public_html/d_editor/js/editor_loader.js" type="text/javascript" charset="utf-8"></script>
 
-
 <div id="wrap_middle" class="" style="margin-top:140px;">
     <div id="" class="box_full">
         <div class="sub_img">
@@ -25,7 +24,7 @@
                         <input type="hidden" name="b_depth" value="0">
                         <input type="hidden" name="b_parentindex" value="">
                         <input type="hidden" name="b_board_type" id="b_board_type" value="1">
-                        <input type="hidden" id="b_index" name="b_index" value="">
+                        <input type="hidden" id="b_index" name="b_index" value="<?php echo($b_index);?>">
                         <input type="hidden" name="select_img" id="select_img">
                         <div style="margin:0 0 14px;">
                             <label class="input_tit">고객명</label>
@@ -250,7 +249,7 @@
     });
 
     $(function(){
-        var B_Contents =  '<%=toJSON(rows) %>';
+
         //	$('#tx_canvas_text').text(B_Contents);
         <?php if(!empty($b_index)) { ?>
             getContents();
@@ -259,31 +258,36 @@
     });
 
     function getContents() {
+
         $.ajax({
             type: "POST",
-            url: "ajax/board/get_page",
+            url: "/ajax/board/get_view",
             dataType: 'json',
-            data: {seq : '<%= request("b_index")%>', act:'list'} ,
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+                b_index : $("#b_index").val()
+                } ,
             beforeSubmit: function (data, frm, opt) {
                 console.log('데이타를 불러오는 중입니다.');
             },
-            success: function(responseDetail, status) {
-                //console.log(response);
-                if(responseDetail.code == 1000) {
-                    if(responseDetail.B_Board_Type == 1) {
-                        if(responseDetail.F_Cnt > 0) {
+            success: function(result) {
+                console.log(result);
+                if(result.result == success) {
+                    if(result.b_board_type == 1) {
+                        if(result.file_cnt > 0) {
                             // 첨부 있을때
-                            getFileList(responseDetail);
+                            console.log(result);
+                            //loadContents(responseDetail);
                         } else {
                             // 첨부 없을때
-                            loadContents(responseDetail);
+                            //loadContents(responseDetail);
                         }
                     } else{
-                        loadContents(responseDetail);
+                        //loadContents(responseDetail);
                     }
                 } else {
                     // TODO 실패에 따른 처리
-                    alert( responseDetail.msg);
+                    alert( result.msg);
                     history.back();
                 }
             }

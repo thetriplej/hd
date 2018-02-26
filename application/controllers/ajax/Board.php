@@ -159,9 +159,143 @@ class Board extends Common {
 
     }
 
-    public function get_page(){
+    public function get_file($b_index){
+
+        $image_data = $this->board_model->get_bbs_image($b_index);
+        foreach($image_data as $key => $value){
+            $value->file_path = $value->file_path.$value->f_rename;
+            if(intval($value->f_width) > 600){
+                $value->f_width = 600;
+            }
+        }
+        echo json_encode($image_data);
+    }
+    public function get_view(){
         $post = $this->input->post(null, true);
+        $b_index = $post['b_index'];
+        $session_pwd_checking = $this->session->b_index;
+        var_dump($this->session->all_userdata());
+        var_dump($session_pwd_checking);exit;
         $send_data = array();
+        if(!empty($b_index) && $session_pwd_checking == $b_index) {
+            $view_send = array(
+                'mode' => 'P',
+                'id' => $b_index,
+            );
+            $view_data = $this->board_model->get_view($view_send);
+            $file_cnt = $this->board_model->get_file_check($b_index);
+            if($file_cnt > 0){
+                $file_result = get_file($b_index);
+            }
+            $send_data['b_index']       = $view_data->b_index;
+            $send_data['b_writer']      = $view_data->b_writer;
+            $send_data['b_title']       = $view_data->b_title;
+            $send_data['b_email']       = $view_data->b_email;
+            $send_data['b_content']     = $view_data->b_content;
+            $send_data['b_board_type']  = $view_data->b_board_type;
+            $send_data['file_cnt']  = $file_cnt;
+            if($file_cnt>0) $send_data['file_result'] = $file_result;
+            $send_data['result']  = 'success';
+        }else{
+            $send_data['result'] = "fail";
+        }
+
+
+//
+//
+//
+//
+//
+//		if NOT IsNull(B_Index) then
+//			SQL = "SELECT TOP 1 * FROM Board WHERE B_Index = '"  & B_Index &  "'  ORDER BY B_RegDate DESC"
+//
+//
+//				Rs.Open SQL, DB, 1
+//					If Not Rs.Eof Then
+//						rows("B_Index") = Rs("B_Index")
+//						rows("B_Writer") = Rs("B_Writer")
+//						rows("B_Title") = Rs("B_Title")
+//						rows("B_Email") = Rs("B_Email")
+//						rows("B_Content") = htmlspecialchars_decode(Rs("B_Content"))
+//						rows("B_Board_Type") = Rs("B_Board_Type")
+//
+//
+//						SQL = "select F_Index, B_Code, B_Index, F_Name, F_Type, F_Position, F_Width, F_Show, F_Size, (case when F_ReName <> '' then F_ReName else F_Name end ) F_ReName  from BoardFile where B_Index = '"&B_Index&"' order by F_Index desc;"
+//						Rs.Open SQL, DB, 1
+//						If NOT Rs.Eof Then
+//							rows("F_Cnt") = Rs.recordcount
+//						End If
+//
+//
+//		End If
+//	'arr_email = Split(B_Email, "@")
+//
+//		rows("code") = 1000
+//		rows("msg") = ""
+//
+//		Response.Write toJSON(rows)
+//		Response.End
+//
+//End Function
+//
+//Function getFileList(B_Index)
+//		Dim rows, originFilePath,num
+//		Dim  files(50,11)
+//		'Set rows = jsObject()
+//		Set Rs = Server.CreateObject("ADODB.RecordSet")
+//		SQL = "select F_Index, B_Code, B_Index, F_Name, F_Type, F_Position, F_Width, F_Show, F_Size, (case when F_ReName <> '' then F_ReName else F_Name end ) F_ReName from BoardFile where B_Index = '"&B_Index&"' order by F_Index desc;"
+//		Rs.Open SQL, DB, 1
+//'		Response.Write SQL
+//		'tCnt = Rs.recordcount
+//		originFilePath =  "D:\website\hassed.co.kr\upload2\"
+//
+//		If NOT Rs.Eof Then
+//			i = 0
+//			Do Until Rs.Eof
+//				minetype = Split(Rs("F_Type"), "/")
+//				If minetype(0) = "image" Then
+//						extension = Right(Trim(Rs("F_ReName")), 4)
+//						fileName = Replace(Trim(Rs("F_ReName")), extension, "")
+//'						files= Rs
+//						files(i,0) = Rs("F_Index")		' f_index
+//						files(i,1) = Rs("B_Code")		' b_cod
+//						files(i,2) = Rs("F_Name")		' f_name
+//						files(i,3) = Rs("F_Type")		' f_type
+//						files(i,4) = Rs("F_Position")
+//						files(i,5) = Rs("F_Width")		'F_Width
+//						files(i,6) = Rs("F_Show")		' fileSize
+//
+//						files(i,7) = "/upload2/" & fileName & extension		'imageurl
+//						files(i,8) = fileName & extension			'filename
+//						files(i,9) = "/upload2/" & fileName & extension		'originalurl
+//						files(i,10) = "/upload2/" & fileName & "_145x90" & extension		'thumburl
+//						files(i,11) = Rs("F_Size")	'filesize
+//
+//'				Response.Write Rs("F_Index")
+//'				Response.End
+//'					rows(0) = files
+//					rows = files
+//				Else
+//						extension = Right(Trim(Rs("F_ReName")), 4)
+//						fileName = Replace(Trim(Rs("F_ReName")), extension, "")
+//'						files= Rs
+//						files(i,0) = Rs("F_Index")		' f_index
+//						files(i,1) = Rs("B_Code")		' b_cod
+//						files(i,2) = Rs("F_Name")		' f_name
+//						files(i,3) = "file"		' f_type
+//						files(i,4) = Rs("F_Position")
+//						files(i,5) = Rs("F_Width")		'F_Width
+//						files(i,6) = Rs("F_Show")		' fileSize
+//
+//						files(i,7) = "/upload2/" & fileName & extension			'imageurl
+//						files(i,8) = fileName & extension			'filename
+//						files(i,9) = "/upload2/" & fileName & extension			'originalurl
+//						files(i,10) = ""	'thumburl
+//						files(i,11) = Rs("F_Size")	'filesize
+//					rows = files
+//
+//
+//        echo json_encode($send_data);
         echo json_encode($send_data);
     }
 
@@ -184,8 +318,27 @@ class Board extends Common {
 
     public function check_pass(){
         $post = $this->input->post(null, true);
-        $send_data = array();
-        echo json_encode($send_data);
+
+        $send_date = array(
+            'b_index'   =>  $post['b_index'],
+            'b_password'   =>  $post['pass'],
+        );
+
+        $result =  $this->board_model->get_password_check($send_date);
+        if($result->cnt == '1'){
+            $send_result = 'success';
+            $ss_data = array(
+                'b_index'      	=> $post['b_index'],
+                'result'       	=> 1,
+                'pass'       	=> $post['pass'],
+
+            );
+            $this->session->set_userdata($ss_data);
+        }else{
+            $send_result = 'fail';
+        }
+
+        echo json_encode($send_result);
     }
 
 

@@ -52,16 +52,40 @@ class Gallery extends Common {
 
     public function customer_write()
     {
+        $b_index = $this->input->get('b_index');
         $page = $this->input->get('page');
         $b_code = $this->input->get('b_code');
         $search_type = $this->input->get('search_type');
         $search_value = $this->input->get('search_value');
 
+        $session_b_index = $this->session->userdata('b_index');
+        $session_b_pass = $this->session->userdata('pass');
+        $session_pwd_checking = $this->session->userdata('b_index');
+        if(!empty($b_index) && $b_index == $session_b_index && $session_pwd_checking =='1') {
+            $view_send = array(
+                'mode' => 'P',
+                'id' => $b_index,
+            );
+            $view_data = $this->board_model->get_view($view_send);
+            if($session_b_pass == $view_data->b_password) {
+
+            }else{
+                echo "<script type='text/javascript'>
+                            alert('비밀번호가 일치하지 않습니다.');
+					        history.back();
+				        </script>";
+                return;
+            }
+        }else{
+            $view_data="";
+        }
         $send_data = array(
-            'page' => $page,
-            'b_code' => $b_code,
-            'search_type' => $search_type,
-            'search_value' => $search_value,
+            'b_index'       => $b_index,
+            'page'          => $page,
+            'b_code'        => $b_code,
+            'search_type'   => $search_type,
+            'search_value'  => $search_value,
+            'view_data'     => $view_data,
         );
 
         if($this->lang_type == 'en') {
@@ -214,7 +238,7 @@ class Gallery extends Common {
                 $b_content = $b_content;
             }
         }
-        $b_content = str_replace ("/temp","/".$today,$b_content);
+        $b_content = str_replace ("/temp","/board/".$today,$b_content);
         $max_group_no = $this->board_model->get_last_group_no();
 
         $send_data = array(
@@ -265,6 +289,11 @@ class Gallery extends Common {
         }
 
         if($result && $file_result){
+            $ss_data = array(
+                'b_index'      	=> '',
+                'result'       	=> '',
+            );
+            //$this->session->unset_userdata($ss_data);
             redirect("/gallery/?page=".$page."&b_code=".$b_code."&search_type=".$search_type."&search_value=".$search_value);
             exit;
         }else{

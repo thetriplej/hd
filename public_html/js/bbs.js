@@ -9,8 +9,8 @@ function goto(url, option) {
 }
 var checkURL;
 var agt = navigator.userAgent.toLowerCase();
+function send(uri,mode){
 
-function send(sendURL, e, Locked){
 	//화면의 높이와 너비를 구한다.
 	var maskHeight = $(document).height();
 	var maskWidth = $(window).width();
@@ -20,7 +20,6 @@ function send(sendURL, e, Locked){
 	//마스크의 투명도 처리
 	$('#blind').fadeTo("slow",0.8);
 
-	if (Locked == "Y"){
 		//window.status = "X=" + window.event.x + " Y=" +window.event.y;
 		if (agt.indexOf("firefox") != -1){
 			var x = e.offsetX;
@@ -30,26 +29,22 @@ function send(sendURL, e, Locked){
 			var x = window.event.x;
 		}
 
-
 		$("#blind").fadeIn('fast');
 		$("#in_pass").css({
-			top: ($("#tj_content").height() -300),
+			top: ( $(document).scrollTop() + 400),
 			left: (maskWidth*0.4),
-			margin: 0
+			margin: 0,
+			height : 130
 		}).fadeIn();
-		//$(window).scrollTop($(document).height() - $(window).height())
+
+	$("#pass_uri").val(uri);
+	$("#pass_mode").val(mode);
+	// 	checkURL = sendURL;
+	// $("#ck_lock").val(Locked);
+	// $("#passwd").attr('action',checkURL);
 
 
 
-		checkURL = sendURL;
-
-		$("#ck_lock").val(Locked);
-		$("#passwd").attr('action',checkURL);
-
-
-	}else{
-		location.href=sendURL;
-	}
 }
 
 function cancel(){
@@ -63,7 +58,27 @@ function CheckPW(){
 		$("#pw").focus();
 		return false;
 	}
-	document.passwd.submit();
+
+	$.ajax({
+		type: "POST",
+		url: "/ajax/board/check_pass",
+		dataType: 'json',
+		data: {
+			csrf_token: $('input[name=csrf_token]').val(),
+			b_index: $('#b_index').val(),
+			pass: $('#pw').val()
+		},
+		success: function (result) {
+			if (result == "fail") {
+				alert('비밀번호가 틀렸습니다.');
+				return;
+			} else if (result == "success") {
+				location.href = $("#pass_uri").val();
+			}
+
+		}
+	});
+
 
 }
 

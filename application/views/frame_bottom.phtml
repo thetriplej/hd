@@ -19,7 +19,26 @@
                 </div>
             </div>
         </div>
-        <script>
+            <!-- Password 입력 팝업 -->
+            <div id="in_pass" class="popup_pw popup_box" style="display:none;">
+                <form name="passwd" id="passwd" method = "post">
+                    <input type="hidden" name="ck_lock" id="ck_lock">
+                    <input type="hidden" name="pass_uri" id="pass_uri">
+                    <input type="hidden" name="pass_mode" id="pass_mode">
+                    <img src="/public_html/images/bg/in_pass_01.png" title="Password" style="vertical-align:top;">
+                    <div style="margin:0 24px 10px;overflow:hidden;">
+                        <div class="box_pw">비밀번호 &gt;</div>
+                        <input type="password" size="12" name="pw" id="pw" style="float:left;">
+                    </div>
+                    <div class="checkbt">
+                        <input type="button" class="btn_pw" title="확인" onclick="CheckPW();">
+                        <input type="button" class="btn_cancel" title="취소" onclick="cancel();">
+                    </div>
+                </form>
+            </div>
+            <!-- Password 입력 팝업 // -->
+
+            <script>
 //            var tmpUser = navigator.userAgent;
 //
 //            if (tmpUser.indexOf("iPhone") > 0 || tmpUser.indexOf("iPad") > 0 || tmpUser.indexOf("Android ") > 0 || tmpUser.indexOf("BlackBerry ") > 0 || tmpUser.indexOf("Windows CE ") > 0 || tmpUser.indexOf("LG ") > 0 || tmpUser.indexOf("MOT ") > 0 || tmpUser.indexOf("SAMSUNG ") > 0 || tmpUser.indexOf("SonyEricsson ") > 0 ){

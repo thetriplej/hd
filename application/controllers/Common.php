@@ -8,7 +8,7 @@ class Common extends CI_Controller
         parent::__construct();
 
         $this->load->helper(array('form', 'url', 'cookie'));
-        $this->load->library(array('utilcommon', 'user_agent', 'pagination'));
+        $this->load->library(array('utilcommon', 'user_agent', 'pagination','session'));
 
 
         if ($this->utilcommon->get_mobile_check() === true) {

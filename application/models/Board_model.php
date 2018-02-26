@@ -90,6 +90,17 @@ class Board_model extends CI_Model {
         return $this->db->query($query)->row();
     }
 
+    function get_password_check($params){
+        $b_index = $params['b_index'];
+        $passwd = $params['b_password'];
+
+        $query = "select count(b_index) AS cnt from board where b_index = ? and b_password = ?";
+        return  $this->db->query($query,array($b_index,$passwd))->row();
+
+
+
+    }
+
     function get_view($params){
         $mode = $params['mode'];
         $id = $params['id'];
@@ -131,6 +142,12 @@ class Board_model extends CI_Model {
                   from boardfile where b_index =? and left(F_Type, 5) <> 'image' and right(F_Name, 3) not in('mp4', 'wma', 'wmv', 'asf', 'avi', 'wav', 'mid', 'swf') order by f_index asc";
         $result =  $this->db->query($query,array($id))->result();
         return $result;
+   }
+   function get_file_check($id){    // 게시글에 첨부된 파일 총갯수
+       $query = "select f_Index
+                  from boardfile where b_index =? ";
+       $result =  $this->db->query($query,array($id))->row_num();
+       return $result;
    }
 
     function set_bbs_save($params){
