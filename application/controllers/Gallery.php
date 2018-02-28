@@ -119,7 +119,7 @@ class Gallery extends Common {
         $view_data = $this->board_model->get_view($view_send);
 
         if($view_data->b_board_type == '0') {
-            $image_data = $this->board_model->get_bbs_image($b_index);
+            $image_data = $this->board_model->get_file($b_index,'image');
 
             foreach($image_data as $key => $value){
                 $value->file_path = $value->file_path.$value->f_rename;
@@ -130,14 +130,14 @@ class Gallery extends Common {
         }else{
             $image_data = "";
         }
-        $movie_data = $this->board_model->get_bbs_movie($b_index);
+        $movie_data = $this->board_model->get_file($b_index,'movie');
         if(!empty($movie_data)) {
             foreach ($movie_data as $key => $value) {
                 $value->file_path = $value->file_path . $value->f_rename;
             }
         }
 
-        $file_data = $this->board_model->get_bbs_file($b_index);
+        $file_data = $this->board_model->get_file($b_index,'file');
 
         $view_send = array(
             'mode'   => 'C',
@@ -147,7 +147,7 @@ class Gallery extends Common {
         if(!empty($reply_view_data)) {
             $reply_id = $reply_view_data->b_index;
             if ($view_data->b_board_type == '0') {
-                $reply_image_data = $this->board_model->get_bbs_image($reply_id);
+                $reply_image_data = $this->board_model->get_file($reply_id,'image');
 
                 foreach ($reply_image_data as $key => $value) {
                     $value->file_path = $value->file_path . $value->f_rename;
@@ -158,14 +158,14 @@ class Gallery extends Common {
             } else {
                 $reply_image_data = "";
             }
-            $reply_movie_data = $this->board_model->get_bbs_movie($reply_id);
+            $reply_movie_data = $this->board_model->get_file($reply_id,'movie');
             if (!empty($reply_movie_data)) {
                 foreach ($reply_movie_data as $key => $value) {
                     $value->file_path = $value->file_path . $value->f_rename;
                 }
             }
 
-            $reply_file_data = $this->board_model->get_bbs_file($reply_id);
+            $reply_file_data = $this->board_model->get_file($reply_id,'file');
         }else{
             $reply_image_data ="";
             $reply_movie_data ="";
@@ -257,7 +257,7 @@ class Gallery extends Common {
             'b_locked'      =>   $b_locked,
             'attach_image'  =>   $attach_image,
             'select_img'    =>   $select_img,
-            'file_path'     =>   'upload/board/'.$today.'/',
+            'file_path'     =>   '/board/'.$today.'/',
             'b_group'       =>   $max_group_no->max_group
         );
         $result = $this->board_model->set_bbs_save($send_data);

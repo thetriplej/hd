@@ -271,19 +271,18 @@
                 console.log('데이타를 불러오는 중입니다.');
             },
             success: function(result) {
-                console.log(result);
-                if(result.result == success) {
-                    if(result.b_board_type == 1) {
-                        if(result.file_cnt > 0) {
+                //console.log(result);
+                if(result.result == 'success') {
+                    if(result.view.b_board_type == 1) {
+                        if(result.view.file_cnt > 0) {
                             // 첨부 있을때
-                            console.log(result);
-                            //loadContents(responseDetail);
+                            loadContents(result.view,result.file);
                         } else {
                             // 첨부 없을때
-                            //loadContents(responseDetail);
+                            loadContents(result.view);
                         }
                     } else{
-                        //loadContents(responseDetail);
+                        loadContents(result.view);
                     }
                 } else {
                     // TODO 실패에 따른 처리
@@ -294,28 +293,6 @@
         });
     }
 
-    function getFileList(qData) {
-        $.ajax({
-            type: "POST",
-            url: "./getContnets.asp",
-            dataType: 'json',
-            data: {seq : '<%= request("b_index")%>', act:'file'} ,
-            beforeSubmit: function (data, frm, opt) {
-                console.log('데이타를 불러오는 중입니다.');
-            },
-            success: function(responseFile, status) {
-                if(responseFile !=  null) {
-                    if(responseFile.length > 0) {
-                        loadContents(qData, responseFile);
-                    } else {
-                        loadContents(qData);
-                    }
-                } else {
-                    loadContents(qData);
-                }
-            }
-        });
-    }
 
     function loadContents(reDate, files) {
 
@@ -323,30 +300,31 @@
         attachments['image'] = [];
         attachments['file'] = [];
 
-        if(typeof(files) != "undefined") {
+        if(typeof(reDate) != "undefined") {
+            console.log(files);
             $.each(files, function(i, obj) {
-                if(obj[0] != null ) {
-                    tmp_type = obj[3].split('/');
+                if(obj.f_index != null ) {
+                    tmp_type = obj.f_type.split('/');
                     if(tmp_type[0] == "image") {
-                        //console.log(obj[8]);
+                        //console.log(obj[8]);  f_index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date
                         attachments['image'].push({
                             'attacher': 'image',
                             'data': {
-                                'imageurl': obj[7],
-                                'filename': obj[8],
-                                'filesize': obj[11],
-                                'originalurl': obj[9],
-                                'thumburl': obj[10]
+                                'imageurl': obj.file_path,
+                                'filename': obj.f_name,
+                                'filesize': obj.f_size,
+                                'originalurl': obj.file_path,
+                                'thumburl': obj.thumburl
                             }
                         });
                     } else {
                         attachments['file'].push({
                             'attacher': 'file',
                             'data': {
-                                'attachurl': obj[7],
-                                'filemime': obj[3],
-                                'filename': obj[8],
-                                'filesize': obj[11]
+                                'attachurl': obj.file_path,
+                                'filemime': obj.f_type,
+                                'filename': obj.f_name,
+                                'filesize': obj.f_size
                             }
                         });
                     }
@@ -357,7 +335,7 @@
         //console.log(attachments);
         $('#b_writer').val(reDate.b_writer);
         $('#b_title').val(reDate.b_title);
-        var _Email = reDate.B_Email.split('@');
+        var _Email = reDate.b_email.split('@');
         $('#b_email1').val(_Email[0]);
         $('#b_email2').val(_Email[1]);
         $('#proc_type').val("M");
@@ -370,7 +348,7 @@
                 }
                 return allattachments;
             }(),
-            "content": reDate.B_Content	/* 내용 문자열, 주어진 필드(textarea) 엘리먼트 */
+            "content": reDate.b_content	/* 내용 문자열, 주어진 필드(textarea) 엘리먼트 */
         });
     }
 

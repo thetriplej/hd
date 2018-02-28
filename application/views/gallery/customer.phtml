@@ -107,7 +107,7 @@
                 var data   = $.parseJSON(result);
                 $.each( data, function( key, value ) {
                     html += '<li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;" class="bx-clone">';
-                    html += '<div class="bimg" onclick="javascript:page_view(' + value.b_index + ')"><img src="' + value.f_name + '" width="310" height="193" valign="center" alt=""></div>';
+                    html += '<div class="bimg" onclick="javascript:page_view(' + value.b_index + ')"><img src="' + value.f_rename + '" width="310" height="193" valign="center" alt=""></div>';
                     html += '<div class="btxt">' + value.b_title + '</div>';
                     html += '</li>';
 
@@ -181,7 +181,7 @@
                         html_list += '<div class="gallery_set">';
                     }
                     html_list += '   <ul class="gallery_list" onclick="page_view(' + value.b_index + ');">';
-                    html_list += '       <li class="thumb"><img src="' + value.f_name + '" width="145" height="90" valign="center"></li>';
+                    html_list += '       <li class="thumb"><img src="' + value.f_rename + '" width="145" height="90" valign="center"></li>';
                     html_list += '       <li class="title ellipsis">' + value.b_title + '</li>';
                     html_list += '       <li class="info" style="margin-top:10px;"><span class="name ellipsis" style="font-size:15px;">' + value.b_writer + '</span><span style="vertical-align:text-top; position: inline-block;"><img src="/public_html/images/icon/icon_re.png" title="reply"></span></li>';
                     html_list += '      <li style="position:relative;"><span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">' + value.b_regdate + '</span><span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">view ' + value.b_hit + '</span></li>';

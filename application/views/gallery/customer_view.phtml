@@ -115,7 +115,7 @@ if(!empty($movie_data)){
     <?php if($b_code == "CEPILOGUE0" ||  $b_code = "QANDA0"){?>
                         <span style="float:left;">
                             <input type="button" class="btn_blue" value="수정" onclick="send('<?='/gallery/customer_write/?b_index='.$view_data->b_index.'&page='.$page.'&b_code='.$b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','edit');">
-                            <input type="button" class="btn_blue" value="삭제" onclick="send('<?='/gallery/customer_write/?b_index='.$view_data->b_index.'&page='.$page.'&b_code='.$b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','del');">
+                            <input type="button" class="btn_blue" value="삭제" onclick="send('<?='/gallery/?page='.$page.'&b_code='.$b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','del');">
                         </span>
     <?php }?>
                         <span style="float:right;">

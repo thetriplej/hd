@@ -8,7 +8,8 @@ class Board_model extends CI_Model {
 
 
     function get_porpula_list() {
-        $query = "select board.b_index,board.b_title,board.b_writer,board.b_code,board.b_board_type,boardfile.f_name,boardfile.list_img,boardfile.f_index
+        $query = "select board.b_index,board.b_title,board.b_writer,board.b_code,board.b_board_type,boardfile.f_name,boardfile.f_rename,boardfile.list_img,boardfile.f_index,boardfile.file_path
+
                     from board 
                     left join  boardfile on board.b_index = boardfile.b_index
                     where board.b_index in(select popular_log.board_idx from popular_log where popular_log.show_flag =1) 
@@ -46,10 +47,10 @@ class Board_model extends CI_Model {
         }
 
         $query = "SELECT board.b_title,board.b_board_type,board.b_code,board.b_index,board.b_hit,
-                    DATE_FORMAT(board.b_regdate,'%Y-%m-%d') b_regdate,board.b_writer,board.b_board_type,tmp_boardfile.f_name,
+                    DATE_FORMAT(board.b_regdate,'%Y-%m-%d') b_regdate,board.b_writer,board.b_board_type,tmp_boardfile.f_name,tmp_boardfile.f_rename,tmp_boardfile.file_path,
                     tmp_boardfile.list_img,tmp_boardfile.f_index,(select count(*) from board tmp where tmp.b_parentindex = board.b_index) as reply
                     FROM Board as board 
-                    left join  (select f_name,list_img,f_index,b_Index from boardfile where boardfile.list_img='Y') as tmp_boardfile on board.b_index = tmp_boardfile.b_index
+                    left join  (select f_name,f_rename,list_img,f_index,b_index,file_path from boardfile where boardfile.list_img='Y') as tmp_boardfile on board.b_index = tmp_boardfile.b_index
                     where 
                       board.b_code = ? AND
                       board.b_parentindex = 0 and
@@ -96,9 +97,6 @@ class Board_model extends CI_Model {
 
         $query = "select count(b_index) AS cnt from board where b_index = ? and b_password = ?";
         return  $this->db->query($query,array($b_index,$passwd))->row();
-
-
-
     }
 
     function get_view($params){
@@ -115,38 +113,36 @@ class Board_model extends CI_Model {
 
         }
 
-        $query = "select b_title,b_board_type,b_code,b_index,b_hit,b_content,
+        $query = "select b_title,b_board_type,b_code,b_index,b_hit,b_content,b_email,
                     DATE_FORMAT(b_regdate,'%Y-%m-%d') b_regdate,b_writer,b_board_type,(select count(*) from board tmp where tmp.b_parentindex = b_index) as reply
                   from board where ".$where;
         $result =  $this->db->query($query,array($id))->row();
         return $result;
     }
 
-    function get_bbs_image($id){        // 기존 에디터 사용안하는 게시물 사진정보 가지고 오기
-        $query = "select f_Index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date
+    function get_file($id,$type){
+        if($type == "image"){
+            $query = "select f_index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date
                   from boardfile where b_index =? and left(f_type, 5) = 'image' order by f_index asc";
-        $result =  $this->db->query($query,array($id))->result();
-        return $result;
-    }
-
-    function get_bbs_movie($id){    // 기존 에디터 사용안하는 게시물 영상정보 가지고 오기
-        $query = "select f_Index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date
+        }else if($type == "movie"){
+            $query = "select f_index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date
                   from boardfile where b_index =? and right(f_name, 3) IN('mp4', 'wma', 'wmv', 'asf', 'avi', 'wav', 'mid', 'swf','flv') order by f_index asc";
+        }else if($type == "file"){
+            $query = "select f_index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date
+                  from boardfile where b_index =? and left(F_Type, 5) <> 'image' and right(F_Name, 3) not in('mp4', 'wma', 'wmv', 'asf', 'avi', 'wav', 'mid', 'swf') order by f_index asc";
+
+        }else if($type == "all"){
+            $query = "select f_index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date
+                  from boardfile where b_index =?  order by f_index asc";
+        }
         $result =  $this->db->query($query,array($id))->result();
         return $result;
     }
 
-    function get_bbs_file($id){  // 사진,영상을 제외한 업로드파일 리스트트
-
-        $query = "select f_Index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date
-                  from boardfile where b_index =? and left(F_Type, 5) <> 'image' and right(F_Name, 3) not in('mp4', 'wma', 'wmv', 'asf', 'avi', 'wav', 'mid', 'swf') order by f_index asc";
-        $result =  $this->db->query($query,array($id))->result();
-        return $result;
-   }
    function get_file_check($id){    // 게시글에 첨부된 파일 총갯수
        $query = "select f_Index
                   from boardfile where b_index =? ";
-       $result =  $this->db->query($query,array($id))->row_num();
+       $result =  $this->db->query($query,array($id))->num_rows();
        return $result;
    }
 
@@ -190,11 +186,10 @@ class Board_model extends CI_Model {
         $result = $this->db->insert('board', $data);
         $id = $this->db->insert_id();
 
-        if ($this->db->trans_status() === FALSE)
-        {
+        if($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();
             return false;
-        } else{
+        }else{
 
             foreach($params["attach_image"] as $key=>$value){
                 $temp_image = explode('|',$params["attach_image"][$key]);
@@ -206,11 +201,11 @@ class Board_model extends CI_Model {
                 $data = array(
                     'b_code'	=> $params['b_code'],
                     'b_index'	=> $id,
-                    'f_name'	=> $temp_image[0],
+                    'f_name'	=> $temp_image[1],
                     'f_type'	=> $temp_image[2],
                     'f_width'	=> $temp_image[3],
                     'f_size'	=> $temp_image[4],
-                    'f_reName'	=> $temp_image[1],
+                    'f_reName'	=> $temp_image[0],
                     'list_img'	=> $list_img,
                     'file_path' => $params['file_path'],
                 );
@@ -229,13 +224,64 @@ class Board_model extends CI_Model {
 
     }
 
+    public function set_bbs_delete($params){
 
+        $result = $this->delete_query('board', array('b_index' => $params['b_index']));
+        return $result;
+    }
+    public function set_file_delete($params){
+
+        $result = $this->delete_query('boardfile', array('b_index' => $params['b_index']));
+        return $result;
+    }
 
 
     private function set_img(){
         $query = "select f_Index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date from boardfile ";
 
         return $this->db->query($query)->result();
+    }
+
+    function insert_query($table,$data) {
+        $this->db->trans_begin();
+        $this->db->insert($table,$data);
+        if($this->db->trans_status() == false) {
+            $this->db->trans_rollback();
+            return false;
+        } else {
+            $this->db->trans_commit();
+            return true;
+        }
+    }
+    /*
+     * where_in은 반드시 array
+     */
+    function update_query($table, $data, $where, $field=false, $where_in=false) {
+        $this->db->trans_begin();
+        $this->db->where($where);
+        if($where_in) {
+            $this->db->where_in($field,$where_in);
+        }
+        $this->db->update($table,$data);
+        if($this->db->trans_status() == false) {
+            $this->db->trans_rollback();
+            return false;
+        } else {
+            $this->db->trans_commit();
+            return true;
+        }
+    }
+
+    function delete_query($table, $where) {
+        $this->db->trans_begin();
+        $this->db->delete($table, $where);
+        if($this->db->trans_status() == false) {
+            $this->db->trans_rollback();
+            return false;
+        } else {
+            $this->db->trans_commit();
+            return true;
+        }
     }
 
 
