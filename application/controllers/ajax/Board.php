@@ -60,10 +60,14 @@ class Board extends Common {
 
 
         foreach ( $list as $key => $value){
-            $path = '/public_html/upload'.$value->file_path;
 
-            $temp_fname = explode ('.',$value->f_rename);
-            $value->f_rename = $path.$temp_fname[0]."_145x90.".$temp_fname[1];
+            if(!empty($value->file_path)) {
+                $path = '/public_html/upload'.$value->file_path;
+                $temp_fname = explode('.', $value->f_rename);
+                $value->f_rename = $path . $temp_fname[0] . "_145x90." . $temp_fname[1];
+            }else{
+                $value->f_rename = 'no_image';
+            }
         }
 //        $result = array(
 //            'list_rows' 	=> $list_rows,

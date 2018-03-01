@@ -181,9 +181,19 @@
                         html_list += '<div class="gallery_set">';
                     }
                     html_list += '   <ul class="gallery_list" onclick="page_view(' + value.b_index + ');">';
-                    html_list += '       <li class="thumb"><img src="' + value.f_rename + '" width="145" height="90" valign="center"></li>';
-                    html_list += '       <li class="title ellipsis">' + value.b_title + '</li>';
-                    html_list += '       <li class="info" style="margin-top:10px;"><span class="name ellipsis" style="font-size:15px;">' + value.b_writer + '</span><span style="vertical-align:text-top; position: inline-block;"><img src="/public_html/images/icon/icon_re.png" title="reply"></span></li>';
+                    if(value.f_rename == "no_image" ) {
+
+                        html_list += '       <li class="thumb"><img src="/public_html/images/icon/icon_noimage.png" width="145" height="90" valign="center"></li>';
+                    }else{
+                        html_list += '       <li class="thumb"><img src="' + value.f_rename + '" width="145" height="90" valign="center"></li>';
+                    }
+                    html_list += '      <li class="title ellipsis">' + value.b_title + '</li>';
+                    html_list += '      <li class="info" style="margin-top:10px;">';
+                    html_list += '          <span class="name ellipsis" style="font-size:15px;">' + value.b_writer + '</span>';
+                    if(value.reply != '0') {
+                        html_list += '          <span style="vertical-align:text-top; position: inline-block;"><img src="/public_html/images/icon/icon_re.png" title="reply"></span>';
+                    }
+                    html_list += '      </li>';
                     html_list += '      <li style="position:relative;"><span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">' + value.b_regdate + '</span><span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">view ' + value.b_hit + '</span></li>';
                     html_list += '   </ul>';
                     if(list_cnt == '3') {
