@@ -117,7 +117,9 @@ class Gallery extends Common {
         );
 
         $view_data = $this->board_model->get_view($view_send);
-
+        if(!empty($b_code)){
+            $b_code = $view_data->b_code;
+        }
         if($view_data->b_board_type == '0') {
             $image_data = $this->board_model->get_file($b_index,'image');
 
@@ -133,7 +135,7 @@ class Gallery extends Common {
         $movie_data = $this->board_model->get_file($b_index,'movie');
         if(!empty($movie_data)) {
             foreach ($movie_data as $key => $value) {
-                $value->file_path = $value->file_path . $value->f_rename;
+                $value->file_path = "http://".$_SERVER["HTTP_HOST"]."/public_html".$value->file_path . $value->f_rename;
             }
         }
 
@@ -186,6 +188,7 @@ class Gallery extends Common {
             'page'          => $page,
             'b_index'       => $b_index,
         );
+
         if($this->lang_type == 'en') {
             $this->load->view('gallery/e_customer_view.phtml',$view_array);
         }else{
@@ -207,6 +210,7 @@ class Gallery extends Common {
         $b_board_type   =   $this->input->post("b_board_type");
         $b_index        =   $this->input->post("b_index");
         $select_img     =   $this->input->post("select_img");
+        if(empty($select_img)) $select_img = 0;
         $b_writer       =   $this->input->post("b_writer");
         $b_password     =   $this->input->post("b_password");
         $b_title        =   $this->input->post("b_title");
@@ -216,55 +220,62 @@ class Gallery extends Common {
         $b_locked       =   $this->input->post("b_locked");
         if(empty($b_locked)) $b_locked = "N";
         $attach_image   =   $this->input->post("attach_image[]",false);
-        $new_attach_image = array();
-        $today = date('Y-m');
-        if(!empty($attach_image)) {
-            foreach ($attach_image as $key => $value) {
-                $new_attach_image[$key] = $this->input->post("attach_image[" . $key . "]", true);
-            }
-            $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/board/'.$today;
-            if(!is_dir($upload_dir)){
-                mkdir($upload_dir, 0777);
-            }
-        }
-        $attach_image = $new_attach_image;
-        $select_img     =   $this->input->post("select_img");
 
-        if($proc_type == "NW"){
+        $today = date('Y-m');
+
+        $new_attach_image = array();
+        if($proc_type == "NW"){ // 신규등록
+            if(!empty($attach_image)) {
+                foreach ($attach_image as $key => $value) {
+                    $new_attach_image[$key] = $this->input->post("attach_image[" . $key . "]", true);
+                }
+                $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/board/'.$today;
+                if(!is_dir($upload_dir)){
+                    mkdir($upload_dir, 0777);
+                }
+                $attach_image = $new_attach_image;
+            }
             If(empty($b_title)) $b_title = '.';
             if($b_board_type != '0'){
                 $b_content = htmlspecialchars($b_content);  //에디터 사용
             }else{
                 $b_content = $b_content;
             }
-        }
-        $b_content = str_replace ("/temp","/board/".$today,$b_content);
-        $max_group_no = $this->board_model->get_last_group_no();
+        }else if($proc_type == "M"){    // 수정
+            $old_image = array();
+            $new_image = array();
+            $image_data = $this->board_model->get_file($b_index,'image');
+            $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html';
+            foreach($image_data as $key => $value){
+                $old_image[$key] = $value->f_rename;
+            }
 
-        $send_data = array(
-            'b_code'        =>   $b_code,
-            'proc_type'     =>   $proc_type,
-            'b_depth'       =>   $b_depth,
-            'b_parentindex' =>   $b_parentindex,
-            'b_board_type'  =>   $b_board_type,
-            'b_index'       =>   $b_index,
-            'select_img'    =>   $select_img,
-            'b_writer'      =>   $b_writer,
-            'b_password'    =>   $b_password,
-            'b_title'       =>   $b_title,
-            'b_email'       =>   $b_email ,
-            'b_content'     =>   $b_content,
-            'b_locked'      =>   $b_locked,
-            'attach_image'  =>   $attach_image,
-            'select_img'    =>   $select_img,
-            'file_path'     =>   '/board/'.$today.'/',
-            'b_group'       =>   $max_group_no->max_group
-        );
-        $result = $this->board_model->set_bbs_save($send_data);
+            foreach ($attach_image as $key => $value) { //수정시 기존이미지 이미지 추가배열에서 삭제
+                $temp_image = explode('|', $attach_image[$key]);
+                $re_filename = $temp_image[0];
+                $new_image[$key] = $re_filename;
+                if(in_array($re_filename, $old_image)) unset($attach_image[$key]);
+            }
+
+            foreach($image_data as $key => $value){
+                var_dump($new_image);
+
+                if(!in_array($value->f_rename, $new_image)){
+                    var_dump($value->f_rename);
+                    @unlink($upload_dir.$value->file_path.$value->f_rename);
+                    $temp_fname = explode('.', $value->f_rename);
+                    $allow_file = array("jpg", "png", "bmp", "gif", "jpeg");
+                    if (in_array($temp_fname[1], $allow_file)) {
+                        @unlink($upload_dir.$value->file_path . $temp_fname[0] . "_145x90." . $temp_fname[1]);
+                    }
+                    $del_result = $this->board_model->set_file_delete_one($value->f_index);
+                }
+            }
+
+        }
 
         $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/temp/';
         $path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/board/'.$today.'/';
-
         $file_result = true;
         if(!empty($attach_image)) {
             foreach ($attach_image as $key => $value) {
@@ -287,6 +298,34 @@ class Gallery extends Common {
 
             }
         }
+
+        $b_content = str_replace ("/temp","/board/".$today,$b_content);
+        $max_group_no = $this->board_model->get_last_group_no();
+
+        $send_data = array(
+            'b_code'        =>   $b_code,
+            'proc_type'     =>   $proc_type,
+            'b_depth'       =>   $b_depth,
+            'b_parentindex' =>   $b_parentindex,
+            'b_board_type'  =>   $b_board_type,
+            'b_index'       =>   $b_index,
+            'select_img'    =>   $select_img,
+            'b_writer'      =>   $b_writer,
+            'b_password'    =>   $b_password,
+            'b_title'       =>   $b_title,
+            'b_email'       =>   $b_email ,
+            'b_content'     =>   $b_content,
+            'b_locked'      =>   $b_locked,
+            'attach_image'  =>   $attach_image,
+            'select_img'    =>   $select_img,
+            'file_path'     =>   '/upload/board/'.$today.'/',
+            'b_group'       =>   $max_group_no->max_group
+        );
+
+        $result = $this->board_model->set_bbs_save($send_data);
+
+
+
 
         if($result && $file_result){
             $ss_data = array(

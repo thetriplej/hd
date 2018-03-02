@@ -23,7 +23,7 @@ class Board extends Common {
 
         $list =  $this->board_model->get_porpula_list();
         foreach ( $list as $key => $value){
-            $path = '/public_html/upload'.$value->file_path;
+            $path = '/public_html'.$value->file_path;
             $value->f_rename = $path.$value->f_rename;
         }
 
@@ -62,7 +62,7 @@ class Board extends Common {
         foreach ( $list as $key => $value){
 
             if(!empty($value->file_path)) {
-                $path = '/public_html/upload'.$value->file_path;
+                $path = '/public_html'.$value->file_path;
                 $temp_fname = explode('.', $value->f_rename);
                 $value->f_rename = $path . $temp_fname[0] . "_145x90." . $temp_fname[1];
             }else{
@@ -198,14 +198,14 @@ class Board extends Common {
                         $files_array[$key]['f_size'] = $value->f_size;
                         $files_array[$key]['f_rename'] = $value->f_rename;
                         $files_array[$key]['list_img'] = $value->list_img;
-                        $files_array[$key]['file_path'] = '/public_html/upload' . $value->file_path . $value->f_rename;
+                        $files_array[$key]['file_path'] = "http://".$_SERVER["HTTP_HOST"].'/public_html' . $value->file_path . $value->f_rename;
                         $files_array[$key]['reg_date'] = $value->reg_date;
 
                         $temp_fname = explode('.', $value->f_rename);
                         $allow_file = array("jpg", "png", "bmp", "gif", "jpeg");
                         //var_dump(json_encode($temp_fname));exit;
                         if (in_array($temp_fname[1], $allow_file)) {
-                            $files_array[$key]['thumburl'] = '/public_html/upload' . $value->file_path . $temp_fname[0] . "_145x90." . $temp_fname[1];
+                            $files_array[$key]['thumburl'] = "http://".$_SERVER["HTTP_HOST"].'/public_html' . $value->file_path . $temp_fname[0] . "_145x90." . $temp_fname[1];
                             //$files_array[$key]['f_type'] = 'image';
 
                         } else {
@@ -457,7 +457,7 @@ class Board extends Common {
         $setPath = $upload_dir.$renamefile;
 
         $path_file = $originfile;//원본파일
-        $send_temp_dir = '/public_html/upload/temp/';
+        $send_temp_dir = "http://".$_SERVER["HTTP_HOST"].'/public_html/upload/temp/';
         if($width == 300){
             $newPath = $setPath.'_145x90.'.$filename_ext;
             $sen_data = array(
@@ -504,18 +504,18 @@ class Board extends Common {
             'b_index'   =>  $post['b_index'],
             'b_password'   =>  $post['pass'],
         );
-
+        $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html';
         $result =  $this->board_model->get_password_check($send_date);
         if($result->cnt == '1'){
 
             $file_list =  $this->board_model->get_file($post['b_index'],'all');
             if(!empty($file_list)){
                 foreach ($file_list as $key => $value){
-                    @unlink('/public_html/upload'.$value->file_path.$value->f_rename);
+                    @unlink($upload_dir.$value->file_path.$value->f_rename);
                     $temp_fname = explode('.', $value->f_rename);
                     $allow_file = array("jpg", "png", "bmp", "gif", "jpeg");
                     if (in_array($temp_fname[1], $allow_file)) {
-                        @unlink('/public_html/upload' . $value->file_path . $temp_fname[0] . "_145x90." . $temp_fname[1]);
+                        @unlink($upload_dir.$value->file_path . $temp_fname[0] . "_145x90." . $temp_fname[1]);
                     }
                 }
             }

@@ -49,7 +49,7 @@ if(!empty($movie_data)){
             ?>
                         <div class="boxmv_bic" align="center" style="height:500px;margin-bottom:10px;">
                             <video width="700px" height="480" class="video-js vjs-default-skin" data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }' autoplay preload="none">
-                                <source src="/public_html/<?php echo $value->file_path;?>" type="video/mp4" />
+                                <source src="<?php echo $value->file_path;?>" type="video/mp4" />
                             </video>
                         </div>
             <?php
@@ -112,14 +112,14 @@ if(!empty($movie_data)){
                         <div style="float:right;"><?php echo $_SERVER["HTTP_HOST"].$_SERVER['REQUEST_URI'];?></div>
                     </div>
                     <div id="buttons" style="height:25px;overflow:hidden;clear:both;">
-    <?php if($b_code == "CEPILOGUE0" ||  $b_code = "QANDA0"){?>
+    <?php if($view_data->b_code == "CEPILOGUE0" ||  $view_data->b_code == "QANDA0"){?>
                         <span style="float:left;">
-                            <input type="button" class="btn_blue" value="수정" onclick="send('<?='/gallery/customer_write/?b_index='.$view_data->b_index.'&page='.$page.'&b_code='.$b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','edit');">
-                            <input type="button" class="btn_blue" value="삭제" onclick="send('<?='/gallery/?page='.$page.'&b_code='.$b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','del');">
+                            <input type="button" class="btn_blue" value="수정" onclick="send('<?='/gallery/customer_write/?b_index='.$view_data->b_index.'&page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','edit');">
+                            <input type="button" class="btn_blue" value="삭제" onclick="send('<?='/gallery/?page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','del');">
                         </span>
     <?php }?>
                         <span style="float:right;">
-                            <input type="button" class="btn_gray" value="목록보기" onclick="goto('<?='/gallery?page='.$page.'&b_code='.$b_code.'&search_type='.$search_type.'&search_value='.$search_value?>');">
+                            <input type="button" class="btn_gray" value="목록보기" onclick="goto('<?='/gallery?page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>');">
                         </span>
                     </div>
 <?php if(!empty($reply_view_data)){ ?>

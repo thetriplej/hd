@@ -57,6 +57,7 @@ class Board_model extends CI_Model {
                       board.b_sequence =1 
                       ".$like_word."
                     ORDER BY board.b_index desc limit ".$start_row.",".$list_rows;
+
         return $this->db->query($query,array($board_type))->result();
     }
 
@@ -149,7 +150,7 @@ class Board_model extends CI_Model {
     function set_bbs_save($params){
 
         $this->db->trans_begin();
-
+        $b_index = $params['b_index'];
 //        $send_data = array(
 //            'b_code'        =>   $b_code,
 //            'proc_type'     =>   $proc_type,
@@ -183,37 +184,67 @@ class Board_model extends CI_Model {
 
         );
 
-        $result = $this->db->insert('board', $data);
-        $id = $this->db->insert_id();
+        if(!empty($b_index)){
+            $result = $this->db->update('board', $data,array('b_index'=>$b_index));
+            $id = $b_index;
+        }else{
+            $result = $this->db->insert('board', $data);
+            $id = $this->db->insert_id();
+        }
+
+
 
         if($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();
             return false;
         }else{
 
-            foreach($params["attach_image"] as $key=>$value){
-                $temp_image = explode('|',$params["attach_image"][$key]);
-                if($key == intval($params['select_img'])){
-                    $list_img = 'Y';
-                }else{
-                    $list_img = 'N';
-                }
-                $data = array(
-                    'b_code'	=> $params['b_code'],
-                    'b_index'	=> $id,
-                    'f_name'	=> $temp_image[1],
-                    'f_type'	=> $temp_image[2],
-                    'f_width'	=> $temp_image[3],
-                    'f_size'	=> $temp_image[4],
-                    'f_reName'	=> $temp_image[0],
-                    'list_img'	=> $list_img,
-                    'file_path' => $params['file_path'],
-                );
+            if(!empty($params["attach_image"])) {
+                foreach ($params["attach_image"] as $key => $value) {
+                    $temp_image = explode('|', $params["attach_image"][$key]);
+                    if ($key == intval($params['select_img'])) {
+                        $list_img = 'Y';
+                    } else {
+                        $list_img = 'N';
+                    }
+                    $data = array(
+                        'b_code' => $params['b_code'],
+                        'b_index' => $id,
+                        'f_name' => $temp_image[1],
+                        'f_type' => $temp_image[2],
+                        'f_width' => $temp_image[3],
+                        'f_size' => $temp_image[4],
+                        'f_reName' => $temp_image[0],
+                        'list_img' => $list_img,
+                        'file_path' => $params['file_path'],
+                        'reg_date' => 'now()'
+                    );
 
-                $img_result = $this->db->insert('boardfile',$data);
-                if ($img_result === false){
-                    $this->db->trans_rollback();
-                    return false;
+                    $img_result = $this->db->insert('boardfile', $data);
+                    if ($img_result === false) {
+                        $this->db->trans_rollback();
+                        return false;
+                    }
+                }
+            }else{
+
+                if(!empty($b_index) && isset($params['select_img'])){
+                    $result = $this->get_file($b_index,"image");
+
+                    foreach ($result as $key => $value) {
+                        if($key == intval($params['select_img'])) {
+                            $data = array(
+                                'list_img' => 'Y',
+                            );
+                            $result = $this->db->update('boardfile', $data,array('f_index'=>$value->f_index));
+                        }else{
+                            $data = array(
+                                'list_img' => 'N',
+                            );
+                            $result = $this->db->update('boardfile', $data,array('f_index'=>$value->f_index));
+                        }
+                    }
+
                 }
             }
                 $this->db->trans_commit();
@@ -232,6 +263,12 @@ class Board_model extends CI_Model {
     public function set_file_delete($params){
 
         $result = $this->delete_query('boardfile', array('b_index' => $params['b_index']));
+        return $result;
+    }
+
+    public function set_file_delete_one($id){
+
+        $result = $this->delete_query('boardfile', array('f_index' => $id));
         return $result;
     }
 

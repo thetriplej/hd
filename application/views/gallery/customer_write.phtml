@@ -129,17 +129,24 @@
     /* 예제용 함수 */
     function saveContent() {
         if($('#b_index').val()){
+            if($('#b_password').val() == "") {
+                alert('비밀번호를 입력해 주세요.');
+                b_password.focus();
+                return;
+            }
             $.ajax({
                 type : "POST",
                 url : "/ajax/board/check_pass",
+                dataType: 'json',
                 data: {
                     csrf_token: $('input[name=csrf_token]').val(),
-                    id : $('#b_index').val() ,
-                    pass :$('#B_Password').val()
+                    b_index : $('#b_index').val() ,
+                    pass :$('#b_password').val()
                 },
                 success: function(result) {
                     if(result == "fail"){
                         alert('비밀번호가 틀렸습니다.');
+                        b_password.focus();
                         return;
                     }else if(result == "success"){
                         Editor.save(); // 이 함수를 호출하여 글을 등록하면 된다.
@@ -213,7 +220,7 @@
                 input = document.createElement('input');
                 input.type = 'hidden';
                 input.name = 'attach_image[]';
-                input.value = images[i].data.filename;  // 예에서는 이미지경로만 받아서 사용
+                //input.value = images[i].data.filename;  // 예에서는 이미지경로만 받아서 사용
                 input.value =  images[i].data.f_rename + '|' +images[i].data.filename + '|'+  images[i].data.mimeType + '|'+  images[i].data.imageWidth + '|'+  images[i].data.filesize;  // 예에서는 이미지경로만 받아서 사용
                 form.createField(input);
             }
@@ -227,7 +234,7 @@
             //input.value = files[i].data.attachurl;
             //input.value = files[i].data.filename;
             //  alert('attachment information - image[' + i + '] \r\n' + JSON.stringify(files[i].data));
-            input.value =  files[i].data.filename + '|'+  files[i].data.mimeType + '|'+  files[i].data.imageWidth + '|'+  files[i].data.filesize+ '|'+  files[i].data.attachurl ;  // 예에서는 이미지경로만 받아서 사용
+            input.value =  files[i].data.f_rename + '|' +images[i].data.filename + '|'+  files[i].data.mimeType + '|'+  files[i].data.imageWidth + '|'+  files[i].data.filesize+ '|'+  files[i].data.attachurl ;  // 예에서는 이미지경로만 받아서 사용
             form.createField(input);
         }
         return true;
@@ -312,6 +319,7 @@
                             'data': {
                                 'imageurl': obj.file_path,
                                 'filename': obj.f_name,
+                                'f_rename': obj.f_rename,
                                 'filesize': obj.f_size,
                                 'originalurl': obj.file_path,
                                 'thumburl': obj.thumburl
@@ -324,6 +332,7 @@
                                 'attachurl': obj.file_path,
                                 'filemime': obj.f_type,
                                 'filename': obj.f_name,
+                                'f_rename': obj.f_rename,
                                 'filesize': obj.f_size
                             }
                         });
