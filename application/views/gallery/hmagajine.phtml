@@ -1,0 +1,141 @@
+    <link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/board_hassed_2017.css" />
+    <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="<?php echo JS_DIR; ?>/bbs.js"></script>
+    <script src="<?php echo JS_DIR; ?>/slider/jquery.bxslider.min.js"></script>
+    <link href="<?php echo JS_DIR; ?>/slider/jquery.bxslider.css" rel="stylesheet" />
+    <style type='text/css'>
+        #slidebox { position:relative;width:960px;height:383px;overflow:hidden;white-space:nowrap;z-index:-100;}
+        #slidebox ul#slider {list-style:none;margin:0;padding:0;}
+        #slidebox ul li {position:absolute;width:960px;height:383px;}
+        #slidebox ul li img {width:960px;height:383px;}
+    </style>
+
+
+    <div id="wrap_middle" class="">
+        <div id="" class="box_full" style="margin-top:140px;">
+            <div class="sub_img"><img src="/public_html/img_magazine_new.png" border="0" alt=""></div>
+            <div id="" class="" style="width:100%; height:230px; position:absolute; background-color:#fbf3f1; display:block; z-index:-10; margin-top:-350px;">
+            </div>
+            <div id="" class="box_full_in_center" style="padding-bottom:80px; overflow:hidden;">
+                <div id="" class="fl_left"><a href="http://hassed.kr/haboard01.asp?B_Index=14470"><img src="/public_html/img/img_magazine01.jpg" border="0" alt=""></a></div>
+                <div id="" class="fl_right">
+                    <div id="" class=""><a href="http://newsculture.heraldcorp.com/sub_read.html?uid=93834&section=sc155" target="_blink"><img src="/public_html/img/img_magazine02.jpg" border="0" alt=""></a></div>
+                    <div id="" class="" style="margin-top:25px;"><a href="http://hassed.kr/haboard01.asp?B_Index=17659"><img src="/public_html/img/img_magazine03.jpg" border="0" alt=""></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="box_full_in_center" style="margin-top:100px; postion:relative;">
+            <!--contents_info-->
+            <div class="board_area">
+                <div id="" class="gallery_title">헷세드 메거진 <b>에이치</b></div>
+                <div id="" class="" style="width:100%; height:50px; background-color:#faf9f8;"></div>
+                <!-- H_magargin list -->
+                <div id="magajine"></div>
+
+            </div>
+            <br>
+            <!-- <span class="under_line">밑선</span> -->
+            <!-- Default List // -->
+            <div id="" class="" style="width:1080px; height:10px; margin-top:20px; border-top:solid 1px #666;"></div>
+            <div id="total_page" style="margin:10px 0 20px; float:left; "></div>
+            <!-- Pagination -->
+            <div class="bbs_page paging"></div>
+            <!-- Pagination // -->
+            <div id="" class="" style="width:1080px; height:10px; text-align:right; position:absolute; bottom:14px;">
+                magazine.H
+            </div>
+
+            <!--//contents_info-->
+        </div>
+
+
+    </div>
+    <script type="text/javascript">
+        if($("#page").val() == "") {
+            get_list(1);
+        }else{
+            get_list($("#page").val());
+        }
+
+        function get_list(page){
+            var html_list ='';
+
+            $(".gallery_out").empty();
+            $.ajax({
+
+                type : "POST",
+                url : "/ajax/board/get_magajine_list",
+                data: {
+                    csrf_token: $('input[name=csrf_token]').val(),
+                    search_type: $("#search_type option:selected").val(),
+                    search_value: $("#search_value").val(),
+                    page : page
+                },
+                cache : false,
+                success : function(result) {
+                    var data   = $.parseJSON(result);
+                    var list_cnt = 0;
+
+                    $.each( data.list, function( key, value ) {
+                        list_cnt = (key) % 3;
+
+                        if(list_cnt == '0') {
+                            html_list += '<div class="galleryH_set">';
+                        }
+                        html_list += '   <ul class="galleryH_list" onclick="page_view(' + value.b_index + ');">';
+                        if(value.f_rename == "no_image" ) {
+
+                            html_list += '       <li class="thumb"><img src="/public_html/images/icon/icon_noimage.png" width="145" height="90" valign="center"></li>';
+                        }else{
+                            html_list += '       <li class="thumb"><img src="' + value.f_rename + '" width="145" height="90" valign="center"></li>';
+                        }
+                        html_list += '   </ul>';
+                        if(list_cnt == '2') {
+                            html_list += '</div>';
+                        }
+                    });
+                    if(list_cnt == 0 && data.page_navi.total == 0){
+                        html_list = '<div style="padding:15px;padding-left:45%;"><b>검색된 게시물이 없습니다.</b></div>'
+                    }
+                    $("#magajine").append(html_list);
+
+                    /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
+                    pagination(data.page_navi.current_page, data.page_navi.last_page, data.page_navi.per_page, data.page_navi.total, 10);
+                    var msg ="Total " + data.page_navi.total + " 건 " +data.page_navi.current_page+ " 페이지";
+                    $("#total_page").text(msg);
+                    $("#page").val(page);
+                },
+                error : function() {
+                    alert("다시 시도해 주세요.");
+                }
+            });
+        }
+
+        function page_view(id){
+            $.ajax({
+                type : "POST",
+                url : "/ajax/board/get_permission_check",
+                data: {
+                    csrf_token: $('input[name=csrf_token]').val(),
+                    b_index : id
+                },
+                cache : false,
+                success : function(result) {
+                    var data   = $.parseJSON(result);
+                    if(data.lock == 'Y'){
+
+                    }else{
+                        location.href = '/gallery/customer_view?b_index='+id;
+                    }
+
+                },
+                error : function() {
+                    alert("다시 시도해 주세요.");
+                }
+            });
+
+        }
+
+    </script>
+

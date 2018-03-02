@@ -348,4 +348,26 @@ class Gallery extends Common {
         $result = $this->board_model->set_img();
     }
 
+    public function hmagajine(){
+        $page = $this->input->get('page');
+        if(empty($page)) $page = 1;
+        $b_code = $this->input->get('b_code');
+        if(empty($b_code)) $b_code = 'CEPILOGUE0';
+        $search_type = $this->input->get('search_type');
+        $search_value = $this->input->get('search_value');
+
+        $send_data = array(
+            'page' => $page,
+            'b_code' => $b_code,
+            'search_type' => $search_type,
+            'search_value' => $search_value,
+        );
+
+        if($this->lang_type == 'en') {
+            $this->load->view('gallery/e_hmagajine.phtml',$send_data);
+        }else{
+            $this->load->view('gallery/hmagajine.phtml',$send_data);
+        }
+    }
+
 }
