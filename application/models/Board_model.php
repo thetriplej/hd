@@ -49,7 +49,7 @@ class Board_model extends CI_Model {
         $query = "SELECT board.b_title,board.b_board_type,board.b_code,board.b_index,board.b_hit,board.b_locked,
                     DATE_FORMAT(board.b_regdate,'%Y-%m-%d') b_regdate,board.b_writer,board.b_board_type,tmp_boardfile.f_name,tmp_boardfile.f_rename,tmp_boardfile.file_path,
                     tmp_boardfile.list_img,tmp_boardfile.f_index,(select count(*) from board tmp where tmp.b_parentindex = board.b_index) as reply
-                    FROM Board as board 
+                    FROM board as board 
                     left join  (select f_name,f_rename,list_img,f_index,b_index,file_path from boardfile where boardfile.list_img='Y') as tmp_boardfile on board.b_index = tmp_boardfile.b_index
                     where 
                       board.b_code = ? AND
@@ -131,7 +131,7 @@ class Board_model extends CI_Model {
                   from boardfile where b_index =? and right(f_name, 3) IN('mp4', 'wma', 'wmv', 'asf', 'avi', 'wav', 'mid', 'swf','flv') order by f_index asc";
         }else if($type == "file"){
             $query = "select f_index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date
-                  from boardfile where b_index =? and left(F_Type, 5) <> 'image' and right(F_Name, 3) not in('mp4', 'wma', 'wmv', 'asf', 'avi', 'wav', 'mid', 'swf') order by f_index asc";
+                  from boardfile where b_index =? and left(f_type, 5) <> 'image' and right(f_name, 3) not in('mp4', 'wma', 'wmv', 'asf', 'avi', 'wav', 'mid', 'swf') order by f_index asc";
 
         }else if($type == "all"){
             $query = "select f_index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date
