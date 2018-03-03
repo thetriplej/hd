@@ -1,0 +1,154 @@
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/board_hassed_2017.css" />
+<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+<script src="<?php echo JS_DIR; ?>/bbs.js"></script>
+
+<?php echo form_open(); ?>
+<input type="hidden" id="page" value="<?php echo($page);?>">
+<input type="hidden" id="b_code" value="<?php echo($b_code);?>">
+</form>
+<div id="wrap_middle" class="" style="margin-top:140px;">
+    <div id="" class="box_full">
+        <div class="sub_img">
+            <img src="/public_html/img/img_qanda.jpg" border="0" alt="">
+        </div>
+    </div>
+    <div class="box_full_in_center" style="margin-top:50px; postion:relative;">
+        <!--contents_info-->
+        <div id="">
+            <div class="wrap_board" id="tj_content">
+                <div class="board_area">
+                    <!-- 공지사항  -->
+                    <ul class="list_default head">
+                        <li class="no">번호</li>
+                        <li class="top">제목</li>
+                        <li class="name">작성자</li>
+                        <li class="count">답변</li>
+                        <li class="date">작성일</li>
+                    </ul>
+                    <div id="notice_list"></div>
+                    <br>
+
+                    <!-- <span class="under_line">밑선</span> -->
+                    <!-- Default List // -->
+                    <div id="" class="" style="width:1080px; height:10px;"></div>
+                    <div id="total_page" style="margin:10px 0 20px; float:left; "></div>
+                    <!-- Pagination -->
+                    <div class="bbs_page paging"></div>
+                    <!-- Pagination // -->
+                    <!-- BBS_find //-->
+                    <div class="find_div"> <!-- style="height:22px;text-align:center;"-->
+                        <select name="search_type" id="search_type" class="find_sel">
+                            <option value="b_title" <?php if($search_type == "b_title") echo "selected";?>>제목</option>
+                            <option value="b_content" <?php if($search_type == "b_content") echo "selected";?>>내용</option>
+                            <option value="b_writer" <?php if($search_type == "b_writer") echo "selected";?>>글쓴이</option>
+                        </select>
+                        <input type="text" name="search_value" id="search_value" class="input_find" style="width:90px;" value="<?php echo $search_value;?>">
+                        <input type="button" class="btn_find" title="찾아보기" onclick="get_list(1);" style="vertical-align: bottom">
+                    </div>
+                    <!-- BBS_find // -->
+                </div>
+            </div>
+        </div>
+        <!--//contents_info-->
+    </div>
+</div>
+
+<script type="text/javascript">
+    if($("#page").val() == "") {
+        get_list(1);
+    }else{
+        get_list($("#page").val());
+    }
+
+    function get_list(page){
+        var html_list ='';
+
+        $("#notice_list").empty();
+        $.ajax({
+
+            type : "POST",
+            url : "/ajax/board/get_qna_list",
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+                search_type: $("#search_type option:selected").val(),
+                search_value: $("#search_value").val(),
+                page : page
+            },
+            cache : false,
+            success : function(result) {
+                var data   = $.parseJSON(result);
+                var list_cnt = 0;
+                var html_list = "";
+                $.each( data.list, function( key, value ) {
+
+                    var notice_class = '';
+                    if(value.b_special > 0){ notice_class = 'notice'}
+                    var num = (data.page_navi.total-(data.page_navi.current_page-1)*10)-list_cnt;
+
+                    html_list += '<ul class="list_default ' + notice_class +' ">';
+                    html_list += '    <li class="no" style="font-weight:bold;">' + num + '</li>';
+                    html_list += '    <li class="title ellipsis">';
+
+                    if(value.b_locked == 'Y'){
+                        html_list += '    <span class="ellipsis left" onclick="page_view(' + value.b_index + ')"><img src="/public_html/images/icon_secret.gif">' + value.b_title + '</span>';
+                    }else{
+                        html_list += '    <span class="ellipsis left" onclick="page_view(' + value.b_index + ')">' + value.b_title + '</span>';
+                    }
+                    html_list += '    </li>';
+                    html_list += '    <li class="name">' + value.b_writer + '</li>';
+                    if(value.reply > 0) {
+                        html_list += '    <li class="reply" style="color:#eb6153;">완료</li>';
+                    }else{
+                        html_list += '    <li class="reply" >미완료</li>';
+                    }
+
+                    html_list += '    <li class="date">' + value.b_regdate + '</li>';
+                    html_list += '</ul>';
+                    list_cnt++;
+
+                });
+                if(list_cnt == 0 && data.page_navi.total == 0){
+                    html_list = '<div style="padding:15px;padding-left:280px;"><b>검색된 게시물이 없습니다.</b></div>'
+                }
+
+                $("#notice_list").append(html_list);
+
+                /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
+                pagination(data.page_navi.current_page, data.page_navi.last_page, data.page_navi.per_page, data.page_navi.total, 10);
+                var msg ="Total " + data.page_navi.total + " 건 " +data.page_navi.current_page+ " 페이지";
+                $("#total_page").text(msg);
+                $("#page").val(page);
+            },
+            error : function() {
+                alert("다시 시도해 주세요.");
+            }
+        });
+    }
+
+    function page_view(id){
+        $.ajax({
+            type : "POST",
+            url : "/ajax/board/get_permission_check",
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+                b_index : id
+            },
+            cache : false,
+            success : function(result) {
+                var data   = $.parseJSON(result);
+                if(data.lock == 'Y'){
+
+                }else{
+                    location.href = '/notice/notice_view?b_index='+id+'&page='+$("#page").val()+'&search_type='+$("#search_type option:selected").val()+'&search_value='+$("#search_value").val();
+
+                }
+
+            },
+            error : function() {
+                alert("다시 시도해 주세요.");
+            }
+        });
+
+    }
+
+</script>

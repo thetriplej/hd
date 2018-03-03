@@ -30,6 +30,95 @@ class Board extends Common {
         echo json_encode($list);
 
     }
+
+
+    public function get_qna_list(){
+        $post = $this->input->post(null, true);
+
+        $p_data = array(
+            'table_name' 	=> 'board',
+            'search_type'	=> $post['search_type'],
+            'search_value'  => $post['search_value'],
+            'page'			=> $post['page'],
+            'board_type'    => 'QANDA0',
+            'list_rows'		=> 10,
+            'page_no'		=> 10,
+
+        );
+        $result = $this->page_navi($p_data);
+
+        $list_data = array(
+            'list_rows' 	=> $result['list_rows'],
+            'page_start' 	=> $result['page_start'],
+            'page' 			=> $result['page'],
+            'page_no' 		=> $result['page_no'],
+            'search_type'	=> $post['search_type'],
+            'search_value'  => $post['search_value'],
+            'board_type'    => 'QANDA0',
+        );
+
+        $list =  $this->board_model->get_gallery_list($list_data);
+
+        /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
+        //pagination(result.current_page, result.last_page, result.per_page, result.total, 10);
+        $page_navi = array(
+            'current_page' => $result['page'],
+            'last_page' => $result['tot_page'],
+            'per_page' => $result['list_rows'],
+            'total' => $result['total_rows'],
+        );
+
+        $send_data = array (
+            'list' => $list,
+            'page_navi' => $page_navi
+        );
+
+        echo json_encode($send_data);
+    }
+
+    public function get_notice_list(){
+        $post = $this->input->post(null, true);
+
+        $p_data = array(
+            'table_name' 	=> 'board',
+            'search_type'	=> $post['search_type'],
+            'search_value'  => $post['search_value'],
+            'page'			=> $post['page'],
+            'board_type'    => 'FREEBOARD0',
+            'list_rows'		=> 10,
+            'page_no'		=> 10,
+
+        );
+        $result = $this->page_navi($p_data);
+
+        $list_data = array(
+            'list_rows' 	=> $result['list_rows'],
+            'page_start' 	=> $result['page_start'],
+            'page' 			=> $result['page'],
+            'page_no' 		=> $result['page_no'],
+            'search_type'	=> $post['search_type'],
+            'search_value'  => $post['search_value'],
+            'board_type'    => 'FREEBOARD0',
+        );
+
+        $list =  $this->board_model->get_gallery_list($list_data);
+
+        /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
+        //pagination(result.current_page, result.last_page, result.per_page, result.total, 10);
+        $page_navi = array(
+            'current_page' => $result['page'],
+            'last_page' => $result['tot_page'],
+            'per_page' => $result['list_rows'],
+            'total' => $result['total_rows'],
+        );
+
+        $send_data = array (
+            'list' => $list,
+            'page_navi' => $page_navi
+        );
+
+        echo json_encode($send_data);
+    }
     public function get_gallery_list(){
 
         $post = $this->input->post(null, true);
@@ -133,8 +222,9 @@ class Board extends Common {
 
             if(!empty($value->file_path)) {
                 $path = '/public_html'.$value->file_path;
-                $temp_fname = explode('.', $value->f_rename);
-                $value->f_rename = $path . $temp_fname[0] . "_145x90." . $temp_fname[1];
+                //$temp_fname = explode('.', $value->f_rename);
+                //$value->f_rename = $path . $temp_fname[0] . "_145x90." . $temp_fname[1];
+                $value->f_rename = $path . $value->f_rename;
             }else{
                 $value->f_rename = 'no_image';
             }

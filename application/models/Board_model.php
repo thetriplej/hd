@@ -46,7 +46,7 @@ class Board_model extends CI_Model {
             $like_word = "";
         }
 
-        $query = "SELECT board.b_title,board.b_board_type,board.b_code,board.b_index,board.b_hit,
+        $query = "SELECT board.b_title,board.b_board_type,board.b_code,board.b_index,board.b_hit,board.b_locked,
                     DATE_FORMAT(board.b_regdate,'%Y-%m-%d') b_regdate,board.b_writer,board.b_board_type,tmp_boardfile.f_name,tmp_boardfile.f_rename,tmp_boardfile.file_path,
                     tmp_boardfile.list_img,tmp_boardfile.f_index,(select count(*) from board tmp where tmp.b_parentindex = board.b_index) as reply
                     FROM Board as board 

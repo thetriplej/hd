@@ -10,18 +10,21 @@
         #slidebox ul li {position:absolute;width:960px;height:383px;}
         #slidebox ul li img {width:960px;height:383px;}
     </style>
-
+    <?php echo form_open(); ?>
+    <input type="hidden" id="page" value="<?php echo($page);?>">
+    <input type="hidden" id="b_code" value="<?php echo($b_code);?>">
+    </form>
 
     <div id="wrap_middle" class="">
         <div id="" class="box_full" style="margin-top:140px;">
-            <div class="sub_img"><img src="/public_html/img_magazine_new.png" border="0" alt=""></div>
+            <div class="sub_img"><img src="/public_html/img/img_magazine_new.png" border="0" alt=""></div>
             <div id="" class="" style="width:100%; height:230px; position:absolute; background-color:#fbf3f1; display:block; z-index:-10; margin-top:-350px;">
             </div>
             <div id="" class="box_full_in_center" style="padding-bottom:80px; overflow:hidden;">
-                <div id="" class="fl_left"><a href="http://hassed.kr/haboard01.asp?B_Index=14470"><img src="/public_html/img/img_magazine01.jpg" border="0" alt=""></a></div>
+                <div id="" class="fl_left"><a href="/gallery/hmagajine_view?b_index=14470"><img src="/public_html/img/img_magazine01.jpg" border="0" alt=""></a></div>
                 <div id="" class="fl_right">
                     <div id="" class=""><a href="http://newsculture.heraldcorp.com/sub_read.html?uid=93834&section=sc155" target="_blink"><img src="/public_html/img/img_magazine02.jpg" border="0" alt=""></a></div>
-                    <div id="" class="" style="margin-top:25px;"><a href="http://hassed.kr/haboard01.asp?B_Index=17659"><img src="/public_html/img/img_magazine03.jpg" border="0" alt=""></a></div>
+                    <div id="" class="" style="margin-top:25px;"><a href="/gallery/hmagajine_view?b_index=17659"><img src="/public_html/img/img_magazine03.jpg" border="0" alt=""></a></div>
                 </div>
             </div>
         </div>
@@ -29,7 +32,7 @@
             <!--contents_info-->
             <div class="board_area">
                 <div id="" class="gallery_title">헷세드 메거진 <b>에이치</b></div>
-                <div id="" class="" style="width:100%; height:50px; background-color:#faf9f8;"></div>
+                <div id="" class="" style="width:1080px; height:50px; background-color:#faf9f8;"></div>
                 <!-- H_magargin list -->
                 <div id="magajine"></div>
 
@@ -42,9 +45,7 @@
             <!-- Pagination -->
             <div class="bbs_page paging"></div>
             <!-- Pagination // -->
-            <div id="" class="" style="width:1080px; height:10px; text-align:right; position:absolute; bottom:14px;">
-                magazine.H
-            </div>
+            <div id="" class="" style="width:1080px; height:10px; text-align:right; bottom:14px;">magazine.H</div>
 
             <!--//contents_info-->
         </div>
@@ -61,7 +62,7 @@
         function get_list(page){
             var html_list ='';
 
-            $(".gallery_out").empty();
+            $("#magajine").empty();
             $.ajax({
 
                 type : "POST",
@@ -126,7 +127,7 @@
                     if(data.lock == 'Y'){
 
                     }else{
-                        location.href = '/gallery/customer_view?b_index='+id;
+                        location.href = '/gallery/hmagajine_view?b_index='+id+'&page='+$("#page").val()+'&search_type='+$("#search_type option:selected").val()+'&search_value='+$("#search_value").val();
                     }
 
                 },

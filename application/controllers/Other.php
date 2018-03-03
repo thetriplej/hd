@@ -60,12 +60,5 @@ class Other extends Common {
             $this->load->view('etc/privacy.phtml');
         }
     }
-    public function faq()
-    {
-        if($this->lang_type == 'en') {
-            $this->load->view('etc/e_faq.phtml');
-        }else{
-            $this->load->view('etc/faq.phtml');
-        }
-    }
+
 }

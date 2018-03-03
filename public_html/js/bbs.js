@@ -158,7 +158,7 @@ function pagination(current_page, total_last_page, per_page, total, page_num){
 
 	}
 
-	html += (next_block <= total_page) ? '<input type="button" class="btn_next" name="next" onclick="get_list('+next_block_page+');" alt="다음 페이지 블럭" style="vertical-align: middle">' : '';
+	html += (next_block <= total_block) ? '<input type="button" class="btn_next" name="next" onclick="get_list('+next_block_page+');" alt="다음 페이지 블럭" style="vertical-align: middle">' : '<input type="button" class="btn_next" name="next" alt="다음 페이지 블럭" style="vertical-align: middle">';
 	//html += (next_block <= total_block) ? "<a href='javascript:getPage("+next_block_page+");' class='next'></a>" : "";
 	//html += (next_page <= total_page) ? '<input type="button" class="btn_next" name="next" onclick="get_list("+total_last_page+");" alt="다음 페이지 블럭">' : '';
 
