@@ -62,10 +62,10 @@ class Board extends Common {
         /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
         //pagination(result.current_page, result.last_page, result.per_page, result.total, 10);
         $page_navi = array(
-            'current_page' => $result['page'],
-            'last_page' => $result['tot_page'],
-            'per_page' => $result['list_rows'],
-            'total' => $result['total_rows'],
+            'current_page'  => $result['page'],
+            'last_page'     => $result['tot_page'],
+            'per_page'      => $result['list_rows'],
+            'total'         => $result['total_rows'],
         );
 
         $send_data = array (
@@ -106,10 +106,10 @@ class Board extends Common {
         /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
         //pagination(result.current_page, result.last_page, result.per_page, result.total, 10);
         $page_navi = array(
-            'current_page' => $result['page'],
-            'last_page' => $result['tot_page'],
-            'per_page' => $result['list_rows'],
-            'total' => $result['total_rows'],
+            'current_page'  => $result['page'],
+            'last_page'     => $result['tot_page'],
+            'per_page'      => $result['list_rows'],
+            'total'         => $result['total_rows'],
         );
 
         $send_data = array (

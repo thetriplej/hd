@@ -232,7 +232,7 @@
                 if(data.lock == 'Y'){
 
                 }else{
-                    location.href = '/gallery/customer_view?b_index='+id;
+                    location.href = '/gallery/customer_view?b_index='+id+'&page='+$("#page").val()+'&search_type='+$("#search_type option:selected").val()+'&search_value='+$("#search_value").val();
                 }
 
             },

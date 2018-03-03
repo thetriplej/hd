@@ -5,6 +5,7 @@
 <?php echo form_open(); ?>
 <input type="hidden" id="page" value="<?php echo($page);?>">
 <input type="hidden" id="b_code" value="<?php echo($b_code);?>">
+<input type="hidden" id="b_index" name="b_index">
 </form>
 <div id="wrap_middle" class="" style="margin-top:140px;">
     <div id="" class="box_full">
@@ -35,6 +36,11 @@
                     <!-- Pagination -->
                     <div class="bbs_page paging"></div>
                     <!-- Pagination // -->
+                    <div id="" class="gallery_write">
+                        <div class="bt_writebot">
+                            <a href="javascript:write();"><!-- <img src="./images/bg/btn_write_new.png" width="66" height="66" border="0" alt="글쓰기"> --><img src="/public_html/img/bt_qanda.png" border="0" alt="글쓰기"></a>
+                        </div>
+                    </div>
                     <!-- BBS_find //-->
                     <div class="find_div"> <!-- style="height:22px;text-align:center;"-->
                         <select name="search_type" id="search_type" class="find_sel">
@@ -58,6 +64,10 @@
         get_list(1);
     }else{
         get_list($("#page").val());
+    }
+
+    function write(){
+        location.href = '/notice/qna_write/?page='+$("#page").val()+'&b_code='+$("#b_code").val()+'&search_type='+$("#search_type option:selected").val()+'&search_value'+$("#search_value").val()
     }
 
     function get_list(page){
@@ -126,6 +136,7 @@
     }
 
     function page_view(id){
+        $("#b_index").val(id);
         $.ajax({
             type : "POST",
             url : "/ajax/board/get_permission_check",
@@ -137,9 +148,9 @@
             success : function(result) {
                 var data   = $.parseJSON(result);
                 if(data.lock == 'Y'){
-
+                    send('/notice/qna_view?b_index='+id+'&page='+$("#page").val()+'&search_type='+$("#search_type option:selected").val()+'&search_value='+$("#search_value").val(),'view');
                 }else{
-                    location.href = '/notice/notice_view?b_index='+id+'&page='+$("#page").val()+'&search_type='+$("#search_type option:selected").val()+'&search_value='+$("#search_value").val();
+                    location.href = '/notice/qna_view?b_index='+id+'&page='+$("#page").val()+'&search_type='+$("#search_type option:selected").val()+'&search_value='+$("#search_value").val();
 
                 }
 
@@ -148,7 +159,6 @@
                 alert("다시 시도해 주세요.");
             }
         });
-
     }
 
 </script>

@@ -20,6 +20,8 @@ class Common extends CI_Controller
         //var_dump($this->agent->referrer());
 
         $this->lang_type = get_cookie('tj_lang_type');
+        $this->temp_uri = explode('&', $_SERVER['REQUEST_URI']);
+        $this->view_uri = $_SERVER["HTTP_HOST"].$this->temp_uri[0];
 
     }
 

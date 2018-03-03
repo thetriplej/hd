@@ -41,7 +41,7 @@ class Board_model extends CI_Model {
 
         $where="";
         if(!empty($search_value)){ //게시물 검색어
-            $like_word = " and ".$search_type." like '%".$search_value."%' ";
+            $like_word = " and ".$search_type." REGEXP '".$search_value."' ";
         }else{
             $like_word = "";
         }
@@ -71,7 +71,7 @@ class Board_model extends CI_Model {
 
 
         if(!empty($search_value)){ //게시물 검색어
-            $like_word = " and ".$search_type." like '%".$search_value."%' ";
+            $like_word = " and ".$search_type." REGEXP '".$search_value."' ";
 
         }else{
             $like_word = "";
@@ -117,6 +117,7 @@ class Board_model extends CI_Model {
         $query = "select b_title,b_board_type,b_code,b_index,b_hit,b_content,b_email,
                     DATE_FORMAT(b_regdate,'%Y-%m-%d') b_regdate,b_writer,b_board_type,(select count(*) from board tmp where tmp.b_parentindex = b_index) as reply
                   from board where ".$where;
+
         $result =  $this->db->query($query,array($id))->row();
         return $result;
     }

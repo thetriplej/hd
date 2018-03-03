@@ -58,7 +58,6 @@ function CheckPW(){
 		$("#pw").focus();
 		return false;
 	}
-
 	$.ajax({
 		type: "POST",
 		url: "/ajax/board/check_pass",
@@ -75,28 +74,30 @@ function CheckPW(){
 			} else if (result == "success") {
                 if($("#pass_mode").val() == 'edit') {
                     location.href = $("#pass_uri").val();
-                }else{
-                    $.ajax({
-                        type: "POST",
-                        url: "/ajax/board/set_del",
-                        dataType: 'json',
-                        data: {
-                            csrf_token: $('input[name=csrf_token]').val(),
-                            b_index: $('#b_index').val(),
-                            pass: $('#pw').val()
-                        },
-                        success: function (result) {
-                            if (result == "fail") {
-                                alert('관리자에게 문의해주세요.(삭제불가)');
-                                return;
-                            }else if(result == "success") {
-                                alert('삭제되었습니다.');
-                                location.href = $("#pass_uri").val();
-                            }
+                }else if($("#pass_mode").val() == 'view'){
+					location.href = $("#pass_uri").val();
+				}else{
+					$.ajax({
+						type: "POST",
+						url: "/ajax/board/set_del",
+						dataType: 'json',
+						data: {
+							csrf_token: $('input[name=csrf_token]').val(),
+							b_index: $('#b_index').val(),
+							pass: $('#pw').val()
+						},
+						success: function (result) {
+							if (result == "fail") {
+								alert('관리자에게 문의해주세요.(삭제불가)');
+								return;
+							}else if(result == "success") {
+								alert('삭제되었습니다.');
+								location.href = $("#pass_uri").val();
+							}
 
-                        }
-                    });
-                }
+						}
+					});
+				}
 			}
 		}
 	});

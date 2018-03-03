@@ -173,19 +173,20 @@ class Gallery extends Common {
             $reply_file_data ="";
         }
         $view_array = array(
-            'view_data'     => $view_data,
-            'image_data'    => $image_data,
-            'movie_data'    => $movie_data,
-            'file_data'     => $file_data,
-            'reply_view_data'    => $reply_view_data,
-            'reply_image_data'    => $reply_image_data,
-            'reply_movie_data'    => $reply_movie_data,
-            'reply_file_data'     => $reply_file_data,
-            'b_code'        => $b_code,
-            'search_type'   => $search_type,
-            'search_value'  => $search_value,
-            'page'          => $page,
-            'b_index'       => $b_index,
+            'view_data'             => $view_data,
+            'image_data'            => $image_data,
+            'movie_data'            => $movie_data,
+            'file_data'             => $file_data,
+            'reply_view_data'       => $reply_view_data,
+            'reply_image_data'      => $reply_image_data,
+            'reply_movie_data'      => $reply_movie_data,
+            'reply_file_data'       => $reply_file_data,
+            'b_code'                => $b_code,
+            'search_type'           => $search_type,
+            'search_value'          => $search_value,
+            'page'                  => $page,
+            'b_index'               => $b_index,
+            'view_uri'              => $this->view_uri
         );
 
         if($this->lang_type == 'en') {
@@ -356,10 +357,10 @@ class Gallery extends Common {
         $search_value = $this->input->get('search_value');
 
         $send_data = array(
-            'page' => $page,
-            'b_code' => $b_code,
-            'search_type' => $search_type,
-            'search_value' => $search_value,
+            'page'          => $page,
+            'b_code'        => $b_code,
+            'search_type'   => $search_type,
+            'search_value'  => $search_value,
         );
 
         if($this->lang_type == 'en') {
@@ -446,19 +447,20 @@ class Gallery extends Common {
             $reply_file_data ="";
         }
         $view_array = array(
-            'view_data'     => $view_data,
-            'image_data'    => $image_data,
-            'movie_data'    => $movie_data,
-            'file_data'     => $file_data,
-            'reply_view_data'    => $reply_view_data,
-            'reply_image_data'    => $reply_image_data,
-            'reply_movie_data'    => $reply_movie_data,
-            'reply_file_data'     => $reply_file_data,
-            'b_code'        => $b_code,
-            'search_type'   => $search_type,
-            'search_value'  => $search_value,
-            'page'          => $page,
-            'b_index'       => $b_index,
+            'view_data'             => $view_data,
+            'image_data'            => $image_data,
+            'movie_data'            => $movie_data,
+            'file_data'             => $file_data,
+            'reply_view_data'       => $reply_view_data,
+            'reply_image_data'      => $reply_image_data,
+            'reply_movie_data'      => $reply_movie_data,
+            'reply_file_data'       => $reply_file_data,
+            'b_code'                => $b_code,
+            'search_type'           => $search_type,
+            'search_value'          => $search_value,
+            'page'                  => $page,
+            'b_index'               => $b_index,
+            'view_uri'              => $this->view_uri
         );
 
         if($this->lang_type == 'en') {
