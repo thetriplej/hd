@@ -274,8 +274,8 @@ class Board_model extends CI_Model {
     }
 
 
-    private function set_img(){
-        $query = "select f_Index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date from boardfile ";
+    public function movie_img(){
+        $query = "select f_Index,b_index,f_name ,f_rename,file_path,reg_date from boardfile ";
 
         return $this->db->query($query)->result();
     }

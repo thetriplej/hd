@@ -344,8 +344,34 @@ class Gallery extends Common {
 
 
 
-    public function set_img(){
-        $result = $this->board_model->set_img();
+    public function set_img2(){   //파일이동
+        $result = $this->board_model->movie_img();
+        $old_path2 = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload/';
+        $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
+        $path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload';
+        foreach ($result as $key=>$value){
+            $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html'.$value->file_path;
+            if(!is_dir($upload_dir)){
+                mkdir($upload_dir, 0777);
+            }
+            if(file_exists($old_path.$value->f_name)) {
+                if (rename($old_path . $value->f_name, $path.$value->file_path.$value->f_name)) {
+
+                } else {
+                    var_dump($old_path . $value->f_name);
+                    var_dump($path.$value->file_path . $value->f_name);
+                }
+                $temp_fname = explode('.', $value->f_name);
+                $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
+
+                if (rename($old_path.$thum_file, $path.$value->file_path.$thum_file)) {
+
+                } else {
+                    $file_result = false;
+                }
+            }
+
+        }
     }
 
     public function hmagajine(){
