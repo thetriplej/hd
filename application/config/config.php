@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = '1.255.54.22';
-$config['base_url'] = 'http://'.$_SERVER['REMOTE_ADDR'];
+$config['base_url'] = 'http://'.$_SERVER['SERVER_ADDR'];
 
 /*
 |--------------------------------------------------------------------------
