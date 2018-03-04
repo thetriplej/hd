@@ -42,8 +42,8 @@
                         </div><!-- imglist end -->
                     </div>
                     <div id="" class="gallery_copyright">
-                        헷세드는 지난 8년간 상업적인 광고없이 고객님의  감동으로 성장하였습니다.<br>
-                        가정의 멋진 아름다움과 행복을 후기로 공유해주세요!
+                        .HASSED has grown only with the impression of customers without commercial advertising for the last 8 years. <br>
+                        Share your review on the wonderful beauty and happiness of your family!
                     </div>
                     <!-- 고객후기 list -->
                     <div id="" class="gallery_title">
@@ -52,7 +52,8 @@
                     <!-- 글쓰기 버튼 // -->
                     <div id="" class="gallery_write">
                         <div class="bt_write">
-                            <a href="javascript:write();"><!-- <img src="./images/bg/btn_write_new.png" width="66" height="66" border="0" alt="글쓰기"> --><img src="/public_html/img/bt_review.png" border="0" alt="글쓰기"></a>
+                            <a href="javascript:write();"><span style="font-size:18px; color:#f05430; font-weight:bold;">+ write</span></a>
+
                         </div>
                     </div>
                     <div class="gallery_out"></div>
@@ -65,14 +66,14 @@
                     <div class="bbs_page paging"></div>
                     <!-- Pagination // -->
                     <div id="" class="gallery_write" style="height:0px;">
-                        <div class="bt_writebot"><a href="javascript:write();"><img src="/public_html/img/bt_review.png" border="0" alt="글쓰기"></a></div>
+                        <div class="bt_writebot"><a href="javascript:write();"><span style="font-size:18px; color:#f05430; font-weight:bold;">+ write</span></a></div>
                     </div>
                     <!-- BBS_find //-->
                     <div class="find_div"> <!-- style="height:22px;text-align:center;"-->
                         <select name="search_type" id="search_type" class="find_sel">
-                            <option value="b_title" <?php if($search_type == "b_title") echo "selected";?>>제목</option>
-                            <option value="b_content" <?php if($search_type == "b_content") echo "selected";?>>내용</option>
-                            <option value="b_writer" <?php if($search_type == "b_writer") echo "selected";?>>글쓴이</option>
+                            <option value="b_title" <?php if($search_type == "b_title") echo "selected";?>>Title</option>
+                            <option value="b_content" <?php if($search_type == "b_content") echo "selected";?>>Contents</option>
+                            <option value="b_writer" <?php if($search_type == "b_writer") echo "selected";?>>writer</option>
                         </select>
                         <input type="text" name="search_value" id="search_value" class="input_find" style="width:90px;" value="<?php echo $search_value;?>">
                         <input type="button" class="btn_find" title="찾아보기" onclick="get_list(1);" style="vertical-align: bottom">
@@ -201,14 +202,14 @@
                     }
                 });
                 if(list_cnt == 0 && data.page_navi.total == 0){
-                    html_list = '<div style="padding:15px;padding-left:45%;"><b>검색된 게시물이 없습니다.</b></div>'
+                    html_list = '<div style="padding:15px;padding-left:45%;"><b>No posts found.</b></div>'
                 }
 
                 $(".gallery_out").append(html_list);
 
                 /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
                 pagination(data.page_navi.current_page, data.page_navi.last_page, data.page_navi.per_page, data.page_navi.total, 10);
-                var msg ="Total " + data.page_navi.total + " 건 " +data.page_navi.current_page+ " 페이지";
+                var msg ="Total " + data.page_navi.total + " / " +data.page_navi.current_page+ " page";
                 $("#total_page").text(msg);
                 $("#page").val(page);
             },

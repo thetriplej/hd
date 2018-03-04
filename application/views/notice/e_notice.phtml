@@ -19,11 +19,11 @@
                 <div class="board_area">
                     <!-- 공지사항  -->
                     <ul class="list_default head">
-                        <li class="no">번호</li>
-                        <li class="top">제목</li>
-                        <li class="name">작성자</li>
-                        <li class="count">조회</li>
-                        <li class="date">작성일</li>
+                        <li class="no">no</li>
+                        <li class="top">title</li>
+                        <li class="name">writer</li>
+                        <li class="count">view</li>
+                        <li class="date">date</li>
                     </ul>
                     <div id="notice_list"></div>
                     <br>
@@ -38,9 +38,9 @@
                     <!-- BBS_find //-->
                     <div class="find_div"> <!-- style="height:22px;text-align:center;"-->
                         <select name="search_type" id="search_type" class="find_sel">
-                            <option value="b_title" <?php if($search_type == "b_title") echo "selected";?>>제목</option>
-                            <option value="b_content" <?php if($search_type == "b_content") echo "selected";?>>내용</option>
-                            <option value="b_writer" <?php if($search_type == "b_writer") echo "selected";?>>글쓴이</option>
+                            <option value="b_title" <?php if($search_type == "b_title") echo "selected";?>>Title</option>
+                            <option value="b_content" <?php if($search_type == "b_content") echo "selected";?>>Contents</option>
+                            <option value="b_writer" <?php if($search_type == "b_writer") echo "selected";?>>writer</option>
                         </select>
                         <input type="text" name="search_value" id="search_value" class="input_find" style="width:90px;" value="<?php echo $search_value;?>">
                         <input type="button" class="btn_find" title="찾아보기" onclick="get_list(1);" style="vertical-align: bottom">
@@ -105,7 +105,7 @@
 
                 /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
                 pagination(data.page_navi.current_page, data.page_navi.last_page, data.page_navi.per_page, data.page_navi.total, 10);
-                var msg ="Total " + data.page_navi.total + " 건 " +data.page_navi.current_page+ " 페이지";
+                var msg ="Total " + data.page_navi.total + " / " +data.page_navi.current_page+ " page";
                 $("#total_page").text(msg);
                 $("#page").val(page);
             },

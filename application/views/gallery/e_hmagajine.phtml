@@ -31,7 +31,7 @@
     <div class="box_full_in_center" style="margin-top:100px; postion:relative;">
         <!--contents_info-->
         <div class="board_area">
-            <div id="" class="gallery_title">헷세드 메거진 <b>에이치</b></div>
+            <div id="" class="gallery_title">.HASSED magazine <b>.H</b></div>
             <div id="" class="" style="width:1080px; height:50px; background-color:#faf9f8;"></div>
             <!-- H_magargin list -->
             <div id="magajine"></div>
@@ -103,7 +103,7 @@
 
                 /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
                 pagination(data.page_navi.current_page, data.page_navi.last_page, data.page_navi.per_page, data.page_navi.total, 10);
-                var msg ="Total " + data.page_navi.total + " 건 " +data.page_navi.current_page+ " 페이지";
+                var msg ="Total " + data.page_navi.total + " / " +data.page_navi.current_page+ " page";
                 $("#total_page").text(msg);
                 $("#page").val(page);
             },
