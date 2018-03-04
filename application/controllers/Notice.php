@@ -23,7 +23,7 @@ class Notice extends Common {
 
     public function index()
     {
-        $this->customer();
+        $this->notice();
     }
 
     public function notice()
