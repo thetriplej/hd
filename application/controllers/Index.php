@@ -48,8 +48,12 @@ class Index extends CI_Controller {
     public function index()
     {
         //echo phpinfo();
+        if($this->lang_type == 'en') {
+            $this->load->view('e_index.phtml');
+        }else{
+            $this->load->view('index.phtml');
+        }
 
-        $this->load->view('index.phtml');
 
     }
 }
