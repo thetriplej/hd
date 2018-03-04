@@ -15,7 +15,7 @@
         <div id="" style="width:1080px;height:879px">
             <div class="wrap_board">
                 <div class="board_area">
-                    <?php echo form_open_multipart($_SERVER["HTTP_HOST"].'/notice/qna_store/',array('name'=>"tx_editor_form", 'id'=>"tx_editor_form")); ?>
+                    <?php echo form_open_multipart('/notice/qna_store/',array('name'=>"tx_editor_form", 'id'=>"tx_editor_form")); ?>
                     <input type="hidden" id="b_code" name="b_code" value="<?php echo($b_code);?>" />
                     <input type="hidden" id="page" name="page" value="<?php echo($page);?>" />
                     <input type="hidden" name="proc_type" id="proc_type" value="NW">
