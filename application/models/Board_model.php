@@ -88,7 +88,7 @@ class Board_model extends CI_Model {
     }
 
     function get_last_group_no(){
-        $query = "select MAX(b_group)+1 AS max_group from Board";
+        $query = "select MAX(b_group)+1 AS max_group from board";
         return $this->db->query($query)->row();
     }
 
@@ -142,7 +142,7 @@ class Board_model extends CI_Model {
     }
 
    function get_file_check($id){    // 게시글에 첨부된 파일 총갯수
-       $query = "select f_Index
+       $query = "select f_index
                   from boardfile where b_index =? ";
        $result =  $this->db->query($query,array($id))->num_rows();
        return $result;
@@ -215,7 +215,7 @@ class Board_model extends CI_Model {
                         'f_type' => $temp_image[2],
                         'f_width' => $temp_image[3],
                         'f_size' => $temp_image[4],
-                        'f_reName' => $temp_image[0],
+                        'f_rename' => $temp_image[0],
                         'list_img' => $list_img,
                         'file_path' => $params['file_path'],
                         'reg_date' => 'now()'
