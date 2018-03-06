@@ -2,23 +2,45 @@
 <HEAD>
     <title>Management Program</title>
     <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
-    <script language="javascript">
-        <!--
-        function form_submit(){
-            objForm = document.form1;
-            if(objForm.id.value == ""){
-                alert("아이디를 입력해 주세요.");
-                objForm.id.focus();
-                return false;
-            }
-            if(objForm.password.value == ""){
-                alert("비밀번호를 입력해 주세요.");
-                objForm.password.focus();
-                return false;
-            }
-            objForm.submit();
+    <script type="text/javascript"  src="<?php echo JS_DIR; ?>/jquery-1.11.1.js"></script>
+    <script>
+
+    function form_submit(){
+        if($("#user_id").val() == ""){
+            alert("아이디를 입력해 주세요.");
+            $("#user_id").focus();
+            return false;
         }
-        -->
+        if($("#password").val() == ""){
+            alert("비밀번호를 입력해 주세요.");
+            $("#password").focus();
+            return false;
+        }
+        $.ajax({
+            type : "POST",
+            url : "/ajax/member/login",
+            dataType: 'json',
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+                id : $('#user_id').val() ,
+                password :$('#password').val()
+            },
+            success: function(result) {
+                if(result == "1"){
+                    alert('ID를 확인해주세요.');
+                    $("#password").focus();
+                    return;
+                }else if(result == "2"){
+                    alert('비밀번호가 틀렸습니다.');
+                    $("#password").focus();
+                    return;
+                }else if(result == "0"){
+                     location.href = '/admin/notice_list';
+                }
+
+            }
+        });
+    }
     </script>
 </HEAD>
 
@@ -26,26 +48,26 @@
 <div style="width:100%;height:100%;overflow:auto;">
     <div style="position:absolute;top:50%;left:50%;margin:-230px 0 0 -300px;padding:30px 100px;width:400px;height:400px;background:#eee;">
         <div style="text-align:center;">
-            <img src="/public_html/img/main_logo.png">
+            <img src="/public_html/images/main_logo.png">
         </div>
         <p style="text-align:center;font-weight:bold;color:#666;">
-            <img src="/public_html/img/dec_login.png" style="vertical-align:middle;"> HASSED 관리자 페이지 입니다.
+            <img src="/public_html/images/dec_login.png" style="vertical-align:middle;"> HASSED 관리자 페이지 입니다.
         </p>
         <div style="width:314px;padding:20px 50px;border:1px solid #ddd;background:#fff;">
             <p style="margin:20px auto;font-weight:bold;color:#666;">
                 관리자 아이디와 비밀번호를 입력하세요.
             </p>
-            <form name="form1" method="post" action="login.asp">
+            <?php echo form_open(); ?>
                 <div style="overflow:hidden;">
                     <label style="float:left;padding-top:5px;margin-right:30px;color:#999;font-weight:bold;">아이디</label>
-                    <input name="id" type="text" size="16" maxlength="20" tabindex="1" style="float:left;width:180px;padding:5px 10px;background:#fff;border:1px solid #ddd;">
+                    <input id="user_id" type="text" size="16" maxlength="20" tabindex="1" style="float:left;width:180px;padding:5px 10px;background:#fff;border:1px solid #ddd;">
                 </div>
                 <div style="margin:10px 0;overflow:hidden;">
                     <label style="float:left;padding-top:5px;margin-right:14px;color:#999;font-weight:bold;">비밀번호</label>
-                    <input name="password" type="password" size="20" maxlength="20" onKeyDown="javascript:if(event.keyCode==13){form_submit(); return false;}" tabindex="2" style="float:left;width:180px;padding:5px 10px;background:#fff;border:1px solid #ddd;">
+                    <input id="password" type="password" size="20" maxlength="20" onKeyDown="javascript:if(event.keyCode==13){form_submit(); return false;}" tabindex="2" style="float:left;width:180px;padding:5px 10px;background:#fff;border:1px solid #ddd;">
                 </div>
                 <div style="margin:20px 0;">
-                    <input type="button" value="로그인" onClick="return form_submit();" tabindex=3 style="width:284px;height:50px;line-height:50px;text-align:center;border:none;background:#1598ab;color:#fff;font-weight:bold;">
+                    <input type="button" value="로그인" onClick="form_submit();" tabindex=3 style="width:284px;height:50px;line-height:50px;text-align:center;border:none;background:#1598ab;color:#fff;font-weight:bold;">
                 </div>
             </form>
         </div>

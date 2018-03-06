@@ -39,14 +39,18 @@ class Board_model extends CI_Model {
         $start_row = (($page-1)*$list_rows);
         $end_row = $page*$list_rows;
 
-        $where="";
+        if(!empty($params['b_special']) && ($params['b_special']) == '1'){
+            $where = " and board.b_special > 0 ";
+        }else {
+            $where = "";
+        }
         if(!empty($search_value)){ //게시물 검색어
             $like_word = " and ".$search_type." REGEXP '".$search_value."' ";
         }else{
             $like_word = "";
         }
 
-        $query = "SELECT board.b_title,board.b_board_type,board.b_code,board.b_index,board.b_hit,board.b_locked,
+        $query = "SELECT board.b_title,board.b_board_type,board.b_code,board.b_index,board.b_hit,board.b_locked,board.b_special,board.b_depth,
                     DATE_FORMAT(board.b_regdate,'%Y-%m-%d') b_regdate,board.b_writer,board.b_board_type,tmp_boardfile.f_name,tmp_boardfile.f_rename,tmp_boardfile.file_path,
                     tmp_boardfile.list_img,tmp_boardfile.f_index,(select count(*) from board tmp where tmp.b_parentindex = board.b_index) as reply
                     FROM board as board 
@@ -54,8 +58,9 @@ class Board_model extends CI_Model {
                     where 
                       board.b_code = ? AND
                       board.b_parentindex = 0 and
-                      board.b_sequence =1 
-                      ".$like_word."
+                      board.b_sequence =1
+                      ".$where." 
+                      ".$like_word."                      
                     ORDER BY board.b_index desc limit ".$start_row.",".$list_rows;
 
         return $this->db->query($query,array($board_type))->result();
@@ -67,7 +72,11 @@ class Board_model extends CI_Model {
         $board_type = $params['board_type'];
         $search_type = $params['search_type'];
         $search_value	= $params['search_value'];
-        $where="";
+        if(!empty($params['b_special']) && ($params['b_special']) == '1'){
+            $where = " and b_special > 0 ";
+        }else {
+            $where = "";
+        }
 
 
         if(!empty($search_value)){ //게시물 검색어
@@ -77,7 +86,7 @@ class Board_model extends CI_Model {
             $like_word = "";
         }
         if($board_type == "CEPILOGUE0"){
-            $where = " and B_Sequence = '1' and B_Depth = '0'";
+            $where = $where." and b_sequence = '1' and b_depth = '0'";
         }
 
         $main_query ="select b_index from ".$table_name. " where  b_code = '".$board_type."' ".$where.$like_word;

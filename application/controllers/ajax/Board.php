@@ -45,6 +45,9 @@ class Board extends Common {
             'page_no'		=> 10,
 
         );
+        if(!empty($post['mode'])){
+            $p_data['b_special'] = $post['b_special'];
+        }
         $result = $this->page_navi($p_data);
 
         $list_data = array(
@@ -56,7 +59,9 @@ class Board extends Common {
             'search_value'  => $post['search_value'],
             'board_type'    => 'QANDA0',
         );
-
+        if(!empty($post['mode'])){
+            $list_data['b_special'] = $post['b_special'];
+        }
         $list =  $this->board_model->get_gallery_list($list_data);
 
         /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
@@ -89,6 +94,10 @@ class Board extends Common {
             'page_no'		=> 10,
 
         );
+        if(!empty($post['mode'])){
+            $p_data['b_special'] = $post['b_special'];
+        }
+
         $result = $this->page_navi($p_data);
 
         $list_data = array(
@@ -100,7 +109,9 @@ class Board extends Common {
             'search_value'  => $post['search_value'],
             'board_type'    => 'FREEBOARD0',
         );
-
+        if(!empty($post['mode'])){
+            $list_data['b_special'] = $post['b_special'];
+        }
         $list =  $this->board_model->get_gallery_list($list_data);
 
         /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
@@ -133,6 +144,10 @@ class Board extends Common {
             'page_no'		=> 10,
 
         );
+        if(!empty($post['mode'])){
+            $p_data['b_special'] = $post['b_special'];
+        }
+
         $result = $this->page_navi($p_data);
 
         $list_data = array(
@@ -145,6 +160,9 @@ class Board extends Common {
             'board_type'    => 'CEPILOGUE0',
         );
 
+        if(!empty($post['mode'])){
+            $list_data['b_special'] = $post['b_special'];
+        }
         $list =  $this->board_model->get_gallery_list($list_data);
 
 
@@ -203,6 +221,9 @@ class Board extends Common {
             'page_no'		=> 10,
 
         );
+        if(!empty($post['mode'])){
+            $p_data['b_special'] = $post['b_special'];
+        }
         $result = $this->page_navi($p_data);
 
         $list_data = array(
@@ -214,7 +235,9 @@ class Board extends Common {
             'search_value'  => $post['search_value'],
             'board_type'    => 'SEPILOGUE0',
         );
-
+        if(!empty($post['mode'])){
+            $list_data['b_special'] = $post['b_special'];
+        }
         $list =  $this->board_model->get_gallery_list($list_data);
 
 
@@ -265,7 +288,9 @@ class Board extends Common {
             'search_type'	=> $search_type,
             'search_value'   => $search_value,
         );
-
+        if(!empty($params['b_special'])){
+            $data1['b_special'] = $params['b_special'];
+        }
 
         $total_rows = $this->board_model->get_list_tot($data1);
         $page_start = ($page-1)*$list_rows;

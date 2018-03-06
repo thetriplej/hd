@@ -1,0 +1,96 @@
+
+<!--
+
+body		{color:#333333 ;font :9pt Gulim,굴림,Helvetica,Arial,Verdana;}
+
+A:active   {color:#333333 ; text-decoration:none; }
+A:link	{color:#333333 ; text-decoration:none; }
+A:visited	{color:#333333 ; text-decoration:none; }
+A:hover	{color:#1598ab ; text-decoration:none; font-weight:bold;}
+
+A.tn:active     {color:#333333 ; text-decoration:none;}
+A.tn:link	     {color:#333333 ; text-decoration:none;}
+A.tn:visited	{color:#333333 ; text-decoration:none;}
+A.tn:hover		{color:#1598ab ; text-decoration:none; font-weight:bold;}
+
+A.sn:active    	{color:#FFFFFF ; text-decoration:none;}
+A.sn:link	{color:#FFFFFF ; text-decoration:none;}
+A.sn:visited	{color:#FFFFFF ; text-decoration:none;}
+A.sn:hover	{color:#1598ab ; text-decoration:none;}
+
+A.logout:active   {color:#333333 ; text-decoration:none;}
+A.logout:link	{color:#333333 ; text-decoration:none;}
+A.logout:visited	{color:#333333 ; text-decoration:none;}
+A.logout:hover	{color:#1598ab ; text-decoration:none;}
+
+A.cal:active   	{color:#666666 ; text-decoration:none; font :8pt Gulim, 굴림,Helvetica,Arial,Verdana; line-height:15pt; }
+A.cal:link	{color:#666666 ; text-decoration:none; font :8pt Gulim, 굴림,Helvetica,Arial,Verdana; line-height:15pt; }
+A.cal:visited	{color:#666666 ; text-decoration:none; font :8pt Gulim, 굴림,Helvetica,Arial,Verdana; line-height:15pt; }
+A.cal:hover	{color:#000000 ; text-decoration:underline; font :8pt Gulim, 굴림,Helvetica,Arial,Verdana; line-height:15pt; }
+
+
+TD		{color:#333333 ; font :9pt Gulim, 굴림,Helvetica,Arial,Verdana;}
+.table	{color:#666666 ; font-weight:bold;}
+.fn	{color:#666666;  font-size:8pt; font-family:Verdana, Helvetica, Arial;}
+
+span.sntlt	{color:#333333 ; font :10pt Gulim, 굴림,Helvetica,Arial,Verdana; font-weight:bold;}
+span.cntlt	{color:#FFFFFF ; font :14pt Gulim, 굴림,Helvetica,Arial,Verdana; font-weight:bold;}
+
+/*    input     {background-color:#FFFFFF; height:19; color: #333333; font :9pt Gulim,굴림,Helvetica,Arial,Verdana; line-height:9pt; }*/
+
+input.radio         {background-color:#161612; border:0; height:19; width:19;}
+input.check	{background-color:#FFFFFF; border:0; height:19; width:19;}
+
+
+
+textarea	{background-color:#FFFFFF; color: #333333; font :9pt Gulim,굴림,Helvetica,Arial,Verdana; line-height:12pt; }
+select		{font :9pt Gulim,굴림,Helvetica,Arial,Verdana; height:19; color:#333333; }
+.select_menu		{font :9pt Gulim,굴림,Helvetica,Arial,Verdana; height:250; width:80%;color:#333333; }
+
+-->
+
+
+  input      {background-color:#FFFFFF; height:19; BORDER-LEFT: #dfdfdf 1px solid; BORDER-RIGHT: #dfdfdf 1px solid; BORDER-TOP: #dfdfdf 1px solid; BORDER-BOTTOM: #dfdfdf 1px solid; LINE-HEIGHT: 9pt; color: #333333; font :9pt Gulim,굴림,Helvetica,Arial,Verdana;}
+
+
+.img {
+    border:0;
+    vertical-align:middle;
+    margin-bottom:3px;
+}
+
+.imghand {
+    border:0;
+    cursor:hand;
+    vertical-align:middle;
+    margin-bottom:3px;
+}
+
+.imghandinput {
+    border:0;
+    cursor:hand;
+    vertical-align:middle;
+    margin-bottom:3px;
+}
+
+.hand {
+    cursor:hand;
+}
+
+.bbs_content {min-height:450px;padding:70px 70px;margin-bottom:10px;border:1px solid #c3c3c3;overflow-y:auto;}
+
+p,span {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    list-style:none;
+    text-align: left;
+}
+
+.find_sel {width:60px;height:22px; border:0px solid #707070; background:#eee;font-family: "Dotum", 'Gulim';color:#444; font-size:12px;vertical-align:middle;text-align:center;line-height:22px;}
+input.input_find {height:20px;padding:0 5px;border:1px solid #ccc;font-size:12px;background:#fff;vertical-align:middle;}
+input.input_txt {height:24px;padding:0 5px;border:1px solid #e0e0e0;border-left:1px solid #c3c3c3;border-top:1px solid #c3c3c3;font-size:12px;background:#eee;vertical-align:middle;}
