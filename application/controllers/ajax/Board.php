@@ -41,11 +41,12 @@ class Board extends Common {
             'search_value'  => $post['search_value'],
             'page'			=> $post['page'],
             'board_type'    => 'QANDA0',
-            'list_rows'		=> 10,
+            'list_rows'		=> 20,
             'page_no'		=> 10,
+            'mode'          => $post['mode'],
 
         );
-        if(!empty($post['mode'])){
+        if($post['mode'] == "admin"){
             $p_data['b_special'] = $post['b_special'];
         }
         $result = $this->page_navi($p_data);
@@ -58,8 +59,9 @@ class Board extends Common {
             'search_type'	=> $post['search_type'],
             'search_value'  => $post['search_value'],
             'board_type'    => 'QANDA0',
+            'mode'          => $post['mode'],
         );
-        if(!empty($post['mode'])){
+        if($post['mode'] == "admin"){
             $list_data['b_special'] = $post['b_special'];
         }
         $list =  $this->board_model->get_gallery_list($list_data);
@@ -90,11 +92,12 @@ class Board extends Common {
             'search_value'  => $post['search_value'],
             'page'			=> $post['page'],
             'board_type'    => 'FREEBOARD0',
-            'list_rows'		=> 10,
+            'list_rows'		=> 20,
             'page_no'		=> 10,
+            'mode'          => $post['mode'],
 
         );
-        if(!empty($post['mode'])){
+        if($post['mode'] == "admin"){
             $p_data['b_special'] = $post['b_special'];
         }
 
@@ -108,8 +111,9 @@ class Board extends Common {
             'search_type'	=> $post['search_type'],
             'search_value'  => $post['search_value'],
             'board_type'    => 'FREEBOARD0',
+            'mode'          => $post['mode'],
         );
-        if(!empty($post['mode'])){
+        if($post['mode'] == "admin"){
             $list_data['b_special'] = $post['b_special'];
         }
         $list =  $this->board_model->get_gallery_list($list_data);
@@ -142,9 +146,10 @@ class Board extends Common {
             'board_type'    => 'CEPILOGUE0',
             'list_rows'		=> 12,
             'page_no'		=> 10,
+            'mode'          => $post['mode'],
 
         );
-        if(!empty($post['mode'])){
+        if($post['mode'] == "admin"){
             $p_data['b_special'] = $post['b_special'];
         }
 
@@ -158,9 +163,10 @@ class Board extends Common {
             'search_type'	=> $post['search_type'],
             'search_value'  => $post['search_value'],
             'board_type'    => 'CEPILOGUE0',
+            'mode'          => $post['mode'],
         );
 
-        if(!empty($post['mode'])){
+        if($post['mode'] == "admin"){
             $list_data['b_special'] = $post['b_special'];
         }
         $list =  $this->board_model->get_gallery_list($list_data);
@@ -217,11 +223,12 @@ class Board extends Common {
             'search_value'  => $post['search_value'],
             'page'			=> $post['page'],
             'board_type'    => 'SEPILOGUE0',
-            'list_rows'		=> 12,
+            'list_rows'		=> 20,
             'page_no'		=> 10,
+            'mode'          => $post['mode'],
 
         );
-        if(!empty($post['mode'])){
+        if($post['mode'] == "admin"){
             $p_data['b_special'] = $post['b_special'];
         }
         $result = $this->page_navi($p_data);
@@ -234,8 +241,9 @@ class Board extends Common {
             'search_type'	=> $post['search_type'],
             'search_value'  => $post['search_value'],
             'board_type'    => 'SEPILOGUE0',
+            'mode'          => $post['mode'],
         );
-        if(!empty($post['mode'])){
+        if($post['mode'] == "admin"){
             $list_data['b_special'] = $post['b_special'];
         }
         $list =  $this->board_model->get_gallery_list($list_data);
@@ -287,8 +295,9 @@ class Board extends Common {
             'board_type'	=> $board_type,
             'search_type'	=> $search_type,
             'search_value'   => $search_value,
+            'mode'          => $params['mode'],
         );
-        if(!empty($params['b_special'])){
+        if($params['mode'] == "admin"){
             $data1['b_special'] = $params['b_special'];
         }
 
@@ -334,8 +343,8 @@ class Board extends Common {
         $image_data = $this->board_model->get_file($b_index,'image');
         foreach($image_data as $key => $value){
             $value->file_path = $value->file_path.$value->f_rename;
-            if(intval($value->f_width) > 600){
-                $value->f_width = 600;
+            if(intval($value->f_width) > 780){
+                $value->f_width = 780;
             }
         }
         echo json_encode($image_data);
@@ -494,11 +503,11 @@ class Board extends Common {
                     }
                     $img_rename = date("Ymd")."_".time().rand(0,100000);
                     $setPath = $upload_dir.$img_rename;
-                    $set_width_array = array(300,600);
+                    $set_width_array = array(300,780);
 
 
                     $return_thum = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,300);
-                    $return = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,600);
+                    $return = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,780);
                     (!empty($return_thum) && !empty($return))? $status = 'success' : $status = 'fail';
 
                     $img_600 = $upload_dir.$img_rename.'.'.$filename_ext;
@@ -673,14 +682,21 @@ class Board extends Common {
 
     public function set_del(){
         $post = $this->input->post(null, true);
-        $send_date = array(
-            'b_index'   =>  $post['b_index'],
-            'b_password'   =>  $post['pass'],
-        );
-        $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html';
-        $result =  $this->board_model->get_password_check($send_date);
-        if($result->cnt == '1'){
+        if($post['mode'] == "admin"){
+            $exec = '1';
+        }else{
+            $send_date = array(
+                'b_index'   =>  $post['b_index'],
+                'b_password'=>  $post['pass'],
+                'mode'      =>  $post['mode'],
+            );
+            $result =  $this->board_model->get_password_check($send_date);
+            $exec = $result->cnt;
+        }
 
+        $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html';
+
+        if($exec == '1'){
             $file_list =  $this->board_model->get_file($post['b_index'],'all');
             if(!empty($file_list)){
                 foreach ($file_list as $key => $value){
