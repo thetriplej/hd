@@ -38,6 +38,32 @@ function ElementDel(Target, Url, Params, Method){ //Target - 대상, Url - 경�
 	}
 }
 
+
+function frmDel(){
+	if (confirm("정말삭제하시겠습니까?")) {
+		$.ajax({
+			type: "POST",
+			url: "/ajax/board/set_del",
+			dataType: 'json',
+			data: {
+				csrf_token: $('input[name=csrf_token]').val(),
+				b_index: $('#b_index').val(),
+				mode: 'admin'
+			},
+			success: function (result) {
+				if (result == "fail") {
+					alert('관리자에게 문의해주세요.(삭제불가)');
+					return;
+				} else if (result == "success") {
+					alert('삭제되었습니다.');
+					location.href = $("#pass_uri").val();
+				}
+
+			}
+		});
+	}
+}
+
 function checking_file(){
 	if($('#Files').val() !=""){
 		var file = $('#Files').val();
@@ -55,6 +81,10 @@ function checking_file(){
 			return;
 		}
 	}
+}
+
+function page_view(id){
+	location.href = '/admin/bbs_view?b_index='+id+'&b_code='+$("#b_code").val()+'&page='+$("#page").val()+'&search_type='+$("#search_type option:selected").val()+'&search_value='+$("#search_value").val();
 }
 
 /* 비동기식 페이징 추가. */

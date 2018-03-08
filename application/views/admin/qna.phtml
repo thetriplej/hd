@@ -57,6 +57,7 @@
                         <input type="button" class="btn_find" value="찾아보기" onclick="get_list(1);">
                         <input type="hidden" id="page">
                         <input type="hidden" id="b_special" value="<?=$b_special?>">
+                        <input type="hidden" id="b_code" value="<?=$b_code?>">
                     </td>
                 </tr>
             </table>
@@ -152,8 +153,5 @@
         });
     }
 
-    function page_view(id){
-        location.href = '/admin/notice_view?b_index='+id+'&page='+$("#page").val()+'&search_type='+$("#search_type option:selected").val()+'&search_value='+$("#search_value").val();
-    }
 
 </script>

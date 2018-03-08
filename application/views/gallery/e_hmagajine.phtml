@@ -71,7 +71,8 @@
                 csrf_token: $('input[name=csrf_token]').val(),
                 search_type: $("#search_type option:selected").val(),
                 search_value: $("#search_value").val(),
-                page : page
+                page : page,
+                mode : 'site'
             },
             cache : false,
             success : function(result) {

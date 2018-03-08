@@ -84,7 +84,8 @@ function CheckPW(){
 						data: {
 							csrf_token: $('input[name=csrf_token]').val(),
 							b_index: $('#b_index').val(),
-							pass: $('#pw').val()
+							pass: $('#pw').val(),
+							mode : 'site'
 						},
 						success: function (result) {
 							if (result == "fail") {
@@ -113,14 +114,6 @@ function frmSend(IDX, URL){
 	}
 }
 
-function frmDel(){
-	with(document.frm01){
-		method = 'post';
-		ProcType.value = "D";
-		action = "Proc.asp";
-		submit();
-	}
-}
 
 /* 비동기식 페이징 추가. */
 /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
