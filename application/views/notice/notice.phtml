@@ -83,8 +83,13 @@
                 $.each( data.list, function( key, value ) {
 
                     var notice_class = '';
-                    if(value.b_special > 0){ notice_class = 'notice'}
-                    var num = (data.page_navi.total-(data.page_navi.current_page-1)*10)-list_cnt;
+                    var num = '';
+                    num = (data.page_navi.total-(data.page_navi.current_page-1)*10)-list_cnt;
+                    if(value.b_special > 0){
+                        notice_class = 'notice';
+                        num = "공지";
+                    }
+
 
                     html_list += '<ul class="list_default ' + notice_class +' ">';
                     html_list += '    <li class="no" style="font-weight:bold;">' + num + '</li>';

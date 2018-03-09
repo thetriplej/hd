@@ -112,6 +112,7 @@ class Board extends Common {
             'search_value'  => $post['search_value'],
             'board_type'    => 'FREEBOARD0',
             'mode'          => $post['mode'],
+
         );
         if($post['mode'] == "admin"){
             $list_data['b_special'] = $post['b_special'];
@@ -682,15 +683,15 @@ class Board extends Common {
 
     public function set_del(){
         $post = $this->input->post(null, true);
+        $send_data = array(
+            'b_index'   =>  $post['b_index'],
+            'mode'      =>  $post['mode'],
+        );
         if($post['mode'] == "admin"){
             $exec = '1';
         }else{
-            $send_date = array(
-                'b_index'   =>  $post['b_index'],
-                'b_password'=>  $post['pass'],
-                'mode'      =>  $post['mode'],
-            );
-            $result =  $this->board_model->get_password_check($send_date);
+            $send_data['b_password'] = $post['pass'];
+            $result =  $this->board_model->get_password_check($send_data);
             $exec = $result->cnt;
         }
 
@@ -708,8 +709,8 @@ class Board extends Common {
                     }
                 }
             }
-            $bbs_result =  $this->board_model->set_bbs_delete($send_date);
-            $file_result =  $this->board_model->set_file_delete($send_date);
+            $bbs_result =  $this->board_model->set_bbs_delete($send_data);
+            $file_result =  $this->board_model->set_file_delete($send_data);
 
             $send_result = 'success';
         }else{

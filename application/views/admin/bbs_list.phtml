@@ -1,0 +1,250 @@
+                        <tr>
+                            <td height="40" align="left" style="padding-right:20px;"><font color="#eeeeee">:: ADIMN + 게시판 &gt; <?=$menu_title?></font><br></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                    <tr>
+                        <td width="20">&nbsp;</td>
+                        <td width="40" height="40" background="/public_html/images/cn_bg_dot.gif" align="right">
+                        </td>
+                        <td width="129" align="center"><span class="cntlt"><?=$menu_title?></span></td>
+                        <td width="493" background="/public_html/images/cn_bg_dot.gif">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br><br>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+                    <tr valign="top">
+                        <td align="center" style="padding-left:20px; padding-right:20px;">
+                            <table width="100%" cellpadding=0 cellspacing=5 border=0 bgcolor="#999999">
+                                <form name=frm01 method=post>
+                                    <tr>
+                                        <td width="70%" height="30" align="left" bgcolor="#dddddd" class="table">
+                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                <tr>
+                                                    <td align="right" style="padding-right:20px">
+                                                        <input type="button" value="전체보기"  onClick='find_list(1,0);' id="all_view" style="display:none;">
+                                                        <input type="button" value="강조보기"  onClick='find_list(1,1);' id="strong_view">
+                                                        <input type="button" value="등록" onClick="location.href='/admin/<?=$bbs_write?>?page=<?php echo $page;?>&search_type=<?php echo $search_type;?>&search_value=<?php echo $search_value;?>&b_special=<?php echo $b_special;?>'"></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </form>
+                                <tr>
+                                    <td>
+                                        <table width="100%" cellpadding="5" cellspacing="1" border="0" bgcolor="#cccccc" id="notice_list"></table>
+                                    </td>
+                                </tr>
+                                <tr align="center" bgcolor="#dddddd">
+                                    <td colspan="3" height="30">
+                                        <!-- Pagination -->
+                                        <div class="bbs_page paging"></div>
+                                        <!-- Pagination // -->
+                                    </td>
+                                </tr>
+                                <tr align="center" bgcolor="#dddddd">
+                                    <td colspan="3">
+                                        <select name="search_type" id="search_type" class="find_sel">
+                                            <option value="b_title" <?php if($search_type == "b_title") echo "selected";?>>제목</option>
+                                            <option value="b_content" <?php if($search_type == "b_content") echo "selected";?>>내용</option>
+                                            <option value="b_writer" <?php if($search_type == "b_writer") echo "selected";?>>글쓴이</option>
+                                        </select>
+                                        <input type="text" name="search_value" id="search_value" class="input_find" style="width:90px;" value="<?php echo $search_value;?>">
+                                        <input type="button" class="btn_find" value="찾아보기" onclick="get_list(1);">
+                                        <input type="hidden" id="page">
+                                        <input type="hidden" id="b_special" value="<?=$b_special?>">
+                                        <input type="hidden" id="b_code" value="<?=$b_code?>">
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                        </td>
+                    </tr>
+                </table>
+                <br><br>
+<?php if($b_code == 'CEPILOGUE0'){?>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="20">&nbsp;</td>
+                        <td width="40" height="40" background="/public_html/images/cn_bg_dot.gif" align="right">
+                        </td>
+                        <td width="129" align="center"><span class="cntlt">Popular List</span></td>
+                        <td width="493" background="/public_html/images/cn_bg_dot.gif">
+                        </td>
+                    </tr>
+                </table>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+                    <tr valign="top">
+                        <td align="center" style="padding-left:20px; padding-right:20px;">
+                            <table width="100%" cellpadding=0 cellspacing=5 border=0 bgcolor="#999999">
+                                <tr>
+                                    <td>
+                                        <table width="100%" cellpadding="5" cellspacing="1" border="0" bgcolor="#cccccc">
+                                            <tr bgcolor="#dddddd" height="25" align=center>
+                                                <td class="table" width=8%><input type="checkbox" id="chkALL">전체선택</td>
+                                                <td class="table" width=50%>제목</td>
+                                                <td class="table" width=10%>글쓴이</td>
+                                                <td class="table" width=12%>등록일</td>
+                                                <td class="table" width=8%>조회</td>
+                                            </tr>
+                                            <?php
+                                            if(empty($porpula_list)){
+                                                ?>
+                                                <tr bgcolor="#FFFFFF" align="center"><td colspan="6">등록된 Popular가 없습니다.</td></tr>
+                                                <?php
+                                            }else {
+                                                foreach ($porpula_list as $key => $value) {
+                                                    ?>
+                                                    <tr bgcolor="#FFFFFF" align="center">
+                                                        <td><input type="checkbox" name="chk" value="<?=$value->idx?>"></td>
+                                                        <td align="left"><span style='padding-left:<%= Depth %>px;'><a href=javascript:page_view('<?=$value->b_index?>')><?=$value->b_title?></a></td>
+                                                        <td><?=$value->b_writer?></td>
+                                                        <td><?=$value->b_regdate?></td>
+                                                        <td><?=$value->b_hit?></td>
+                                                    </tr>
+                                                <?php }
+                                            }?>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                <tr>
+                                    <td align="right" style="padding-right:20px">
+                                        <input type="button" value="선택삭제" id="popular_del"></td>
+                                </tr>
+                            </table>
+                            <br>
+                        </td>
+                    </tr>
+                </table>
+<?php } ?>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+    if($("#page").val() == "") {
+        get_list(1);
+    }
+
+    function get_list(page){
+        find_list(page,$("#b_special").val());
+    }
+
+    function find_list(page,mode){
+        var html_list ='';
+        if(mode == 0){
+            $("#all_view").hide();
+            $("#strong_view").show();
+        }else{
+            $("#all_view").show();
+            $("#strong_view").hide();
+        }
+        $("#notice_list").empty();
+        $.ajax({
+
+            type : "POST",
+            url : "/ajax/board/<?=$menu_ajax_url?>",
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+                search_type: $("#search_type option:selected").val(),
+                search_value: $("#search_value").val(),
+                page : page,
+                b_special : mode,
+                mode : 'admin'
+            },
+            cache : false,
+            success : function(result) {
+                var data   = $.parseJSON(result);
+                var list_cnt = 0;
+                var html_list = ""
+                html_list += '<tr bgcolor="#dddddd" height="25" align=center>';
+                html_list += '  <td class="table" width=8%>번호</td>';
+                html_list += '  <td class="table" width=8%>강조</td>';
+                html_list += '  <td class="table" width=50%>제목</td>';
+                html_list += '  <td class="table" width=10%>글쓴이</td>';
+                html_list += '  <td class="table" width=12%>등록일</td>';
+                html_list += '  <td class="table" width=8%>조회</td>';
+                html_list += '</tr>';
+                $.each( data.list, function( key, value ) {
+
+                    var notice_class = '';
+                    var depth = 0;
+                    var depth_char = "";
+                    if(Number(value.b_special) > 0){ notice_class = value.b_special}
+                    var num = (data.page_navi.total-(data.page_navi.current_page-1)*10)-list_cnt;
+                    depth = Number(value.b_depth) * 10;
+                    if (Number(depth) > 0) depth_char = depth_char + "->";
+                    html_list += '<tr bgcolor="#FFFFFF" align="center">';
+                    html_list += ' <td>'+ num +'</td>';
+                    html_list += '      <td>'+ notice_class +'</td>';
+                    html_list += '  <td align="left"><span style="padding-left:' + depth + 'px;"><a href=javascript:page_view(' + value.b_index + ')>' + depth_char + value.b_title + '</a></td>';
+                    html_list += '  <td>' + value.b_writer + '</td>';
+                    html_list += '  <td>' + value.b_regdate + '</td>';
+                    html_list += '  <td>' + value.b_hit + '</td>';
+                    html_list += '</tr>';
+                    list_cnt++;
+
+                });
+                if(list_cnt == 0 && data.page_navi.total == 0){
+                    html_list = '<tr bgcolor="#FFFFFF" align="center"><td colspan="6">검색된 게시물이 없습니다.</td></tr>'
+                }
+
+                $("#notice_list").append(html_list);
+
+                /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
+                pagination(data.page_navi.current_page, data.page_navi.last_page, data.page_navi.per_page, data.page_navi.total, 10);
+                var msg ="Total " + data.page_navi.total + " 건 " +data.page_navi.current_page+ " 페이지";
+                $("#total_page").text(msg);
+                $("#page").val(page);
+            },
+            error : function() {
+                alert("다시 시도해 주세요.");
+            }
+        });
+    }
+
+    $("#chkALL").click(function () {
+        if ($(this).is(":checked")) {
+            $("input[name=chk]").prop("checked", "checked");
+        } else {
+            $("input[name=chk]").removeAttr("checked");
+        }
+    });
+
+
+    $("#popular_del").click(function(){
+        var checkboxValues ="";
+        $("input[name=chk]:checked").each(function() {
+            checkboxValues = checkboxValues + "," + $(this).val();
+
+        });
+
+        $.ajax({
+            type:"POST",
+            url:"/ajax/admin/popular_del",
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+                checkArray: checkboxValues,
+                mode : 'admin'
+            },
+            success:function(data){
+                if(data = "success"){
+                    alert("삭제되었습니다.")
+                    location.reload();
+                }else if(data = "fail"){
+                    alert("실패하였습니다.");
+                }
+
+            }
+        });
+
+    });
+
+
+</script>

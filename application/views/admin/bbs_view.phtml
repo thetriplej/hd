@@ -14,7 +14,7 @@
                 </table>
                 <br><br>
                 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
-                    <form name=frm01 method=get enctype="multipart/form-data">
+                    <?php echo form_open('',array('name'=>"frm01", 'id'=>"frm01")); ?>
                         <input type=hidden id="proc_type" name="proc_type">
                         <input type=hidden id="page" name="page" value="<?=$page?>">
                         <input type=hidden id="b_index" name="b_index" value='<?=$b_index?>'>
@@ -126,12 +126,12 @@
                                     </tr>
                                     <tr align="center">
                                         <td bgcolor="#dddddd" height="30">
-                                            <input type="button" value="삭제" onClick="frmDel('<?='/gallery/?page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>');">
+                                            <input type="button" value="삭제" onClick="frmDel('<?=$b_index?>','<?=$list_uri?>');">
                                             <input type="button" value="수정" onClick="frmModi('<?=$b_index?>','<?=$b_code?>');">
                                     <?php if(empty($view_data->reply)){ ?>
                                             <input type="button" value="답변" onClick="frmRe('<?=$b_index?>','<?=$b_code?>');">
                                     <?php } ?>
-                                            <input type="button" value="목록" onClick="frmList('frm01', 'List.asp?B_Code=<%= B_Code %>&B_Special=<%= B_Special %>');">
+                                            <input type="button" value="목록" onClick="frmList('<?=$list_uri?>');">
                                     <?php if($b_code == "CEPILOGUE0" && $view_data->b_parentindex == 0){ ?>
                                             <input type="button" value="Popular 등록" onClick="Popular('<?=$b_index?>');">
                                     <?php }?>
@@ -169,6 +169,54 @@
             Obj.innerHTML = "[확인]";
             document.getElementById("pwView").style.display = "none";
         }
+    }
+
+    function frmList(rqURL){
+        var frm=eval("document."+'frm01');
+        if (confirm('리스트로 가시겠습니까?')){
+            frm.action= rqURL;
+            frm.submit();
+        }
+
+    }
+
+
+    function frmReply(frmName, rqURL, enctype, rqMode){
+        var frm=eval("document."+'frm01');
+
+        if (!confirm('답변을 등록 하시겠습니까?')){
+            return;
+        }
+        frm.action= rqURL;
+        frm.ProcType.value = rqMode;
+        frm.submit();
+    }
+
+    function Popular(idx){
+        $.ajax({
+            type:"POST",
+            url:"/ajax/admin/popular_set",
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+                idx: $('#b_index').val(),
+                mode : 'admin'
+            },
+            success:function(result){
+                if(result == "success"){
+                    alert("등록되었습니다.");
+                }else if(result == "already"){
+                    alert("이미 등록이 되어있습니다.");
+                }else if(result == "update"){
+                    alert("등록되었습니다.");
+                }else if(result =="over"){
+                    alert("등록갯수를 초과하였습니다.");
+                }else{
+                    alert("관리자에게 문의해주세요.")
+                }
+
+            }
+        });
+
     }
 
 </script>

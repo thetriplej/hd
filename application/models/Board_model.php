@@ -19,6 +19,62 @@ class Board_model extends CI_Model {
         return $this->db->query($query)->result();
     }
 
+    function set_porpula_del($params) {
+        $idx = $params['idx'];
+        $updata = array(
+             'show_flag'    => 0,
+        );
+        $where = array(
+            'idx'		=> $idx,
+        );
+        $result = $this->update_query('popular_log', $updata,$where);
+
+
+        return $result;
+    }
+
+    function set_popular($params){
+        $idx = $params['idx'];
+        $query = "select idx from popular_log where show_flag = 1";
+        $cnt = $this->db->query($query)->num_rows();
+        if($cnt >= 12){
+            $status = 'over';
+        }else{
+            $query = "select idx,show_flag from popular_log where board_idx = ?";
+            $result = $this->db->query($query, array($idx))->row();
+            if(empty($result)){
+                $file_data = array(
+                    'board_idx'		=> $idx,
+                    'create_at'	    => date('Y-m-d H:i:s',time()),
+                );
+                $result = $this->insert_query('popular_log',$file_data);
+                if($result){
+                    $status = 'success';
+                }else{
+                    $status = 'fail';
+                }
+            }else {
+                if ($result->show_flag == '1') {
+                    $status = 'already';
+                } else {
+                    $updata = array(
+                        'show_flag'    => 1,
+                    );
+                    $where = array(
+                        'board_idx'		=> $idx,
+                    );
+                    $result = $this->update_query('popular_log', $updata,$where);
+                    if($result){
+                        $status = 'update';
+                    }else{
+                        $status = 'fail';
+                    }
+                }
+            }
+        }
+        return $status;
+    }
+
     function get_admin_porpula_list(){
         $query = "select pl.idx,bd.b_depth,bd.b_code,bd.b_index,bd.b_special,bd.b_title,bd.b_writer,bd.b_regdate,bd.b_hit from popular_log as pl left join board as bd on pl.board_idx = bd.b_index where pl.show_flag =1";
         return $this->db->query($query)->result();
@@ -58,7 +114,12 @@ class Board_model extends CI_Model {
 
         if($mode == "site"){
             $where = $where." and board.b_parentindex = 0 and board.b_sequence =1 ";
-            $orderby = "board.b_index desc";
+
+            if($board_type == "FREEBOARD0") {
+                $orderby = "board.b_special desc, board.b_group desc, board.b_sequence asc";
+            }else{
+                $orderby = "board.b_index desc";
+            }
         }else{
             $orderby = "b_group desc, b_sequence asc ";
         }
@@ -291,8 +352,13 @@ class Board_model extends CI_Model {
 
     public function set_bbs_delete($params){
 
-        $result = $this->delete_query('board', array('b_index' => $params['b_index']));
-        return $result;
+        $del_result1 = $this->delete_query('popular_log', array('board_idx' => $params['b_index']));
+        $del_result2 = $this->delete_query('board', array('b_index' => $params['b_index']));
+        if($del_result1 === true && $del_result2 === true){
+            return true;
+        }else{
+            return false;
+        }
     }
     public function set_file_delete($params){
 
@@ -316,7 +382,7 @@ class Board_model extends CI_Model {
     function insert_query($table,$data) {
         $this->db->trans_begin();
         $this->db->insert($table,$data);
-        if($this->db->trans_status() == false) {
+        if($this->db->trans_status() === false) {
             $this->db->trans_rollback();
             return false;
         } else {
@@ -334,7 +400,7 @@ class Board_model extends CI_Model {
             $this->db->where_in($field,$where_in);
         }
         $this->db->update($table,$data);
-        if($this->db->trans_status() == false) {
+        if($this->db->trans_status() === false) {
             $this->db->trans_rollback();
             return false;
         } else {
@@ -346,7 +412,7 @@ class Board_model extends CI_Model {
     function delete_query($table, $where) {
         $this->db->trans_begin();
         $this->db->delete($table, $where);
-        if($this->db->trans_status() == false) {
+        if($this->db->trans_status() === false) {
             $this->db->trans_rollback();
             return false;
         } else {

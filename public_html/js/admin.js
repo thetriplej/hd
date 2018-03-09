@@ -39,7 +39,7 @@ function ElementDel(Target, Url, Params, Method){ //Target - 대상, Url - 경�
 }
 
 
-function frmDel(){
+function frmDel(idx,uri){
 	if (confirm("정말삭제하시겠습니까?")) {
 		$.ajax({
 			type: "POST",
@@ -56,7 +56,7 @@ function frmDel(){
 					return;
 				} else if (result == "success") {
 					alert('삭제되었습니다.');
-					location.href = $("#pass_uri").val();
+					location.href = uri+'?b_code='+$("#b_code").val()+'&page='+$("#page").val()+'&search_type='+$("#search_type").val()+'&search_value='+$("#search_value").val();
 				}
 
 			}
