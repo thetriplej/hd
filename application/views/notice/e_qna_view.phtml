@@ -180,7 +180,7 @@
                             if(!empty($reply_file_data)){
                                 foreach($reply_file_data as $key => $value){
                                     ?>
-                                    <div align="center"><?php echo $value->f_name;?><br /><a href="Download.asp?FileName=<%=temp&SubRs("F_Name")&Mode=1%>"><img src="/images/icon_down.gif"></a><!-- | <a href="Zoom.asp?FileName=<%=temp&SubRs("F_Name")%>" target="_new"><img src="/images/icon_zoom.gif"></a--><br><br></div>
+                                    <div align="center" ><p style="cursor: pointer;" onclick="file_down('<?=$value->file_path?>')"><img src="/public_html/images/icon_down.gif"> <?php echo $value->f_name;?></p><!-- | <a href="Zoom.asp?FileName=<%=temp&SubRs("F_Name")%>" target="_new"><img src="/images/icon_zoom.gif"></a--></div>
                                     <?php
                                 }
                             }

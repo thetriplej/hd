@@ -167,6 +167,11 @@ class Gallery extends Common {
             }
 
             $reply_file_data = $this->board_model->get_file($reply_id,'file');
+            if (!empty($reply_file_data)) {
+                foreach ($reply_file_data as $key => $value) {
+                    $value->file_path = $value->file_path.$value->f_rename;
+                }
+            }
         }else{
             $reply_image_data ="";
             $reply_movie_data ="";
@@ -249,26 +254,28 @@ class Gallery extends Common {
             foreach($image_data as $key => $value){
                 $old_image[$key] = $value->f_rename;
             }
+            if(!empty($attach_image)) {
+                foreach ($attach_image as $key => $value) { //수정시 기존이미지 이미지 추가배열에서 삭제
+                    $temp_image = explode('|', $attach_image[$key]);
+                    $re_filename = $temp_image[0];
+                    $new_image[$key] = $re_filename;
+                    if (in_array($re_filename, $old_image)) unset($attach_image[$key]);
+                }
 
-            foreach ($attach_image as $key => $value) { //수정시 기존이미지 이미지 추가배열에서 삭제
-                $temp_image = explode('|', $attach_image[$key]);
-                $re_filename = $temp_image[0];
-                $new_image[$key] = $re_filename;
-                if(in_array($re_filename, $old_image)) unset($attach_image[$key]);
-            }
+                foreach ($image_data as $key => $value) {
+                    var_dump($new_image);
 
-            foreach($image_data as $key => $value){
-                var_dump($new_image);
-
-                if(!in_array($value->f_rename, $new_image)){
-                    var_dump($value->f_rename);
-                    @unlink($upload_dir.$value->file_path.$value->f_rename);
-                    $temp_fname = explode('.', $value->f_rename);
-                    $allow_file = array("jpg", "png", "bmp", "gif", "jpeg");
-                    if (in_array($temp_fname[1], $allow_file)) {
-                        @unlink($upload_dir.$value->file_path . $temp_fname[0] . "_145x90." . $temp_fname[1]);
+                    if (!in_array($value->f_rename, $new_image)) {
+                        var_dump($value->f_rename);
+                        @unlink($upload_dir . $value->file_path . $value->f_rename);
+                        $temp_fname = explode('.', $value->f_rename);
+                        $allow_file = array("jpg", "png", "bmp", "gif", "jpeg");
+                        if (in_array($temp_fname[1], $allow_file)) {
+                            @unlink($upload_dir . $value->file_path . $temp_fname[0] . "_145x90." . $temp_fname[1]);
+                            @unlink($upload_dir . $value->file_path . $temp_fname[0] . "_origin." . $temp_fname[1]);
+                        }
+                        $del_result = $this->board_model->set_file_delete_one($value->f_index);
                     }
-                    $del_result = $this->board_model->set_file_delete_one($value->f_index);
                 }
             }
 
@@ -283,7 +290,7 @@ class Gallery extends Common {
                 $re_filename = $temp_image[0];
 
                 if (rename($old_path . $re_filename, $path . $re_filename)) {
-
+                    $file_result = true;
                 } else {
                     $file_result = false;
                 }
@@ -291,7 +298,13 @@ class Gallery extends Common {
                 $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
 
                 if (rename($old_path . $thum_file, $path . $thum_file)) {
-
+                    $file_result = true;
+                } else {
+                    $file_result = false;
+                }
+                $origin_file = $temp_fname[0] . "_origin." . $temp_fname[1];
+                if (rename($old_path . $origin_file, $path . $origin_file)) {
+                    $file_result = true;
                 } else {
                     $file_result = false;
                 }
@@ -467,6 +480,11 @@ class Gallery extends Common {
             }
 
             $reply_file_data = $this->board_model->get_file($reply_id,'file');
+            if (!empty($reply_file_data)) {
+                foreach ($reply_file_data as $key => $value) {
+                    $value->file_path = $value->file_path.$value->f_rename;
+                }
+            }
         }else{
             $reply_image_data ="";
             $reply_movie_data ="";

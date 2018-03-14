@@ -79,20 +79,21 @@
                                                 <tr bgcolor="#FFFFFF">
                                                     <td width="120" valign="top"><font color="#666666"><b>| 첨부파일</b></font></td>
                                                     <td><!-- 첨부파일 시작 -->
+
                                 <?php
-                                    if(!empty($movie_data)) {
-                                        foreach ($movie_data as $key => $value) {
+                                    if(!empty($image_data)) {
+                                        foreach ($image_data as $key => $value) {
                                             ($value->f_width > 780) ? $value->f_width = $value->f_width : $value->f_width = 0;
                                             if ($value->f_position == 'T') {
                                                 ?>
-                                                        <img src='../img/img_top.gif' align='absmiddle'> ( 상단 )
+                                                <img src='/public_html/images/img_top.gif' align='absmiddle'> ( 상단 )
                                                 <?php
-                                            } else if ($value->f_position == 'T') {
+                                            } else if ($value->f_position == 'B') {
                                                 ?>
-                                                        <img src='../img/img_bottom.gif' align='absmiddle'> ( 하단 )
+                                                <img src='/public_html/images/img_bottom.gif' align='absmiddle'> ( 하단 )
                                             <?php } ?>
-                                                        ||| <?php echo $value->file_path; ?><span class="hand" onClick="imgView(this, '"&SubRs("F_Name")&"', "&Width&","&upload_dir&");"">[보기]</span>
-                                            <a href=""/Board/Download.asp?FileName="&SubRs("F_Name")&"&mode="&B_Board_type&"">[ Down ]</a>
+                                            ||| <?php echo $value->f_name; ?><span class="hand" onClick="imgView(this, '<?=$value->file_path?>', '<?php echo $value->f_width; ?>');">[보기]</span>
+                                            <a href="javascript:file_down('<?=$value->file_path?>')">[ Down ]</a>
                                             <br>
                                         <?php }
                                     }else{
@@ -127,8 +128,8 @@
                                     <tr align="center">
                                         <td bgcolor="#dddddd" height="30">
                                             <input type="button" value="삭제" onClick="frmDel('<?=$b_index?>','<?=$list_uri?>');">
-                                            <input type="button" value="수정" onClick="frmModi('<?=$b_index?>','<?=$b_code?>');">
-                                    <?php if(empty($view_data->reply)){ ?>
+                                            <input type="button" value="수정" onClick="frmModi('<?=$b_index?>');">
+                                    <?php if(empty($view_data->reply)){ var_dump($view_data);?>
                                             <input type="button" value="답변" onClick="frmRe('<?=$b_index?>','<?=$b_code?>');">
                                     <?php } ?>
                                             <input type="button" value="목록" onClick="frmList('<?=$list_uri?>');">
@@ -149,15 +150,6 @@
     </tbody>
 </table>
 <script type="text/javascript">
-
-    function imgView(Obj, Name, Width,dir){
-        Width = (Width == "780") ? " width='780' " : "";
-        document.getElementById("imgView").innerHTML = "<img src='/"+dir+"/"+Name+"' "+Width+"><br /><span class=\"hand\" onClick=\"imgClose(this);\">[닫기]</span>";
-    }
-
-    function imgClose(Obj){
-        document.getElementById("imgView").innerHTML = "";
-    }
 
     function pwView(Obj){
         var TT = Obj.innerText;
@@ -180,6 +172,15 @@
 
     }
 
+    function frmModi(idx){
+        var frm=eval("document."+'frm01');
+        if (confirm('수정하시겠습니까?')){
+            frm.action= '/admin/<?=$edit_uri?>?b_index='+idx+'&b_code='+$("#b_code").val()+'&page='+$("#page").val()+'&search_type='+$("#search_type").val()+'&search_value='+$("#search_value").val();;
+            frm.submit();
+        }
+
+    }
+
 
     function frmReply(frmName, rqURL, enctype, rqMode){
         var frm=eval("document."+'frm01');
@@ -192,31 +193,6 @@
         frm.submit();
     }
 
-    function Popular(idx){
-        $.ajax({
-            type:"POST",
-            url:"/ajax/admin/popular_set",
-            data: {
-                csrf_token: $('input[name=csrf_token]').val(),
-                idx: $('#b_index').val(),
-                mode : 'admin'
-            },
-            success:function(result){
-                if(result == "success"){
-                    alert("등록되었습니다.");
-                }else if(result == "already"){
-                    alert("이미 등록이 되어있습니다.");
-                }else if(result == "update"){
-                    alert("등록되었습니다.");
-                }else if(result =="over"){
-                    alert("등록갯수를 초과하였습니다.");
-                }else{
-                    alert("관리자에게 문의해주세요.")
-                }
 
-            }
-        });
-
-    }
 
 </script>

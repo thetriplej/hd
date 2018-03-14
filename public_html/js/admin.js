@@ -8,37 +8,6 @@ function goto(url, option) {
 	}
 }
 
-//Element 추가
-function ElementAdd(Target, Position, Content, Url, Params, Method){ //Target - 대상, Position - 위치 (beforeBegin, afterBegin, beforeEnd, afterEnd), Url - 경로, Params - 파라미터, Method - GET/POST
-	Obj = document.getElementById(Target);
-
-	if(!Url){ //URL이 없을 경우 그 페이지에서 바로 실행
-		Obj.insertAdjacentHTML(Position, Content);
-	}else{
-		Data = sendRequest(Url, Params, Method);
-
-		Content = "<div style='width:600px'>"+Content+"<img src='/Images/ico_del.gif' class='imghand' onclick=\"ElementDel(this, 'Proc_Application.asp','"+ Data +"','POST')\"></div>";
-		Obj.insertAdjacentHTML(Position, Content);
-	}
-}
-
-//Element 삭제
-function ElementDel(Target, Url, Params, Method){ //Target - 대상, Url - 경로, Params - 파라미터, Method - GET/POST
-	Obj = Target.parentElement; //부모엘레먼트
-
-	if(!Url){ //URL이 없을 경우 그 페이지에서 바로 실행
-		Obj.removeNode(Obj);
-	}else{
-		Data = sendRequest(Url, Params, Method);
-		if(Data == "OK"){
-			Obj.removeNode(Obj);
-		}else{
-			alert('삭제가 실패하였습니다.\n다시한번 시도해 주시기 바랍니다.');
-		}
-	}
-}
-
-
 function frmDel(idx,uri){
 	if (confirm("정말삭제하시겠습니까?")) {
 		$.ajax({
@@ -65,19 +34,19 @@ function frmDel(idx,uri){
 }
 
 function checking_file(){
-	if($('#Files').val() !=""){
-		var file = $('#Files').val();
+	if($('input[name=files]').val() !=""){
+		var file = $('#files').val();
 		var fileExt = file.substring(file.lastIndexOf(".") +1);
 		var reg = /gif|jpg|jpeg|png|bmp|psd|tif|tga|pcx|pcd/i;
 		var reg2 = /pdf|mp4|hwp|txt|pptx|xlsx|xlsm|xlsb|xltx|xltxm|xls|xlt|ppt|doc|docx/i;
 		if(reg.test(fileExt) == true){
 			alert("사진파일은 에디터에서  업로드 가능합니다.");
-			$('#Files').val('');
+			$('#files').val('');
 			return;
 		}
 		if(reg2.test(fileExt) == false){
 			alert("업로드가 불가능한 파일입니다.");
-			$('#Files').val('');
+			$('#files').val('');
 			return;
 		}
 	}
@@ -133,5 +102,44 @@ function pagination(current_page, total_last_page, per_page, total, page_num){
 	$(".paging").empty();
 	$(".paging").append(html);
 
+
+}
+function file_down(path){
+    location.href = "/other/file_down?path=" + path;
+}
+
+function imgView(Obj,dir,Width){
+    Width = (Width == "780") ? " width='780' " : "";
+    document.getElementById("imgView").innerHTML = "<img src= /public_html"+dir+" "+Width+"><br /><span class=\"hand\" onClick=\"imgClose(this);\">[닫기]</span>";
+}
+
+function imgClose(Obj){
+    document.getElementById("imgView").innerHTML = "";
+}
+
+function Popular(idx){
+    $.ajax({
+        type:"POST",
+        url:"/ajax/admin/popular_set",
+        data: {
+            csrf_token: $('input[name=csrf_token]').val(),
+            idx: $('#b_index').val(),
+            mode : 'admin'
+        },
+        success:function(result){
+            if(result == "success"){
+                alert("등록되었습니다.");
+            }else if(result == "already"){
+                alert("이미 등록이 되어있습니다.");
+            }else if(result == "update"){
+                alert("등록되었습니다.");
+            }else if(result =="over"){
+                alert("등록갯수를 초과하였습니다.");
+            }else{
+                alert("관리자에게 문의해주세요.")
+            }
+
+        }
+    });
 
 }

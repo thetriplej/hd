@@ -256,12 +256,9 @@
     });
 
     $(function(){
-
-        //	$('#tx_canvas_text').text(B_Contents);
         <?php if(!empty($b_index)) { ?>
             getContents();
         <?php }?>
-
     });
 
     function getContents() {
@@ -272,7 +269,8 @@
             dataType: 'json',
             data: {
                 csrf_token: $('input[name=csrf_token]').val(),
-                b_index : $("#b_index").val()
+                b_index : $("#b_index").val(),
+                mode : 'site'
                 } ,
             beforeSubmit: function (data, frm, opt) {
                 console.log('데이타를 불러오는 중입니다.');

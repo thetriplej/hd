@@ -61,4 +61,27 @@ class Other extends Common {
         }
     }
 
+    public function file_down()
+    {
+        $this->load->helper('download');
+        $path = $this->input->get('path');
+
+        $filepath = $path;
+
+        $filepath = $_SERVER['DOCUMENT_ROOT'].'/public_html'.$filepath;
+        $filesize = filesize($filepath);
+        $tmp = explode('/',$filepath);
+        $filename = end($tmp);
+
+        if(file_exists($filepath)){
+
+            force_download($filepath, NULL);
+
+        }else{
+            $result = array('downstate'  =>  'notfile');
+
+        }
+        echo json_encode($result);
+    }
+
 }

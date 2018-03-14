@@ -353,10 +353,15 @@ class Board extends Common {
     public function get_view(){
         $post = $this->input->post(null, true);
         $b_index = $post['b_index'];
-        $session_pwd_checking = $this->session->b_index;
-
+        $mode = $post['mode'];
+        if($mode == 'stie') {
+            $session_pwd_checking = $this->session->b_index;
+        }else{
+            $session_pwd_checking = $b_index;
+        }
         $view = array();
         $send_data = array();
+        $file_cnt = "";
         if(!empty($b_index) && $session_pwd_checking == $b_index) {
             $view_send = array(
                 'mode' => 'P',
@@ -506,6 +511,14 @@ class Board extends Common {
                     $setPath = $upload_dir.$img_rename;
                     $set_width_array = array(300,780);
 
+                    $oldfile = $tmp_name;
+                    $newfile = $upload_dir.$img_rename."_origin.".$filename_ext;
+                    if(file_exists($oldfile)) {
+                        if(!copy($oldfile, $newfile)) {
+                            echo "파일 복사 실패";
+                        } else if(file_exists($newfile)) {
+                        }
+                    }
 
                     $return_thum = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,300);
                     $return = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,780);
@@ -719,12 +732,6 @@ class Board extends Common {
 
         echo json_encode($send_result);
     }
-
-
-
-
-
-
 
 
 }

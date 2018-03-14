@@ -1,26 +1,24 @@
             <tr>
-                <td height="40" align="left" style="padding-right:20px;"><font color="#eeeeee">:: ADIMN + 게시판 > <?=$menu_title?></font><br></td>
+                <td height="40" align="left" style="padding-right:20px;"><font color="#E2FDFF">:: ADIMN + 게시판 관리 > <?=$menu_title?></font><br></td>
             </tr>
             </table>
             <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td width="20">&nbsp;</td>
                     <td width="40" height="40" background="/public_html/images/cn_bg_dot.gif" align="right">
-                    </td>
+                        <img src="/public_html/images/spacer.gif" width="1" height="40" border="0"></td>
                     <td width="129" align="center"><span class="cntlt"><?=$menu_title?></span></td>
                     <td width="493" background="/public_html/images/cn_bg_dot.gif">
-                    </td>
+                        <img src="/public_html/images/spacer.gif" width="1" height="40" border="0"></td>
                 </tr>
             </table>
             <br><br>
             <?php echo form_open_multipart('/admin/bbs_store/',array('name'=>"tx_editor_form", 'id'=>"tx_editor_form")); ?>
-                <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
-                    <input type="hidden" id="proc_type" name="proc_type" value="NW">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+                    <input type="hidden" id="proc_type" name="proc_type" value="M">
                     <input type="hidden" id="b_special" value="<?=$b_special?>">
                     <input type="hidden" id="b_code" name="b_code" value="<?php echo($b_code);?>" />
                     <input type="hidden" id="page" name="page" value="<?php echo($page);?>" />
-                    <input type="hidden" name="b_depth" value="0">
-                    <input type="hidden" name="b_parentindex" value="">
                     <input type="hidden" name="b_board_type" id="b_board_type" value="1">
                     <input type="hidden" id="b_index" name="b_index" value="<?php echo(!empty($b_index))?$b_index:'';?>">
                     <input type="hidden" name="select_img" id="select_img">
@@ -29,128 +27,153 @@
                             <table width="100%" cellpadding="0" cellspacing="5" border="0" bgcolor="#999999">
                                 <tr>
                                     <td>
-                                        <table width="100%" cellpadding="5" cellspacing="1" border="0" bgcolor="#cccccc">
-                <?php
-                    switch ($b_code) {
-                        case "FREEBOARD0" : // 헷세드공지
-                        case "CEPILOGUE0" : // 고객후기
-                        case "SEPILOGUE0" : // H_매거진
-                ?>
-                                            <tr bgcolor="#eeeeee">
-                                                <td width="120" valign="top"><font color="#666666"><b>| 햇세드추천</b></font></td>
-                                                <td><input type="text" name="b_special" size="3" value="<?=$b_special?>" style="ime-mode:disabled" onKeyPress="return onlyNum()"> <font color="#333333">※ <b>추천 사용 방법</b></font> 1 ~ 999 까지의 정수 입력, 강조를 취소할 경우 0 입력.(큰숫자가 제일 상단에 위치)</td>
+                                        <table width="100%" cellpadding="5" cellspacing="1" border="0" bgcolor="#999999">
+                                    <?php
+                                    switch ($b_code) {
+                                        case "FREEBOARD0" : // 헷세드공지
+                                        case "CEPILOGUE0" : // 고객후기
+                                        case "SEPILOGUE0" : // H_매거진
+                                            ?>
+                                            <tr bgcolor="#FFFFFF">
+                                                <td width="120" valign="top"><font color="#999999"><b>| 햇세드추천</b></font></td>
+                                                <td><input type="text" name="b_special" size="3" value="<?=$b_special?>" style="ime-mode:disabled" onKeyPress="return onlyNum()"> <font color="blue">※ <b>추천 사용 방법</b></font> 1 ~ 999 까지의 정수 입력, 강조를 취소할 경우 0 입력.(큰숫자가 제일 상단에 위치)</td>
                                             </tr>
 
-                <?php
-                            break;
-                        case "QANDA0" : // Q&A
-                ?>
+                                            <?php
+                                            break;
+                                        case "QANDA0" : // Q&A
+                                            ?>
                                             <tr bgcolor="#eeeeee">
                                                 <td width="120" valign="top"><font color="#666666"><b>| 공지사항</b></font></td>
-                                                <td><input type="text" name="B_Special" size="3" value="<?=$b_special?>" style="ime-mode:disabled" onKeyPress="return onlyNum()"> <font color="#333333">※ <b>추천 사용 방법</b></font> 1 ~ 999 까지의 정수 입력, 강조를 취소할 경우 0 입력.(큰숫자가 제일 상단에 위치)</td>
+                                                <td><input type="text" name="B_Special" size="3" value="<?=$b_special?>" style="ime-mode:disabled" onKeyPress="return onlyNum()"> <font color="blue">※ <b>추천 사용 방법</b></font> 1 ~ 999 까지의 정수 입력, 강조를 취소할 경우 0 입력.(큰숫자가 제일 상단에 위치)</td>
                                             </tr>
-                <?php
-                            break;
-                        default:
-                    }
-                ?>
-
-                                            <tr bgcolor="#eeeeee">
-                                                <td width="120" valign="top"><font color="#666666"><b>| 제목</b></font></td>
-                                                <td><input type="text" name="b_title" id="b_title" size="50" maxlength="100"></td>
+                                            <?php
+                                            break;
+                                        default:
+                                    }
+                                    ?>
+                                            <tr bgcolor="#FFFFFF">
+                                                <td width="120" valign="top"><font color="#999999"><b>|</b></font> 글쓴이</td>
+                                                <td><input type="text" id="b_writer" name="b_writer" size="30" maxlength="30" value=""></td>
                                             </tr>
-                                            <tr bgcolor="#eeeeee">
-                                                <td width="120" valign="top"><font color="#666666"><b>| 내용</b></font></td>
+                                            <tr bgcolor="#FFFFFF">
+                                                <td width="120" valign="top"><font color="#999999"><b>|</b></font> 이메일</td>
+                                                <td><input type="text" name="b_email1" id="b_email1" size="10" class="textbox" value=""> @ <input type="text" id="b_email2"  name="b_email2" size="20" class="textbox" value="">
+                                                    <select name="u_email" class="textbox" onChange="if(this.value==''){with(document.frm01){b_email2.readOnly=false;b_email2.value='';b_email2.focus();}}else{with(document.frm01){b_email2.readOnly=true;b_email2.value=this.value;}}">
+                                                        <option value="">직접입력</option>
+                                                        <option value="naver.com">naver.com</option>
+                                                        <option value="nate.com">nate.com</option>
+                                                        <option value="daum.net">daum.net</option>
+                                                        <option value="hanmail.net">hanmail.net</option>
+                                                        <option value="lycos.co.kr">lycos.co.kr</option>
+                                                        <option value="empal.com">empal.com</option>
+                                                        <option value="dreamwiz.com">dreamwiz.com</option>
+                                                        <option value="hanmir.com">hanmir.com</option>
+                                                        <option value="hanafos.com">hanafos.com</option>
+                                                        <option value="hotmail.com">hotmail.com</option>
+                                                        <option value="paran.com">paran.com</option>
+                                                    </select></td>
+                                            </tr>
+                                            <tr bgcolor="#FFFFFF">
+                                                <td width="120" valign="top"><font color="#999999"><b>|</b></font> 제목</td>
+                                                <td><input type="text" name="b_title" id="b_title" size="50" maxlength="100" value=""></td>
+                                            </tr>
+                                            <tr bgcolor="#FFFFFF">
+                                                <td width="120" valign="top"><font color="#999999"><b>|</b></font> 내용</td>
                                                 <td><?php $this->load->view('editor.phtml');?></td>
                                             </tr>
-                                            <tr bgcolor="#eeeeee">
-                                                <td width="120" valign="top"><font color="#666666"><b>|</b></font> 기존파일</td>
+                                            <tr bgcolor="#FFFFFF">
+                                                <td width="120" valign="top"><font color="#999999"><b>|</b></font> 기존파일</td>
                                                 <td>
-                                                    <table width="30%" border="0">
+                                                    <table width="100%">
                                                         <tr align="center">
                                                             <td width="80">이미지</td>
                                                             <td width="60">위치</td>
                                                             <td width="70">목록노출</td>
                                                             <td align="left">삭제</td>
                                                         </tr>
-                <?php
-                if(!empty($file_data)) {
-                    foreach ($file_data as $key => $value) {
-                        $temp_fname = explode('.', $value->f_name);
-                        $mType = explode("/",$value->f_type);
-                        if($b_board_type == "0") {
+                                            <?php
+                                            if(!empty($file_data)) {
+                                                foreach ($file_data as $key => $value) {
+                                                    $temp_fname = explode('.', $value->f_name);
+                                                    $mType = explode("/",$value->f_type);
+                                                    if($b_board_type == "0") {
 
-                            ?>
+                                                        ?>
                                                         <tr align="center">
-                                                            <?php if($mType[0] == "image") {?>
-                                    						<td><img src="<?= $value->file_path.'_145x90.'.$temp_fname[1] ?>" width="72" height="45" style="vertical-align:middle;"></td>
-                                                            <?php }else{?>
-                                                            <td></td>
-                                                            <?php }?>
-                                    						<td><select name="b_position">
+                                                        <?php if($mType[0] == "image") {?>
+                                                            <td rowspan="2"><img src="<?= $value->file_path.'_145x90.'.$temp_fname[1] ?>" width="72" height="45" style="vertical-align:middle;"></td>
+                                                        <?php }else{?>
+                                                            <td rowspan="2"></td>
+                                                        <?php }?>
+                                                            <td><select name="b_position">
                                                                     <option value="T" <?php if ($value->f_position == "T"){echo "selected"; }?>>상단</option>
                                                                     <option value="B" <?php if ($value->f_position == "B"){echo "selected"; }?>>하단</option>
                                                                 </select>
                                                             </td>
-                                    						<td><input type="radio" name="b_show" value="<?php echo $value->f_index; ?>" <?php if ($value->f_show == '1'){ echo "checked"; }?> style="cursor:pointer;"></td>
-                                    						<td style="text-align:left;padding-left:7px;">
+                                                            <td><input type="radio" name="b_show" value="<?php echo $value->f_index; ?>" <?php if ($value->f_show == '1'){ echo "checked"; }?> style="cursor:pointer;"></td>
+                                                            <td style="text-align:left;padding-left:7px;">
                                                                 <img src='/public_html/images/ico_del.gif' onclick="try{ b_file[<?= $key?>].value='삭제';f_index[<?= $key?>].value=''; }catch(e){ b_file.value='삭제';f_index.value=''; delFile(<?php echo $value->f_index; ?>);}this.style.display='none';" alt="삭제" style="cursor:pointer;">
                                                             </td>
-                                    					</tr>
-                                                        <tr>
-                                                            <td colspan="3">
-                                                                <input type="hidden" name="f_Index" value="<?php echo $value->f_index; ?>">
-                                                                <input type='text' name='b_file' size='20' value='<?php echo $value->f_name; ?>' readonly style='border:0;'></td>
-                                                        </tr>
-                <?php
-                        }else{
-                            If($mType[0] != "image") {
-                ?>
-                                                        <tr align="center">
-                                                            <td rowspan="2"></td>
-                                                            <td><select name="b_position">
-                                                                    <option value="T" <?php if ($value->f_position == "T"){ echo "selected";} ?>>상단</option>
-                                                                    <option value="B" <?php if ($value->f_position == "B"){ echo "selected";} ?>>하단</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <img src='/public_html/images/ico_del.gif' onclick="try{ b_file[<?= $key ?>].value='삭제';f_index[<?= $key ?>].value=''; }catch(e){ b_file.value='삭제';f_index.value=''; delFile(<?php echo $value->f_index; ?>);}this.style.display='none';" alt="삭제" style="cursor:pointer;">
-                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="3">
                                                                 <input type="hidden" name="f_Index" value="<?php echo $value->f_index; ?>">
                                                                 <input type='text' name='b_file' size='20' value='<?php echo $value->f_name; ?>' readonly style='border:0;'></td>
                                                         </tr>
+                                                        <?php
+                                                    }else{
+                                                        If($mType[0] != "image") {
+                                                            ?>
+                                                            <tr align="center">
+                                                                <td rowspan="2"></td>
+                                                                <td><select name="b_position">
+                                                                        <option value="T" <?php if ($value->f_position == "T"){ echo "selected";} ?>>상단</option>
+                                                                        <option value="B" <?php if ($value->f_position == "B"){ echo "selected";} ?>>하단</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td></td>
+                                                                <td style="text-align:left;padding-left:7px;">
+                                                                    <img src='/public_html/images/ico_del.gif' onclick="try{ b_file[<?= $key ?>].value='삭제';f_index[<?= $key ?>].value=''; }catch(e){ b_file.value='삭제';f_index.value=''; delFile(<?php echo $value->f_index; ?>);}this.style.display='none';" alt="삭제" style="cursor:pointer;">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3">
+                                                                    <input type="hidden" name="f_Index" value="<?php echo $value->f_index; ?>">
+                                                                    <input type='text' name='b_file' size='20' value='<?php echo $value->f_name; ?>' readonly style='border:0;'></td>
+                                                            </tr>
 
-                            <?php
-                            }
-                        }
-                    }
-                }
-                ?>
-
+                                                            <?php
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ?>
                                                     </table>
                                                 </td>
                                             </tr>
-                                            <tr bgcolor="#eeeeee">
-                                                <td width="120" valign="top"><font color="#666666"><b>| 파일</b></font></td>
-                                                <td>
-                                                    <font color="#333333">※ <b>파일 사용 방법</b></font><br>업로드 하고자 하는 파일 갯수대로 파일 등록 창을 추가/삭제가 가능하며, 상단, 하단 선택을 할수 있으며,<br> 보여질 경우에는 순서에 맞게 상단, 하단에 위치하여 보여지게 됩니다.<br><br>
+                                            <tr bgcolor="#FFFFFF">
+                                                <td width="120" valign="top"><font color="#999999"><b>|</b></font> 파일</td>
+                                                <td><font color="blue">※ <b>파일 사용 방법</b></font><br>업로드 하고자 하는 파일 갯수대로 파일 등록 창을 추가/삭제가 가능하며, 상단, 하단 선택을 할수 있으며,<br> 보여질 경우에는 순서에 맞게 상단, 하단에 위치하여 보여지게 됩니다.<br><br>
                                                     <font color="red">이미지 파일 ('jpg', 'jpeg', 'png', 'bmp', 'gif')의 경우 에디터에서 업로드해주세요</font><br><br>
                                                     <font color="red">동영상 파일은 확장자가 MP4만 올릴수 있으며 위치를 상단에 맞추어 주시고,<br />하나 이상 등록시에는 자동 재생되어 동시에 재생되는 상황이 발생할 수 있습니다.</font>
                                                     <ul id="FileDiv">
-                                                        <li><input type="file" name="files[]" size="50" onChange="checking_file();"><br>||| 위치 : <select name=position><option value=T>상단</option> <option value=B>하단</option></select> <a href="javascript:void(0);" name="btn" class="btn">추가</a></li>
-                                                    </ul>
-                                                </td>
+                                                        <li><input type="file" name="Files" id="Files" size="50" onchange="checking_file();"><br>||| 위치 : <select name=Position><option value=T>상단</option> <option value=B>하단</option></select> <a href="javascript:void(0);" name="btn" class="btn">추가</a></li>
+                                                    </ul></td>
                                             </tr>
-                                            <!--<tr bgcolor="#eeeeee">
+                                            <!--
+                                            <tr bgcolor="#FFFFFF">
                                                 <td width="120" valign="top"><font color="#999999"><b>|</b></font> HTML(TAG)</td>
-                                                <td>사용 <input type="checkbox" name="B_TAG" value="Y"></td>
-                                            </tr>-->
-                                            <tr bgcolor="#eeeeee">
-                                                <td width="120" valign="top"><font color="#666666"><b>| 잠금기능</b></font></td>
-                                                <td>사용 <input type="checkbox" name="b_locked" class="textbox" style="vertical-align: middle;" value="Y" <?php ($b_code = "QANDA0")?"checked" : ""?>></td>
+                                                <td>사용 <input type="checkbox" name="B_TAG" value="Y" <% If Rs("B_Encode") = "Y" Then Response.write "checked" End If %>></td>
+                                            </tr>
+                                            -->
+                                            <tr bgcolor="#FFFFFF">
+                                                <td width="120" valign="top"><font color="#999999"><b>|</b></font> 잠금기능</td>
+                                                <td>사용 <input type="checkbox" name="B_Locked" class="textbox" value="Y" <?php if($b_locked == "Y"){echo"checked";}?>></td>
+                                            </tr>
+                                            <tr bgcolor="#FFFFFF">
+                                                <td width="120" valign="top"><font color="#999999"><b>|</b></font> 비밀번호</td>
+                                                <td><input type="password" id="B_Password" name="B_Password" size="30" maxlength="30" value="<%=Rs("B_Password")%>"></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -160,7 +183,6 @@
                                         <input type="button" value="등록" onClick="saveContent();">
                                         <input type="button" value="목록" onClick="goto('<%=listURL%>');">
                                     </td>
-                                    </td>
                                 </tr>
                             </table>
                             <br>
@@ -168,9 +190,6 @@
                     </tr>
                 </table>
             </form>
-            <!------------------------------------------------------------------------------------------------------------------------------>
-
-
             <br><br>
         </td>
     </tr>
@@ -245,7 +264,7 @@
 
     /* 예제용 함수 */
     function saveContent() {
-            Editor.save(); // 이 함수를 호출하여 글을 등록하면 된다.
+        Editor.save(); // 이 함수를 호출하여 글을 등록하면 된다.
 
     }
 
@@ -269,15 +288,15 @@
             b_title.focus();
             return;
         }
-        if($('#b_email1').val() == "" || $('#b_email2').val() == "") {
-            alert('이메일을 입력해 주세요.');
-            B_Email1.focus();
-            return;
-        }
-        if (!validator.exists(content)) {
-            alert('내용을 입력하세요');
-            return false;
-        }
+//        if($('#b_email1').val() == "" || $('#b_email2').val() == "") {
+//            alert('이메일을 입력해 주세요.');
+//            B_Email1.focus();
+//            return;
+//        }
+//        if (!validator.exists(content)) {
+//            alert('내용을 입력하세요');
+//            return false;
+//        }
         $('#b_board_type').val('1');
         if($('#tx_switchertoggle').attr('class') == 'tx-switchtoggle-pushed') { // html 사용안함
             $('#b_board_type').val('0');

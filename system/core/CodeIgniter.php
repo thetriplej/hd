@@ -38,7 +38,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * System Initialization File
+ * System Initialization File.php
  *
  * Loads the base classes and executes the request.
  *

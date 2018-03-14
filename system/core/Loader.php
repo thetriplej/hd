@@ -492,9 +492,9 @@ class CI_Loader {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Generic File Loader
+	 * Generic Board_file.php Loader
 	 *
-	 * @param	string	$path	File path
+	 * @param	string	$path	Board_file.php path
 	 * @param	bool	$return	Whether to return the file output
 	 * @return	object|string
 	 */
@@ -973,7 +973,7 @@ class CI_Loader {
 			include($_ci_path); // include() vs include_once() allows for multiple views with the same name
 		}
 
-		log_message('info', 'File loaded: '.$_ci_path);
+		log_message('info', 'Board_file.php loaded: '.$_ci_path);
 
 		// Return the file data if requested
 		if ($_ci_return === TRUE)

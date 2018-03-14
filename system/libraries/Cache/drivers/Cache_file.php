@@ -38,7 +38,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * CodeIgniter File Caching Class
+ * CodeIgniter Board_file.php Caching Class
  *
  * @package		CodeIgniter
  * @subpackage	Libraries

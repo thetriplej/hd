@@ -338,7 +338,7 @@ class CI_Image_lib {
 	public $full_dst_path		= '';
 
 	/**
-	 * File permissions
+	 * File.php permissions
 	 *
 	 * @var	int
 	 */

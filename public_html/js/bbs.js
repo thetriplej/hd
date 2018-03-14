@@ -164,4 +164,8 @@ function pagination(current_page, total_last_page, per_page, total, page_num){
 
 }
 
+function file_down(path){
+	location.href = "/other/file_down?path=" + path;
+}
+
 

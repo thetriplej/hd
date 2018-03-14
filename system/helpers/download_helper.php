@@ -132,13 +132,52 @@ if ( ! function_exists('force_download'))
 			@ob_clean();
 		}
 
+        // IE인지 HTTP_USER_AGENT로 확인
+        $ie = isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'Trident') !== false);
+
+        // EDGE인지 HTTP_USER_AGENT로 확인
+        $edge = isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'Edge') !== false);
+
+        if ($edge){
+            // edge인경우 파일명 rowurlencode로 인코딩시킴
+            $filename = rawurlencode($filename);
+            $filename = preg_replace('/\./', '%2e', $filename, substr_count($filename, '.') - 1);
+
+            // edge인 경우의 헤더 변경
+            $header_cachecontrol = 'private, no-transform, no-store, must-revalidate';
+            $header_pragma='no-cache';
+        }else{
+            if($ie) {
+                // UTF-8에서 EUC-KR로 캐릭터셋 변경
+                $filename = iconv('utf-8', 'euc-kr', $filename);
+                // IE인 경우 헤더 변경
+                $header_cachecontrol = 'must-revalidate, post-check=0, pre-check=0';
+                $header_pragma='public';
+            }else{
+                // IE가 아닌 경우 일반 헤더 적용
+                $header_cachecontrol = 'private, no-transform, no-store, must-revalidate';
+                $header_pragma='no-cache';
+            }
+        }
+
+
+
+        // Generate the server headers
+        header('Content-Type: '.$mime);
+        header('Expires: 0');
+        header('Content-Transfer-Encoding: binary');
+        header('Content-Length: '.$filesize);
+        header('Cache-Control: ' . $header_cachecontrol);
+        header('Content-Disposition: attachment; filename="'.$filename.'"');
+        header('Pragma: '. $header_pragma);
+
 		// Generate the server headers
-		header('Content-Type: '.$mime);
-		header('Content-Disposition: attachment; filename="'.$filename.'"');
-		header('Expires: 0');
-		header('Content-Transfer-Encoding: binary');
-		header('Content-Length: '.$filesize);
-		header('Cache-Control: private, no-transform, no-store, must-revalidate');
+//		header('Content-Type: '.$mime);
+//		header('Content-Disposition: attachment; filename="'.$filename.'"');
+//		header('Expires: 0');
+//		header('Content-Transfer-Encoding: binary');
+//		header('Content-Length: '.$filesize);
+//		header('Cache-Control: private, no-transform, no-store, must-revalidate');
 
 		// If we have raw data - just dump it
 		if ($data !== NULL)

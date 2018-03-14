@@ -209,7 +209,7 @@ class Board_model extends CI_Model {
 
         $query = "select b_title,b_board_type,b_code,b_index,b_hit,b_content,b_email,b_special,DATE_FORMAT(b_regdate,'%Y-%m-%d') b_regdate,b_writer,b_board_type,
                           b_parentindex,b_depth,b_board_Type, case when popular_log.show_flag is null then 0 else popular_log.show_flag end as show_flag ,
-                          (select count(*) from board tmp where tmp.b_parentindex = b_index) as reply
+                          (select count(*) from board tmp where tmp.b_parentindex = board.b_index) as reply
                   from board left join popular_log  on board.b_index = popular_log.board_idx where board.b_index = ?";
 
         $result =  $this->db->query($query,array($id))->row();
@@ -230,6 +230,10 @@ class Board_model extends CI_Model {
         }else if($type == "all"){
             $query = "select f_index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date
                   from boardfile where b_index =?  order by f_index asc";
+        }else if($type == "notall"){
+            $query = "select f_index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date
+                  from boardfile where b_index =? and left(f_type, 5) <> 'image'  order by f_index asc";
+
         }
         $result =  $this->db->query($query,array($id))->result();
         return $result;
@@ -312,7 +316,7 @@ class Board_model extends CI_Model {
                         'f_rename' => $temp_image[0],
                         'list_img' => $list_img,
                         'file_path' => $params['file_path'],
-                        'reg_date' => 'now()'
+                        'reg_date' => date('Y-m-d H:i:s',time())
                     );
 
                     $img_result = $this->db->insert('boardfile', $data);
@@ -349,7 +353,33 @@ class Board_model extends CI_Model {
 
 
     }
+    public function set_files($params){
 
+        foreach ($params as $key => $value) {
+            $data = array(
+                'b_code'    => $params['b_code'],
+                'b_index'   => $params['b_index'],
+                'f_name'    => $params['f_name'],
+                'f_type'    => $params['f_type'],
+                'f_width'   => $params['f_width'],
+                'f_size'    => $params['f_size'],
+                'f_rename'  => $params['f_rename'],
+                'list_img'  => $params['list_img'],
+                'file_path' => $params['file_path'],
+                'reg_date'  => date('Y-m-d H:i:s',time())
+            );
+
+            $file_result = $this->db->insert('boardfile', $data);
+
+            if ($file_result === false) {
+                $this->db->trans_rollback();
+                return false;
+            }
+            $this->db->trans_commit();
+            $this->db->trans_complete();
+            return true;
+        }
+    }
     public function set_bbs_delete($params){
 
         $del_result1 = $this->delete_query('popular_log', array('board_idx' => $params['b_index']));

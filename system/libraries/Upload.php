@@ -38,7 +38,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * File Uploading Class
+ * File.php Uploading Class
  *
  * @package		CodeIgniter
  * @subpackage	Libraries
@@ -126,14 +126,14 @@ class CI_Upload {
 	public $orig_name = '';
 
 	/**
-	 * File type
+	 * File.php type
 	 *
 	 * @var	string
 	 */
 	public $file_type = '';
 
 	/**
-	 * File size
+	 * File.php size
 	 *
 	 * @var	int
 	 */
@@ -687,7 +687,7 @@ class CI_Upload {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Set Maximum File Size
+	 * Set Maximum File.php Size
 	 *
 	 * @param	int	$n
 	 * @return	CI_Upload
@@ -701,7 +701,7 @@ class CI_Upload {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Set Maximum File Size
+	 * Set Maximum File.php Size
 	 *
 	 * An internal alias to set_max_filesize() to help with configuration
 	 * as initialize() will look for a set_<property_name>() method ...
@@ -717,7 +717,7 @@ class CI_Upload {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Set Maximum File Name Length
+	 * Set Maximum File.php Name Length
 	 *
 	 * @param	int	$n
 	 * @return	CI_Upload
@@ -787,7 +787,7 @@ class CI_Upload {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Set Allowed File Types
+	 * Set Allowed File.php Types
 	 *
 	 * @param	mixed	$types
 	 * @return	CI_Upload
@@ -1039,7 +1039,7 @@ class CI_Upload {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Limit the File Name Length
+	 * Limit the File.php Name Length
 	 *
 	 * @param	string	$filename
 	 * @param	int	$length
@@ -1194,7 +1194,7 @@ class CI_Upload {
 	// --------------------------------------------------------------------
 
 	/**
-	 * File MIME type
+	 * File.php MIME type
 	 *
 	 * Detects the (actual) MIME type of the uploaded file, if possible.
 	 * The input array is expected to be $_FILES[$field]
