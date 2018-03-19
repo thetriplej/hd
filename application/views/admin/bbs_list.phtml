@@ -28,7 +28,7 @@
                                                     <td align="right" style="padding-right:20px">
                                                         <input type="button" value="전체보기"  onClick='find_list(1,0);' id="all_view" style="display:none;">
                                                         <input type="button" value="강조보기"  onClick='find_list(1,1);' id="strong_view">
-                                                        <input type="button" value="등록" onClick="location.href='/admin/<?=$bbs_write?>?page=<?php echo $page;?>&search_type=<?php echo $search_type;?>&search_value=<?php echo $search_value;?>&b_special=<?php echo $b_special;?>'"></td>
+                                                        <input type="button" value="등록" onClick="location.href='<?=$bbs_write?>?page=<?php echo $page;?>&search_type=<?php echo $search_type;?>&search_value=<?php echo $search_value;?>&b_special=<?php echo $b_special;?>'"></td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -55,7 +55,7 @@
                                         </select>
                                         <input type="text" name="search_value" id="search_value" class="input_find" style="width:90px;" value="<?php echo $search_value;?>">
                                         <input type="button" class="btn_find" value="찾아보기" onclick="get_list(1);">
-                                        <input type="hidden" id="page">
+                                        <input type="hidden" id="page" value="<?=$page?>">
                                         <input type="hidden" id="b_special" value="<?=$b_special?>">
                                         <input type="hidden" id="b_code" value="<?=$b_code?>">
                                     </td>
@@ -130,6 +130,8 @@
 <script type="text/javascript">
     if($("#page").val() == "") {
         get_list(1);
+    }else{
+        get_list($("#page").val());
     }
 
     function get_list(page){

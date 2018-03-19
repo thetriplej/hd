@@ -6,6 +6,7 @@ class Gallery extends Common {
     public function  __construct() {
         parent::__construct();
         $this->load->model(array('board_model'));
+        $this->load->helper('cookie');
     }
 
     function _remap($method) {

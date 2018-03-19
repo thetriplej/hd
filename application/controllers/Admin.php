@@ -6,14 +6,17 @@ class Admin extends Common {
     public function  __construct() {
         parent::__construct();
         $this->load->model(array('member_model','board_model'));
+        $this->load->helper('cookie');
     }
 
     function _remap($method) {
+        $admin_mode = get_cookie('admin_mode', TRUE);
 
         $send_data = array(
-            'user_id'   => $this->session->userdata('userid'),
-            'level'     => $this->session->userdata('level'),
-            'user_name' => $this->session->userdata('username'),
+            'user_id'    => $this->session->userdata('userid'),
+            'level'      => $this->session->userdata('level'),
+            'user_name'  => $this->session->userdata('username'),
+            'admin_mode' => $admin_mode,
         );
         if($method != "index") {
             $this->load->view('admin_top.phtml',$send_data);
@@ -29,12 +32,90 @@ class Admin extends Common {
     {
         $this->load->view('admin/index.phtml');
     }
-    public function login()
-    {
-        $post = $this->input->post(null, true);
-        $id = $post['id'];
-        $password = $post['password'];
+//    public function login()
+//    {
+//        $post = $this->input->post(null, true);
+//        $id = $post['id'];
+//        $password = $post['password'];
+//
+//    }
+    public function visit_list(){
+        $this->load->view('admin/visit_list.phtml');
+    }
 
+    public function visit_old(){
+        $page = $this->input->get('page');
+        $start_date = $this->input->get('start_date');
+        if(empty($start_date)) $start_date = "2016-01-16";
+        $end_date = $this->input->get('end_date');
+        if(empty($end_date)) $end_date = "2017-01-16";
+
+
+        if(empty($page)) $page = 1;
+        $send_data = array(
+        'page'          => $page,
+        'menu_title'    => '접속자 리스트(~2016년 1월 16일)',
+        'start_date'    => $start_date,
+        'end_date'      => $end_date,
+        );
+
+        $this->load->view('admin/visit_old2.phtml',$send_data);
+}
+
+    public function visit_old2(){
+        $page = $this->input->get('page');
+        $start_date = $this->input->get('start_date');
+        if(empty($start_date)) $start_date = "2016-01-01";
+        $end_date = $this->input->get('end_date');
+        if(empty($end_date)) $end_date = "2016-01-16";
+
+
+        if(empty($page)) $page = 1;
+        $send_data = array(
+            'page'          => $page,
+            'menu_title'    => '접속자 리스트(~2016년 1월 16일)',
+            'start_date'    => $start_date,
+            'end_date'      => $end_date,
+        );
+
+        $this->load->view('admin/visit_old2.phtml',$send_data);
+    }
+
+    public function get_uri($b_code){
+        $send_data = array();
+        if($b_code == "FREEBOARD0"){
+            $send_data['sub_title'] = "헷세드공지";
+            $send_data['edit_uri'] = '/admin/notice_write';
+            $send_data['menu_ajax_url'] = 'get_notice_list';
+            $send_data['bbs_write']     = '/admin/notice_write';
+            $send_data['list_uri' ]     = '/admin/notice_list';
+        }else if($b_code == "CEPILOGUE0"){
+            $send_data['sub_title'] = "고객후기";
+            $send_data['edit_uri'] = '/admin/customer_write';
+            $send_data['menu_ajax_url'] = 'get_gallery_list';
+            $send_data['bbs_write']     = '/admin/customer_write';
+            $send_data['list_uri' ]     = '/admin/customer_list';
+        }else if($b_code == "SEPILOGUE0"){
+            $send_data['sub_title'] = "H_매거진";
+            $send_data['edit_uri'] = '/admin/magajine_write';
+            $send_data['menu_ajax_url'] = 'get_magajine_list';
+            $send_data['bbs_write']     = '/admin/magajine_write';
+            $send_data['list_uri' ]     = '/admin/magajine_list';
+        }else if($b_code == "QANDA0"){
+            $send_data['sub_title'] = "Q&A";
+            $send_data['edit_uri'] = '/admin/qna_write';
+            $send_data['menu_ajax_url'] = 'get_qna_list';
+            $send_data['bbs_write']     = '/admin/qna_write';
+            $send_data['list_uri' ]     = '/admin/qna_list';
+        }else if($b_code == "NEWS0"){
+            $send_data['sub_title'] = "영상자료";
+            $send_data['list_uri'] = 'news_list';
+            $send_data['edit_uri'] = 'news_write';
+            $send_data['menu_ajax_url'] = 'get_notice_list';
+            $send_data['bbs_write']     = 'notice_write';
+            $send_data['list_uri' ]     = '/admin/notice_list';
+        }
+        return $send_data;
     }
     public function notice_list()
     {
@@ -46,7 +127,7 @@ class Admin extends Common {
         if(empty($b_code)) $b_code = 'FREEBOARD0';
         $search_type = $this->input->get('search_type');
         $search_value = $this->input->get('search_value');
-
+        $uri_array = $this->get_uri($b_code);
 
         $send_data = array(
             'page'          => $page,
@@ -54,10 +135,10 @@ class Admin extends Common {
             'search_type'   => $search_type,
             'search_value'  => $search_value,
             'b_special'     => $b_special,
-            'menu_title'    => "헷세드공지",
-            'menu_ajax_url' => 'get_notice_list',
-            'bbs_write'     => 'notice_write',
-            'list_uri'      => '/admin/notice_list'
+            'menu_title'    => $uri_array['sub_title'],
+            'menu_ajax_url' => $uri_array['menu_ajax_url'],
+            'bbs_write'     => $uri_array['bbs_write'],
+            'list_uri'      => $uri_array['list_uri'],
         );
         $this->load->view('admin/bbs_list.phtml',$send_data);
     }
@@ -73,6 +154,7 @@ class Admin extends Common {
         $b_index = $this->input->get('b_index');
         $search_type = $this->input->get('search_type');
         $search_value = $this->input->get('search_value');
+        $uri_array = $this->get_uri($b_code);
 
         if(!empty($b_index)){
             $result = $this->bbs_file($b_index);
@@ -90,9 +172,10 @@ class Admin extends Common {
             'search_value'  => $search_value,
             'b_special'     => $b_special,
             'b_index'       => $b_index,
-            'menu_title'    => "헷세드공지",
-            'menu_ajax_url' => 'get_notice_list',
-            'bbs_write'     => 'notice_write',
+            'menu_title'    => $uri_array['sub_title'],
+            'menu_ajax_url' => $uri_array['menu_ajax_url'],
+            'bbs_write'     => $uri_array['bbs_write'],
+            'list_uri'      => $uri_array['list_uri'],
             'file_data'     => $file_data,
             'b_board_type'   => $b_board_type,
         );
@@ -103,6 +186,40 @@ class Admin extends Common {
         }
     }
 
+    public function bbs_reply(){
+        $b_index = $this->input->get('b_index');
+        $page = $this->input->get('page');
+        $b_code = $this->input->get('b_code');
+        $search_type = $this->input->get('search_type');
+        $search_value = $this->input->get('search_value');
+        $uri_array = $this->get_uri($b_code);
+
+        $send_data = array(
+            'b_index'       => $b_index,
+            'page'          => $page,
+            'b_code'        => $b_code,
+            'search_type'   => $search_type,
+            'search_value'  => $search_value,
+        );
+        $view_send = array(
+            'id'  => $b_index,
+        );
+
+        $view_data = $this->board_model->get_admin_view($view_send);
+        $view_array = array(
+            'view_data'             => $view_data,
+            'b_code'                => $b_code,
+            'search_type'           => $search_type,
+            'search_value'          => $search_value,
+            'page'                  => $page,
+            'b_index'               => $b_index,
+            'sub_title'             => $uri_array['sub_title'],
+            'list_uri'              => $uri_array['list_uri'],
+            'edit_uri'              => $uri_array['edit_uri'],
+        );
+        $this->load->view('admin/bbs_reply.phtml',$view_array);
+    }
+
     public function bbs_view()
     {
         $b_index = $this->input->get('b_index');
@@ -111,27 +228,7 @@ class Admin extends Common {
         $search_type = $this->input->get('search_type');
         $search_value = $this->input->get('search_value');
 
-        if($b_code == "FREEBOARD0"){
-            $sub_title = "헷세드공지";
-            $list_uri = 'notice_list';
-            $edit_uri = 'notice_write';
-        }else if($b_code == "CEPILOGUE0"){
-            $sub_title = "고객후기";
-            $list_uri = 'customer_list';
-            $edit_uri = 'customer_write';
-        }else if($b_code == "SEPILOGUE0"){
-            $sub_title = "H_매거진";
-            $list_uri = 'magajine_list';
-            $edit_uri = 'magajine_write';
-        }else if($b_code == "QANDA0"){
-            $sub_title = "Q&A";
-            $list_uri = 'qna_list';
-            $edit_uri = 'qna_write';
-        }else if($b_code == "NEWS0"){
-            $sub_title = "영상자료";
-            $list_uri = 'news_list';
-            $edit_uri = 'news_write';
-        }
+        $uri_array = $this->get_uri($b_code);
 
         $send_data = array(
             'b_index'       => $b_index,
@@ -236,11 +333,11 @@ class Admin extends Common {
             'search_value'          => $search_value,
             'page'                  => $page,
             'b_index'               => $b_index,
-            'view_uri'              => $this->view_uri,
-            'sub_title'             => $sub_title,
-            'list_uri'              => $list_uri,
-            'edit_uri'              => $edit_uri
+            'sub_title'             => $uri_array['sub_title'],
+            'list_uri'              => $uri_array['list_uri'],
+            'edit_uri'              => $uri_array['edit_uri'],
         );
+
         $this->load->view('admin/bbs_view.phtml',$view_array);
     }
 
@@ -264,6 +361,7 @@ class Admin extends Common {
         $b_email        = $this->input->post("b_email1")."@".$this->input->post("b_email2");
         $b_content      =   $this->input->post("b_content");
         $b_locked       =   $this->input->post("b_locked");
+        $position       = $this->input->post("position[]");
 
         if(empty($b_locked)) $b_locked = "N";
         $attach_image   =   $this->input->post("attach_image[]",false);
@@ -271,7 +369,21 @@ class Admin extends Common {
         $today = date('Y-m');
 
         $new_attach_image = array();
+
+        if($b_board_type != '0'){
+            $b_content = htmlspecialchars($b_content);  //에디터 사용
+        }else{
+            $b_content = $b_content;
+        }
+        $view_send = array(
+            'id'  => $b_index,
+        );
+        $view_data = $this->board_model->get_admin_view($view_send);
+        $b_sequence=1;
+        if(!empty($view_data)) $group_no = $view_data->b_group;
         if($proc_type == "NW"){ // 신규등록
+            $max_group_no = $this->board_model->get_last_group_no();
+            $group_no = $max_group_no->max_group;
             if(!empty($attach_image)) {
                 foreach ($attach_image as $key => $value) {
                     $new_attach_image[$key] = $this->input->post("attach_image[" . $key . "]", true);
@@ -286,16 +398,13 @@ class Admin extends Common {
 
             }
             If(empty($b_title)) $b_title = '.';
-            if($b_board_type != '0'){
-                $b_content = htmlspecialchars($b_content);  //에디터 사용
-            }else{
-                $b_content = $b_content;
-            }
+
             $b_writer = "HASSED";
 			$b_password = "1234567890";
+
         }else if($proc_type == "M"){    // 수정
-            $b_writer = "HASSED";
-            $b_password = "1234567890";
+//            $b_writer = "HASSED";
+//            $b_password = "1234567890";
             $old_image = array();
             $new_image = array();
             $image_data = $this->board_model->get_file($b_index,'image');
@@ -303,7 +412,8 @@ class Admin extends Common {
             foreach($image_data as $key => $value){
                 $old_image[$key] = $value->f_rename;
             }
-            if(!empty($attach_image)) {
+
+            if(!empty($attach_image) || !empty($old_image)) {
                 foreach ($attach_image as $key => $value) { //수정시 기존이미지 이미지 추가배열에서 삭제
                     $temp_image = explode('|', $attach_image[$key]);
                     $re_filename = $temp_image[0];
@@ -312,9 +422,8 @@ class Admin extends Common {
                 }
 
                 foreach ($image_data as $key => $value) {
-
                     if (!in_array($value->f_rename, $new_image)) {
-                        var_dump($value->f_rename);
+                        var_dump($upload_dir . $value->file_path . $value->f_rename);
                         @unlink($upload_dir . $value->file_path . $value->f_rename);
                         $temp_fname = explode('.', $value->f_rename);
                         $allow_file = array("jpg", "png", "bmp", "gif", "jpeg");
@@ -325,6 +434,36 @@ class Admin extends Common {
                     }
                 }
             }
+
+        }else if($proc_type="RW"){
+            $b_writer = "HASSED";
+            $b_password = "1234567890";
+            $b_parentindex = $view_data->b_index;
+            $b_index = null;
+            $b_depth = ($view_data->b_depth) + 1;
+            $b_group = $view_data->b_group;
+            $b_sequence = $view_data->b_sequence;
+            $send_data = array(
+                'b_sequence'  =>   $b_sequence,
+                'b_group'     =>   $b_group,
+            );
+            $b_sequence = $b_sequence +1;
+            $result = $this->board_model->set_board_reply($send_data);
+            if(!empty($attach_image)) {
+                foreach ($attach_image as $key => $value) {
+                    $new_attach_image[$key] = $this->input->post("attach_image[" . $key . "]", true);
+                }
+                $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/board/'.$today;
+                if(!is_dir($upload_dir)){
+                    mkdir($upload_dir, 0777);
+                }
+                $attach_image = $new_attach_image;
+            }
+            if(!empty($files)){
+
+            }
+            If(empty($b_title)) $b_title = '.';
+
 
         }
 
@@ -337,7 +476,7 @@ class Admin extends Common {
                 $re_filename = $temp_image[0];
 
                 if (rename($old_path . $re_filename, $path . $re_filename)) {
-
+                    $file_result = true;
                 } else {
                     $file_result = false;
                 }
@@ -349,16 +488,23 @@ class Admin extends Common {
                 } else {
                     $file_result = false;
                 }
+                $origin_file = $temp_fname[0] . "_origin." . $temp_fname[1];
+                if (rename($old_path . $origin_file, $path . $origin_file)) {
+                    $file_result = true;
+                } else {
+                    $file_result = false;
+                }
 
             }
         }
 
         $b_content = str_replace ("/temp","/board/".$today,$b_content);
-        $max_group_no = $this->board_model->get_last_group_no();
+
 
         $send_data = array(
             'b_code'        =>   $b_code,
             'proc_type'     =>   $proc_type,
+            'b_sequence'    =>   $b_sequence,
             'b_depth'       =>   $b_depth,
             'b_parentindex' =>   $b_parentindex,
             'b_board_type'  =>   $b_board_type,
@@ -373,12 +519,14 @@ class Admin extends Common {
             'attach_image'  =>   $attach_image,
             'select_img'    =>   $select_img,
             'file_path'     =>   '/upload/board/'.$today.'/',
-            'b_group'       =>   $max_group_no->max_group
+            'b_group'       =>   $group_no,
         );
+
 
         $result = $this->board_model->set_bbs_save($send_data);
 
         if($result && $file_result){
+
             ini_set("memory_limit", "-1");
 
             //$url = '/public_html/d_editor/pages/trex/image.php?callback_func='.$_REQUEST["callback_func"];
@@ -387,10 +535,12 @@ class Admin extends Common {
             $upload_type    = $_FILES['files']['type'];
 
             $send_data = array();
-            $fCnt = count($upload_file);
+            $fCnt = count($_FILES['files']['name']);
+
             $today = date('Y-m');
 
             for($i=0;$i<$fCnt;$i++){
+
                 $bSuccessUpload = is_uploaded_file($_FILES['files']['tmp_name'][$i]);
                 $img_info = array();
                 if($bSuccessUpload) {
@@ -414,6 +564,7 @@ class Admin extends Common {
                             'b_index'   => $b_index,
                             'f_name'    => $name,
                             'f_type'    => $upload_type,
+                            'f_position'=> $position[$i],
                             'f_width'   => '-1',
                             'f_size'    => $size,
                             'f_rename'  => $file_rename.'.'.$filename_ext,
@@ -422,6 +573,7 @@ class Admin extends Common {
                         );
                         $file_result2 = $this->board_model->set_files($send_data);
                     }
+
                 }
             }
 
@@ -445,18 +597,18 @@ class Admin extends Common {
         $search_value = $this->input->get('search_value');
 
         $list =  $this->board_model->get_admin_porpula_list();
-
+        $uri_array = $this->get_uri($b_code);
         $send_data = array(
             'page'          => $page,
             'b_code'        => $b_code,
             'search_type'   => $search_type,
             'search_value'  => $search_value,
             'b_special'     => $b_special,
-            'menu_title'    => "고객후기",
-            'menu_ajax_url' => 'get_gallery_list',
             'porpula_list'  => $list,
-            'bbs_write'     => 'customer_write',
-            'list_uri'      => '/admin/customer_list'
+            'menu_title'    => $uri_array['sub_title'],
+            'menu_ajax_url' => $uri_array['menu_ajax_url'],
+            'bbs_write'     => $uri_array['bbs_write'],
+            'list_uri'      => $uri_array['list_uri'],
         );
 
         $this->load->view('admin/bbs_list.phtml',$send_data);
@@ -484,17 +636,18 @@ class Admin extends Common {
             $file_data ="";
             $b_board_type = "";
         }
-
+        $uri_array = $this->get_uri($b_code);
         $send_data = array(
             'page'          => $page,
             'b_code'        => $b_code,
             'search_type'   => $search_type,
             'search_value'  => $search_value,
             'b_special'     => $b_special,
-            'menu_title'    => "고객후기",
-            'menu_ajax_url' => 'get_gallery_list',
             'porpula_list'  => $list,
-            'bbs_write'     => 'customer_write',
+            'menu_title'    => $uri_array['sub_title'],
+            'menu_ajax_url' => $uri_array['menu_ajax_url'],
+            'bbs_write'     => $uri_array['bbs_write'],
+            'list_uri'      => $uri_array['list_uri'],
             'b_index'       => $b_index,
             'file_data'     => $file_data,
             'b_board_type'   => $b_board_type,
@@ -517,17 +670,17 @@ class Admin extends Common {
         if(empty($b_code)) $b_code = 'SEPILOGUE0';
         $search_type = $this->input->get('search_type');
         $search_value = $this->input->get('search_value');
-
+        $uri_array = $this->get_uri($b_code);
         $send_data = array(
             'page'          => $page,
             'b_code'        => $b_code,
             'search_type'   => $search_type,
             'search_value'  => $search_value,
             'b_special'     => $b_special,
-            'menu_title'    => "H_매거진",
-            'menu_ajax_url' => 'get_magajine_list',
-            'bbs_write'     => 'magajine_write',
-            'list_uri'      => '/admin/magajine_list'
+            'menu_title'    => $uri_array['sub_title'],
+            'menu_ajax_url' => $uri_array['menu_ajax_url'],
+            'bbs_write'     => $uri_array['bbs_write'],
+            'list_uri'      => $uri_array['list_uri'],
         );
 
         $this->load->view('admin/bbs_list.phtml',$send_data);
@@ -552,15 +705,17 @@ class Admin extends Common {
             $file_data ="";
             $b_board_type = "";
         }
+        $uri_array = $this->get_uri($b_code);
         $send_data = array(
             'page'          => $page,
             'b_code'        => $b_code,
             'search_type'   => $search_type,
             'search_value'  => $search_value,
             'b_special'     => $b_special,
-            'menu_title'    => "H_매거진",
-            'menu_ajax_url' => 'get_magajine_list',
-            'bbs_write'     => 'magajine_write',
+            'menu_title'    => $uri_array['sub_title'],
+            'menu_ajax_url' => $uri_array['menu_ajax_url'],
+            'bbs_write'     => $uri_array['bbs_write'],
+            'list_uri'      => $uri_array['list_uri'],
             'b_index'       => $b_index,
             'file_data'     => $file_data,
             'b_board_type'   => $b_board_type,
@@ -583,18 +738,17 @@ class Admin extends Common {
         if(empty($b_code)) $b_code = 'QANDA0';
         $search_type = $this->input->get('search_type');
         $search_value = $this->input->get('search_value');
-
+        $uri_array = $this->get_uri($b_code);
         $send_data = array(
             'page'          => $page,
             'b_code'        => $b_code,
             'search_type'   => $search_type,
             'search_value'  => $search_value,
-            'view_uri'      => $this->view_uri,
             'b_special'     => $b_special,
-            'menu_title'    => "Q&A",
-            'menu_ajax_url' => 'get_qna_list',
-            'bbs_write'     => 'qna_write',
-            'list_uri'      => '/admin/qna_list'
+            'menu_title'    => $uri_array['sub_title'],
+            'menu_ajax_url' => $uri_array['menu_ajax_url'],
+            'bbs_write'     => $uri_array['bbs_write'],
+            'list_uri'      => $uri_array['list_uri'],
         );
         $this->load->view('admin/bbs_list.phtml',$send_data);
     }
@@ -618,16 +772,17 @@ class Admin extends Common {
             $file_data ="";
             $b_board_type = "";
         }
+        $uri_array = $this->get_uri($b_code);
         $send_data = array(
             'page'          => $page,
             'b_code'        => $b_code,
             'search_type'   => $search_type,
             'search_value'  => $search_value,
-            'view_uri'      => $this->view_uri,
             'b_special'     => $b_special,
-            'menu_title'    => "Q&A",
-            'menu_ajax_url' => 'get_qna_list',
-            'bbs_write'     => 'qna_write',
+            'menu_title'    => $uri_array['sub_title'],
+            'menu_ajax_url' => $uri_array['menu_ajax_url'],
+            'bbs_write'     => $uri_array['bbs_write'],
+            'list_uri'      => $uri_array['list_uri'],
             'b_index'       => $b_index,
             'file_data'     => $file_data,
             'b_board_type'   => $b_board_type,

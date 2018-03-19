@@ -13,12 +13,14 @@
                 </tr>
             </table>
             <br><br>
-            <?php echo form_open_multipart('/admin/bbs_store/',array('name'=>"tx_editor_form", 'id'=>"tx_editor_form")); ?>
+            <?php echo form_open_multipart('/admin/bbs_store/',array('name'=>"frm01", 'id'=>"frm01")); ?>
             <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
                     <input type="hidden" id="proc_type" name="proc_type" value="M">
                     <input type="hidden" id="b_special" value="<?=$b_special?>">
                     <input type="hidden" id="b_code" name="b_code" value="<?php echo($b_code);?>" />
                     <input type="hidden" id="page" name="page" value="<?php echo($page);?>" />
+                    <input type=hidden id="search_type" name="search_type" value='<?=$search_type?>'>
+                    <input type=hidden id="search_value" name="search_value" value='<?=$search_value?>'>
                     <input type="hidden" name="b_board_type" id="b_board_type" value="1">
                     <input type="hidden" id="b_index" name="b_index" value="<?php echo(!empty($b_index))?$b_index:'';?>">
                     <input type="hidden" name="select_img" id="select_img">
@@ -100,13 +102,13 @@
                                                     if($b_board_type == "0") {
 
                                                         ?>
-                                                        <tr align="center">
+                                                        <tr align="center" class="<?php echo $value->f_index; ?>">
                                                         <?php if($mType[0] == "image") {?>
                                                             <td rowspan="2"><img src="<?= $value->file_path.'_145x90.'.$temp_fname[1] ?>" width="72" height="45" style="vertical-align:middle;"></td>
                                                         <?php }else{?>
                                                             <td rowspan="2"></td>
                                                         <?php }?>
-                                                            <td><select name="b_position">
+                                                            <td><select name="f_position">
                                                                     <option value="T" <?php if ($value->f_position == "T"){echo "selected"; }?>>상단</option>
                                                                     <option value="B" <?php if ($value->f_position == "B"){echo "selected"; }?>>하단</option>
                                                                 </select>
@@ -116,7 +118,7 @@
                                                                 <img src='/public_html/images/ico_del.gif' onclick="try{ b_file[<?= $key?>].value='삭제';f_index[<?= $key?>].value=''; }catch(e){ b_file.value='삭제';f_index.value=''; delFile(<?php echo $value->f_index; ?>);}this.style.display='none';" alt="삭제" style="cursor:pointer;">
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="<?php echo $value->f_index; ?>">
                                                             <td colspan="3">
                                                                 <input type="hidden" name="f_Index" value="<?php echo $value->f_index; ?>">
                                                                 <input type='text' name='b_file' size='20' value='<?php echo $value->f_name; ?>' readonly style='border:0;'></td>
@@ -125,19 +127,19 @@
                                                     }else{
                                                         If($mType[0] != "image") {
                                                             ?>
-                                                            <tr align="center">
+                                                            <tr align="center" class="<?php echo $value->f_index; ?>">
                                                                 <td rowspan="2"></td>
-                                                                <td><select name="b_position">
+                                                                <td><select name="f_position">
                                                                         <option value="T" <?php if ($value->f_position == "T"){ echo "selected";} ?>>상단</option>
                                                                         <option value="B" <?php if ($value->f_position == "B"){ echo "selected";} ?>>하단</option>
                                                                     </select>
                                                                 </td>
                                                                 <td></td>
                                                                 <td style="text-align:left;padding-left:7px;">
-                                                                    <img src='/public_html/images/ico_del.gif' onclick="try{ b_file[<?= $key ?>].value='삭제';f_index[<?= $key ?>].value=''; }catch(e){ b_file.value='삭제';f_index.value=''; delFile(<?php echo $value->f_index; ?>);}this.style.display='none';" alt="삭제" style="cursor:pointer;">
+                                                                    <img src='/public_html/images/ico_del.gif' onclick="delFile(<?php echo $value->f_index; ?>);" alt="삭제" style="cursor:pointer;">
                                                                 </td>
                                                             </tr>
-                                                            <tr>
+                                                            <tr class="<?php echo $value->f_index; ?>">
                                                                 <td colspan="3">
                                                                     <input type="hidden" name="f_Index" value="<?php echo $value->f_index; ?>">
                                                                     <input type='text' name='b_file' size='20' value='<?php echo $value->f_name; ?>' readonly style='border:0;'></td>
@@ -154,12 +156,16 @@
                                             </tr>
                                             <tr bgcolor="#FFFFFF">
                                                 <td width="120" valign="top"><font color="#999999"><b>|</b></font> 파일</td>
-                                                <td><font color="blue">※ <b>파일 사용 방법</b></font><br>업로드 하고자 하는 파일 갯수대로 파일 등록 창을 추가/삭제가 가능하며, 상단, 하단 선택을 할수 있으며,<br> 보여질 경우에는 순서에 맞게 상단, 하단에 위치하여 보여지게 됩니다.<br><br>
-                                                    <font color="red">이미지 파일 ('jpg', 'jpeg', 'png', 'bmp', 'gif')의 경우 에디터에서 업로드해주세요</font><br><br>
-                                                    <font color="red">동영상 파일은 확장자가 MP4만 올릴수 있으며 위치를 상단에 맞추어 주시고,<br />하나 이상 등록시에는 자동 재생되어 동시에 재생되는 상황이 발생할 수 있습니다.</font>
+                                                <td><font color="blue">※ <b>파일 사용 방법</b></font><br />
+                                                    업로드 하고자 하는 파일 갯수대로 파일 등록 창을 추가/삭제가 가능하며, 상단, 하단 선택을 할수 있으며,<br/>
+                                                    보여질 경우에는 순서에 맞게 상단, 하단에 위치하여 보여지게 됩니다.<br/><br/>
+                                                    <font color="red">이미지 파일 ('jpg', 'jpeg', 'png', 'bmp', 'gif')의 경우 에디터에서 업로드해주세요</font><br/><br/>
+                                                    <font color="red">동영상 파일은 확장자가 MP4만 올릴수 있으며 위치를 상단에 맞추어 주시고,<br />
+                                                        하나 이상 등록시에는 자동 재생되어 동시에 재생되는 상황이 발생할 수 있습니다.</font>
                                                     <ul id="FileDiv">
-                                                        <li><input type="file" name="Files" id="Files" size="50" onchange="checking_file();"><br>||| 위치 : <select name=Position><option value=T>상단</option> <option value=B>하단</option></select> <a href="javascript:void(0);" name="btn" class="btn">추가</a></li>
-                                                    </ul></td>
+                                                        <li><input type="file" name="files[]" size="50" onchange="checking_file();"> ||| 위치 : <select name="position[]"><option value=T>상단</option> <option value=B>하단</option></select> <a href="javascript:void(0);" name="btn" class="btn">추가</a></li>
+                                                    </ul>
+                                                </td>
                                             </tr>
                                             <!--
                                             <tr bgcolor="#FFFFFF">
@@ -169,19 +175,19 @@
                                             -->
                                             <tr bgcolor="#FFFFFF">
                                                 <td width="120" valign="top"><font color="#999999"><b>|</b></font> 잠금기능</td>
-                                                <td>사용 <input type="checkbox" name="B_Locked" class="textbox" value="Y" <?php if($b_locked == "Y"){echo"checked";}?>></td>
+                                                <td>사용 <input type="checkbox" name="b_locked" class="textbox" value="Y"></td>
                                             </tr>
                                             <tr bgcolor="#FFFFFF">
                                                 <td width="120" valign="top"><font color="#999999"><b>|</b></font> 비밀번호</td>
-                                                <td><input type="password" id="B_Password" name="B_Password" size="30" maxlength="30" value="<%=Rs("B_Password")%>"></td>
+                                                <td><input type="password" id="b_password" name="b_password" size="30" maxlength="30" value=""></td>
                                             </tr>
                                         </table>
                                     </td>
                                 </tr>
                                 <tr align="center">
                                     <td bgcolor="#dddddd" height="30">
-                                        <input type="button" value="등록" onClick="saveContent();">
-                                        <input type="button" value="목록" onClick="goto('<%=listURL%>');">
+                                        <input type="button" value="저장" onClick="saveContent();">
+                                        <input type="button" value="목록" onClick="frmList('<?=$list_uri?>');">
                                     </td>
                                 </tr>
                             </table>
@@ -203,7 +209,11 @@
         if($(this).html() == "추가"){
             html = "";
             html += "<li>";
-            html += "<input type=\"file\" name=\"files[]\" size=\"50\"><br>||| 위치 : <select name=\"Position\"><option value=\"T\">상단</option> <option value=\"B\">하단</option></select>";
+            html += "<input type=\"file\" name=\"files[]\" size=\"50\"> ||| 위치 : ";
+            html += "<select name=\"position[]\">";
+            html += "   <option value=\"T\">상단</option>";
+            html += "   <option value=\"B\">하단</option>";
+            html += "</select>";
             html += " <a href=\"javascript:void(0);\" name=\"btn\" class=\"btn\">삭제</a>";
             html += "</li>";
 
@@ -219,7 +229,7 @@
         txProject: 'sample', /* 수정필요없음. 프로젝트가 여러개일 경우만 수정한다. */
         initializedId: "", /* 대부분의 경우에 빈문자열 */
         wrapper: "tx_trex_container", /* 에디터를 둘러싸고 있는 레이어 이름(에디터 컨테이너) */
-        form: 'tx_editor_form'+"", /* 등록하기 위한 Form 이름 */
+        form: 'frm01'+"", /* 등록하기 위한 Form 이름 */
         txIconPath: "images/icon/editor/", /*에디터에 사용되는 이미지 디렉터리, 필요에 따라 수정한다. */
         txDecoPath: "images/deco/contents/", /*본문에 사용되는 이미지 디렉터리, 서비스에서 사용할 때는 완성된 컨텐츠로 배포되기 위해 절대경로로 수정한다. */
         canvas: {
@@ -416,7 +426,7 @@
         if(typeof(files) != "undefined") {
             console.log(files);
             $.each(files, function(i, obj) {
-                if(obj.f_index != null && obj.f_position != null) {
+                if(obj.f_index != null && obj.f_position == null) {
                     tmp_type = obj.f_type.split('/');
                     if(tmp_type[0] == "image") {
 
@@ -454,6 +464,12 @@
         $('#b_email1').val(_Email[0]);
         $('#b_email2').val(_Email[1]);
         $('#proc_type').val("M");
+        $('#b_password').val(reDate.b_password);
+
+        if(reDate.b_locked == "Y") {
+            $('#b_locked').attr("checked", true);
+        }
+
 
         /* 저장된 컨텐츠를 불러오기 위한 함수 호출 */
         Editor.modify({

@@ -3,7 +3,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="/public_html/css/admin_style.css">
     <script src="/public_html/js/jquery-1.11.1.js"></script>
-    <script src="/public_html/js/admin.js"></script>
+    <script src="/public_html/js/admin.js?<?=time()?>"></script>
     <link rel="stylesheet" href="/public_html/d_editor/css/editor.css" type="text/css" charset="utf-8"/>
     <script src="/public_html/d_editor/js/editor_loader.js" type="text/javascript" charset="utf-8"></script>
 </head>
@@ -15,8 +15,8 @@
                 <td width="90%" align="left">
                     <table border="0" align="right" cellpadding="0" cellspacing="0">
                         <tbody><tr>
-                            <td width="100" align="center" valign="top" background="/public_html/images/tn_bg.gif"><a href="/admin/notice_list" class="tn"><img src="/public_html/images/dec_tn_02.gif" width="74" height="36" border="0"><br>게시판관리</a></td>
-                            <td width="100" align="center" valign="top" background="/public_html/images/tn_bg.gif"><a href="/admin/log" class="tn"><img src="/public_html/images/dec_tn_01.gif" width="74" height="36" border="0"><br>접속자</a></td>
+                            <td width="100" align="center" valign="top" background="/public_html/images/tn_bg.gif"><a href="javascript:admin_mode('admin');" class="tn"><img src="/public_html/images/dec_tn_02.gif" width="74" height="36" border="0"><br>게시판관리</a></td>
+                            <td width="100" align="center" valign="top" background="/public_html/images/tn_bg.gif"><a href="javascript:admin_mode('visit');" class="tn"><img src="/public_html/images/dec_tn_01.gif" width="74" height="36" border="0"><br>접속자</a></td>
                         </tr>
                         </tbody></table>
                 </td>
@@ -31,6 +31,7 @@
                         <tbody>
                             <tr><td width="145" height="48" background="/public_html/images/sn_tlt_bg.gif" valign="bottom" align="center"></td></tr>
                             <tr><td height="14" valign="top"><img src="/public_html/images/spacer.gif" width="145" height="1" border="0"></td></tr>
+    <?php if($admin_mode =="admin"){ ?>
                             <tr>
                                 <td style="padding-left:7px; padding-right:10px;">
                                     <p><img src="/public_html/images/dec_sn.gif" width="9" height="11" hspace="3" vspace="5" border="0" align="absmiddle"> <a href="/admin/notice_list">헷세드공지</a><br></p>
@@ -71,6 +72,29 @@
                                     <p><img src="/public_html/images/dec_sn.gif" width="9" height="11" hspace="3" vspace="5" border="0" align="absmiddle"> <a href="/admin/qna_write">Q&amp;A 등록</a><br></p>
                                 </td>
                             </tr>
+    <?php }else{?>
+
+                            <tr>
+                                <td style="padding-left:7px; padding-right:10px;"> <p>
+                                        <img src="/public_html/images/dec_sn.gif" width="9" height="11" hspace="3" vspace="5" border="0" align="absmiddle"> <a href="/admin/visit">NEW 접속자</a><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:7px; padding-right:10px;"> <p>
+                                        <img src="/public_html/images/dec_sn.gif" width="9" height="11" hspace="3" vspace="5" border="0" align="absmiddle"> <a href="/admin/referer.asp">유입 경로</a><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:7px; padding-right:10px;"> <p>
+                                        <img src="/public_html/images/dec_sn.gif" width="9" height="11" hspace="3" vspace="5" border="0" align="absmiddle"> <a href="/admin/visit_old">접속자<br>(~2018년 4월 1일)</a><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:7px; padding-right:10px;"> <p>
+                                        <img src="/public_html/images/dec_sn.gif" width="9" height="11" hspace="3" vspace="5" border="0" align="absmiddle"> <a href="/admin/visit_old2">접속자<br>(~2016년 1월 16일)</a><br>
+                                </td>
+                            </tr>
+    <?php } ?>
                         </tbody>
                     </table>
                 </td>
@@ -85,7 +109,7 @@
                                     <font color="#333333"><?php echo $user_id;?>님은 로그인 상태입니다 (<?php echo $user_name;?>)</font>
                                     <img src="/public_html/images/tn_loginbar_etc_line.gif" width="18" height="22" border="0" align="absmiddle">
                                     <img src="/public_html/images/dec_logout.gif" width="13" height="16" border="0" align="absmiddle">
-                                    <a href="../logout.asp" class="logout">로그아웃</a>
+                                    <a href="javascript:log_out();" class="logout">로그아웃</a>
                                     <img src="/public_html/images/tn_loginbar_bg_right.gif" width="20" height="22" border="0" align="absmiddle">
                                 </td>
                             </tr>

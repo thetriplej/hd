@@ -16,13 +16,13 @@ var checkURL;
 var agt = navigator.userAgent.toLowerCase();
 
 function Send(sendURL, e, Locked){
-	//È­¸éÀÇ ³ôÀÌ¿Í ³Êºñ¸¦ ±¸ÇÑ´Ù.
+	//í™”ë©´ì˜ ë†’ì´ì™€ ë„ˆë¹„ë¥¼ êµ¬í•œë‹¤.
 	var maskHeight = $(document).height();  
 	var maskWidth = $(window).width();
 	
-	//¸¶½ºÅ©ÀÇ ³ôÀÌ¿Í ³Êºñ¸¦ È­¸é °ÍÀ¸·Î ¸¸µé¾î ÀüÃ¼ È­¸éÀ» Ã¤¿î´Ù.
+	//ë§ˆìŠ¤í¬ì˜ ë†’ì´ì™€ ë„ˆë¹„ë¥¼ í™”ë©´ ê²ƒìœ¼ë¡œ ë§Œë“¤ì–´ ì „ì²´ í™”ë©´ì„ ì±„ìš´ë‹¤.
 	$('#blind').css({'width':maskWidth,'height':maskHeight});  
-	//¸¶½ºÅ©ÀÇ Åõ¸íµµ Ã³¸®
+	//ë§ˆìŠ¤í¬ì˜ íˆ¬ëª…ë„ ì²˜ë¦¬
 	$('#blind').fadeTo("slow",0.8);  
 	 
 	if (Locked == "Y"){
@@ -64,7 +64,7 @@ function cancel(){
 
 function CheckPW(){
 	if(!$("#pw").val()){
-		alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 		$("#pw").focus();
 		return false;
 	}

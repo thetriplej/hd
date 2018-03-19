@@ -8,6 +8,70 @@ function goto(url, option) {
 	}
 }
 
+function pwView(Obj){
+	var TT = Obj.innerText;
+	if(TT == "[확인]"){
+		Obj.innerHTML = "[숨기기]";
+		document.getElementById("pwView").style.display = "";
+	}
+	if(TT == "[숨기기]"){
+		Obj.innerHTML = "[확인]";
+		document.getElementById("pwView").style.display = "none";
+	}
+}
+
+function frmList(rqURL){
+	var frm=eval("document."+'frm01');
+	if (confirm('리스트로 가시겠습니까?')){
+		frm.action= rqURL+'?b_code='+$("#b_code").val()+'&page='+$("#page").val()+'&search_type='+$("#search_type").val()+'&search_value='+$("#search_value").val();
+		frm.submit();
+	}
+
+}
+
+function frmModi(idx , edit_uri){
+	var frm=eval("document."+'frm01');
+	if (confirm('수정하시겠습니까?')){
+		frm.action= edit_uri+'?b_index='+idx+'&b_code='+$("#b_code").val()+'&page='+$("#page").val()+'&search_type='+$("#search_type").val()+'&search_value='+$("#search_value").val();
+		frm.submit();
+	}
+
+}
+
+
+function frmReply(idx){
+	var frm=eval("document."+'frm01');
+	if (!confirm('답변을 등록 하시겠습니까?')){
+		return;
+	}
+	frm.action= '/admin/bbs_reply?b_index='+idx+'&b_code='+$("#b_code").val()+'&page='+$("#page").val()+'&search_type='+$("#search_type").val()+'&search_value='+$("#search_value").val();;
+	frm.proc_type.value = "RW";
+	frm.submit();
+}
+
+function log_out(){
+
+		$.ajax({
+			type: "POST",
+			url: "/ajax/admin/log_out",
+			dataType: 'json',
+			data: {
+				csrf_token: $('input[name=csrf_token]').val(),
+				mode: 'admin'
+			},
+			success: function (result) {
+				if (result == "fail") {
+					alert('관리자에게 문의해주세요.(삭제불가)');
+					return;
+				} else if (result == "success") {
+					alert('로그아웃되었습니다..');
+					location.href = '/admin/';
+				}
+
+			}
+		});
+
+}
 function frmDel(idx,uri){
 	if (confirm("정말삭제하시겠습니까?")) {
 		$.ajax({
@@ -121,6 +185,7 @@ function Popular(idx){
     $.ajax({
         type:"POST",
         url:"/ajax/admin/popular_set",
+		dataType: 'json',
         data: {
             csrf_token: $('input[name=csrf_token]').val(),
             idx: $('#b_index').val(),
@@ -142,4 +207,52 @@ function Popular(idx){
         }
     });
 
+}
+
+function delFile(idx) {
+
+    $.ajax({
+        type: "POST",
+        url: "/ajax/admin/file_delete",
+		dataType: 'json',
+        data: {
+            csrf_token: $('input[name=csrf_token]').val(),
+            idx: idx,
+            mode : 'admin'
+        },
+        success : function(result) {
+            if(result == "success") {
+                alert("파일이 삭제되었습니다.");
+				$('.'+idx+'').empty();
+            }else{
+                alert("관리자에게 문의해주세요.");
+            }
+
+        }
+    });
+}
+
+function admin_mode(mode){
+
+	$.ajax({
+		type: "POST",
+		url: "/ajax/admin/admin_mode",
+		dataType: 'json',
+		data: {
+			csrf_token: $('input[name=csrf_token]').val(),
+			mode : mode
+		},
+		success : function(result) {
+			if(result == "success") {
+				if(mode=="admin"){
+					location.href = '/admin/notice_list';
+				}else{
+					location.href = '/admin/visit_list';
+				}
+			}else{
+				alert("관리자에게 문의해주세요.");
+			}
+
+		}
+	});
 }

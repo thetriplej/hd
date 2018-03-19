@@ -1,0 +1,312 @@
+                        <tr>
+                            <td height="40" align="left" style="padding-right:20px;"><font color="#eeeeee">:: ADIMN + 게시판 &gt; <?=$menu_title?></font><br></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                    <tr>
+                        <td width="20">&nbsp;</td>
+                        <td width="40" height="40" background="/public_html/images/cn_bg_dot.gif" align="right">
+                        </td>
+                        <td width="129" align="center"><span class="cntlt"><?=$menu_title?></span></td>
+                        <td width="493" background="/public_html/images/cn_bg_dot.gif">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br><br>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+                    <tr valign="top">
+                        <td align="center" style="padding-left:20px; padding-right:20px;">
+                            <table width="100%" cellpadding=0 cellspacing=5 border=0 bgcolor="#999999">
+                                <form name=frm01 method=post>
+                                    <tr>
+                                        <td width="70%" height="30" align="left" bgcolor="#dddddd" class="table">
+
+                                            <!------------------------------- 기간검색 ------------------------------------->
+                                            <select name="searchSYear" onChange="ChangeDate(document.frm01.searchSYear, document.frm01.searchSMonth, document.frm01.searchSDay);">
+                                                <Script Language="JavaScript">
+                                                    setOptionCreateDate(document.frm01.searchSYear, 2, "Y", "<%=setSYear%>", "<%=setSMonth%>");
+                                                </Script>
+                                            </select>
+                                            <select name="searchSMonth" onChange="ChangeDate(document.frm01.searchSYear, document.frm01.searchSMonth, document.frm01.searchSDay);">
+                                                <Script Language="JavaScript">
+                                                    setOptionCreateDate(document.frm01.searchSMonth, 0, "M", "<%=setSYear%>", "<%=setSMonth%>");
+                                                </Script>
+                                            </select>
+                                            <select name="searchSDay">
+                                                <Script Language="JavaScript">
+                                                    setOptionCreateDate(document.frm01.searchSDay, 0, "D", "<%=setSYear%>", "<%=setSMonth%>");
+                                                </Script>
+                                            </select>
+                                            &nbsp;~&nbsp;
+                                            <select name="searchEYear" onChange="ChangeDate(document.frm01.searchEYear, document.frm01.searchEMonth, document.frm01.searchEDay);">
+                                                <Script Language="JavaScript">
+                                                    setOptionCreateDate(document.frm01.searchEYear, 2, "Y", "<%=setEYear%>", "<%=setEMonth%>");
+                                                </Script>
+                                            </select>
+                                            <select name="searchEMonth" onChange="ChangeDate(document.frm01.searchEYear, document.frm01.searchEMonth, document.frm01.searchEDay);">
+                                                <Script Language="JavaScript">
+                                                    setOptionCreateDate(document.frm01.searchEMonth, 0, "M", "<%=setEYear%>", "<%=setEMonth%>");
+                                                </Script>
+                                            </select>
+                                            <select name="searchEDay">
+                                                <Script Language="JavaScript">
+                                                    setOptionCreateDate(document.frm01.searchEDay, 0, "D", "<%=setEYear%>", "<%=setEMonth%>");
+                                                </Script>
+                                            </select>일
+
+                                            <Script Language="JavaScript">
+                                                function SelectDate(){
+                                                    setOptionValue(document.frm01.searchSYear, "<%=setSYear%>");
+                                                    setOptionValue(document.frm01.searchSMonth, "<%=setSMonth%>");
+                                                    setOptionValue(document.frm01.searchSDay, "<%=setSDay%>");
+                                                    setOptionValue(document.frm01.searchEYear, "<%=setEYear%>");
+                                                    setOptionValue(document.frm01.searchEMonth, "<%=setEMonth%>");
+                                                    setOptionValue(document.frm01.searchEDay, "<%=setEDay%>");
+                                                }
+                                                SelectDate();
+                                            </Script>&nbsp;&nbsp;
+                                            <!------------------------------- 기간검색끝 ------------------------------------->
+                                            <input type="submit" value="기간검색">
+                                        </td>
+                                    </tr>
+                                </form>
+                                <tr>
+                                    <td>
+                                        <table width="100%" cellpadding="5" cellspacing="1" border="0" bgcolor="#696969">
+                                            <tr bgcolor="#dddddd" height="25" align=center>
+                                                <td class="table" width=8%>번호</td>
+                                                <td class="table" width=30%>날짜</td>
+                                                <td class="table" width=10%>접속자 Total Count</td>
+                                                <td class="table" width=10%>접속자 PC Count</td>
+                                                <td class="table" width=10%>접속자 Mobile Count</td>
+                                                <td class="table" width=20%>IP 별</td>
+                                                <td class="table" width=20%>페이지별</td>
+                                            </tr>
+                                            <%
+
+                                            '// 총 개수 - 리스트 쿼리
+                                            SQL=""
+                                            SQL=SQL&" SELECT COUNT(*) TOT "
+                                            SQL=SQL&" from (select count(idx) TOT from visit_log "
+                                            SQL=SQL&searchSQL02
+                                            SQL=SQL&" group by visit_date) as temp "
+                                            'response.write SQL
+                                            Set rsList=server.createObject("adodb.recordset")
+                                            rsList.Open SQL, DB, 1
+                                            rsList.pagesize=10
+                                            pageSize=rsList.pagesize
+
+                                            'If Not rsList.eof Then
+                                            '	rcount=rsList.recordcount
+                                            '	pcount=rsList.pagecount
+                                            '	rsList.absolutepage=page
+
+                                            rcount=rsList("TOT")
+                                            pcount=rsList.pagecount
+                                            'End If
+
+                                            If rcount = 0 Then
+                                            %>
+                                            <tr bgcolor="#FFFFFF">
+                                                <td align="center" colspan="10" height="50">등록된 정보가 없습니다.</td>
+                                            </tr>
+                                            <%
+                                            Else
+                                            rsList.close
+                                            sPAGE=10*page
+                                            ePAGE = 10 * (page -1) +1
+                                            If ePage < 0 Then
+                                            ePage = 1
+                                            End If
+
+
+
+                                            SQL = ""
+                                            SQL = SQL & " SELECT   * "
+                                            SQL = SQL & "   FROM   (SELECT   ROW_NUMBER() OVER (ORDER BY visit_date DESC) AS RowNum ,count(visit_date) cnt, "
+                                            SQL = SQL & " SUM(CASE WHEN agent_type='1' THEN 1 else 0 END) pc,"
+                                            SQL = SQL & " SUM(CASE WHEN agent_type='2' THEN 1 else 0 END) moblile,"
+                                            SQL = SQL & " visit_date FROM visit_log "
+                                            SQL = SQL & searchSQL02
+                                            SQL = SQL & "  group by visit_date          ) AS K "
+                                            SQL = SQL & "  WHERE RowNum BETWEEN " & ((page - 1) * pageSize) + 1 & " AND " & ((page - 1) * pageSize) + pageSize
+
+
+
+                                            rsList.Open SQL, DB, 1
+
+                                            rowNum=0
+                                            listNum=rcount-(page*rsList.pagesize-rsList.pagesize)
+                                            Do While Not rsList.eof And rowNum < rsList.pagesize
+                                            rowNum=rowNum+1
+                                            LDate = Split(rsList("visit_date"), "-")
+                                            cntURL="day_cntView.asp?searchYear="&Trim(LDate(0))&"&searchMonth="&Trim(LDate(1))&"&searchDay="&Trim(LDate(2))&"&page="&page&qString
+                                            viewURL="View.asp?mode=day&searchYear="&Trim(LDate(0))&"&searchMonth="&Trim(LDate(1))&"&searchDay="&Trim(LDate(2))&"&page="&page&qString
+                                            %>
+                                            <tr bgcolor="#FFFFFF" align="center">
+                                                <td><%=rsList("RowNum")%></td>
+                                                <td><%=rsList("visit_date")%></td>
+                                                <td><%=rsList("cnt")%></td>
+                                                <td><%=rsList("pc")%></td>
+                                                <td><%=rsList("moblile")%></td>
+                                                <td><a href='<%=cntURL%>' alt="상세보기">[보기]</a></td>
+                                                <td><a href='<%=viewURL%>' alt="상세보기">[보기]</a></td>
+                                            </tr>
+                                            <%
+                                            listNum=listNum-1
+                                            rsList.movenext
+                                            Loop
+                                            End If
+
+                                            rsList.Close
+                                            Set rsList=Nothing
+                                            %>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr align="center" bgcolor="#dddddd">
+                                    <td colspan="3" height="30">
+                                        <!-- #include virtual="/include/Ps_Paging.asp" -->
+                                        <%
+                                        psPrevImg="<img src='../img/btn_back_s.gif' align=absmiddle border=0>"
+                                        psNextImg="<img src='../img/btn_next_s.gif' align=absmiddle border=0>"
+                                        psGapImg="&nbsp;|&nbsp;"
+                                        PS_Paging rcount, page, pageSize, qString, psPrevImg, psNextImg, psGapImg
+                                        %>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+    if($("#page").val() == "") {
+        get_list(1);
+    }else{
+        get_list($("#page").val());
+    }
+
+    function get_list(page){
+        find_list(page,$("#b_special").val());
+    }
+
+    function find_list(page,mode){
+        var html_list ='';
+        if(mode == 0){
+            $("#all_view").hide();
+            $("#strong_view").show();
+        }else{
+            $("#all_view").show();
+            $("#strong_view").hide();
+        }
+        $("#notice_list").empty();
+        $.ajax({
+
+            type : "POST",
+            url : "/ajax/board/<?=$menu_ajax_url?>",
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+                search_type: $("#search_type option:selected").val(),
+                search_value: $("#search_value").val(),
+                page : page,
+                b_special : mode,
+                mode : 'admin'
+            },
+            cache : false,
+            success : function(result) {
+                var data   = $.parseJSON(result);
+                var list_cnt = 0;
+                var html_list = ""
+                html_list += '<tr bgcolor="#dddddd" height="25" align=center>';
+                html_list += '  <td class="table" width=8%>번호</td>';
+                html_list += '  <td class="table" width=8%>강조</td>';
+                html_list += '  <td class="table" width=50%>제목</td>';
+                html_list += '  <td class="table" width=10%>글쓴이</td>';
+                html_list += '  <td class="table" width=12%>등록일</td>';
+                html_list += '  <td class="table" width=8%>조회</td>';
+                html_list += '</tr>';
+                $.each( data.list, function( key, value ) {
+
+                    var notice_class = '';
+                    var depth = 0;
+                    var depth_char = "";
+                    if(Number(value.b_special) > 0){ notice_class = value.b_special}
+                    var num = (data.page_navi.total-(data.page_navi.current_page-1)*10)-list_cnt;
+                    depth = Number(value.b_depth) * 10;
+                    if (Number(depth) > 0) depth_char = depth_char + "->";
+                    html_list += '<tr bgcolor="#FFFFFF" align="center">';
+                    html_list += ' <td>'+ num +'</td>';
+                    html_list += '      <td>'+ notice_class +'</td>';
+                    html_list += '  <td align="left"><span style="padding-left:' + depth + 'px;"><a href=javascript:page_view(' + value.b_index + ')>' + depth_char + value.b_title + '</a></td>';
+                    html_list += '  <td>' + value.b_writer + '</td>';
+                    html_list += '  <td>' + value.b_regdate + '</td>';
+                    html_list += '  <td>' + value.b_hit + '</td>';
+                    html_list += '</tr>';
+                    list_cnt++;
+
+                });
+                if(list_cnt == 0 && data.page_navi.total == 0){
+                    html_list = '<tr bgcolor="#FFFFFF" align="center"><td colspan="6">검색된 게시물이 없습니다.</td></tr>'
+                }
+
+                $("#notice_list").append(html_list);
+
+                /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
+                pagination(data.page_navi.current_page, data.page_navi.last_page, data.page_navi.per_page, data.page_navi.total, 10);
+                var msg ="Total " + data.page_navi.total + " 건 " +data.page_navi.current_page+ " 페이지";
+                $("#total_page").text(msg);
+                $("#page").val(page);
+            },
+            error : function() {
+                alert("다시 시도해 주세요.");
+            }
+        });
+    }
+
+    $("#chkALL").click(function () {
+        if ($(this).is(":checked")) {
+            $("input[name=chk]").prop("checked", "checked");
+        } else {
+            $("input[name=chk]").removeAttr("checked");
+        }
+    });
+
+
+    $("#popular_del").click(function(){
+        var checkboxValues ="";
+        $("input[name=chk]:checked").each(function() {
+            checkboxValues = checkboxValues + "," + $(this).val();
+
+        });
+
+        $.ajax({
+            type:"POST",
+            url:"/ajax/admin/popular_del",
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+                checkArray: checkboxValues,
+                mode : 'admin'
+            },
+            success:function(data){
+                if(data = "success"){
+                    alert("삭제되었습니다.")
+                    location.reload();
+                }else if(data = "fail"){
+                    alert("실패하였습니다.");
+                }
+
+            }
+        });
+
+    });
+
+
+</script>

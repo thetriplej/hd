@@ -13,7 +13,7 @@
                 </tr>
             </table>
             <br><br>
-            <?php echo form_open_multipart('/admin/bbs_store/',array('name'=>"tx_editor_form", 'id'=>"tx_editor_form")); ?>
+            <?php echo form_open_multipart('/admin/bbs_store/',array('name'=>"frm01", 'id'=>"frm01")); ?>
                 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
                     <input type="hidden" id="proc_type" name="proc_type" value="NW">
                     <input type="hidden" id="b_special" value="<?=$b_special?>">
@@ -140,7 +140,7 @@
                                                     <font color="red">이미지 파일 ('jpg', 'jpeg', 'png', 'bmp', 'gif')의 경우 에디터에서 업로드해주세요</font><br><br>
                                                     <font color="red">동영상 파일은 확장자가 MP4만 올릴수 있으며 위치를 상단에 맞추어 주시고,<br />하나 이상 등록시에는 자동 재생되어 동시에 재생되는 상황이 발생할 수 있습니다.</font>
                                                     <ul id="FileDiv">
-                                                        <li><input type="file" name="files[]" size="50" onChange="checking_file();"><br>||| 위치 : <select name=position><option value=T>상단</option> <option value=B>하단</option></select> <a href="javascript:void(0);" name="btn" class="btn">추가</a></li>
+                                                        <li><input type="file" name="files[]" size="50" onChange="checking_file();"><br>||| 위치 : <select name=position[]><option value=T>상단</option> <option value=B>하단</option></select> <a href="javascript:void(0);" name="btn" class="btn">추가</a></li>
                                                     </ul>
                                                 </td>
                                             </tr>
@@ -184,7 +184,7 @@
         if($(this).html() == "추가"){
             html = "";
             html += "<li>";
-            html += "<input type=\"file\" name=\"files[]\" size=\"50\"><br>||| 위치 : <select name=\"Position\"><option value=\"T\">상단</option> <option value=\"B\">하단</option></select>";
+            html += "<input type=\"file\" name=\"files[]\" size=\"50\"><br>||| 위치 : <select name=\"position[]\"><option value=\"T\">상단</option> <option value=\"B\">하단</option></select>";
             html += " <a href=\"javascript:void(0);\" name=\"btn\" class=\"btn\">삭제</a>";
             html += "</li>";
 
@@ -200,7 +200,7 @@
         txProject: 'sample', /* 수정필요없음. 프로젝트가 여러개일 경우만 수정한다. */
         initializedId: "", /* 대부분의 경우에 빈문자열 */
         wrapper: "tx_trex_container", /* 에디터를 둘러싸고 있는 레이어 이름(에디터 컨테이너) */
-        form: 'tx_editor_form'+"", /* 등록하기 위한 Form 이름 */
+        form: 'frm01'+"", /* 등록하기 위한 Form 이름 */
         txIconPath: "images/icon/editor/", /*에디터에 사용되는 이미지 디렉터리, 필요에 따라 수정한다. */
         txDecoPath: "images/deco/contents/", /*본문에 사용되는 이미지 디렉터리, 서비스에서 사용할 때는 완성된 컨텐츠로 배포되기 위해 절대경로로 수정한다. */
         canvas: {

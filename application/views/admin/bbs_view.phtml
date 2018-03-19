@@ -83,18 +83,22 @@
                                 <?php
                                     if(!empty($image_data)) {
                                         foreach ($image_data as $key => $value) {
+                                            $mType = explode("/",$value->f_type);
                                             ($value->f_width > 780) ? $value->f_width = $value->f_width : $value->f_width = 0;
                                             if ($value->f_position == 'T') {
                                                 ?>
-                                                <img src='/public_html/images/img_top.gif' align='absmiddle'> ( 상단 )
+                                                        <img src='/public_html/images/img_top.gif' align='absmiddle'> ( 상단 )
                                                 <?php
                                             } else if ($value->f_position == 'B') {
                                                 ?>
-                                                <img src='/public_html/images/img_bottom.gif' align='absmiddle'> ( 하단 )
+                                                        <img src='/public_html/images/img_bottom.gif' align='absmiddle'> ( 하단 )
                                             <?php } ?>
-                                            ||| <?php echo $value->f_name; ?><span class="hand" onClick="imgView(this, '<?=$value->file_path?>', '<?php echo $value->f_width; ?>');">[보기]</span>
-                                            <a href="javascript:file_down('<?=$value->file_path?>')">[ Down ]</a>
-                                            <br>
+                                                        ||| <?php echo $value->f_name; ?>
+                                            <?php If($mType[0] == "image") { ?>
+                                                        <span class="hand" onClick="imgView(this, '<?=$value->file_path?>', '<?php echo $value->f_width; ?>');">[보기]</span>
+                                            <?php } ?>
+                                                        <a href="javascript:file_down('<?=$value->file_path?>')">[ Down ]</a>
+                                                        <br>
                                         <?php }
                                     }else{
                                         echo " X ";
@@ -128,9 +132,9 @@
                                     <tr align="center">
                                         <td bgcolor="#dddddd" height="30">
                                             <input type="button" value="삭제" onClick="frmDel('<?=$b_index?>','<?=$list_uri?>');">
-                                            <input type="button" value="수정" onClick="frmModi('<?=$b_index?>');">
-                                    <?php if(empty($view_data->reply)){ var_dump($view_data);?>
-                                            <input type="button" value="답변" onClick="frmRe('<?=$b_index?>','<?=$b_code?>');">
+                                            <input type="button" value="수정" onClick="frmModi('<?=$b_index?>','<?=$edit_uri?>');">
+                                    <?php if(empty($view_data->reply)){ ?>
+                                            <input type="button" value="답변" onClick="frmReply('<?=$b_index?>');">
                                     <?php } ?>
                                             <input type="button" value="목록" onClick="frmList('<?=$list_uri?>');">
                                     <?php if($b_code == "CEPILOGUE0" && $view_data->b_parentindex == 0){ ?>
@@ -144,54 +148,13 @@
                         </tr>
                     </form>
                     </table>
-                    <br><br>
+                <br><br>
             </td>
         </tr>
     </tbody>
 </table>
 <script type="text/javascript">
 
-    function pwView(Obj){
-        var TT = Obj.innerText;
-        if(TT == "[확인]"){
-            Obj.innerHTML = "[숨기기]";
-            document.getElementById("pwView").style.display = "";
-        }
-        if(TT == "[숨기기]"){
-            Obj.innerHTML = "[확인]";
-            document.getElementById("pwView").style.display = "none";
-        }
-    }
-
-    function frmList(rqURL){
-        var frm=eval("document."+'frm01');
-        if (confirm('리스트로 가시겠습니까?')){
-            frm.action= rqURL;
-            frm.submit();
-        }
-
-    }
-
-    function frmModi(idx){
-        var frm=eval("document."+'frm01');
-        if (confirm('수정하시겠습니까?')){
-            frm.action= '/admin/<?=$edit_uri?>?b_index='+idx+'&b_code='+$("#b_code").val()+'&page='+$("#page").val()+'&search_type='+$("#search_type").val()+'&search_value='+$("#search_value").val();;
-            frm.submit();
-        }
-
-    }
-
-
-    function frmReply(frmName, rqURL, enctype, rqMode){
-        var frm=eval("document."+'frm01');
-
-        if (!confirm('답변을 등록 하시겠습니까?')){
-            return;
-        }
-        frm.action= rqURL;
-        frm.ProcType.value = rqMode;
-        frm.submit();
-    }
 
 
 

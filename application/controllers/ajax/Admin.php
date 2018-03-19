@@ -7,7 +7,8 @@ class Admin extends Common {
     public function  __construct() {
         parent::__construct();
 
-        $this->load->model(array('member_model','board_model'));
+        $this->load->model(array('member_model','board_model','visit_model'));
+        $this->load->helper('cookie');
     }
 
     function _remap($method) {
@@ -18,7 +19,25 @@ class Admin extends Common {
         $this->{"{$method}"}();
 
     }
+    public function admin_mode(){
+        $post = $this->input->post(null, true);
+        $mode = $post['mode'];
+        $cookie = array(
+            'name'   => 'admin_mode',
+            'value'  => $mode,
+            'expire' => '86500',
+            'path'   => '/',
+        );
 
+        set_cookie($cookie);
+
+        if(get_cookie('admin_mode', TRUE)){
+            $result = 'success';
+        }else{
+            $result = 'fail';
+        }
+        echo json_encode($result);
+    }
     public function popular_del(){
         $post = $this->input->post(null, true);
         $checkArray = explode(",",$post['checkArray']);
@@ -42,7 +61,6 @@ class Admin extends Common {
         echo json_encode($result);
     }
 
-
     public function popular_set()
     {
         $post = $this->input->post(null, true);
@@ -55,6 +73,34 @@ class Admin extends Common {
         echo $result;
     }
 
+    public  function file_delete(){
+        $post = $this->input->post(null, true);
+
+        $f_index = $post['idx'];
+
+        $result =  $this->board_model->get_file_info_one($f_index);
+        if(!$result){
+            $send_result = 'fail';
+        }
+        $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html';
+        $upload_dir = $upload_dir.$result->file_path.$result->f_rename;
+        if(file_exists($upload_dir)){
+            @unlink($upload_dir);
+            $send_result = 'success';
+        }else{
+            $send_result = 'fail';
+        }
+        $result =  $this->board_model->set_file_delete_one($f_index);
+
+        if($result){
+            $send_result = 'success';
+        }else{
+            $send_result = 'fail';
+        }
+
+        echo json_encode($send_result);
+
+    }
     public function check_pass(){
         $post = $this->input->post(null, true);
 
@@ -77,6 +123,12 @@ class Admin extends Common {
             $send_result = 'fail';
         }
 
+        echo json_encode($send_result);
+    }
+
+    public function log_out(){
+        $this->session->sess_destroy();
+        $send_result = 'success';
         echo json_encode($send_result);
     }
 
@@ -118,6 +170,114 @@ class Admin extends Common {
         }
 
         echo json_encode($send_result);
+    }
+
+    public function visit(){
+        $post = $this->input->post(null, true);
+        $page = $post['page'];
+        if(empty($post['page'])) $post['page'] = 1;
+
+
+
+
+
+        $p_data = array(
+            'table_name' 	=> 'pagelog',
+            'page'			=> $post['page'],
+            'mode'          => $post['mode'],
+            'start_date'    => $post['start_date'],
+            'end_date'      => $post['end_date'],
+            'list_rows'		=> 30,
+            'page_no'		=> 10,
+        );
+
+        $result = $this->page_navi($p_data);
+
+        $list_data = array(
+            'list_rows' 	=> $result['list_rows'],
+            'page_start' 	=> $result['page_start'],
+            'page' 			=> $result['page'],
+            'page_no' 		=> $result['page_no'],
+            'start_date'    => $post['start_date'],
+            'end_date'      => $post['end_date'],
+            'mode'          => $post['mode'],
+        );
+
+        $list =  $this->visit_model->get_visit_list($list_data);
+
+
+        /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
+        //pagination(result.current_page, result.last_page, result.per_page, result.total, 10);
+        $page_navi = array(
+            'current_page' => $result['page'],
+            'last_page' => $result['tot_page'],
+            'per_page' => $result['list_rows'],
+            'total' => $result['total_rows'],
+        );
+
+        $send_data = array (
+            'list' => $list,
+            'page_navi' => $page_navi
+        );
+
+        echo json_encode($send_data);
+    }
+
+    public function page_navi($params){
+        $table_name = $params['table_name'];
+        $page = $params['page'];
+        $list_rows = $params['list_rows'];
+        $page_no = $params['page_no'];
+        $mode = $params['mode'];
+
+
+        if(!$page) $page = 1;
+
+        $data1 = array(
+            'table_name'	=> $table_name,
+            'mode'          => $params['mode'],
+            'start_date'    => $params['start_date'],
+            'end_date'      => $params['end_date'],
+        );
+
+
+        $total_rows = $this->visit_model->get_list_tot($data1);
+        $page_start = ($page-1)*$list_rows;
+        $tot_page = ceil($total_rows/$list_rows);
+        $now_page_group = ceil($page/$page_no);
+        $start_page	= ($now_page_group-1) * $page_no + 1;
+        $end_page = ($now_page_group*$page_no);
+        $tot_page_group = ceil($tot_page/$page_no);
+
+        if($now_page_group > 1){
+            $prev_page = $start_page - 1;
+        }else{
+            $prev_page =1;
+        }
+
+        if($now_page_group < $tot_page_group){
+            $next_page = $end_page + 1;
+        }else{
+            $next_page='';
+        }
+
+        $result = array(
+            'list_rows' 	=> $list_rows,
+            'page_start' 	=> $page_start,
+            'total_rows' 	=> $total_rows,
+            'page' 			=> $page,
+            'prev_page' 	=> $prev_page,
+            'next_page' 	=> $next_page,
+            'tot_page' 		=>$tot_page,
+            'now_page_group' =>$now_page_group,
+            'page_no' 		=>$page_no,
+            'start_date'    => $params['start_date'],
+            'end_date'      => $params['end_date'],
+
+        );
+
+        return $result;
+
     }
 
 

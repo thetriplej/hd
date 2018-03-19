@@ -8,6 +8,7 @@ class Board extends Common {
         parent::__construct();
 
         $this->load->model(array('board_model'));
+        $this->load->helper('cookie');
     }
 
     function _remap($method) {
@@ -389,6 +390,7 @@ class Board extends Common {
                         $files_array[$key]['file_path'] = "http://".$_SERVER["HTTP_HOST"].'/public_html' . $value->file_path . $value->f_rename;
                         $files_array[$key]['reg_date'] = $value->reg_date;
 
+
                         $temp_fname = explode('.', $value->f_rename);
                         $allow_file = array("jpg", "png", "bmp", "gif", "jpeg");
                         //var_dump(json_encode($temp_fname));exit;
@@ -408,6 +410,8 @@ class Board extends Common {
             $view['b_writer']      = $view_data->b_writer;
             $view['b_title']       = $view_data->b_title;
             $view['b_email']       = $view_data->b_email;
+            $view['b_locked']      = $view_data->b_locked;
+            $view['b_password']      = $view_data->b_password;
             $view['b_content']     = nl2br(htmlspecialchars_decode($view_data->b_content));
             //$view['b_content']     = $view_data->b_content;
             $view['b_board_type']  = $view_data->b_board_type;

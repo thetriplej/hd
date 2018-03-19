@@ -181,6 +181,13 @@ class Board_model extends CI_Model {
         return  $this->db->query($query,array($b_index,$passwd))->row();
     }
 
+    function set_board_reply($params){
+        $b_sequence = $params['b_sequence'];
+        $b_group = $params['b_group'];
+        $query = "update board set b_sequence = b_sequence + 1 where b_sequence > ? and b_group = ?";
+        return $this->db->query($query, array($b_sequence,$b_group));
+    }
+
     function get_view($params){
         $mode = $params['mode'];
         $id = $params['id'];
@@ -195,7 +202,7 @@ class Board_model extends CI_Model {
 
         }
 
-        $query = "select b_title,b_board_type,b_code,b_index,b_hit,b_content,b_email,b_special,
+        $query = "select b_title,b_board_type,b_code,b_index,b_hit,b_content,b_email,b_special,b_locked,b_password,
                     DATE_FORMAT(b_regdate,'%Y-%m-%d') b_regdate,b_writer,b_board_type,(select count(*) from board tmp where tmp.b_parentindex = b_index) as reply
                   from board where ".$where;
 
@@ -208,7 +215,7 @@ class Board_model extends CI_Model {
         $id = $params['id'];
 
         $query = "select b_title,b_board_type,b_code,b_index,b_hit,b_content,b_email,b_special,DATE_FORMAT(b_regdate,'%Y-%m-%d') b_regdate,b_writer,b_board_type,
-                          b_parentindex,b_depth,b_board_Type, case when popular_log.show_flag is null then 0 else popular_log.show_flag end as show_flag ,
+                          b_parentindex,b_depth,b_group,b_sequence, case when popular_log.show_flag is null then 0 else popular_log.show_flag end as show_flag ,b_locked,b_password,
                           (select count(*) from board tmp where tmp.b_parentindex = board.b_index) as reply
                   from board left join popular_log  on board.b_index = popular_log.board_idx where board.b_index = ?";
 
@@ -250,27 +257,18 @@ class Board_model extends CI_Model {
 
         $this->db->trans_begin();
         $b_index = $params['b_index'];
-//        $send_data = array(
-//            'b_code'        =>   $b_code,
-//            'proc_type'     =>   $proc_type,
-//            'b_depth'       =>   $b_depth,
-//            'b_parentindex' =>   $b_parentindex,
-//            'b_board_type'  =>   $b_board_type,
-//            'b_index'       =>   $b_index,
-//            'select_img'    =>   $select_img,
-//            'b_writer'      =>   $b_writer,
-//            'b_password'    =>   $b_password,
-//            'b_title'       =>   $b_title,
-//            'b_email'       =>   $b_email ,
-//            'b_content'     =>   $b_content,
-//            'b_locked'      =>   $b_locked,
-//            'attach_image'  =>   $attach_image,
-//            'select_img'    =>   $select_img,
-//            'b_group'       =>$max_group_no
-//        );
+        if(!empty($params['b_sequence'])){
+            $b_sequence = $params['b_sequence'];
+        }else{
+            $b_sequence = 1;
+        }
+
         $data = array(
             'b_group'		=> $params['b_group'],
             'b_code'		=> $params['b_code'],
+            'b_depth'       => $params['b_depth'],
+            'b_parentindex' => $params['b_parentindex'],
+            'b_sequence'    => $b_sequence,
             'b_title'		=> $params['b_title'],
             'b_writer'      => $params['b_writer'],
             'b_content'		=> $params['b_content'],
@@ -364,6 +362,7 @@ class Board_model extends CI_Model {
                 'f_width'   => $params['f_width'],
                 'f_size'    => $params['f_size'],
                 'f_rename'  => $params['f_rename'],
+                'f_position'=> $params['f_position'],
                 'list_img'  => $params['list_img'],
                 'file_path' => $params['file_path'],
                 'reg_date'  => date('Y-m-d H:i:s',time())
@@ -379,6 +378,13 @@ class Board_model extends CI_Model {
             $this->db->trans_complete();
             return true;
         }
+    }
+
+    public function get_file_info_one($id){
+        $query = "select f_index,b_code,b_index,f_name ,f_type,f_position,f_width ,f_show ,f_size,f_rename,list_img ,file_path,reg_date
+                  from boardfile where f_index =? ";
+        $result =  $this->db->query($query,array($id))->row();
+        return $result;
     }
     public function set_bbs_delete($params){
 
@@ -397,7 +403,6 @@ class Board_model extends CI_Model {
     }
 
     public function set_file_delete_one($id){
-
         $result = $this->delete_query('boardfile', array('f_index' => $id));
         return $result;
     }
