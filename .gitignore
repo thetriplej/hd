@@ -28,3 +28,7 @@ application/config/config.php
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
+
+.htaccess
+RPM-GPG-KEY.art.txt
+RPM-GPG-KEY.atomicorp.txt
