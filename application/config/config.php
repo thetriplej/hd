@@ -24,11 +24,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = '1.255.54.22';
-$config['base_url'] = 'http://127.0.0.1';
+if($_SERVER['SERVER_ADDR'] == "127.0.0.1") {
+    $config['base_url'] = 'http://127.0.0.1';
+}else{
+    $config['base_url'] = 'http://hassed.triplej.xyz';
+}
+
 
 /*
 |--------------------------------------------------------------------------
-| Index File
+| Index File.php
 |--------------------------------------------------------------------------
 |
 | Typically this will be your index.php file, unless you've renamed it to
