@@ -11,7 +11,9 @@ class Admin extends Common {
 
     function _remap($method) {
         $admin_mode = get_cookie('admin_mode', TRUE);
-
+        if(empty($admin_mode)) {
+            $admin_mode="admin";
+        }
         $send_data = array(
             'user_id'    => $this->session->userdata('userid'),
             'level'      => $this->session->userdata('level'),

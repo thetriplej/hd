@@ -33,7 +33,7 @@ if($_SERVER['SERVER_ADDR'] == "127.0.0.1") {
 
 /*
 |--------------------------------------------------------------------------
-| Index File.php
+| Index File
 |--------------------------------------------------------------------------
 |
 | Typically this will be your index.php file, unless you've renamed it to
