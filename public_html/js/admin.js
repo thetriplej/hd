@@ -247,7 +247,7 @@ function admin_mode(mode){
 				if(mode=="admin"){
 					location.href = '/admin/notice_list';
 				}else{
-					location.href = '/admin/visit_list';
+					location.href = '/admin/visit_list?mode=new';
 				}
 			}else{
 				alert("관리자에게 문의해주세요.");

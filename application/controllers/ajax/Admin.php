@@ -172,28 +172,29 @@ class Admin extends Common {
         echo json_encode($send_result);
     }
 
-    public function visit(){
+    public function referer(){
         $post = $this->input->post(null, true);
         $page = $post['page'];
         if(empty($post['page'])) $post['page'] = 1;
 
+        $mode = $post['mode'];
 
-
-
+        $table_name = 'referer';
 
         $p_data = array(
-            'table_name' 	=> 'pagelog',
+            'table_name' 	=> $table_name,
             'page'			=> $post['page'],
             'mode'          => $post['mode'],
             'start_date'    => $post['start_date'],
             'end_date'      => $post['end_date'],
-            'list_rows'		=> 30,
+            'list_rows'		=> 25,
             'page_no'		=> 10,
         );
 
         $result = $this->page_navi($p_data);
 
         $list_data = array(
+            'table_name' 	=> $table_name,
             'list_rows' 	=> $result['list_rows'],
             'page_start' 	=> $result['page_start'],
             'page' 			=> $result['page'],
@@ -218,6 +219,80 @@ class Admin extends Common {
         $send_data = array (
             'list' => $list,
             'page_navi' => $page_navi
+        );
+
+        echo json_encode($send_data);
+    }
+
+    public function visit(){
+        $post = $this->input->post(null, true);
+        $page = $post['page'];
+        if(empty($post['page'])) $post['page'] = 1;
+
+        $mode = $post['mode'];
+        if($mode == "new"){
+            $table_name = 'visit_log';
+        }else if($mode == "old2"){
+            $table_name	= 'pagelog';
+        }
+        $p_data = array(
+            'table_name' 	=> $table_name,
+            'page'			=> $post['page'],
+            'mode'          => $post['mode'],
+            'start_date'    => $post['start_date'],
+            'end_date'      => $post['end_date'],
+            'list_rows'		=> 25,
+            'page_no'		=> 10,
+        );
+
+        $result = $this->page_navi($p_data);
+
+        $list_data = array(
+            'table_name' 	=> $table_name,
+            'list_rows' 	=> $result['list_rows'],
+            'page_start' 	=> $result['page_start'],
+            'page' 			=> $result['page'],
+            'page_no' 		=> $result['page_no'],
+            'start_date'    => $post['start_date'],
+            'end_date'      => $post['end_date'],
+            'mode'          => $post['mode'],
+        );
+
+        $list =  $this->visit_model->get_visit_list($list_data);
+
+
+        /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
+        //pagination(result.current_page, result.last_page, result.per_page, result.total, 10);
+        $page_navi = array(
+            'current_page' => $result['page'],
+            'last_page' => $result['tot_page'],
+            'per_page' => $result['list_rows'],
+            'total' => $result['total_rows'],
+        );
+
+        $send_data = array (
+            'list' => $list,
+            'page_navi' => $page_navi
+        );
+
+        echo json_encode($send_data);
+    }
+
+    public function visit_view(){
+        $post = $this->input->post(null, true);
+        $view_type = $post['view_type'];
+
+        $list_data = array(
+            'view_date'    => $post['view_date'],
+        );
+
+        if($view_type == "ip"){
+            $list = $this->visit_model->get_visit_ip_view($list_data);
+        }else if($view_type == "page"){
+            $list = $this->visit_model->get_visit_view($list_data);
+        }
+        $send_data = array (
+            'list' => $list,
         );
 
         echo json_encode($send_data);

@@ -41,46 +41,100 @@ class Admin extends Common {
 //        $password = $post['password'];
 //
 //    }
-    public function visit_list(){
-        $this->load->view('admin/visit_list.phtml');
-    }
 
-    public function visit_old(){
+    public function visit_view(){
         $page = $this->input->get('page');
         $start_date = $this->input->get('start_date');
-        if(empty($start_date)) $start_date = "2016-01-16";
         $end_date = $this->input->get('end_date');
-        if(empty($end_date)) $end_date = "2017-01-16";
+        $view_date = $this->input->get('view_date');
+        $mode = $this->input->get('mode');
+        $view_type = $this->input->get('view_type');
 
+        if($mode == "old2"){
+            $menu_title = "접속자 리스트(~2016년 1월 16일)";
+        }else if($mode == "new"){
+            $menu_title = "NEW 접속자";
+        }
 
-        if(empty($page)) $page = 1;
-        $send_data = array(
-        'page'          => $page,
-        'menu_title'    => '접속자 리스트(~2016년 1월 16일)',
-        'start_date'    => $start_date,
-        'end_date'      => $end_date,
-        );
-
-        $this->load->view('admin/visit_old2.phtml',$send_data);
-}
-
-    public function visit_old2(){
-        $page = $this->input->get('page');
-        $start_date = $this->input->get('start_date');
-        if(empty($start_date)) $start_date = "2016-01-01";
-        $end_date = $this->input->get('end_date');
-        if(empty($end_date)) $end_date = "2016-01-16";
-
-
+        if($view_type == "ip"){
+            $menu_title = $menu_title."[IP 접속리스트]";
+        }else if($view_type == "page"){
+            $menu_title = $menu_title."[메뉴 접속리스트]";
+        }
         if(empty($page)) $page = 1;
         $send_data = array(
             'page'          => $page,
-            'menu_title'    => '접속자 리스트(~2016년 1월 16일)',
+            'menu_title'    => $menu_title,
             'start_date'    => $start_date,
             'end_date'      => $end_date,
+            'view_date'     => $view_date,
+            'mode'          => $mode,
+            'view_type'     => $view_type,
+
+        );
+        if($view_type == "ip"){
+            $this->load->view('admin/visit_ip_view.phtml',$send_data);
+        }else if($view_type == "page"){
+            $this->load->view('admin/visit_view.phtml',$send_data);
+        }
+
+    }
+
+    public function visit_list(){
+        $page = $this->input->get('page');
+        if(empty($page)) $page = 1;
+        $start_date = $this->input->get('start_date');
+        $end_date = $this->input->get('end_date');
+        $mode = $this->input->get('mode');
+        if(empty($mode)) $mode = "new";
+
+        if($mode == "old2"){
+            if(empty($start_date)) $start_date = "2016-01-01";
+            if(empty($end_date)) $end_date = "2016-01-16";
+            $menu_title = "접속자 리스트(~2016년 1월 16일)";
+            $view_file = "admin/visit_old2.phtml";
+        }else if($mode == "new"){
+            if(empty($start_date)) $start_date = date("Y-m-d", strtotime(date("Y-m-d")."-2months "));
+            if(empty($end_date)) $end_date = date('Y-m-d');
+            $menu_title = "NEW 접속자";
+            $view_file = "admin/visit_list.phtml";
+        }
+
+        $send_data = array(
+            'page'          => $page,
+            'menu_title'    => $menu_title,
+            'start_date'    => $start_date,
+            'end_date'      => $end_date,
+            'mode'          => $mode,
         );
 
-        $this->load->view('admin/visit_old2.phtml',$send_data);
+        $this->load->view($view_file,$send_data);
+    }
+
+    public function visit_referer_list(){
+        $page = $this->input->get('page');
+        if(empty($page)) $page = 1;
+        $start_date = $this->input->get('start_date');
+        $end_date = $this->input->get('end_date');
+        $mode = $this->input->get('mode');
+        if(empty($mode)) $mode = "new";
+
+
+        if(empty($start_date)) $start_date = date("Y-m-d", strtotime(date("Y-m-d")."-2months "));
+        if(empty($end_date)) $end_date = date('Y-m-d');
+        $menu_title = "유입 경로";
+
+
+
+        $send_data = array(
+            'page'          => $page,
+            'menu_title'    => $menu_title,
+            'start_date'    => $start_date,
+            'end_date'      => $end_date,
+            'mode'          => $mode,
+        );
+
+        $this->load->view("admin/visit_referer_list.phtml",$send_data);
     }
 
     public function get_uri($b_code){
