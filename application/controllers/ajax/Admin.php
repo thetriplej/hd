@@ -224,6 +224,22 @@ class Admin extends Common {
         echo json_encode($send_data);
     }
 
+    public function referer_view(){
+        $post = $this->input->post(null, true);
+
+        $list_data = array(
+            'view_date'    => $post['view_date'],
+        );
+
+        $list = $this->visit_model->get_visit_referer_view($list_data);
+
+        $send_data = array (
+            'list' => $list,
+        );
+
+        echo json_encode($send_data);
+    }
+
     public function visit(){
         $post = $this->input->post(null, true);
         $page = $post['page'];

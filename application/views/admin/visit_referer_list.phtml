@@ -73,7 +73,7 @@
             data: {
                 csrf_token: $('input[name=csrf_token]').val(),
                 page : page,
-                mode : 'new',
+                mode : 'referer',
                 start_date : $("#start_date").val(),
                 end_date : $("#end_date").val(),
             },
@@ -96,12 +96,11 @@
                     var num = (data.page_navi.total-(data.page_navi.current_page-1)*25)-list_cnt;
                     html_list += '<tr bgcolor="#FFFFFF" align="center">';
                     html_list += '  <td>' + num + '</td>';
-                    html_list += '  <td>' + value.visit_date + '</td>';
+                    html_list += '  <td>' + value.created_at + '</td>';
                     html_list += '  <td>' + value.cnt + '</td>';
                     html_list += '  <td>' + value.pc + '</td>';
                     html_list += '  <td>' + value.mobile + '</td>';
-                    html_list += '  <td><a href="javascript:visit_view(\'ip\',\''+ value.visit_date +'\');" alt="상세보기">[보기]</a></td>';
-                    html_list += '  <td><a href="javascript:visit_view(\'page\',\''+ value.visit_date +'\');" alt="상세보기">[보기]</a></td>';
+                    html_list += '  <td><a href="javascript:referer_view(\''+ value.created_at +'\');" alt="상세보기">[보기]</a></td>';
                     html_list += '</tr>';
                     list_cnt++;
 
@@ -145,8 +144,8 @@
         });
     });
 
-    function visit_view(view_type,view_date){
-        location.href = "/admin/visit_view?view_type=" + view_type + "&start_date=" + $("#start_date").val() + "&end_date=" + $("#end_date").val() + "&mode=" + $("#mode").val() + "&view_date=" + view_date + "&page=" + $("#page").val();
+    function referer_view(view_date){
+        location.href = "/admin/visit_referer_view?start_date=" + $("#start_date").val() + "&end_date=" + $("#end_date").val() + "&view_date=" + view_date + "&page=" + $("#page").val();
     }
 
 </script>

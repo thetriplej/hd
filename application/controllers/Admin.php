@@ -137,6 +137,28 @@ class Admin extends Common {
         $this->load->view("admin/visit_referer_list.phtml",$send_data);
     }
 
+    public function visit_referer_view(){
+        $page = $this->input->get('page');
+        $start_date = $this->input->get('start_date');
+        $end_date = $this->input->get('end_date');
+        $view_date = $this->input->get('view_date');
+        $menu_title = "유입 경로 상세 리스트";
+
+
+        if(empty($page)) $page = 1;
+        $send_data = array(
+            'page'          => $page,
+            'menu_title'    => $menu_title,
+            'start_date'    => $start_date,
+            'end_date'      => $end_date,
+            'view_date'     => $view_date,
+        );
+
+        $this->load->view('admin/visit_referer_view.phtml',$send_data);
+
+
+    }
+
     public function get_uri($b_code){
         $send_data = array();
         if($b_code == "FREEBOARD0"){

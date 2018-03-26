@@ -63,7 +63,7 @@
         $("#visit_list").empty();
         $.ajax({
             type : "POST",
-            url : "/ajax/admin/visit_view",
+            url : "/ajax/admin/referer_view",
             data: {
                 csrf_token: $('input[name=csrf_token]').val(),
                 view_date : $("#view_date").val(),
@@ -75,25 +75,21 @@
                 var list_cnt = 0;
                 var html_list = ""
                 html_list += '<tr bgcolor="#dddddd" height="25" align=center>';
-                html_list += '  <td class="table" width=8%>번호</td>';
-                html_list += '  <td class="table" width=30%>날짜</td>';
-                html_list += '  <td class="table" width=30%>PAGE</td>';
-                html_list += '  <td class="table" width=20%>접속 AGENT</td>';
-                html_list += '  <td class="table" width=20%>방문자 수</td>';
+                html_list += '  <td class="table" width=20%>날짜</td>';
+                html_list += '  <td class="table" width=30%>유입경로</td>';
+                html_list += '  <td class="table" width=10%>유입경로 COUNT</td>';
+                html_list += '  <td class="table" width=10%>유입경로 PC Count</td>';
+                html_list += '  <td class="table" width=10%>유입경로 Mobile Count</td>';
                 html_list += '</tr>';
 
                 $.each( data.list, function( key, value ) {
-                    if(value.mode == 1){
-                        mode_name = "PC";
-                    }else if(value.mode == 2){
-                        mode_name = "MOBILE";
-                    }
+
                     html_list += '<tr bgcolor="#FFFFFF" align="center">';
-                    html_list += '  <td>' + value.l_date + '</td>';
-                    html_list += '  <td>' + value.l_date + '</td>';
-                    html_list += '  <td align="left">' + value.l_title + '</td>';
-                    html_list += '  <td>' + mode_name + '</td>';
-                    html_list += '  <td>' + value.l_hit + '</td>';
+                    html_list += '  <td>' + value.created_at + '</td>';
+                    html_list += '  <td>' + value.domain + '</td>';
+                    html_list += '  <td align="left">' + value.cnt + '</td>';
+                    html_list += '  <td>' + value.pc + '</td>';
+                    html_list += '  <td>' + value.mobile + '</td>';
                     html_list += '</tr>';
                     list_cnt++;
 

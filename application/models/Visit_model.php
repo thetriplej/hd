@@ -20,6 +20,10 @@ class Visit_model extends CI_Model {
             $select = "idx";
             $where = "visit_date >= '".$start_date."' AND visit_date <= '".$end_date."'";
             $groupby = " group by visit_date";
+        }else if($mode =="referer"){
+            $select = "cast(create_at as date)as created_at";
+            $where = "create_at >= '".$start_date."' AND create_at <= '".$end_date."'";
+            $groupby = " group by created_at ";
         }
 
         $main_query ="select ".$select." from ".$table_name. " where  ".$where.$groupby;
@@ -60,6 +64,11 @@ class Visit_model extends CI_Model {
             $where = "visit_date >= '".$start_date."' and visit_date <= '".$end_date."'";
             $groupby = " group by visit_date";
             $orderby = " order by visit_date desc";
+        }else if($mode =="referer"){
+            $select = "count(idx) as cnt ,sum(case when agent_type='1' then 1 else 0 end) pc, sum(case when agent_type='2' then 1 else 0 end) mobile,cast(create_at as date)as created_at";
+            $where = "domain is not null and create_at >= '".$start_date."' and create_at <= '".$end_date."'";
+            $groupby = " group by created_at";
+            $orderby = " order by created_at desc";
         }
 
 
@@ -87,6 +96,19 @@ class Visit_model extends CI_Model {
                   from visit_log 
                   where visit_date ='".$view_date."' 
                   order by cnt desc";
+
+        return $this->db->query($query)->result();
+    }
+
+    function get_visit_referer_view($params){
+        $view_date  = $params['view_date'];
+
+        $query = "select cnt,pc,mobile,created_at,domain from (
+                    select count(domain) as cnt ,sum(case when agent_type='1' then 1 else 0 end) pc, 
+                    sum(case when agent_type='2' then 1 else 0 end) mobile,cast(create_at as date) as created_at,domain
+                    from referer where cast(create_at as date) ='".$view_date."' 
+                    group by cast(create_at as date),domain) k
+                  order by cnt desc ";
 
         return $this->db->query($query)->result();
     }
