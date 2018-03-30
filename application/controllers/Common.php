@@ -9,23 +9,132 @@ class Common extends CI_Controller
 
         $this->load->helper(array('form', 'url', 'cookie'));
         $this->load->library(array('utilcommon', 'user_agent', 'pagination','session'));
+        $this->load->model(array('member_model','board_model','visit_model'));
 
-
-        if ($this->utilcommon->get_mobile_check() === true) {
-            //  echo "<script>alert('mobile')</script>";
-        } else {
-            //   echo "<script>alert('PC')</script>";
+        if($this->utilcommon->get_mobile_check() === true){
+            $agent_mode = "2";  //mobile
+        }else{
+            $agent_mode = "1";
         }
 
-        //var_dump($this->agent->referrer());
-        if(empty(get_cookie('tj_lang_type'))) {
-            $this->set_lang();
+        if(empty(get_cookie('lang_type'))) {
+            $this->utilcommon->set_lang();
         }
-        $this->lang_type = get_cookie('tj_lang_type');
+
+        $this->lang_type = get_cookie('lang_type');
+        if(empty(get_cookie('visit_log'))) {
+            $this->visit_log($agent_mode);
+        }
+        $this->visit_log = get_cookie('visit_log');
         $this->temp_uri = explode('&', $_SERVER['REQUEST_URI']);
         $this->view_uri = $_SERVER["HTTP_HOST"].$this->temp_uri[0];
 
 
+
+        if ($this->agent->is_referral()){
+            $referrer = $this->agent->referrer();
+            $this->set_referrer($referrer,$agent_mode);
+        }
+
+        if(empty($this->session->userdata('userid'))) {
+            if (!$this->input->is_ajax_request()) {
+                $this->page_log($referrer, $this->lang_type, $agent_mode);
+            }
+        }
+
+
+
+
+    }
+    public function set_referrer($referrer,$agent_mode){
+
+        $temp_uri = explode('/', $referrer);
+        if(!empty($referrer) && $temp_uri[2] != $_SERVER['SERVER_NAME']) {
+            $send_data = array(
+                'domain' => $temp_uri[2],
+                'url'       => $referrer,
+                'agent_type'    => $agent_mode,
+
+            );
+
+            $result = $this->visit_model->set_referrer($send_data);
+        }
+    }
+    public function visit_log($agent_mode){
+        $send_data = array(
+            'user_ip'       => $_SERVER['REMOTE_ADDR'],
+            'agent_mode'    => $agent_mode,
+        );
+        $result = $this->visit_model->set_visit_log($send_data);
+        if($result) {
+            $this->utilcommon->set_visit();
+        }
+    }
+    public function page_log($referrer,$lang_type,$agent_mode){
+        $this->load->model(array('visit_model'));
+        $uri = $_SERVER['REQUEST_URI'];
+        if($this->lang_type == "ko"){
+            $lang_name = "";
+            $add_uri = "";
+        }else if($this->lang_type == "en"){
+            $lang_name = " (Eng)";
+            $add_uri = "/eng";
+        }
+
+        $send_data = array(
+            'url'           => $uri.$add_uri,
+            'agent_mode'    => $agent_mode,
+        );
+        $result = $this->visit_model->get_log_check($send_data);
+        if($agent_mode == "2"){
+            $agent_name = "(M) ";
+        }else{
+            $agent_name = "";
+        }
+
+        if(empty($result)) {
+            $uri_array = array(
+                "/" => "<font color='blue'>".$agent_name."메인</font>".$lang_name,
+                "/about/company" => "<font color='blue'>".$agent_name."회사소개</font> - 회사소개".$lang_name,
+                "/about/brand" => "<font color='blue'>".$agent_name."회사소개</font> - 브랜드스토리".$lang_name,
+                "/about/ceo" => "<font color='blue'>".$agent_name."회사소개</font> - 인사말".$lang_name,
+                "/about/shop_info" => "<font color='blue'>".$agent_name."회사소개</font>  - 매장정보".$lang_name,
+                "/ecsaine/material" => "<font color='blue'>".$agent_name."소재</font> - 엑센느 소재".$lang_name,
+                "/ecsaine/strongpoint" => "<font color='blue'>".$agent_name."소재</font> - 엑센느 특장점".$lang_name,
+                "/ecsaine/maintain" => "<font color='blue'>".$agent_name."소재</font> - 엑센느 관리".$lang_name,
+                "/product/detail_view?code=becky" => "<font color='blue'>".$agent_name."제품소개</font> - BECKY".$lang_name,
+                "/product/detail_view?code=arriba" => "<font color='blue'>".$agent_name."제품소개</font> - FLORIA".$lang_name,
+                "/product/detail_view?code=calix" => "<font color='blue'>".$agent_name."제품소개</font> - CALIX".$lang_name,
+                "/product/detail_view?code=ailish" => "<font color='blue'>".$agent_name."제품소개</font> - AILISH".$lang_name,
+                "/product/detail_view?code=whistle" => "<font color='blue'>".$agent_name."제품소개</font> - WHISTLE".$lang_name,
+                "/product/detail_view?code=besso" => "<font color='blue'>".$agent_name."제품소개</font> - BESSO".$lang_name,
+                "/product/detail_view?code=floria" => "<font color='blue'>".$agent_name."제품소개</font> - ARRIBA".$lang_name,
+                "/product/detail_view?code=francis" => "<font color='blue'>".$agent_name."제품소개</font> - FRANCIS".$lang_name,
+                "/product/detail_view?code=bambi" => "<font color='blue'>".$agent_name."제품소개</font> - BAMBI".$lang_name,
+                "/product/detail_view?code=adela" => "<font color='blue'>".$agent_name."제품소개</font> - ADELA".$lang_name,
+                "/product/detail_view?code=esther" => "<font color='blue'>".$agent_name."제품소개</font> - ESTHER".$lang_name,
+                "/product/detail_view?code=provence" => "<font color='blue'>".$agent_name."제품소개</font> - PROVENCE".$lang_name,
+                "/product/detail_view?code=crane" => "<font color='blue'>".$agent_name."제품소개</font> - CRANE".$lang_name,
+                "/product/detail_view?code=amore" => "<font color='blue'>".$agent_name."제품소개</font> - AMORE".$lang_name,
+                "/product/detail_view?code=twinsofa" => "<font color='blue'>".$agent_name."제품소개</font> - TWINSOFA".$lang_name,
+                "/product/detail_view?code=swingchair" => "<font color='blue'>".$agent_name."제품소개</font> - SWINGCHAIR".$lang_name,
+                "/gallery/customer" => "<font color='blue'>".$agent_name."갤러리</font> - 고객후기".$lang_name,
+                "/gallery/hmagajine" => "<font color='blue'>".$agent_name."갤러리</font> - H_매거진".$lang_name,
+                "/notice/notice" => "<font color='blue'>".$agent_name."notice</font> - 공지사항".$lang_name,
+                "/notice/faq" => "<font color='blue'>".$agent_name."notice</font> - FAQ".$lang_name,
+                "/notice/qna" => "<font color='blue'>".$agent_name."notice</font> - Q&A".$lang_name,
+                "/other/b2b" => "<font color='blue'>".$agent_name."B2B</font>".$lang_name,
+                "/other/recruit" => "<font color='blue'>".$agent_name."채용</font>".$lang_name,
+                "/other/law" => "<font color='blue'>".$agent_name."법률성명</font>".$lang_name,
+                "/other/privacy" => "<font color='blue'>".$agent_name."개인정보보호정책</font>".$lang_name,
+            );
+            $send_data['l_title'] = $uri_array[$uri];
+            $send_data['type'] = "insert";
+
+        }else{
+            $send_data['type'] = "update";
+        }
+        $result = $this->visit_model->set_log($send_data);
     }
 
     public function index()
@@ -33,48 +142,7 @@ class Common extends CI_Controller
 
     }
 
-    public function get_lang()
-    {
-        $lang_type = get_cookie('tj_lang_type');
-        return $lang_type;
-    }
 
-    public function set_lang()
-    {
-        $domain = $_SERVER["HTTP_HOST"];
-        $lang_type = get_cookie('tj_lang_type');
-        $cookie = array(
-            'name' => 'lang_type',
-            'value' => 'ko',
-            'expire' => 86000,
-            'domain' => $domain,
-            'path' => '/',
-            'prefix' => 'tj_'
-
-        );
-
-        if (empty($lang_type)) {
-            $cookie = array(
-                'name' => 'lang_type',
-                'value' => 'ko',
-                'expire' => 86000,
-                'domain' => $domain,
-                'path' => '/',
-                'prefix' => 'tj_'
-            );
-        } else {
-            delete_cookie("tj_lang_type");
-            if ($lang_type == "ko") {
-                $cookie['value'] = 'en';
-            } else if ($lang_type == 'en') {
-                $cookie['value'] = 'ko';
-            }
-
-        }
-        $this->input->set_cookie($cookie);
-
-        redirect($this->agent->referrer());
-    }
 
 
 

@@ -58,6 +58,26 @@
         {
             noticeWindow  =  window.open("sorry.html","ECSAINE",'left=200, top=40, width=360, height=240, resizable=no, scrollbars=no, status=no location=no ');
         }
+        function set_lang(){
+            $.ajax({
+                type : "POST",
+                url : "/ajax/index/set_lang",
+                data: {
+                    csrf_token: $('input[name=csrf_token]').val(),
+                },
+                cache : false,
+                success : function(result) {
+                    if(result == "OK"){
+                        location.reload();
+                    }else{
+                        alert("please try again.");
+                    }
+                },
+                error : function() {
+                    alert("please try again.");
+                }
+            });
+        }
     </SCRIPT>
 </head>
 <body ><!-- onload="javascript:windOPrenewal();" -->
@@ -68,7 +88,7 @@
             <div id="" class="wrap_top_sns">
                 <div id="" class="box_sns">
                     <ul>
-                        <li><a href="/common/set_lang"><img src="/public_html/img_e/bt_kor.png" border="0" alt="준비중입니다"></a></li>
+                        <li><a href="javascript:set_lang();"><img src="/public_html/img_e/bt_kor.png" border="0" alt="준비중입니다"></a></li>
                         <li><a href="http://cafe.naver.com/hassedhouse" target="_blink"><img src="/public_html/img_e/bt_cafe.png" border="0" alt=""></a></li>
                         <li><a href="https://www.instagram.com/hassed_kr/" target="_blink"><img src="/public_html/img_e/bt_instar.png" border="0" alt=""></a></li>
                         <li><a href="http://blog.naver.com/hassed_kr" target="_blink"><img src="/public_html/img_e/bt_blog.png" border="0" alt=""></a></li>
@@ -87,11 +107,11 @@
                     <div id="main_header" class="">
                         <nav id="main_gnb">
                             <ul>
-                                <li id="gnb01"><a href="/about">ABOUT US</a></li>
-                                <li id="gnb02"><a href="/ecsaine">ECSAINE</a></li>
-                                <li id="gnb03"><a href="/product">PRODUCT</a></li>
-                                <li id="gnb04"><a href="/gallery">GALLERY</a></li>
-                                <li id="gnb05"><a href="/notice">NOTICE</a></li>
+                                <li id="gnb01"><a href="/about/company">ABOUT US</a></li>
+                                <li id="gnb02"><a href="/ecsaine/material">ECSAINE</a></li>
+                                <li id="gnb03"><a href="/product/detail_view?code=becky">PRODUCT</a></li>
+                                <li id="gnb04"><a href="/gallery/customer">GALLERY</a></li>
+                                <li id="gnb05"><a href="/notice/notice">NOTICE</a></li>
                             </ul>
                         </nav>
                         <!-- //회사소개 매뉴 -->

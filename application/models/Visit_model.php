@@ -113,6 +113,100 @@ class Visit_model extends CI_Model {
         return $this->db->query($query)->result();
     }
 
+    function get_log_check($params){
+        $agent_mode = $params['agent_mode'];
+        $url = $params['url'];
+        $today = date("Y-m-d");
+
+        $query = "select l_hit from pagelog where l_url='".$url."' and mode ='".$agent_mode."' and l_date ='".$today."'";
+        return $this->db->query($query)->result();
+    }
+
+    function set_log($params){
+        $this->db->trans_begin();
+        $type = $params['type'];
+        $agent_mode = $params['agent_mode'];
+        $url = $params['url'];
+        $today = date("Y-m-d");
+
+
+        if($type == "update"){
+            $query = "update pagelog set l_hit = l_hit + 1 where mode=? and l_date = ? and l_url = ?";
+            $result = $this->db->query($query, array('mode'=>$agent_mode,'l_date'=>$today,'l_url'=>$url));
+
+        }else{
+            $data = array(
+                'l_date'    =>$today,
+                'l_url'		=> $url,
+                'l_title'	=> $params['l_title'],
+                'l_hit'     => 1,
+                'mode'      => $agent_mode,
+            );
+            $result = $this->db->insert('pagelog', $data);
+
+        }
+        if($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            $this->db->trans_complete();
+            return true;
+        }
+    }
+
+    function set_visit_log($params){
+        $this->db->trans_begin();
+        $user_ip = $params['user_ip'];
+        $agent_mode = $params['agent_mode'];
+        $today = date("Y-m-d");
+
+        $query ="select cnt from visit_log where ip =? and visit_date = ? and agent_type =?";
+        $result = $this->db->query($query, array('ip'=>$user_ip,'visit_date'=>$today,'agent_type'=>$agent_mode));
+
+        if($result){
+            $query = "update visit_log set cnt = cnt + 1 where ip=? and visit_date = ? and agent_type = ?";
+            $result = $this->db->query($query, array('ip'=>$user_ip,'visit_date'=>$today,'agent_type'=>$agent_mode));
+
+        }else{
+            $data = array(
+                'cnt'           => 1,
+                'ip'		    => $user_ip,
+                'visit_date'	=> $today,
+                'agent_type'    => $agent_mode,
+            );
+            $result = $this->db->insert('pagelog', $data);
+
+        }
+        if($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            $this->db->trans_complete();
+            return true;
+        }
+    }
+
+    function set_referrer($params){
+        $domain = $params['domain'];
+        $agent_mode = $params['agent_type'];
+        $url = $params['url'];
+        $user_ip = $_SERVER['REMOTE_ADDR'];
+        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+        $file_data = array(
+            'domain'		    => $domain,
+            'http_referer_url'	=> $url,
+            'user_ip'		    => $user_ip,
+            'user_agent'		=> $user_agent,
+            'create_at'		    => date('Y-m-d H:i:s',time()),
+            'agent_type'	    => $agent_mode,
+        );
+        $result = $this->insert_query('referer',$file_data);
+var_dump($result);
+        return $result;
+
+    }
 
     function insert_query($table,$data) {
         $this->db->trans_begin();
