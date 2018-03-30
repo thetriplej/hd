@@ -40,6 +40,14 @@ class Member extends Common {
                 );
                 $this->session->set_userdata($newdata);
 
+                $cookie = array(
+                    'name'   => 'admin_mode',
+                    'value'  => 'admin',
+                    'expire' => '86500',
+                    'path'   => '/',
+                );
+
+                set_cookie($cookie);
                 echo "0";
             }else{
                 echo "2";
@@ -92,13 +100,5 @@ class Member extends Common {
 
         echo json_encode($send_result);
     }
-
-
-
-
-
-
-
-
 
 }

@@ -1,5 +1,5 @@
                         <tr>
-                            <td height="40" align="left" style="padding-right:20px;"><font color="#eeeeee">:: ADIMN + 게시판 &gt; <?=$menu_title?></font><br></td>
+                            <td height="40" align="left" style="padding-right:20px;"><font color="#eeeeee">:: ADIMN + 접속자 관리 &gt; <?=$menu_title?></font><br></td>
                         </tr>
                     </tbody>
                 </table>
@@ -90,12 +90,12 @@
                 html_list += '</tr>';
 
                 $.each( data.list, function( key, value ) {
-
+                    var num = (data.page_navi.total-(data.page_navi.current_page-1)*25)-list_cnt;
                     html_list += '<tr bgcolor="#FFFFFF" align="center">';
-                    html_list += '  <td>' + value.l_date + '</td>';
+                    html_list += '  <td>' + num + '</td>';
                     html_list += '  <td>' + value.l_date + '</td>';
                     html_list += '  <td>' + value.l_hit + '</td>';
-                    html_list += '  <td><a href="javascript:visit_view('+ value.l_date +');" alt="상세보기">[보기]</a></td>';
+                    html_list += '  <td><a href="javascript:visit_view(\''+ value.l_date +'\');" alt="상세보기">[보기]</a></td>';
                     html_list += '</tr>';
                     list_cnt++;
 
@@ -139,8 +139,8 @@
         });
     });
 
-    function visit_view(){
-        location.href = "/admin/visit_view";
+    function visit_view(view_date){
+        location.href = "/admin/visit_view?start_date=" + $("#start_date").val() + "&end_date=" + $("#end_date").val() + "&mode=old2&view_type=page&view_date=" + view_date + "&page=" + $("#page").val();
     }
 
 </script>

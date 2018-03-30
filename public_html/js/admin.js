@@ -97,24 +97,6 @@ function frmDel(idx,uri){
 	}
 }
 
-function checking_file(){
-	if($('input[name=files]').val() !=""){
-		var file = $('#files').val();
-		var fileExt = file.substring(file.lastIndexOf(".") +1);
-		var reg = /gif|jpg|jpeg|png|bmp|psd|tif|tga|pcx|pcd/i;
-		var reg2 = /pdf|mp4|hwp|txt|pptx|xlsx|xlsm|xlsb|xltx|xltxm|xls|xlt|ppt|doc|docx/i;
-		if(reg.test(fileExt) == true){
-			alert("사진파일은 에디터에서  업로드 가능합니다.");
-			$('#files').val('');
-			return;
-		}
-		if(reg2.test(fileExt) == false){
-			alert("업로드가 불가능한 파일입니다.");
-			$('#files').val('');
-			return;
-		}
-	}
-}
 
 function page_view(id){
 	location.href = '/admin/bbs_view?b_index='+id+'&b_code='+$("#b_code").val()+'&page='+$("#page").val()+'&search_type='+$("#search_type option:selected").val()+'&search_value='+$("#search_value").val();
@@ -247,7 +229,7 @@ function admin_mode(mode){
 				if(mode=="admin"){
 					location.href = '/admin/notice_list';
 				}else{
-					location.href = '/admin/visit_list';
+					location.href = '/admin/visit_list?mode=new';
 				}
 			}else{
 				alert("관리자에게 문의해주세요.");
@@ -256,3 +238,23 @@ function admin_mode(mode){
 		}
 	});
 }
+
+$(document).on('change','.checking_file',(function() {
+	if($(this).val() !=""){
+		var file = $(this).val();
+		var fileExt = file.substring(file.lastIndexOf(".") +1);
+		var reg = /gif|jpg|jpeg|png|bmp|psd|tif|tga|pcx|pcd/i;
+		var reg2 = /pdf|mp4|hwp|txt|pptx|xlsx|xlsm|xlsb|xltx|xltxm|xls|xlt|ppt|doc|docx/i;
+		if(reg.test(fileExt) == true){
+			alert("사진파일은 에디터에서  업로드 가능합니다.");
+			$(this).val('');
+			return;
+		}
+		if(reg2.test(fileExt) == false){
+			alert("업로드가 불가능한 파일입니다.");
+			$(this).val('');
+			return;
+		}
+	}
+	})
+);

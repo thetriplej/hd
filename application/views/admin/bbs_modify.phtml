@@ -163,7 +163,7 @@
                                                     <font color="red">동영상 파일은 확장자가 MP4만 올릴수 있으며 위치를 상단에 맞추어 주시고,<br />
                                                         하나 이상 등록시에는 자동 재생되어 동시에 재생되는 상황이 발생할 수 있습니다.</font>
                                                     <ul id="FileDiv">
-                                                        <li><input type="file" name="files[]" size="50" onchange="checking_file();"> ||| 위치 : <select name="position[]"><option value=T>상단</option> <option value=B>하단</option></select> <a href="javascript:void(0);" name="btn" class="btn">추가</a></li>
+                                                        <li><input type="file" name="files[]" class="checking_file" size="50" onchange="checking_file();"> ||| 위치 : <select name="position[]"><option value=T>상단</option> <option value=B>하단</option></select> <a href="javascript:void(0);" name="btn" class="btn">추가</a></li>
                                                     </ul>
                                                 </td>
                                             </tr>
@@ -209,7 +209,7 @@
         if($(this).html() == "추가"){
             html = "";
             html += "<li>";
-            html += "<input type=\"file\" name=\"files[]\" size=\"50\"> ||| 위치 : ";
+            html += "<input type=\"file\" name=\"files[]\" size=\"50\" class=\"checking_file\"> ||| 위치 : ";
             html += "<select name=\"position[]\">";
             html += "   <option value=\"T\">상단</option>";
             html += "   <option value=\"B\">하단</option>";

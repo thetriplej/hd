@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Index extends CI_Controller {
+require_once APPPATH . 'controllers/Common.php';
+class Index extends Common {
 
     /**
      * Index Page for this controller.
@@ -21,17 +21,8 @@ class Index extends CI_Controller {
     public function  __construct() {
         parent::__construct();
         $this->load->helper('url'); //Loading url helper
-        $this->load->library('utilcommon');
-        if($this->utilcommon->get_mobile_check() === true){
-            //  echo "<script>alert('mobile')</script>";
-        }else{
-            //   echo "<script>alert('PC')</script>";
-        }
-        $this->load->library('user_agent');
-        //var_dump($this->agent->referrer());
-        $this->lang_type = get_cookie('tj_lang_type');
-    }
 
+    }
     function _remap($method) {
 
         if($this->lang_type == 'en' ){
@@ -47,7 +38,7 @@ class Index extends CI_Controller {
 
     public function index()
     {
-        //echo phpinfo();
+
         if($this->lang_type == 'en') {
             $this->load->view('e_index.phtml');
         }else{

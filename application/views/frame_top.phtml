@@ -32,40 +32,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo JS_DIR; ?>/topmenu_2017.js"></script>
 
-    <script type="text/javascript">
-        var tmpUser = navigator.userAgent;
-        if (tmpUser.indexOf("iPhone") > 0 || tmpUser.indexOf("iPad") > 0 || tmpUser.indexOf("Android ") > 0 || tmpUser.indexOf("BlackBerry ") > 0 || tmpUser.indexOf("Windows CE ") > 0 || tmpUser.indexOf("LG ") > 0 || tmpUser.indexOf("MOT ") > 0 || tmpUser.indexOf("SAMSUNG ") > 0 || tmpUser.indexOf("SonyEricsson ") > 0 ){
-            document.location ="http://www.hassed.kr/m/index.asp";
-        }
-        else
-        {
-
-        }
-    </script>
-
-    <!--
-    <SCRIPT LANGUAGE="JavaSCRIPT">
-       function msieversion()
-       {
-          var ua = window.navigator.userAgent
-          var msie = ua.indexOf ( "MSIE " )
-          if ( msie > 0 )      // If Internet Explorer, return version number
-             return parseInt (ua.substring (msie+5, ua.indexOf (".", msie )))
-          else                 // If another browser, return 0
-             return 0
-       }
-
-       if ( msieversion() >= 9 ){
-         // document.write ( "This is Internet Explorer 9 or later" );
-        }
-       else if ( msieversion() >= 8 ){
-          //document.write ( "This is Internet Explorer 8" );
-          document.location ="http://www.hassed.kr/index_ie8.asp";
-        }
-       else{}
-          //document.write ( "This is another browser" );
-    </SCRIPT>
-     -->
 
     <script type="text/javascript">
         <!--
@@ -98,19 +64,25 @@
             noticeWindow.close();   // Closes the new window
         }
 
-        var tmpUser = navigator.userAgent;
-
-        if (tmpUser.indexOf("iPhone") > 0 || tmpUser.indexOf("iPad") > 0 || tmpUser.indexOf("Android ") > 0 ){
-            var src="PageLog.asp?mode=m";
-        }else{
-            var src="PageLog.asp?mode=pc";
-        }
-
-        $("#PageLog").prop("src",src);
-
-        var tmpUser = navigator.userAgent;
-        if (tmpUser.indexOf("iPhone") > 0 || tmpUser.indexOf("iPad") > 0 || tmpUser.indexOf("Android ") > 0 || tmpUser.indexOf("BlackBerry ") > 0 || tmpUser.indexOf("Windows CE ") > 0 || tmpUser.indexOf("LG ") > 0 || tmpUser.indexOf("MOT ") > 0 || tmpUser.indexOf("SAMSUNG ") > 0 || tmpUser.indexOf("SonyEricsson ") > 0 ){
-            document.location ="http://www.hassed.kr/m/index.asp";
+        function set_lang(){
+            $.ajax({
+                type : "POST",
+                url : "/ajax/index/set_lang",
+                data: {
+                    csrf_token: $('input[name=csrf_token]').val(),
+                },
+                cache : false,
+                success : function(result) {
+                    if(result == "OK"){
+                        location.reload();
+                    }else{
+                        alert("다시 시도해 주세요.");
+                    }
+                },
+                error : function() {
+                    alert("다시 시도해 주세요.");
+                }
+            });
         }
     </script>
 </head>
@@ -122,7 +94,7 @@
             <div id="" class="wrap_top_sns">
                 <div id="" class="box_sns">
                     <ul>
-                        <li><a href="/common/set_lang"><img src="/public_html/img/bt_eng.png" border="0" alt="준비중입니다"></a></li>
+                        <li><a href="javascript:set_lang();"><img src="/public_html/img/bt_eng.png" border="0" alt="준비중입니다"></a></li>
                         <li><a href="http://cafe.naver.com/hassedhouse" target="_blink"><img src="/public_html/img/bt_cafe.png" border="0" alt=""></a></li>
                         <li><a href="https://www.instagram.com/hassed_kr/" target="_blink"><img src="/public_html/img/bt_instar.png" border="0" alt=""></a></li>
                         <li><a href="http://blog.naver.com/hassed_kr" target="_blink"><img src="/public_html/img/bt_blog.png" border="0" alt=""></a></li>
@@ -141,11 +113,11 @@
                     <div id="main_header" class="">
                         <nav id="main_gnb">
                             <ul>
-                                <li id="gnb01"><a href="/about">ABOUT US</a></li>
-                                <li id="gnb02"><a href="/ecsaine">ECSAINE</a></li>
-                                <li id="gnb03"><a href="/product">PRODUCT</a></li>
-                                <li id="gnb04"><a href="/gallery">GALLERY</a></li>
-                                <li id="gnb05"><a href="/notice">NOTICE</a></li>
+                                <li id="gnb01"><a href="/about/company">ABOUT US</a></li>
+                                <li id="gnb02"><a href="/ecsaine/material">ECSAINE</a></li>
+                                <li id="gnb03"><a href="/product/detail_view?code=becky">PRODUCT</a></li>
+                                <li id="gnb04"><a href="/gallery/customer">GALLERY</a></li>
+                                <li id="gnb05"><a href="/notice/notice">NOTICE</a></li>
                             </ul>
                         </nav>
                         <!-- //회사소개 매뉴 -->

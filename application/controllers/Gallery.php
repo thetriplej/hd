@@ -359,9 +359,30 @@ class Gallery extends Common {
 
 
     public function set_img2(){   //파일이동
+        // boardfile 테이블에 날짜생성
+        // update boardfile set boardfile.reg_date = (select board.b_regdate from board where board.b_index = boardfile.b_index) where reg_date is null
+
+        // boardfile 테이블에 path생성
+        //update boardfile set file_path = CONCAT('/upload/board/',left(reg_date,7),'/')
+
+        // content img url 변경
+//        update board set b_content = REPLACE(b_content, 'http://www.hassed.kr/upload/',  CONCAT('http://www.hassed.kr/public_html/upload/board/',left(b_regdate,7),'/'))
+//update board set b_content = REPLACE(b_content, 'http://www.hassed.kr/upload2/',  CONCAT('http://www.hassed.kr/public_html/upload/board/',left(b_regdate,7),'/'))
+//update board set b_content = REPLACE(b_content, 'http://www.hassed.co.kr/upload/',  CONCAT('http://www.hassed.co.kr/public_html/upload/board/',left(b_regdate,7),'/'))
+//update board set b_content = REPLACE(b_content, 'http://www.hassed.co.kr/upload2/',  CONCAT('http://www.hassed.co.kr/public_html/upload/board/',left(b_regdate,7),'/'))
+
+//        update board set b_content = REPLACE(b_content, '/upload/',  CONCAT('/public_html/upload/board/',left(b_regdate,7),'/'))
+//        update board set b_content = REPLACE(b_content, '/upload2/',  CONCAT('/public_html/upload/board/',left(b_regdate,7),'/'))
+
+//// 업데이트 안해도 됩 다음에디터에서 오류 풀url사용해야함
+        //update board set b_content = REPLACE(b_content, 'http://www.hassed.kr/',  '/')
+        //update board set b_content = REPLACE(b_content, 'http://www.hassed.co.kr/',  '/')
+//update boardfile set f_rename = f_name where f_rename is null
+
+
         $result = $this->board_model->movie_img();
-        $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload/';
-        $old_path2 = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
+        //$old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload/';
+        $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
         $path = $_SERVER['DOCUMENT_ROOT'].'/public_html';
         foreach ($result as $key=>$value){
             $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html'.$value->file_path;
