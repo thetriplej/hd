@@ -19,7 +19,7 @@ class Utilcommon{
     public function set_lang()
     {
         $domain = $_SERVER["HTTP_HOST"];
-        $lang_type = get_cookie('lang_type');
+        $lang_type = get_cookie('tj_lang_type');
         $cookie = array(
             'name' => 'lang_type',
             'value' => 'ko',
@@ -40,7 +40,7 @@ class Utilcommon{
                 'prefix' => 'tj_'
             );
         } else {
-            delete_cookie("lang_type");
+            delete_cookie("tj_lang_type");
             if ($lang_type == "ko") {
                 $cookie['value'] = 'en';
             } else if ($lang_type == 'en') {
@@ -48,8 +48,8 @@ class Utilcommon{
             }
 
         }
-        set_cookie('lang_type','ko',86000);
-        $lang_type = get_cookie('lang_type');
+        set_cookie('tj_lang_type','ko',86000);
+        $lang_type = get_cookie('tj_lang_type');
         if($lang_type != $cookie['value']){
             $result = "OK";
         }else{
@@ -62,7 +62,7 @@ class Utilcommon{
     public function set_visit()
     {
         $domain = $_SERVER["HTTP_HOST"];
-        $visit_type = get_cookie('visit_log');
+        $visit_type = get_cookie('tj_visit_log');
         $cookie = array(
             'name' => 'visit_log',
             'value' => 'true',
@@ -73,8 +73,8 @@ class Utilcommon{
 
         );
 
-        set_cookie('visit_log','true',86000);
-        $visit_type = get_cookie('visit_log');
+        set_cookie('tj_visit_log','true',86000);
+        $visit_type = get_cookie('tj_visit_log');
         if($visit_type){
             $result = "OK";
         }else{

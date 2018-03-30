@@ -17,15 +17,16 @@ class Common extends CI_Controller
             $agent_mode = "1";
         }
 
-        if(empty(get_cookie('lang_type'))) {
+        if(empty(get_cookie('tj_lang_type'))) {
             $this->utilcommon->set_lang();
         }
+        $this->lang_type = get_cookie('tj_lang_type');
 
-        $this->lang_type = get_cookie('lang_type');
-        if(empty(get_cookie('visit_log'))) {
+        if(empty(get_cookie('tj_visit_log'))) {
             $this->visit_log($agent_mode);
         }
-        $this->visit_log = get_cookie('visit_log');
+        $this->visit_log = get_cookie('tj_visit_log');
+
         $this->temp_uri = explode('&', $_SERVER['REQUEST_URI']);
         $this->view_uri = $_SERVER["HTTP_HOST"].$this->temp_uri[0];
 
@@ -38,7 +39,7 @@ class Common extends CI_Controller
 
         if(empty($this->session->userdata('userid'))) {
             if (!$this->input->is_ajax_request()) {
-                $this->page_log($referrer, $this->lang_type, $agent_mode);
+                $this->page_log($this->lang_type, $agent_mode);
             }
         }
 
@@ -70,15 +71,18 @@ class Common extends CI_Controller
             $this->utilcommon->set_visit();
         }
     }
-    public function page_log($referrer,$lang_type,$agent_mode){
-        $this->load->model(array('visit_model'));
+    public function page_log($lang_type,$agent_mode){
+
         $uri = $_SERVER['REQUEST_URI'];
-        if($this->lang_type == "ko"){
+        if($lang_type == "ko"){
             $lang_name = "";
             $add_uri = "";
-        }else if($this->lang_type == "en"){
+        }else if($lang_type == "en"){
             $lang_name = " (Eng)";
             $add_uri = "/eng";
+        }else{
+            $lang_name = "";
+            $add_uri = "";
         }
 
         $send_data = array(
