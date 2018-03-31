@@ -34,16 +34,16 @@ class Common extends CI_Controller
 
         if ($this->agent->is_referral()){
             $referrer = $this->agent->referrer();
+            var_dump($referrer);
             $this->set_referrer($referrer,$agent_mode);
         }
+
 
         if(empty($this->session->userdata('userid'))) {
             if (!$this->input->is_ajax_request()) {
                 $this->page_log($this->lang_type, $agent_mode);
             }
         }
-
-
 
 
     }
@@ -67,6 +67,7 @@ class Common extends CI_Controller
             'agent_mode'    => $agent_mode,
         );
         $result = $this->visit_model->set_visit_log($send_data);
+        var_dump($result);
         if($result) {
             $this->utilcommon->set_visit();
         }

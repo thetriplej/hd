@@ -162,8 +162,8 @@ class Visit_model extends CI_Model {
         $today = date("Y-m-d");
 
         $query ="select cnt from visit_log where ip =? and visit_date = ? and agent_type =?";
-        $result = $this->db->query($query, array('ip'=>$user_ip,'visit_date'=>$today,'agent_type'=>$agent_mode));
-//var_dump($query);
+        $result = $this->db->query($query, array('ip'=>$user_ip,'visit_date'=>$today,'agent_type'=>$agent_mode))->result();
+
         if($result){
             $query = "update visit_log set cnt = cnt + 1 where ip=? and visit_date = ? and agent_type = ?";
             $result = $this->db->query($query, array('ip'=>$user_ip,'visit_date'=>$today,'agent_type'=>$agent_mode));
@@ -175,6 +175,7 @@ class Visit_model extends CI_Model {
                 'visit_date'	=> $today,
                 'agent_type'    => $agent_mode,
             );
+
             $result = $this->db->insert('visit_log', $data);
 
         }
