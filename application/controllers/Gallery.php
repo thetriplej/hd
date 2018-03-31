@@ -228,6 +228,15 @@ class Gallery extends Common {
         $attach_image   =   $this->input->post("attach_image[]",false);
 
         $today = date('Y-m');
+        If(empty($b_title)) $b_title = '.';
+        if($b_board_type != '0'){
+            $b_title = htmlspecialchars($b_title);  //에디터 사용
+            $b_writer = htmlspecialchars($b_writer);  //에디터 사용
+            $b_email = htmlspecialchars($b_email);  //에디터 사용
+            $b_content = htmlspecialchars($b_content);  //에디터 사용
+        }else{
+            $b_content = $b_content;
+        }
 
         $new_attach_image = array();
         if($proc_type == "NW"){ // 신규등록
@@ -241,12 +250,7 @@ class Gallery extends Common {
                 }
                 $attach_image = $new_attach_image;
             }
-            If(empty($b_title)) $b_title = '.';
-            if($b_board_type != '0'){
-                $b_content = htmlspecialchars($b_content);  //에디터 사용
-            }else{
-                $b_content = $b_content;
-            }
+
         }else if($proc_type == "M"){    // 수정
             $old_image = array();
             $new_image = array();
@@ -347,10 +351,10 @@ class Gallery extends Common {
                 'result'       	=> '',
             );
             //$this->session->unset_userdata($ss_data);
-            redirect("/gallery/?page=".$page."&b_code=".$b_code."&search_type=".$search_type."&search_value=".$search_value);
+            redirect("/gallery/customer/?page=".$page."&b_code=".$b_code."&search_type=".$search_type."&search_value=".$search_value);
             exit;
         }else{
-            echo "<script>alert('관리자에게 문의해주세요.');location.href='/gallery/';</script>";
+            echo "<script>alert('관리자에게 문의해주세요.');location.href='/gallery/customer/';</script>";
             exit;
         }
 

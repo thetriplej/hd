@@ -436,7 +436,7 @@ class CI_Security {
 		$words = array(
 			'javascript', 'expression', 'vbscript', 'jscript', 'wscript',
 			'vbs', 'script', 'base64', 'applet', 'alert', 'document',
-			'write', 'cookie', 'window', 'confirm', 'prompt', 'eval'
+			'write', 'cookie', 'window', 'confirm', 'prompt', 'eval','xmp'
 		);
 
 		foreach ($words as $word)
@@ -478,6 +478,10 @@ class CI_Security {
 			{
 				$str = preg_replace('#</*(?:script|xss).*?>#si', '[removed]', $str);
 			}
+            if (preg_match('/xmp|xss/i', $str))
+            {
+                $str = preg_replace('#</*(?:xmp|xss).*?>#si', '[removed]', $str);
+            }
 		}
 		while ($original !== $str);
 		unset($original);

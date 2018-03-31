@@ -189,10 +189,6 @@
             alert('내용을 입력하세요');
             return false;
         }
-        $('#b_board_type').val('1');
-        if($('#tx_switchertoggle').attr('class') == 'tx-switchtoggle-pushed') { // html 사용안함
-            $('#b_board_type').val('0');
-        }
 
         return true;
     }
@@ -342,6 +338,7 @@
         //console.log(attachments);
         $('#b_writer').val(reDate.b_writer);
         $('#b_title').val(reDate.b_title);
+        $('#b_board_type').val(reDate.b_board_type);
         var _Email = reDate.b_email.split('@');
         $('#b_email1').val(_Email[0]);
         $('#b_email2').val(_Email[1]);

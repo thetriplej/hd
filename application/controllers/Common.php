@@ -11,7 +11,7 @@ class Common extends CI_Controller
         $this->load->library(array('utilcommon', 'user_agent', 'pagination','session'));
         $this->load->model(array('member_model','board_model','visit_model'));
 
-        if($this->utilcommon->get_mobile_check() === true){
+        if($this->agent->is_mobile()){
             $agent_mode = "2";  //mobile
         }else{
             $agent_mode = "1";
@@ -33,7 +33,9 @@ class Common extends CI_Controller
 
 
         if ($this->agent->is_referral()){
+
             $referrer = $this->agent->referrer();
+
             $this->set_referrer($referrer,$agent_mode);
         }
 
@@ -66,7 +68,6 @@ class Common extends CI_Controller
             'agent_mode'    => $agent_mode,
         );
         $result = $this->visit_model->set_visit_log($send_data);
-        var_dump($result);
         if($result) {
             $this->utilcommon->set_visit();
         }
@@ -74,6 +75,7 @@ class Common extends CI_Controller
     public function page_log($lang_type,$agent_mode){
 
         $uri = $_SERVER['REQUEST_URI'];
+
         if($lang_type == "ko"){
             $lang_name = "";
             $add_uri = "";
@@ -132,7 +134,11 @@ class Common extends CI_Controller
                 "/other/law" => "<font color='blue'>".$agent_name."법률성명</font>".$lang_name,
                 "/other/privacy" => "<font color='blue'>".$agent_name."개인정보보호정책</font>".$lang_name,
             );
-            $send_data['l_title'] = $uri_array[$uri];
+            if(array_key_exists($uri, $uri_array)) {
+                $send_data['l_title'] = $uri_array[$uri];
+            }else{
+                return;
+            }
             $send_data['type'] = "insert";
 
         }else{

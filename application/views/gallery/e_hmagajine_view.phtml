@@ -105,7 +105,7 @@
                         if(!empty($file_data)){
                             foreach($file_data as $key => $value){
                                 ?>
-                                <div align="center"><?php echo $value->f_name;?><br /><!--a href="Download.asp?FileName=<%=temp&SubRs("F_Name")%>&Mode=0"><img src="/images/icon_down.gif"></a> | <a href="Zoom.asp?FileName=<%=temp&SubRs("F_Name")%>" target="_new"><img src="/images/icon_zoom.gif"></a--><br><br></div>
+                                <div align="center" ><p style="cursor: pointer;" onclick="file_down('<?=$value->file_path?>')"><img src="/public_html/images/icon_down.gif"> <?php echo $value->f_name;?></p><!-- | <a href="Zoom.asp?FileName=<%=temp&SubRs("F_Name")%>" target="_new"><img src="/images/icon_zoom.gif"></a--></div>
                                 <?php
                             }
                         }
@@ -131,7 +131,7 @@
                         <?php if($view_data->b_code == "CEPILOGUE0" ||  $view_data->b_code == "QANDA0"){?>
                             <span style="float:left;">
                                 <input type="button" class="btn_blue" value="수정" onclick="send('<?='/gallery/customer_write/?b_index='.$view_data->b_index.'&page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','edit');">
-                                <input type="button" class="btn_blue" value="삭제" onclick="send('<?='/gallery/?page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','del');">
+                                <input type="button" class="btn_blue" value="삭제" onclick="send('<?='/gallery/customer?page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','del');">
                             </span>
                         <?php }?>
                         <span style="float:right;">
@@ -196,7 +196,7 @@
                             if(!empty($reply_file_data)){
                                 foreach($reply_file_data as $key => $value){
                                     ?>
-                                    <div align="center"><?php echo $value->f_name;?><br /><a href="Download.asp?FileName=<%=temp&SubRs("F_Name")&Mode=1%>"><img src="/images/icon_down.gif"></a><!-- | <a href="Zoom.asp?FileName=<%=temp&SubRs("F_Name")%>" target="_new"><img src="/images/icon_zoom.gif"></a--><br><br></div>
+                                    <div align="center" ><p style="cursor: pointer;" onclick="file_down('<?=$value->file_path?>')"><img src="/public_html/images/icon_down.gif"> <?php echo $value->f_name;?></p><!-- | <a href="Zoom.asp?FileName=<%=temp&SubRs("F_Name")%>" target="_new"><img src="/images/icon_zoom.gif"></a--></div>
                                     <?php
                                 }
                             }
