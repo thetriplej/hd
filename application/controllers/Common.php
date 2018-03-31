@@ -34,7 +34,6 @@ class Common extends CI_Controller
 
         if ($this->agent->is_referral()){
             $referrer = $this->agent->referrer();
-            var_dump($referrer);
             $this->set_referrer($referrer,$agent_mode);
         }
 

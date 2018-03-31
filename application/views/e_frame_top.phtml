@@ -61,7 +61,7 @@
         function set_lang(){
             $.ajax({
                 type : "POST",
-                url : "/ajax/index/set_lang",
+                url : "/ajax/member/set_lang",
                 data: {
                     csrf_token: $('input[name=csrf_token]').val(),
                 },
