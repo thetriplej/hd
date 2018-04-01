@@ -1,0 +1,161 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+
+*{
+    
+}
+
+
+
+/*body 기본 텍스트*/  
+
+
+
+/* product */
+
+#txtbox{
+    position:relative;
+    top:20px;
+    width:900px; height:100%;
+    font-size:16px;
+    padding:0px;
+    line-height:20px;
+}
+
+#txtdiv01{
+    position:absolute;
+    top:0px;
+    width:760px; height:30px;
+    font-size:16px;
+    line-height:24px;
+    font-weight:bold;
+}
+
+#txtdiv02{
+    padding-top:30px;
+	display:block;
+    width:760px; height:100%;
+	min-height:60px;
+	height:100%;
+    font-family: '돋움' ;
+    font-size:12px;
+    line-height:24px;
+    color:#777;
+	text-align: justify;
+}
+
+.title_size{
+    position:absolute;
+    width:760px; height:42px;
+    font-family: 'roboto' ;
+    font-size:48px;
+    line-height:24px;
+    color:#aaa;
+	border: 4px solid #bbb; 
+	border-left-width:0px; border-right-width:0px; border-top-width:0px;
+}
+
+.side_box
+{
+	display:block;
+	width:180px;
+	height:100;
+	font-family: '돋움';
+	font-size:12px;
+	line-height:24px;
+	color:#333;
+	text-align: justify;
+}
+
+
+
+.floatL{float:left;}
+
+
+
+/* image insert */
+
+.img_box {margin-left:0px; margin-top:30px; width:850px; text-align:center; font-size:18px; display:block; clear:both;}
+
+
+
+#img_body{
+    position:relative; overflow:hidden; border: 1px solid #ededed; border-left-width:0px; border-right-width:0px; border-top-width:0px;
+    display:block; margin-top:60px; margin-left:40px; margin-bottom:40px; width:698px; height:360px; line-height:40px;
+}
+
+#pro_img{
+    position:relative; overflow:hidden;  /*border: 1px solid #dddddd;border-left-width:0px; border-right-width:0px; border-top-width:0px;*/
+    display:block; margin-top:10px; margin-left:0px; margin-bottom:0px; width:100%; height:100%; 
+	line-height:0px;
+}
+
+.outline{
+	border: 1px solid #ddd;
+}
+
+
+
+#text_1dan{
+    margin-left:0px; margin-top:30px;
+    width:700px; height:auto;
+    font-family: '굴림';
+    font-size:12px;
+    line-height:21px;
+    color:#666;
+    text-align:justify;
+}
+
+
+#valuebox{
+    position:relative;
+    margin-left:0px; margin-top:30px;
+    width:760px; height:130px;
+    font-family: '바탕','돋움';
+    font-size:16px;
+    padding:5px;
+    line-height:20px;
+    background-color:#fff;
+}
+
+#value201{
+    position:absolute;
+    margin-left:0px; top:4px;
+    width:200px; height:auto;
+    padding:5px;
+    line-height:24px;
+    padding-left:10px;
+}
+
+#value202{
+    position:absolute;
+    margin-left:230px; top:4px;
+    width:440px; height:auto;
+    font-size:18px;
+    padding:5px;
+    line-height:24px;
+    text-align:left;
+    color:#777116;
+}
+
+#value203{
+    position:absolute;
+    margin-left:230px; top:30px;
+    width:440px; height:auto;
+    font-family: '굴림';
+    font-size:11px;
+    padding:5px;
+    line-height:24px;
+    text-align:justify;
+    color:#4f6228;
+}
+
+
+
+
+
+.go_top {position:fixed; left:50%; margin-left:510px; bottom:190px; z-index:2;  }
+.go_top a {display:block;width:26px; height:23px;background:url('../img/btn_top.png') no-repeat; }
+.go_top a:hover {background:url('../img/btn_top_over.png') no-repeat;}
+.go_top span {visibility:hidden; overflow:hidden;}

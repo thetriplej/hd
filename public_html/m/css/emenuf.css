@@ -1,0 +1,487 @@
+﻿
+/*main menu*/
+#main_gnb
+{
+    position:relative;
+	width:960px;
+    left:140px;top:140px;
+	font-family: "Noto Sans KR",  "Malgun Gothic", sans-serif;
+    font-size:13px;
+	z-index:300;
+}
+
+/*main manu list*/
+#main_gnb > ul{overflow:hidden;}
+#main_gnb > ul > li{float:left; margin-top:1px;}
+#main_gnb > ul > li >a{
+    display:block;
+    width:188px; 
+    text-align:center;
+    color:#929190;
+	font-size:13px;
+}
+
+#main_gnb > ul > li >a:hover{
+    display:block;
+	font-weight:600;
+	font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+    color:#532f16;
+}
+
+/*subpage main menu*/
+#sub_gnb
+{
+    position:absolute;
+    left:0px;top:20px;
+    font-family: '돋움';
+    font-size:12px;
+    color:#b6bea5;
+    background-color:#111;
+}
+
+
+/*subpage main manu list*/
+#sub_gnb > ul{overflow:hidden;}
+#sub_gnb > ul > li{float:left; top:14px;}
+#sub_gnb > ul > li >a{
+    display:block;
+    padding: 8px 8px;
+    /*border: 1px solid #b6bea5;
+    border-left-width:0px;*/
+    width:238px; 
+    text-align:center;
+    color:#b6bea5;
+	font-size:14px;
+}
+
+#sub_gnb > ul > li >a:hover{
+    display:block;
+    background-color:#121212;
+    color:#444;
+}
+
+/*sub manu com list*/
+
+#sub_gnb01
+{
+    position:relative;
+	top:80px;
+    left:140px;
+    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+    color:#b6bea5;
+    width:192px; 
+    height:180px; /*메뉴백 높이*/
+    display:none;
+    padding-top:16px;
+	background: url('../img/smenuback01.png') 0 0 no-repeat;
+}
+
+
+#sub_gnb01 > ul{overflow:hidden;}
+#sub_gnb01 > ul > li{
+    font-size:13px;
+    line-height:20px;
+	padding-top:2px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:2px;
+	text-align:left;
+	text-indent:10px;
+	height:24px;
+}
+#sub_gnb01 > ul > li >a{
+    display:block;
+    color:#ddd;
+	
+}
+
+#sub_gnb01 > ul > li >a:hover{
+    display:block;
+    background-color:#7f746a;
+    color:#fff;
+}
+
+
+
+
+/*sub manu pro list*/
+#sub_gnb02
+{
+    position:relative;
+    top:80px;
+	left:332px;
+    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+    color:#b6bea5;
+    width:192px; 
+    height:180px; /*메뉴백 높이*/
+    display:none;
+    padding-top:16px;
+    margin-left:0px;
+	background: url('../img/smenuback02.png') 0 0 no-repeat;
+}
+
+#sub_gnb02 > ul{overflow:hidden;}
+#sub_gnb02 > ul > li{
+    font-size:13px;
+    line-height:18px;
+	padding-top:2px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:2px;
+	text-align:left;
+	text-indent:10px;
+	height:24px;
+}
+#sub_gnb02 > ul > li >a{
+    display:block;
+    color:#ddd;
+}
+
+#sub_gnb02 > ul > li >a:hover{
+    display:block;
+	background-color:#7f746a;
+    color:#fff;
+}
+
+
+
+/*sub manu mat list*/
+#sub_gnb03
+{
+    position:relative;
+    left:524px;
+	top:80px;
+    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+    color:#b6bea5;
+    width:192px; 
+    height:410px; /*메뉴백 높이*/
+    display:none;
+    padding-top:16px;
+	background: url('../img/smenuback03.png') 0 0 no-repeat;
+	z-index:900;
+}
+
+#sub_gnb03 > ul{overflow:hidden;}
+#sub_gnb03 > ul > li{
+    font-size:13px;
+    line-height:18px;
+	padding-top:2px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:2px;
+	text-align:left;
+	text-indent:36px;
+	height:20px;
+}
+#sub_gnb03 > ul > li >a{
+    display:block;
+    color:#ddd;
+}
+
+#sub_gnb03 > ul > li >a:hover{
+    display:block;
+    color:#fff;
+	background-color:#7f746a;
+}
+
+/*sub manu aes list*/
+#sub_gnb04
+{
+    position:relative;
+    left:716px;
+	top:80px;
+    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+    color:#b6bea5;
+    width:192px; 
+    height:180px; /*메뉴백 높이*/
+    display:none; 
+	padding-top:16px;
+    margin-left:0px;
+	background: url('../img/smenuback02.png') 0 0 no-repeat;
+}
+
+#sub_gnb04 > ul{overflow:hidden;}
+#sub_gnb04 > ul > li{
+    font-size:13px;
+    line-height:18px;
+	padding-top:2px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:2px;
+	text-align:left;
+	text-indent:10px;
+	height:24px;
+	
+}
+#sub_gnb04 > ul > li >a{
+    display:block;
+    color:#ddd;
+}
+
+#sub_gnb04 > ul > li >a:hover{
+    display:block;
+    color:#fff;
+	background-color:#7f746a;
+}
+
+
+
+
+/*sub manu eng list*/
+#sub_gnb05
+{
+    position:relative;
+    left:908px;
+	top:80px;
+    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+    color:#b6bea5;
+    width:192px; 
+    height:180px; /*메뉴백 높이*/
+    display:none; 
+	padding-top:16px;
+    margin-left:0px;
+	background: url('../img/smenuback02.png') 0 0 no-repeat;
+}
+
+#sub_gnb05 > ul{overflow:hidden;}
+#sub_gnb05 > ul > li{
+    font-size:13px;
+    line-height:18px;
+	padding-top:2px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:2px;
+	text-align:left;
+	text-indent:36px;
+	height:24px;
+}
+#sub_gnb05 > ul > li >a{
+    display:block;
+    color:#ddd;
+}
+
+#sub_gnb05 > ul > li >a:hover{
+    display:block;
+    color:#fff;
+	background-color:#7f746a;
+}
+
+.title_com {
+    position:relative;
+    left:16px; top:10px;
+    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+    color:#998b7e;
+    font-size:15px;
+    line-height:25px;
+}
+
+/*sub manu com mat list*/
+#leftM_01
+{
+    position:relative;
+    left:0px;top:0px;
+    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+    color:#b6bea5;
+    width:110px; 
+    height:145px; /*메뉴백 높이*/
+	padding-top:16px;
+}
+
+#leftM_01 > ul{overflow:hidden;}
+#leftM_01 > ul > li{
+    font-size:12px;
+    line-height:20px;
+	padding-left:10px;
+}
+#leftM_01 > ul > li >a{
+    display:block;
+    padding: 4px 8px;
+    width:90px; 
+    height:20px;
+    color:#ddd;
+}
+
+#leftM_01 > ul > li >a:hover{
+    display:block;
+    width:90px; 
+    height:20px;
+    color:#fff;
+}
+
+#leftM_01 > ul > li.on a{
+    color:#fff;
+	font-weight:500;
+}
+
+#leftM_01 > ul > li:first-child{
+    font-size:12px;
+    line-height:12px;
+	padding-left:10px;
+}
+
+#leftM_01 > ul > li:nth-child(3){
+    font-size:12px;
+    line-height:12px;
+	padding-left:10px;
+}
+
+#leftM_01 > ul > li:nth-child(4){
+    font-size:12px;
+    line-height:12px;
+	padding-left:10px;
+}
+
+
+
+.title_pro {
+    position:relative;
+    left:16px; top:3px;
+    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+    color:#998b7e;
+    font-size:13px;
+    line-height:25px;
+}
+
+/*sub manu pro list*/
+#leftM_02
+{
+    position:relative;
+    left:0px;top:0px;
+    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+    color:#b6bea5;
+    width:138px; 
+    height:434px; /*메뉴백 높이*/
+	padding-top:12px
+}
+
+#leftM_02 > ul{overflow:hidden;}
+#leftM_02 > ul > li{
+    font-size:12px;
+    line-height:15px;
+	padding-left:10px;
+}
+#leftM_02 > ul > li >a{
+    display:block;
+    padding: 4px 8px;
+    width:90px; 
+    height:15px;
+    color:#ddd;
+}
+
+#leftM_02 > ul > li >a:hover{
+    display:block;
+    width:90px; 
+    height:15px;
+    color:#fff;
+}
+
+#leftM_02 > ul > li.on a{
+    color:#fff;
+	font-weight:500;
+}
+
+
+/*sub manu mat board list*/
+#leftM_03
+{
+    position:relative;
+    left:0px;top:0px;
+    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+    color:#b6bea5;
+    width:138px; 
+    height:135px; /*메뉴백 높이*/
+	padding-top:16px
+}
+
+#leftM_03 > ul{overflow:hidden;}
+#leftM_03 > ul > li{
+    font-size:13px;
+    line-height:20px;
+	padding-left:10px;
+}
+#leftM_03 > ul > li >a{
+    display:block;
+    padding: 4px 8px;
+    width:90px; 
+    height:20px;
+    color:#ddd;
+}
+
+#leftM_03 > ul > li >a:hover{
+    display:block;
+    width:90px; 
+    height:20px;
+    color:#fff;
+}
+
+#leftM_03 > ul > li.on a{
+    color:#fff;
+	font-weight:500;
+}
+
+
+.dan_left
+{
+    position:relative;
+	width:106px;
+	display:block;
+	color: #777;
+	background: url('../img/leftmenu_back01.png') 0 0 no-repeat;
+}
+
+
+
+.dan_left02
+{
+    position:relative;
+	width:106px;
+	display:block;
+	color: #777;
+	background: url('../img/leftmenu_back02.png') 0 0 no-repeat;
+}
+
+.dan_left03
+{
+    position:relative;
+	width:106px;
+	display:block;
+	color: #777;
+	background: url('../img/leftmenu_back03.png') 0 0 no-repeat;
+}
+
+
+/*main langage list*/
+#langage
+{
+    position:relative;
+	margin:0 auto;
+	top:95px;
+    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+	font-style:italic;
+	font-size:20px;
+    color:#ccc;
+    width:200px; 
+	height:55px;
+	text-align:center;
+}
+
+#langage > ul > li{
+    float:left; width:100px; height:50px; display:block;
+	list-style:none;
+	text-decoration:none;
+}
+
+#langage > ul > li a{text-decoration:none; color:#888;}
+
+#langage > ul > li a:hover{
+    color:#333;
+}
+
+
+
+#read_eng {width:76px; height:18px; margin-top:-40px; display:block;}
+#read_jap {width:76px; height:18px; margin-top:-40px; display:block;}
+
+
+#btsound:hover
+	{	background: url('../img/bt_soundnew.png') -44px 0px no-repeat;}

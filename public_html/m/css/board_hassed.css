@@ -1,0 +1,25 @@
+
+.board_contents
+{
+	position:static;
+	display:block;
+	width:100%;
+	margin-top:350px;
+	overflow:hidden;
+	color:#333;
+}
+
+.wrap_board
+{
+	display:block;
+	width:960px;
+	height:100%;
+	font-family: '돋움';
+	font-size:12px;
+	line-height:24px;
+	margin-left:242px;
+	color:#333;
+	background-color:#fff;
+	overflow:hidden;
+}
+

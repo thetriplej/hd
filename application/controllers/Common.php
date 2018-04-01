@@ -16,7 +16,7 @@ class Common extends CI_Controller
         }else{
             $agent_mode = "1";
         }
-
+        $this->agent_mode = $agent_mode;
         if(empty(get_cookie('tj_lang_type'))) {
             $this->utilcommon->set_lang();
         }

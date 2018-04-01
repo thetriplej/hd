@@ -1,0 +1,426 @@
+.protitle_main
+{
+	margin-left:241px;
+	padding-top:40px;
+	padding-left:100px;
+	padding-right:100px;
+	width:100%;
+	height:55px;
+	overflow:hidden;
+	font-size:36px;
+	line-height:60px;
+	font-family: 'Libre Baskerville', 'Romantic', serif;
+}
+
+.protitle_main > a
+{
+	color:#333;
+}
+
+.protitle
+{
+	margin-left:241px;
+	padding-top:40px;
+	padding-left:100px;
+	padding-right:100px;
+	width:760px;
+	height:55px;
+	overflow:hidden;
+	font-size:36px;
+	line-height:60px;
+	font-family: 'Libre Baskerville', 'Romantic', '돋움', serif;
+}
+
+.protitle_mat
+{
+	padding-top:40px;
+	width:760px;
+	height:55px;
+	overflow:hidden;
+	font-size:36px;
+	line-height:60px;
+	font-family: 'Libre Baskerville', 'Romantic', '돋움', serif;
+}
+
+
+.lang_kor
+{
+	font-family: '바탕체';
+}
+
+
+.protitle > a
+{
+	color:#333;
+}
+
+.protitle_sub
+{
+	margin-left:241px;
+	padding-left:100px;
+	padding-right:100px;
+	width:760px;
+	height:26px;
+	overflow:hidden;
+	font-family: '돋움';
+	font-size:12px;
+	line-height:24px;
+}
+
+.wrap_txtin
+{
+	display:block;
+	width:760px;
+	height:100%;
+	font-family: '돋움';
+	font-size:12px;
+	line-height:24px;
+	color:#555;
+	text-align: justify;
+}
+
+.bigtext
+{
+	font-family: Arial;
+	font-size:80px;
+	line-height:80px;
+	color:#ccc;
+	text-align: justify;
+	/*text-shadow:3px 3px 12px #333;*/
+}
+
+
+/* company */
+
+.com_titlebox{
+    top:20px;
+    width:760px; height:100%;
+    padding:10px;
+	font-family: '돋움' ;
+    color:#577;
+	text-align: justify;
+	background-color:#ededed;
+}
+
+.com_txtbox{
+    width:756px; height:100%;
+	font-family: '돋움' ;
+    color:#777;
+	text-align: justify;
+	padding-top:10px;
+}
+
+.com_linebox{
+    top:20px;
+    width:760px; height:100%;
+	font-family: '돋움' ;
+    color:#577;
+	text-align: justify;
+	border: 2px solid #eee;
+	border-left-width:0px;
+	border-right-width:0px;
+	border-top-width:0px;
+}
+
+.com_linetxtbox{
+    width:756px; height:100%;
+    padding:10px;
+	font-family: '돋움' ;
+    color:#777;
+	text-align: justify;
+	border: 2px solid #eee;
+}
+
+.com_title{
+	font-size:15px;
+	font-weight: bold;
+}
+
+p.txtspan01{
+    padding-top:10px;
+    font-family: '돋움' ;
+    font-size:12px;
+    line-height:18px;
+    color:#777;
+	text-align: justify;
+	text-indent: -18px;
+	padding-left:20px;
+}
+
+
+/* history */  
+
+
+.history_box{
+    top:20px;
+    width:760px; height:100%;
+	font-family: '돋움' ;
+	border: 2px solid #eee;
+	border-left-width:0px;
+	border-right-width:0px;
+	border-top-width:0px;
+}
+
+.his_box_in1{
+    width:110px; height:100%;
+	font-family: '돋움' ;
+    color:#777;
+	text-align: justify;
+	padding-top:10px;
+	float:left;
+	font-weight:bold;
+}
+
+.his_box_in2{
+    width:760px; height:100%;
+	font-family: '돋움' ;
+    color:#777;
+	text-align: justify;
+	padding-top:10px;
+	position:relative;
+}
+
+.his_icon{
+	position:relative;
+	float:right;
+}
+
+
+/* brand */  
+
+
+.brand_box{
+    top:20px;
+    width:760px; height:100%;
+	font-family: '돋움' ;
+	border: 2px solid #eee;
+	border-left-width:0px;
+	border-right-width:0px;
+	border-top-width:0px;
+}
+
+.brand_box_in1{
+    width:300px; height:100%;
+	padding-top:40px;
+	float:left;
+}
+
+.brand_box_in2{
+    width:450px; height:100%;
+	font-family: '돋움' ;
+    color:#777;
+	text-align: justify;
+	padding-top:40px;
+	padding-left:320px;
+	position:relative;
+}
+
+
+
+/* Location */  
+
+
+.loc_box{
+    width:760px; height:200px;
+	font-family: '돋움' ;
+	border: 2px solid #eee;
+	border-left-width:0px;
+	border-right-width:0px;
+	border-top-width:0px;
+}
+
+.loc_box_in1{
+    width:300px; height:100%;
+	font-family: '돋움' ;
+    color:#777;
+	float:left;
+}
+
+.loc_box_in2{
+	float:right;
+    width:300px; height:100%;
+	position:relative;
+	left:0px;
+	top:0px;
+	
+}
+
+.loc_box_in2 > a {
+    margin:0;
+    padding:0;
+	width:292px; height:172px;
+	display:block;
+}
+
+.loc_box_in2 > a:hover {
+    margin-top:-4px;
+	margin-left:-4px;
+	width:300px; height:180px;
+	border: 4px solid #dda;
+}
+
+
+
+.spaceback
+{
+	border: 2px solid #eee;
+	border-left-width:0px;
+	border-right-width:0px;
+	border-bottom-width:0px;
+}
+
+.spacewhite
+{
+	display:block;
+	height:86px;
+	background-color:#fff;
+}
+
+.photoright
+{
+    width:300px;
+    height:300px;
+	float:left;
+	margin-top:-650px;
+	margin-left:850px;
+	display:block;
+	position:relative;
+}
+
+.photoright2
+{
+    width:300px;
+    height:300px;
+	float:left;
+	margin-top:-650px;
+	margin-left:800px;
+	display:block;
+	position:relative;
+}
+
+.photoright3
+{
+    width:300px;
+    height:300px;
+	float:left;
+	margin-top:-400px;
+	margin-left:560px;
+	display:block;
+	position:relative;
+}
+
+.photoright4
+{
+    width:300px;
+    height:300px;
+	float:left;
+	margin-top:-400px;
+	margin-left:800px;
+	display:block;
+	position:relative;
+}
+
+.photoright5
+{
+    width:300px;
+    height:300px;
+	float:left;
+	margin-top:-150px;
+	margin-left:560px;
+	display:block;
+	position:relative;
+}
+
+.photoright6
+{
+    width:300px;
+    height:300px;
+	float:left;
+	margin-top:-300px;
+	margin-left:600px;
+	display:block;
+	position:relative;
+}
+
+.side_box
+{
+	display:block;
+	width:180px;
+	height:100;
+	font-family: '돋움';
+	font-size:12px;
+	line-height:24px;
+	color:#333;
+	text-align: justify;
+}
+
+
+.wrap_movie {
+    position: relative; /*width:1600px; margin-left:-800px; left:50%;*/
+    height: 480px;
+    overflow: hidden;
+    top: 0px;
+}
+
+
+.boxmv_bic{
+    position: absolute; 
+    margin-top:0px;
+    left:0px; 
+    top:0px;
+    overflow: hidden; 
+    width:720px; 
+    height:480px; 
+    background-color:#fff;
+}
+
+
+
+/* 소재 mat01 */  
+
+
+.mat_box{
+    width:760px; height:100%;
+	min-height:260px;
+	font-family: '돋움' ;
+	border: 1px solid #fff;
+	border-left-width:0px;
+	border-right-width:0px;
+	border-top-width:0px;
+
+	margin-bottom:40px;
+}
+
+.mat_box_in1{
+    width:760px; height:100%;
+	font-family: '돋움' ;
+    color:#777;
+}
+
+.mat_box_in2{
+    width:200px; height:100%;
+	position:relative;
+	float:right;
+	margin: 0 0 40px 40px;
+
+	
+}
+
+p.mtitle01{
+    font-family: '돋움' ;
+    font-size:16px;
+    line-height:22px;
+    color:#777;
+	text-align: left;
+	font-weight: bold;
+}
+
+.mat_box_fix{
+    width:760px; height:100%;
+	font-family: '돋움' ;
+	border: 1px solid #fff;
+	border-left-width:0px;
+	border-right-width:0px;
+	border-top-width:0px;
+	margin-bottom:40px;
+}

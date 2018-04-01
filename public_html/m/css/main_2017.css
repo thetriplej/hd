@@ -1,0 +1,373 @@
+
+.reviewnews
+{
+	width:1080px;
+	height:100%;
+	display:block;
+	margin:0 auto;
+	padding-top:90px;
+	overflow:hidden;
+
+}
+
+.movie
+{
+	width:1080px;
+	height:550px;
+	display:block;
+	margin:0 auto;
+	margin-top:64px;
+	overflow:hidden;
+}
+
+.movie_m
+{
+	width:1080px;
+	height:750px;
+	display:block;
+	margin:0 auto;
+	margin-top:64px;
+	overflow:hidden;
+}
+
+.box_review
+{
+	width:710px;
+	height:390px;
+	float:right;
+	border-bottom:solid 7px #eae5e4;
+	position:relative;
+}
+
+.box_news
+{
+	width:337px;
+	height:390px;
+	float:left;
+	border:solid 1px #dfdcdd;
+	text-align:center;
+	position:relative;
+}
+
+.box_news_inline
+{
+	width:336px;
+	height:390px;
+	border-bottom:solid 7px #f3f0f0;
+}
+
+.box_review_2d > ul > li:first-child
+{
+	width:283px;
+	height:177px;
+	float:left;
+	padding-left:45px;
+	/*border:solid 1px #ddd;*/
+}
+
+.box_review_2d > ul > li:last-child
+{
+	width:328px;
+	height:177px;
+	float:right;
+	padding-right:45px;
+	/*border:solid 1px #ddd;*/
+}
+
+.box_review_2d
+{
+	width:710px;
+	height:227px;
+	overflow:hidden;
+}
+
+.review_slideA
+{
+	width:710px;
+	height:227px;
+	margin-left:0px;
+	margin-top:24px;
+	overflow:hidden;
+	position:absolute;
+}
+
+.review_slideA > ul > li:first-child
+{
+	width:283px;
+	height:177px;
+	float:left;
+	padding-left:45px;
+	/*border:solid 1px #ddd;*/
+}
+
+.review_slideA > ul > li:last-child
+{
+	width:328px;
+	height:177px;
+	float:right;
+	padding-right:45px;
+	/*border:solid 1px #ddd;*/
+}
+
+.review_slideB
+{
+	width:710px;
+	height:227px;
+	left:710px;
+	margin-left:0px;
+	margin-top:24px;
+	overflow:hidden;
+	position:absolute;
+}
+
+.review_slideB > ul > li:first-child
+{
+	width:283px;
+	height:177px;
+	float:left;
+	padding-left:45px;
+	/*border:solid 1px #ddd;*/
+}
+
+.review_slideB > ul > li:last-child
+{
+	width:328px;
+	height:177px;
+	float:right;
+	padding-right:45px;
+	/*border:solid 1px #ddd;*/
+}
+
+
+.review_slideC
+{
+	width:710px;
+	height:227px;
+	left:710px;
+	margin-left:0px;
+	margin-top:24px;
+	overflow:hidden;
+	position:absolute;
+}
+
+.review_slideC > ul > li:first-child
+{
+	width:283px;
+	height:177px;
+	float:left;
+	padding-left:45px;
+	/*border:solid 1px #ddd;*/
+}
+
+.review_slideC > ul > li:last-child
+{
+	width:328px;
+	height:177px;
+	float:right;
+	padding-right:45px;
+	/*border:solid 1px #ddd;*/
+}
+
+.box_contest
+{
+	width:100%;
+	height:20px;
+	text-align:center;
+	line-height:20px;
+	padding-top:20px;
+	font-size:16px;
+}
+
+.title_sub01
+{
+	text-align:left;
+	font-size:18px;
+	width:100%;
+	/*height:80px;*/
+	line-height:60px;
+	text-indent:20px;
+}
+
+.title_news
+{
+	text-align:left;
+	font-size:18px;
+	width:100%;
+	height:80px;
+	line-height:60px;
+	text-indent:20px;
+	position:absolute;
+	left:2px;
+	top:2px;
+}
+
+.title_movie
+{
+	width:100%;
+	height:80px;
+	margin-top:26px;
+}
+
+.product_store
+{
+	width:1080px;
+	height:482px;;
+	display:block;
+	margin:0 auto;
+	margin-top:84px;
+	overflow:hidden;
+}
+
+.product_store_left
+{
+	width:555px;
+	height:460px;
+	float:left;
+}
+
+.product_store_right
+{
+	width:477px;
+	height:460px;
+	float:right;
+}
+
+.box_product{ margin-top:50px; }
+
+.box_product_in01
+{
+	float:left;
+}
+
+.box_product_in02
+{
+	float:right;
+}
+
+.title_store
+{
+	border-top:solid 1px #d4d4d4;
+	height:42px;
+	text-indent: 4px;
+	font-weight: bold;
+	font-size:13px;
+}
+
+.box_7years
+{
+	width:100%;
+	height:20px;
+	text-align:center;
+	line-height:20px;
+	font-size:16px;
+	padding-top:30px;
+}
+
+.box_store
+{
+	width:480px;
+	height:401px;
+	margin-top:50px;
+}
+
+.box_store_in01
+{
+	width:240px;
+	height:401px;
+	float:left;
+}
+
+.box_store_in02
+{
+	width:240px;
+	height:401px;
+	float:right;
+}
+
+#wrap_mainvideo
+{
+	width:699px;
+	height:330px;
+	margin:0 auto;
+	z-index:2;
+	display:block;
+	margin-top:30px;
+	text-align:center;
+}
+
+.mainvideo
+{
+	overflow:hidden;
+	text-align:center;
+	width:699px;
+	height:330px;
+	margin:0 auto;
+}
+
+.mainvideo > ul > li:first-child
+{
+	width:248px;
+	height:320px;
+	float:left;
+}
+
+.mainvideo > ul > li
+{
+	width:583px;
+	height:320px;
+	float:left;
+}
+
+.mainvideo > ul > li:last-child
+{
+	width:248px;
+	height:320px;
+	float:right;
+}
+
+.box_brandstory
+{
+	text-align:center;
+	font-size:15px;
+	width:120px;
+	height:30px;
+	border:solid 1px #d4d4d4;
+	margin-left:70px;
+	margin-top:120px;
+	background-color:#fff;
+	line-height:30px;
+}
+
+.box_faq
+{
+	text-align:center;
+	font-size:15px;
+	width:120px;
+	height:30px;
+	border:solid 1px #d4d4d4;
+	margin-left:70px;
+	margin-top:120px;
+	background-color:#fff;
+	line-height:30px;
+}
+
+.popupdiv{
+	position:fixed;
+	width:1000px;
+	height:560px;
+	left:50%;
+	top:50%;
+	margin-top:-280px;
+	margin-left:-500px;
+	z-index:1500;
+}
+
+.popupdivbg{
+	position:fixed;
+	width:100%;
+	height:100%;
+	left:0px;
+	top:0px;
+	z-index:1400;
+	background:url('../img/black_transition.png');
+}

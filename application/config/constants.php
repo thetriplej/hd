@@ -91,7 +91,7 @@ define('IMG_DIR', '/public_html/images');
 define('JS_DIR', '/public_html/js');
 define('HOST_DIR', $base_url);
 
-define('CSS_MOBILE_DIR', '/mobile/css');
-define('IMG_MOBILE_DIR', '/mobile/images');
-define('JS_MOBILE_DIR', '/mobile/js');
+define('CSS_MOBILE_DIR', '/public_html/m/css');
+define('IMG_MOBILE_DIR', '/public_html/m/images');
+define('JS_MOBILE_DIR', '/public_html/m/js');
 

@@ -10,14 +10,20 @@ class Notice extends Common {
 
     function _remap($method) {
 
-        if($this->lang_type == 'en' ){
-            $this->load->view('e_frame_top.phtml');
+        if($this->agent_mode == "1") {
+            if ($this->lang_type == 'en') {
+                $this->load->view('e_frame_top.phtml');
+                $this->{$method}();
+                $this->load->view('e_frame_bottom.phtml');
+            } else {
+                $this->load->view('frame_top.phtml');
+                $this->{$method}();
+                $this->load->view('frame_bottom.phtml');
+            }
+        }else{
+            $this->load->view('m_frame_top.phtml');
             $this->{$method}();
-            $this->load->view('e_frame_bottom.phtml');
-        }else {
-            $this->load->view('frame_top.phtml');
-            $this->{$method}();
-            $this->load->view('frame_bottom.phtml');
+            $this->load->view('m_frame_bottom.phtml');
         }
     }
 
