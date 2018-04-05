@@ -10,6 +10,7 @@ class Ecsaine extends Common {
     function _remap($method) {
 
         if($this->agent_mode == "1") {
+            $this->type ="";
             if ($this->lang_type == 'en') {
                 $this->load->view('e_frame_top.phtml');
                 $this->{$method}();
@@ -19,10 +20,13 @@ class Ecsaine extends Common {
                 $this->{$method}();
                 $this->load->view('frame_bottom.phtml');
             }
+
         }else{
+            $this->type ="m/";
             $this->load->view('m_frame_top.phtml');
             $this->{$method}();
             $this->load->view('m_frame_bottom.phtml');
+
         }
     }
 
@@ -38,7 +42,7 @@ class Ecsaine extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('ecsaine/e_material.phtml');
         }else{
-            $this->load->view('ecsaine/material.phtml');
+            $this->load->view($this->type.'ecsaine/material.phtml');
         }
     }
     public function strongpoint()
@@ -46,7 +50,7 @@ class Ecsaine extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('ecsaine/e_strongpoint.phtml');
         }else{
-            $this->load->view('ecsaine/strongpoint.phtml');
+            $this->load->view($this->type.'ecsaine/strongpoint.phtml');
         }
     }
     public function maintain()
@@ -54,7 +58,7 @@ class Ecsaine extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('ecsaine/e_maintain.phtml');
         }else{
-            $this->load->view('ecsaine/maintain.phtml');
+            $this->load->view($this->type.'ecsaine/maintain.phtml');
         }
     }
 }

@@ -1,0 +1,144 @@
+        <tr>
+            <td height="40" align="left" style="padding-right:20px;"><font color="#eeeeee">:: ADIMN + 접속자 관리 > <?=$menu_title?></font><br></td>
+        </tr>
+        </table>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td width="20">&nbsp;</td>
+                <td width="40" height="40" background="/public_html/images/cn_bg_dot.gif" align="right">
+                </td>
+                <td width="129" align="center"><span class="cntlt"><?=$menu_title?></span></td>
+                <td width="493" background="/public_html/images/cn_bg_dot.gif">
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+            <tr valign="top">
+                <td align="center" style="padding-left:20px; padding-right:20px;">
+                    <table width="100%" cellpadding=0 cellspacing=5 border=0 bgcolor="#999999">
+                        <?php echo form_open('/admin/visit_view/',array('name'=>"frm01", 'id'=>"frm01")); ?>
+                            <input type='hidden' id='start_date' value='<?=$start_date?>'>
+                            <input type='hidden' id='end_date' value='<?=$end_date?>'>
+                            <input type='hidden' id='mode' value='<?=$mode?>'>
+                            <input type='hidden' id='page' value='<?=$page?>'>
+                            <input type='hidden' id='view_type' value='<?=$view_type?>'>
+
+
+                            <tr>
+                                <td width="70%" height="30" align="left" bgcolor="#dddddd" class="table">
+                                    <input type="text" id="view_date" value="<?=$view_date?>" readonly>
+                                    <input type="button" onclick="get_list()" value="날짜변경">
+                                </td>
+                            </tr>
+                        </form>
+                        <tr>
+                            <td>
+                                <table width="100%" cellpadding="5" cellspacing="1" border="0" bgcolor="#696969" id="visit_list"></table>
+                            </td>
+                        </tr>
+                        <tr align="center" bgcolor="#dddddd">
+                            <td colspan="3" height="30">
+                                <input type="button" value="목록" onclick="go_list();">
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        </td>
+    </tr>
+</table>
+<script>
+    get_list();
+    function get_list(){
+        var html_list ='';
+        var mode_name = "";
+
+        $("#visit_list").empty();
+        $.ajax({
+            type : "POST",
+            url : "/ajax/admin/visit_view",
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+                view_date : $("#view_date").val(),
+                view_type : $("#view_type").val(),
+            },
+            cache : false,
+            success : function(result) {
+                var data   = $.parseJSON(result);
+                var list_cnt = 0;
+                var html_list = ""
+                html_list += '<tr bgcolor="#dddddd" height="25" align=center>';
+                html_list += '  <td class="table" width=8%>번호</td>';
+                html_list += '  <td class="table" width=30%>날짜</td>';
+                html_list += '  <td class="table" width=30%>PAGE</td>';
+                html_list += '  <td class="table" width=20%>접속 AGENT</td>';
+                html_list += '  <td class="table" width=20%>방문자 수</td>';
+                html_list += '</tr>';
+
+                $.each( data.list, function( key, value ) {
+                    if(value.mode == 1){
+                        mode_name = "PC";
+                    }else if(value.mode == 2){
+                        mode_name = "MOBILE";
+                    }
+                    html_list += '<tr bgcolor="#FFFFFF" align="center">';
+                    html_list += '  <td>' + value.l_date + '</td>';
+                    html_list += '  <td>' + value.l_date + '</td>';
+                    html_list += '  <td align="left">' + value.l_title + '</td>';
+                    html_list += '  <td>' + mode_name + '</td>';
+                    html_list += '  <td>' + value.l_hit + '</td>';
+                    html_list += '</tr>';
+                    list_cnt++;
+
+                });
+                if(list_cnt == 0 ){
+                    html_list += '<tr bgcolor="#FFFFFF"><td align="center" colspan="10" height="50">등록된 정보가 없습니다.</td></tr>'
+                }
+
+
+                $("#visit_list").append(html_list);
+
+//                /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
+//                pagination(data.page_navi.current_page, data.page_navi.last_page, data.page_navi.per_page, data.page_navi.total, 10);
+//                var msg ="Total " + data.page_navi.total + " 건 " +data.page_navi.current_page+ " 페이지";
+//                $("#total_page").text(msg);
+//                $("#page").val(page);
+            },
+            error : function() {
+                alert("다시 시도해 주세요.");
+            }
+        });
+    }
+    $(function() {
+        $.datepicker.setDefaults({
+            dateFormat: 'yy-mm-dd',
+            prevText: '이전 달',
+            nextText: '다음 달',
+            monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+            monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+            dayNames: ['일','월','화','수','목','금','토'],
+            dayNamesShort: ['일','월','화','수','목','금','토'],
+            dayNamesMin: ['일','월','화','수','목','금','토'],
+            showMonthAfterYear: true,
+            changeMonth: true,
+            changeYear: true,
+            maxDate : $("#end_date").val(),
+            defaultDate : $("#view_date").val(),
+            yearSuffix: '년'
+        });
+        $(function() {
+            $("#view_date").datepicker();
+        });
+    });
+
+    function go_list(){
+        location.href = "/admin/visit_list?start_date=" + $("#start_date").val() + "&end_date=" + $("#end_date").val() + "&mode=" + $("#mode").val() + "&page=" + $("#page").val();
+    }
+</script>

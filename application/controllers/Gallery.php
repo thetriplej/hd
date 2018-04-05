@@ -12,6 +12,7 @@ class Gallery extends Common {
     function _remap($method) {
 
         if($this->agent_mode == "1") {
+            $this->type ="";
             if ($this->lang_type == 'en') {
                 $this->load->view('e_frame_top.phtml');
                 $this->{$method}();
@@ -21,10 +22,13 @@ class Gallery extends Common {
                 $this->{$method}();
                 $this->load->view('frame_bottom.phtml');
             }
+
         }else{
+            $this->type ="m/";
             $this->load->view('m_frame_top.phtml');
             $this->{$method}();
             $this->load->view('m_frame_bottom.phtml');
+
         }
     }
 
@@ -51,7 +55,7 @@ class Gallery extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('gallery/e_customer.phtml',$send_data);
         }else{
-            $this->load->view('gallery/customer.phtml',$send_data);
+            $this->load->view($this->type.'gallery/customer.phtml',$send_data);
         }
 
     }
@@ -97,7 +101,7 @@ class Gallery extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('gallery/e_customer_write.phtml',$send_data);
         }else{
-            $this->load->view('gallery/customer_write.phtml',$send_data);
+            $this->load->view($this->type.'gallery/customer_write.phtml',$send_data);
         }
 
     }
@@ -204,7 +208,7 @@ class Gallery extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('gallery/e_customer_view.phtml',$view_array);
         }else{
-            $this->load->view('gallery/customer_view.phtml',$view_array);
+            $this->load->view($this->type.'gallery/customer_view.phtml',$view_array);
         }
 
     }
@@ -437,7 +441,7 @@ class Gallery extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('gallery/e_hmagajine.phtml',$send_data);
         }else{
-            $this->load->view('gallery/hmagajine.phtml',$send_data);
+            $this->load->view($this->type.'gallery/hmagajine.phtml',$send_data);
         }
     }
 
@@ -542,7 +546,7 @@ class Gallery extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('gallery/e_hmagajine_view.phtml',$view_array);
         }else{
-            $this->load->view('gallery/hmagajine_view.phtml',$view_array);
+            $this->load->view($this->type.'gallery/hmagajine_view.phtml',$view_array);
         }
     }
 

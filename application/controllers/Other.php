@@ -12,6 +12,7 @@ class Other extends Common {
     function _remap($method) {
 
         if($this->agent_mode == "1") {
+            $this->type ="";
             if ($this->lang_type == 'en') {
                 $this->load->view('e_frame_top.phtml');
                 $this->{$method}();
@@ -21,10 +22,13 @@ class Other extends Common {
                 $this->{$method}();
                 $this->load->view('frame_bottom.phtml');
             }
+
         }else{
+            $this->type ="m/";
             $this->load->view('m_frame_top.phtml');
             $this->{$method}();
             $this->load->view('m_frame_bottom.phtml');
+
         }
     }
 
@@ -39,7 +43,7 @@ class Other extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('etc/e_b2b.phtml');
         }else{
-            $this->load->view('etc/b2b.phtml');
+            $this->load->view($this->type.'etc/b2b.phtml');
         }
     }
     public function recruit()
@@ -47,7 +51,7 @@ class Other extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('etc/e_recruit.phtml');
         }else{
-            $this->load->view('etc/recruit.phtml');
+            $this->load->view($this->type.'etc/recruit.phtml');
         }
     }
     public function law()
@@ -55,7 +59,7 @@ class Other extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('etc/e_law.phtml');
         }else{
-            $this->load->view('etc/law.phtml');
+            $this->load->view($this->type.'etc/law.phtml');
         }
     }
     public function privacy()
@@ -63,7 +67,7 @@ class Other extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('etc/e_privacy.phtml');
         }else{
-            $this->load->view('etc/privacy.phtml');
+            $this->load->view($this->type.'etc/privacy.phtml');
         }
     }
 

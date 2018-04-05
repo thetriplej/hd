@@ -1,0 +1,161 @@
+                    <tr>
+                        <td height="40" align="left" style="padding-right:20px;"><font color="#eeeeee">:: ADIMN + 게시판 관리 > <?=$sub_title?></font><br></td>
+                    </tr>
+                </table>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="20">&nbsp;</td>
+                        <td width="40" height="40" background="/public_html/images/cn_bg_dot.gif" align="right">
+                        </td>
+                        <td width="129" align="center"><span class="cntlt"><?=$sub_title?></span></td>
+                        <td width="493" background="/public_html/images/cn_bg_dot.gif">
+                        </td>
+                    </tr>
+                </table>
+                <br><br>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+                    <?php echo form_open('',array('name'=>"frm01", 'id'=>"frm01")); ?>
+                        <input type=hidden id="proc_type" name="proc_type">
+                        <input type=hidden id="page" name="page" value="<?=$page?>">
+                        <input type=hidden id="b_index" name="b_index" value='<?=$b_index?>'>
+                        <input type=hidden id="b_code" name="b_code" value='<?=$b_code?>'>
+                        <input type=hidden id="b_special" name="b_special" value='<?=$view_data->b_special?>'>
+                        <input type=hidden id="search_type" name="search_type" value='<?=$search_type?>'>
+                        <input type=hidden id="search_value" name="search_value" value='<?=$search_value?>'>
+                        <tr valign="top">
+                            <td align="center" style="padding-left:20px; padding-right:20px;">
+                                <table width="100%" cellpadding="0" cellspacing="5" border="0" bgcolor="#999999">
+                                    <tr>
+                                        <td>
+                                            <table width="100%" cellpadding="5" cellspacing="1" border="0" bgcolor="#cccccc">
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#666666"><b>| 번호</b></font></td>
+                                                    <td><?=$view_data->b_index?></td>
+                                                </tr>
+                                <?php
+                                    switch ($b_code) {
+                                        case "FREEBOARD0" : // 헷세드공지
+                                            break;
+                                        case "CEPILOGUE0" : // 고객후기
+                                ?>
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#666666"><b>| 햇세드추천</b></font></td>
+                                                    <td><?php echo ($view_data->b_special >= 1)?  " 사용(".$view_data->b_special.")" : " 사용안함";?></td>
+                                                </tr>
+                                <?php
+                                            break;
+                                        case "SEPILOGUE0" : // H_매거진
+                                ?>
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#666666"><b>| 햇세드추천</b></font></td>
+                                                    <td><?php echo ($view_data->b_special >= 1)?  " 사용(".$view_data->b_special.")" : " 사용안함";?></td>
+                                                </tr>
+                                <?php
+                                            break;
+                                        case "QANDA0" : // Q&A
+                                ?>
+
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#666666"><b>| 공지사항</b></font></td>
+                                                    <td><td><?php echo ($view_data->b_special >= 1)?  " 사용(".$view_data->b_special.")" : " 사용안함";?></td></td>
+                                                </tr>
+                                <?php       break;
+                                    } ?>
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#666666"><b>| 제목</b></font></td>
+                                                    <td><?=$view_data->b_title?></td>
+                                                </tr>
+                                <?php if($b_code == "CEPILOGUE0" && $view_data->b_parentindex == 0 And $view_data->show_flag == 0){ ?>
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#666666"><b>| Popular</b></font></td>
+                                                    <td><input type="button" value="등록" onClick="Popular('<?=$b_index?>');"></td>
+                                                </tr>
+                                <?php }?>
+
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#666666"><b>| 내용</b></font></td>
+                                                    <td><div class="bbs_content"><?php echo nl2br(htmlspecialchars_decode($view_data->b_content)) ?></div></td>
+                                                </tr>
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#666666"><b>| 첨부파일</b></font></td>
+                                                    <td><!-- 첨부파일 시작 -->
+
+                                <?php
+                                    if(!empty($image_data)) {
+                                        foreach ($image_data as $key => $value) {
+                                            $mType = explode("/",$value->f_type);
+                                            ($value->f_width > 780) ? $value->f_width = $value->f_width : $value->f_width = 0;
+                                            if ($value->f_position == 'T') {
+                                                ?>
+                                                        <img src='/public_html/images/img_top.gif' align='absmiddle'> ( 상단 )
+                                                <?php
+                                            } else if ($value->f_position == 'B') {
+                                                ?>
+                                                        <img src='/public_html/images/img_bottom.gif' align='absmiddle'> ( 하단 )
+                                            <?php } ?>
+                                                        ||| <?php echo $value->f_name; ?>
+                                            <?php If($mType[0] == "image") { ?>
+                                                        <span class="hand" onClick="imgView(this, '<?=$value->file_path?>', '<?php echo $value->f_width; ?>');">[보기]</span>
+                                            <?php } ?>
+                                                        <a href="javascript:file_down('<?=$value->file_path?>')">[ Down ]</a>
+                                                        <br>
+                                        <?php }
+                                    }else{
+                                        echo " X ";
+                                    }
+                                ?>
+                                                        <div id="imgView"></div>
+
+                                                    </td>
+                                                </tr>
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#666666"><b>| 글쓴이</b></font></td>
+                                                    <td><?=$view_data->b_writer?></td>
+                                                </tr>
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#666666"><b>| 조회수</b></font></td>
+                                                    <td><?=$view_data->b_hit?></td>
+                                                </tr>
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#666666"><b>| 등록일</b></font></td>
+                                                    <td><?= $view_data->b_regdate?></td>
+                                                </tr>
+                                                <?php if(!empty($view_data->b_password) && $view_data->b_password != "1234567890"){ ?>
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#666666"><b>| 비밀번호</b></font></td>
+                                                    <td><span class="hand" onClick="pwView(this);">[확인]</span> <span id="pwView" style="display:none;"><?=$view_data->b_password?></span></td>
+                                                </tr>
+                                                <?php }?>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr align="center">
+                                        <td bgcolor="#dddddd" height="30">
+                                            <input type="button" value="삭제" onClick="frmDel('<?=$b_index?>','<?=$list_uri?>');">
+                                            <input type="button" value="수정" onClick="frmModi('<?=$b_index?>','<?=$edit_uri?>');">
+                                    <?php if(empty($view_data->reply)){ ?>
+                                            <input type="button" value="답변" onClick="frmReply('<?=$b_index?>');">
+                                    <?php } ?>
+                                            <input type="button" value="목록" onClick="frmList('<?=$list_uri?>');">
+                                    <?php if($b_code == "CEPILOGUE0" && $view_data->b_parentindex == 0){ ?>
+                                            <input type="button" value="Popular 등록" onClick="Popular('<?=$b_index?>');">
+                                    <?php }?>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br>
+                            </td>
+                        </tr>
+                    </form>
+                    </table>
+                <br><br>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+
+
+
+
+</script>

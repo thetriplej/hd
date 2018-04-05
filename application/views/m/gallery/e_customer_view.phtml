@@ -1,0 +1,210 @@
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/reset_style.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/default_hassed_2017.css" />
+
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/main_2017.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/board_hassed_2017.css">
+<script src="<?php echo JS_DIR; ?>/bbs.js"></script>
+<link rel="stylesheet" type="text/css" href="/public_html/video/css/site.css">
+<link rel="stylesheet" type="text/css" href="/public_html/video/ovp-min.css" />
+<script type="text/javascript" src="/public_html/video/ovp_jquery.js"></script>
+<script type="text/javascript" src="<?php echo JS_DIR; ?>/video.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/video-js.css" rel="stylesheet">
+<style type="text/css">
+    video {
+        background-color:black;
+    }
+</style>
+
+
+
+<div id="wrap_middle" class="" style="margin-top:140px;">
+    <div id="" class="box_full">
+        <div class="sub_img">
+            <img src="/public_html/img/img_board_main.png" border="0" alt="">
+        </div>
+        <div id="" class="" style="width:100%; height:308px; position:absolute; background-color:#faf8f6; display:block; z-index:-10; margin-top:-570px;">
+        </div>
+    </div>
+    <div id="" class="box_full_in_center">
+        <!--contents_info-->
+        <div id="" style="width:1080px;">
+            <div class="wrap_board">
+                <div class="board_area">
+                    <div id="" class="bbstitlebar">
+                        <div class="bbs_view">
+                            <input type="hidden" name="b_index" id="b_index" value="<?php echo $view_data->b_index;?>">
+                            <h1 class="tit"><img src="/public_html/images/icon/review_tit.png" style="vertical-align:middle;"><?php echo $view_data->b_title;?></h1>
+                            <ul class="info">
+                                <li class="name"><span><?php echo $view_data->b_writer;?></span></li>
+                                <li class="date">등록일 : <span><?php echo $view_data->b_regdate;?></span></li>
+                                <li class="count">조회 : <span><?php echo $view_data->b_hit;?></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bbs_content" id="tj_content">
+                        <?php
+                        if(!empty($movie_data)){
+                            foreach($movie_data as $key => $value){
+                                if($value->f_position == 'T'){
+                                    ?>
+                                    <div class="boxmv_bic" align="center" style="height:500px;margin-bottom:10px;">
+                                        <video width="700px" height="480" class="video-js vjs-default-skin" data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }' autoplay preload="none">
+                                            <source src="<?php echo $value->file_path;?>" type="video/mp4" />
+                                        </video>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                        }
+                        ?>
+                        <?php
+                        if(!empty($image_data)){
+                            foreach($image_data as $key => $value){
+                                if($value->f_position == 'T'){
+                                    ?>
+                                    <div align="center" style="text-align: center;">
+                                        <img style="text-align: center;" src="/public_html/<?php echo $value->file_path;?>" width="<?php echo $value->f_width;?>"><br><br>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                        }
+                        ?>
+                        <?php echo nl2br(htmlspecialchars_decode($view_data->b_content)) ?>
+
+                        <?php
+                        if(!empty($image_data)){
+                            foreach($image_data as $key => $value){
+                                if($value->f_position == 'B'){
+                                    ?>
+                                    <div align="center" style="text-align: center;">
+                                        <img style="text-align: center;" src="/public_html/<?php echo $value->file_path;?>" width="<?php echo $value->f_width;?>"><br><br>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                        }
+                        ?>
+                        <?php
+                        if(!empty($file_data)){
+                            foreach($file_data as $key => $value){
+                                ?>
+                                <div align="center" ><p style="cursor: pointer;" onclick="file_down('<?=$value->file_path?>')"><img src="/public_html/images/icon_down.gif"> <?php echo $value->f_name;?></p><!-- | <a href="Zoom.asp?FileName=<%=temp&SubRs("F_Name")%>" target="_new"><img src="/images/icon_zoom.gif"></a--></div>
+                                <?php
+                            }
+                        }
+                        ?>
+                        <?php
+                        if(!empty($movie_data)){
+                            foreach($movie_data as $key => $value){
+                                if($value->f_position == 'B'){
+                                    ?>
+                                    <div class="boxmv_bic" align="center" style="height:500px;margin-bottom:10px;">
+                                        <video width="700px" height="480" class="video-js vjs-default-skin" data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }' autoplay preload="none">
+                                            <source src="/public_html/<?php echo $value->file_path;?>" type="video/mp4" />
+                                        </video>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                        }
+                        ?>
+                        <div style="float:right;"><?php echo $view_uri;?></div>
+                    </div>
+                    <div id="buttons" style="height:25px;overflow:hidden;clear:both;">
+                        <?php if($view_data->b_code == "CEPILOGUE0" ||  $view_data->b_code == "QANDA0"){?>
+                            <span style="float:left;">
+                            <input type="button" class="btn_blue" value="수정" onclick="send('<?='/gallery/customer_write/?b_index='.$view_data->b_index.'&page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','edit');">
+                            <input type="button" class="btn_blue" value="삭제" onclick="send('<?='/gallery/?page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','del');">
+                        </span>
+                        <?php }?>
+                        <span style="float:right;">
+                            <input type="button" class="btn_gray" value="목록보기" onclick="goto('<?='/gallery/customer?page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>');">
+                        </span>
+                    </div>
+                    <?php if(!empty($reply_view_data)){ ?>
+                        <div id="" class="bbstitlebar_re">
+                            <div class="bbs_view" style="margin-top:0px;">
+                                <h1 class="tit_re"><img src="/public_html/images/icon/icon_reply.png" title="reply" style="vertical-align:middle;"><?php echo $reply_view_data->b_title;?></h1>
+                                <ul class="info">
+                                    <li  style="float:right;" class="date">등록일 : <span><?php echo $reply_view_data->b_regdate;?></span></li>
+                                    <!--<li class="count">조회 : <span><%=repRs("B_Hit")%></span></li-->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bbs_content">
+                            <?php
+                            if(!empty($reply_movie_data)){
+                                foreach($reply_movie_data as $key => $value){
+                                    if($value->f_position == 'T'){
+                                        ?>
+                                        <div class="boxmv_bic" align="center" style="height:500px;margin-bottom:10px;">
+                                            <video width="700px" height="480" class="video-js vjs-default-skin" data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }' autoplay preload="none">
+                                                <source src="/public_html/<?php echo $value->file_path;?>" type="video/mp4" />
+                                            </video>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                            }
+                            ?>
+                            <?php
+                            if(!empty($reply_image_data)){
+                                foreach($reply_image_data as $key => $value){
+                                    if($value->f_position == 'T'){
+                                        ?>
+                                        <div align="center" style="text-align: center;">
+                                            <img style="text-align: center;" src="/public_html/<?php echo $value->file_path;?>" width="<?php echo $value->f_width;?>"><br><br>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                            }
+                            ?>
+                            <?php echo nl2br(htmlspecialchars_decode($reply_view_data->b_content)) ?>
+
+                            <?php
+                            if(!empty($reply_image_data)){
+                                foreach($reply_image_data as $key => $value){
+                                    if($value->f_position == 'B'){
+                                        ?>
+                                        <div align="center" style="text-align: center;">
+                                            <img style="text-align: center;" src="/public_html/<?php echo $value->file_path;?>" width="<?php echo $value->f_width;?>"><br><br>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                            }
+                            ?>
+                            <?php
+                            if(!empty($reply_file_data)){
+                                foreach($reply_file_data as $key => $value){
+                                    ?>
+                                    <div align="center" ><p style="cursor: pointer;" onclick="file_down('<?=$value->file_path?>')"><img src="/public_html/images/icon_down.gif"> <?php echo $value->f_name;?></p><!-- | <a href="Zoom.asp?FileName=<%=temp&SubRs("F_Name")%>" target="_new"><img src="/images/icon_zoom.gif"></a--></div>
+                                    <?php
+                                }
+                            }
+                            ?>
+                            <?php
+                            if(!empty($reply_movie_data)){
+                                foreach($reply_movie_data as $key => $value){
+                                    if($value->f_position == 'B'){
+                                        ?>
+                                        <div class="boxmv_bic" align="center" style="height:500px;margin-bottom:10px;">
+                                            <video width="700px" height="480" class="video-js vjs-default-skin" data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }' autoplay preload="none">
+                                                <source src="/public_html/<?php echo $value->file_path;?>" type="video/mp4" />
+                                            </video>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                            }
+                            ?>
+                        </div>
+                    <?php }?>
+                </div>
+                <!-- 댓글 view // -->
+            </div>
+        </div>
+    </div>
+

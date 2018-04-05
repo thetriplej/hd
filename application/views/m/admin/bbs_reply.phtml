@@ -1,0 +1,290 @@
+                    <tr>
+                        <td height="40" align="left" style="padding-right:20px;"><font color="#eeeeee">:: ADIMN + 게시판 관리 > <?=$sub_title?></font><br></td>
+                    </tr>
+                </table>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="20">&nbsp;</td>
+                        <td width="40" height="40" background="/public_html/images/cn_bg_dot.gif" align="right">
+                        </td>
+                        <td width="129" align="center"><span class="cntlt"><?=$sub_title?></span></td>
+                        <td width="493" background="/public_html/images/cn_bg_dot.gif">
+                        </td>
+                    </tr>
+                </table>
+                <br><br>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+                    <?php echo form_open_multipart('/admin/bbs_store/',array('name'=>"frm01", 'id'=>"frm01")); ?>
+                        <input type="hidden" name="b_board_type" id="b_board_type" value="1">
+                        <input type=hidden id="proc_type" name="proc_type" value="RW">
+                        <input type=hidden id="page" name="page" value="<?=$page?>">
+                        <input type=hidden id="b_index" name="b_index" value='<?=$b_index?>'>
+                        <input type=hidden id="b_code" name="b_code" value='<?=$b_code?>'>
+                        <input type=hidden id="b_special" name="b_special" value='<?=$view_data->b_special?>'>
+                        <input type=hidden id="search_type" name="search_type" value='<?=$search_type?>'>
+                        <input type=hidden id="search_value" name="search_value" value='<?=$search_value?>'>
+                        <tr valign="top">
+                            <td align="center" style="padding-left:20px; padding-right:20px;">
+                                <table width="100%" cellpadding="0" cellspacing="5" border="0" bgcolor="#999999">
+                                    <tr>
+                                        <td>
+                                            <table width="100%" cellpadding="5" cellspacing="1" border="0" bgcolor="#999999">
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#999999"><b>|</b></font> 제목</td>
+                                                    <td><?=$view_data->b_title?></td>
+                                                </tr>
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#999999"><b>|</b></font> 내용</td>
+                                                    <td><div><?php echo nl2br(htmlspecialchars_decode($view_data->b_content)) ?></div></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><hr></td>
+                                                </tr>
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#999999"><b>|</b></font> 제목</td>
+                                                    <td><input type="text" name="b_title" id="b_title" size="50" maxlength="100" value=""></td>
+                                                </tr>
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#999999"><b>|</b></font> 내용</td>
+                                                    <td><?php $this->load->view('editor.phtml');?></td>
+                                                </tr>
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#999999"><b>|</b></font> 파일</td>
+                                                    <td><font color="blue">※ <b>파일 사용 방법</b></font><br>
+                                                        업로드 하고자 하는 파일 갯수대로 파일 등록 창을 추가/삭제가 가능하며, 상단, 하단 선택을 할수 있으며,<br>
+                                                        보여질 경우에는 순서에 맞게 상단, 하단에 위치하여 보여지게 됩니다.<br><br>
+                                                        <font color="red">이미지 파일 ('jpg', 'jpeg', 'png', 'bmp', 'gif')의 경우 에디터에서 업로드해주세요</font><br><br>
+                                                        <font color="red">동영상 파일은 확장자가 MP4만 올릴수 있으며 위치를 상단에 맞추어 주시고,<br />
+                                                            하나 이상 등록시에는 자동 재생되어 동시에 재생되는 상황이 발생할 수 있습니다.</font>
+                                                        <br><br>
+                                                        <ul id="FileDiv">
+                                                            <li><input type="file" name="files[]" size="50" onchange="checking_file();"> ||| 위치 : <select name="position[]"><option value=T>상단</option> <option value=B>하단</option></select> <a href="javascript:void(0);" name="btn" class="btn">추가</a></li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <!--
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#999999"><b>|</b></font> HTML(TAG)</td>
+                                                    <td>사용 <input type="checkbox" name="B_TAG" value="Y"></td>
+                                                </tr>
+                                                -->
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#999999"><b>|</b></font> 비밀번호</td>
+                                                    <td><input type="text" id="b_password" name="b_password" size="30" maxlength="30" value="<?=$view_data->b_password?>"></td>
+                                                </tr>
+                                                <tr bgcolor="#FFFFFF">
+                                                    <td width="120" valign="top"><font color="#999999"><b>|</b></font> 잠금기능</td>
+                                                    <td>사용 <input type="checkbox" name="b_locked" class="textbox" value="Y" <?php if($view_data->b_locked == "Y"){echo " checked";}?>></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr align="center">
+                                        <td bgcolor="#dddddd" height="30">
+                                            <input type="button" value="등록" onClick="saveContent();">
+                                            <input type="button" value="취소" onclick="history.back();">
+                                            <input type="button" value="목록" onClick="frmList('<?=$list_uri?>');">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br>
+                            </td>
+                        </tr>
+                    </form>
+                </table>
+                <br><br>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+
+    $(document).on('click','a',(function() {
+        if($(this).html() == "삭제"){
+            $(this).parent().remove(); //li 삭제
+        }
+
+        if($(this).html() == "추가"){
+            html = "";
+            html += "<li>";
+            html += "<input type=\"file\" name=\"files[]\" size=\"50\"> ||| 위치 : ";
+            html += "<select name=\"position[]\">";
+            html += "   <option value=\"T\">상단</option>";
+            html += "   <option value=\"B\">하단</option>";
+            html += "</select>";
+            html += " <a href=\"javascript:void(0);\" name=\"btn\" class=\"btn\">삭제</a>";
+            html += "</li>";
+
+            $("#FileDiv").append(html); //.append(html);
+        }
+    }));
+
+</script>
+<script type="text/javascript">
+    var config = {
+        txHost: '', /* 런타임 시 리소스들을 로딩할 때 필요한 부분으로, 경로가 변경되면 이 부분 수정이 필요. ex) http://xxx.xxx.com */
+        txPath: '', /* 런타임 시 리소스들을 로딩할 때 필요한 부분으로, 경로가 변경되면 이 부분 수정이 필요. ex) /xxx/xxx/ */
+        txService: 'sample', /* 수정필요없음. */
+        txProject: 'sample', /* 수정필요없음. 프로젝트가 여러개일 경우만 수정한다. */
+        initializedId: "", /* 대부분의 경우에 빈문자열 */
+        wrapper: "tx_trex_container", /* 에디터를 둘러싸고 있는 레이어 이름(에디터 컨테이너) */
+        form: 'frm01'+"", /* 등록하기 위한 Form 이름 */
+        txIconPath: "images/icon/editor/", /*에디터에 사용되는 이미지 디렉터리, 필요에 따라 수정한다. */
+        txDecoPath: "images/deco/contents/", /*본문에 사용되는 이미지 디렉터리, 서비스에서 사용할 때는 완성된 컨텐츠로 배포되기 위해 절대경로로 수정한다. */
+        canvas: {
+            styles: {
+                color: "#123456", /* 기본 글자색 */
+                fontFamily: "굴림", /* 기본 글자체 */
+                fontSize: "10pt", /* 기본 글자크기 */
+                backgroundColor: "#fff", /*기본 배경색 */
+                lineHeight: "1.5", /*기본 줄간격 */
+                padding: "8px" /* 위지윅 영역의 여백 */
+            },
+            showGuideArea: false
+        },
+        events: {
+            preventUnload: false
+        },
+        sidebar: {
+            attachbox: {
+                show: true,
+                confirmForDeleteAll: true
+
+            },
+            attacher:{
+                image: {
+                    features:{left:250, top:250, width:500, height:188},
+                    checksize: false
+                }
+            },
+            capacity:{maximum: 1014572800 }
+        },
+
+        size: {
+            contentWidth: 700 /* 지정된 본문영역의 넓이가 있을 경우에 설정 */
+        }
+
+
+    };
+
+    EditorJSLoader.ready(function(Editor) {
+        var editor = new Editor(config);
+    });
+
+    /* 예제용 함수 */
+    function saveContent() {
+        Editor.save(); // 이 함수를 호출하여 글을 등록하면 된다.
+
+    }
+
+    function validForm(editor) {
+        var validator = new Trex.Validator();
+        var content = editor.getContent();
+
+
+        if($('#b_writer').val() == "") {
+            alert('고객명을 입력해 주세요.');
+            b_writer.focus();
+            return;
+        }
+        if($('#b_password').val() == "") {
+            alert('비밀번호를 입력해 주세요.');
+            b_password.focus();
+            return;
+        }
+        if($('#b_title').val() == "") {
+            alert('제목을 입력해 주세요.');
+            b_title.focus();
+            return;
+        }
+        if($('#b_email1').val() == "" || $('#b_email2').val() == "") {
+            alert('이메일을 입력해 주세요.');
+            B_Email1.focus();
+            return;
+        }
+        if (!validator.exists(content)) {
+            alert('내용을 입력하세요');
+            return false;
+        }
+        $('#b_board_type').val('1');
+        if($('#tx_switchertoggle').attr('class') == 'tx-switchtoggle-pushed') { // html 사용안함
+            $('#b_board_type').val('0');
+        }
+
+        return true;
+    }
+
+    function setForm(editor) {
+        var i, input;
+        var form = editor.getForm();
+        var content = editor.getContent();
+
+        var textarea = document.createElement('textarea');
+
+        textarea.name = 'b_content';
+        $(textarea).css('display','none');
+        textarea.value = content;
+        form.createField(textarea);
+        //var images = editor.getAttachments('image');
+        var images = Editor.getSidebar().getAttachments("image");
+        for (i = 0; i < images.length; i++) {
+            // existStage는 현재 본문에 존재하는지 여부
+            // if (images[i].existStage) {
+            var entry = images[i];
+            if( entry.deletedMark == false ){
+                // data는 팝업에서 execAttach 등을 통해 넘긴 데이터
+                //alert('attachment information - image[' + i + '] \r\n' + JSON.stringify(images[i].data));
+                input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'attach_image[]';
+                //input.value = images[i].data.filename;  // 예에서는 이미지경로만 받아서 사용
+                input.value =  images[i].data.f_rename + '|' +images[i].data.filename + '|'+  images[i].data.mimeType + '|'+  images[i].data.imageWidth + '|'+  images[i].data.filesize;  // 예에서는 이미지경로만 받아서 사용
+                form.createField(input);
+            }
+        }
+
+        var files = editor.getAttachments('file');
+        for (i = 0; i < files.length; i++) {
+            input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'attach_file';
+            //input.value = files[i].data.attachurl;
+            //input.value = files[i].data.filename;
+            //  alert('attachment information - image[' + i + '] \r\n' + JSON.stringify(files[i].data));
+            input.value =  files[i].data.f_rename + '|' +images[i].data.filename + '|'+  files[i].data.mimeType + '|'+  files[i].data.imageWidth + '|'+  files[i].data.filesize+ '|'+  files[i].data.attachurl ;  // 예에서는 이미지경로만 받아서 사용
+            form.createField(input);
+        }
+        return true;
+    }
+
+    //Element 추가
+    function ElementAdd(Target, Position, Content, Url, Params, Method){ //Target - 대상, Position - 위치 (beforeBegin, afterBegin, beforeEnd, afterEnd), Url - 경로, Params - 파라미터, Method - GET/POST
+        Obj = document.getElementById(Target);
+
+        if(!Url){ //URL이 없을 경우 그 페이지에서 바로 실행
+            Obj.insertAdjacentHTML(Position, Content);
+        }else{
+            Data = sendRequest(Url, Params, Method);
+
+            Content = "<div style='width:600px'>"+Content+"<img src='/Images/ico_del.gif' class='imghand' onclick=\"ElementDel(this, 'Proc_Application.asp','"+ Data +"','POST')\"></div>";
+            Obj.insertAdjacentHTML(Position, Content);
+        }
+    }
+
+    //Element 삭제
+    function ElementDel(Target, Url, Params, Method){ //Target - 대상, Url - 경로, Params - 파라미터, Method - GET/POST
+        Obj = Target.parentElement; //부모엘레먼트
+
+        if(!Url){ //URL이 없을 경우 그 페이지에서 바로 실행
+            Obj.removeNode(Obj);
+        }else{
+            Data = sendRequest(Url, Params, Method);
+            if(Data == "OK"){
+                Obj.removeNode(Obj);
+            }else{
+                alert('삭제가 실패하였습니다.\n다시한번 시도해 주시기 바랍니다.');
+            }
+        }
+    }
+</script>
+

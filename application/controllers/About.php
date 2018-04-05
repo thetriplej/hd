@@ -11,6 +11,7 @@ class About extends Common {
     function _remap($method) {
 
         if($this->agent_mode == "1") {
+            $this->type ="";
             if ($this->lang_type == 'en') {
                 $this->load->view('e_frame_top.phtml');
                 $this->{$method}();
@@ -20,10 +21,13 @@ class About extends Common {
                 $this->{$method}();
                 $this->load->view('frame_bottom.phtml');
             }
+
         }else{
+            $this->type ="m/";
             $this->load->view('m_frame_top.phtml');
             $this->{$method}();
             $this->load->view('m_frame_bottom.phtml');
+
         }
     }
 
@@ -36,7 +40,7 @@ class About extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('aboutus/e_company.phtml');
         }else{
-            $this->load->view('aboutus/company.phtml');
+            $this->load->view($this->type.'aboutus/company.phtml');
         }
     }
     public function brand()
@@ -44,7 +48,7 @@ class About extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('aboutus/e_brand.phtml');
         }else{
-            $this->load->view('aboutus/brand.phtml');
+            $this->load->view($this->type.'aboutus/brand.phtml');
         }
     }
     public function ceo()
@@ -52,7 +56,7 @@ class About extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('aboutus/e_ceo.phtml');
         }else{
-            $this->load->view('aboutus/ceo.phtml');
+            $this->load->view($this->type.'aboutus/ceo.phtml');
         }
     }
     public function shop_info()
@@ -64,7 +68,7 @@ class About extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('aboutus/e_shop_info.phtml',$send_data);
         }else{
-            $this->load->view('aboutus/shop_info.phtml',$send_data);
+            $this->load->view($this->type.'aboutus/shop_info.phtml',$send_data);
         }
     }
 }

@@ -12,6 +12,7 @@ class Product extends Common {
     function _remap($method) {
 
         if($this->agent_mode == "1") {
+            $this->type ="";
             if ($this->lang_type == 'en') {
                 $this->load->view('e_frame_top.phtml');
                 $this->{$method}();
@@ -21,10 +22,13 @@ class Product extends Common {
                 $this->{$method}();
                 $this->load->view('frame_bottom.phtml');
             }
+
         }else{
+            $this->type ="m/";
             $this->load->view('m_frame_top.phtml');
             $this->{$method}();
             $this->load->view('m_frame_bottom.phtml');
+
         }
     }
 
@@ -46,52 +50,52 @@ class Product extends Common {
         $type = $this->input->get('code');
         switch ($type) {
             case 'becky' :
-                $this->load->view('product/'.$lang_type.'becky.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'becky.phtml');
                 break;
             case 'arriba' :
-                $this->load->view('product/'.$lang_type.'arriba.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'arriba.phtml');
                 break;
             case 'calix' :
-                $this->load->view('product/'.$lang_type.'calix.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'calix.phtml');
                 break;
             case 'ailish' :
-                $this->load->view('product/'.$lang_type.'ailish.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'ailish.phtml');
                 break;
             case 'whistle' :
-                $this->load->view('product/'.$lang_type.'whistle.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'whistle.phtml');
                 break;
             case 'besso' :
-                $this->load->view('product/'.$lang_type.'besso.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'besso.phtml');
                 break;
             case 'floria' :
-                $this->load->view('product/'.$lang_type.'floria.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'floria.phtml');
                 break;
             case 'francis' :
-                $this->load->view('product/'.$lang_type.'francis.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'francis.phtml');
                 break;
             case 'bambi' :
-                $this->load->view('product/'.$lang_type.'bambi.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'bambi.phtml');
                 break;
             case 'adela' :
-                $this->load->view('product/'.$lang_type.'adela.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'adela.phtml');
                 break;
             case 'esther' :
-                $this->load->view('product/'.$lang_type.'esther.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'esther.phtml');
                 break;
             case 'provence' :
-                $this->load->view('product/'.$lang_type.'provence.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'provence.phtml');
                 break;
             case 'crane' :
-                $this->load->view('product/'.$lang_type.'crane.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'crane.phtml');
                 break;
             case 'amore' :
-                $this->load->view('product/'.$lang_type.'amore.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'amore.phtml');
                 break;
             case 'twinsofa' :
-                $this->load->view('product/'.$lang_type.'twinsofa.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'twinsofa.phtml');
                 break;
             case 'swingchair' :
-                $this->load->view('product/'.$lang_type.'swingchair.phtml');
+                $this->load->view($this->type.'product/'.$lang_type.'swingchair.phtml');
             break;
 
         }

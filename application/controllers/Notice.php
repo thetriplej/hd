@@ -11,6 +11,7 @@ class Notice extends Common {
     function _remap($method) {
 
         if($this->agent_mode == "1") {
+            $this->type ="";
             if ($this->lang_type == 'en') {
                 $this->load->view('e_frame_top.phtml');
                 $this->{$method}();
@@ -20,10 +21,13 @@ class Notice extends Common {
                 $this->{$method}();
                 $this->load->view('frame_bottom.phtml');
             }
+
         }else{
+            $this->type ="m/";
             $this->load->view('m_frame_top.phtml');
             $this->{$method}();
             $this->load->view('m_frame_bottom.phtml');
+
         }
     }
 
@@ -51,7 +55,7 @@ class Notice extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('notice/e_notice.phtml',$send_data);
         }else{
-            $this->load->view('notice/notice.phtml',$send_data);
+            $this->load->view($this->type.'notice/notice.phtml',$send_data);
         }
 
     }
@@ -153,7 +157,7 @@ class Notice extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('notice/e_notice_view.phtml',$view_array);
         }else{
-            $this->load->view('notice/notice_view.phtml',$view_array);
+            $this->load->view($this->type.'notice/notice_view.phtml',$view_array);
         }
 
     }
@@ -178,7 +182,7 @@ class Notice extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('notice/e_qna.phtml',$send_data);
         }else{
-            $this->load->view('notice/qna.phtml',$send_data);
+            $this->load->view($this->type.'notice/qna.phtml',$send_data);
         }
 
     }
@@ -286,7 +290,7 @@ class Notice extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('notice/e_qna_view.phtml',$view_array);
         }else{
-            $this->load->view('notice/qna_view.phtml',$view_array);
+            $this->load->view($this->type.'notice/qna_view.phtml',$view_array);
         }
 
     }
@@ -332,7 +336,7 @@ class Notice extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('notice/e_qna_write.phtml',$send_data);
         }else{
-            $this->load->view('notice/qna_write.phtml',$send_data);
+            $this->load->view($this->type.'notice/qna_write.phtml',$send_data);
         }
 
     }
@@ -487,7 +491,7 @@ class Notice extends Common {
         if($this->lang_type == 'en') {
             $this->load->view('notice/e_faq.phtml');
         }else{
-            $this->load->view('notice/faq.phtml');
+            $this->load->view($this->type.'notice/faq.phtml');
         }
     }
 }

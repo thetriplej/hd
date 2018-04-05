@@ -1,0 +1,247 @@
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/board_hassed_2017.css" />
+<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="<?php echo JS_DIR; ?>/bbs.js"></script>
+<script src="<?php echo JS_DIR; ?>/slider/jquery.bxslider.min.js"></script>
+<link href="<?php echo JS_DIR; ?>/slider/jquery.bxslider.css" rel="stylesheet" />
+
+<?php echo form_open(); ?>
+<input type="hidden" id="page" value="<?php echo($page);?>">
+<input type="hidden" id="b_code" value="<?php echo($b_code);?>">
+</form>
+<div id="wrap_middle" class="" style="margin-top:140px;">
+    <div id="" class="box_full">
+        <div class="sub_img">
+            <img src="/public_html/img/img_board_main.png" border="0" alt="">
+        </div>
+        <div id="" class="" style="width:100%; height:308px; position:absolute; background-color:#faf8f6; display:block; z-index:-10; margin-top:-570px;">
+        </div>
+    </div>
+    <div id="" class="box_full_in_center">
+        <!--contents_info-->
+        <div id="">
+
+            <div class="wrap_board" id="tj_content">
+                <div class="board_area">
+                    <div id="" class="">
+                        <img src="/public_html/img/title_parpula.png" width="1080" height="48" border="0" alt="">
+                    </div>
+                    <div class="gallery_pop_out">
+                        <div class="imglist">
+                            <div class="setbox">
+                                <div id="slider-prev"></div>
+                                <div class="centerlist">
+                                    <div class="bx-wrapper" style="max-width: 1030px; margin: 0px auto;">
+                                        <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 193px;">
+                                            <ul class="bxslider" style="width: 1415%; position: relative; transition-duration: 0.7s; transform: translate3d(-1800px, 0px, 0px);"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="slider-next"></div>
+                            </div><!-- setbox end -->
+                        </div><!-- imglist end -->
+                    </div>
+                    <div id="" class="gallery_copyright">
+                        헷세드는 지난 8년간 상업적인 광고없이 고객님의  감동으로 성장하였습니다.<br>
+                        가정의 멋진 아름다움과 행복을 후기로 공유해주세요!
+                    </div>
+                    <!-- 고객후기 list -->
+                    <div id="" class="gallery_title">
+                        <img src="/public_html/img/title_customer_review.jpg" width="1080" height="48" border="0" alt="">
+                    </div>
+                    <!-- 글쓰기 버튼 // -->
+                    <div id="" class="gallery_write">
+                        <div class="bt_write">
+                            <a href="javascript:write();"><!-- <img src="./images/bg/btn_write_new.png" width="66" height="66" border="0" alt="글쓰기"> --><img src="/public_html/img/bt_review.png" border="0" alt="글쓰기"></a>
+                        </div>
+                    </div>
+                    <div class="gallery_out"></div>
+                    <br>
+                    <!-- <span class="under_line">밑선</span> -->
+                    <!-- Default List // -->
+                    <div id="" class="" style="width:1080px; height:10px; margin-top:20px; border-top:solid 1px #666;"></div>
+                    <div id="total_page" style="margin:10px 0 20px; float:left; "></div>
+                    <!-- Pagination -->
+                    <div class="bbs_page paging"></div>
+                    <!-- Pagination // -->
+                    <div id="" class="gallery_write" style="height:0px;">
+                        <div class="bt_writebot"><a href="javascript:write();"><img src="/public_html/img/bt_review.png" border="0" alt="글쓰기"></a></div>
+                    </div>
+                    <!-- BBS_find //-->
+                    <div class="find_div"> <!-- style="height:22px;text-align:center;"-->
+                        <select name="search_type" id="search_type" class="find_sel">
+                            <option value="b_title" <?php if($search_type == "b_title") echo "selected";?>>제목</option>
+                            <option value="b_content" <?php if($search_type == "b_content") echo "selected";?>>내용</option>
+                            <option value="b_writer" <?php if($search_type == "b_writer") echo "selected";?>>글쓴이</option>
+                        </select>
+                        <input type="text" name="search_value" id="search_value" class="input_find" style="width:90px;" value="<?php echo $search_value;?>">
+                        <input type="button" class="btn_find" title="찾아보기" onclick="get_list(1);" style="vertical-align: bottom">
+                    </div>
+                    <!-- BBS_find // -->
+                </div>
+            </div>
+            <!--//contents_info-->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    if($("#page").val() == "") {
+        get_list(1);
+    }else{
+        get_list($("#page").val());
+    }
+    $(document).ready(function(){
+        var html ='';
+
+        $.ajax({
+            type : "POST",
+            url : "/ajax/board/get_porpula_list",
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+
+            },
+            async : true,
+            cache : false,
+            success : function(result) {
+                var data   = $.parseJSON(result);
+                $.each( data, function( key, value ) {
+                    html += '<li style="width: 310px; height: 193px; float: left; background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(214, 210, 206); overflow: hidden; display: block; list-style: none; position: relative; margin-right: 50px;" class="bx-clone">';
+                    html += '<div class="bimg" onclick="javascript:page_view(' + value.b_index + ')"><img src="' + value.f_rename + '" width="310" height="193" valign="center" alt=""></div>';
+                    html += '<div class="btxt">' + value.b_title + '</div>';
+                    html += '</li>';
+
+                });
+
+                $(".bxslider").append(html);
+                var slider = $('.bxslider').bxSlider({
+                    mode: 'horizontal',
+                    speed: 700,
+                    pause: 4000,
+                    auto : true,
+                    autoStart : true,
+                    pager: false,
+                    captions: true,  //캡션
+                    controls:false, //전 후 콘트롤 보이기 안보이기
+                    minSlides: 1,
+                    maxSlides: 3,
+                    moveSlides: 1,
+                    slideWidth: 310,
+                    slideMargin: 50,
+                    nextSelector: '#slider-next',
+                    prevSelector: '#slider-prev',
+                    nextText: '<div class="bt_next"></div>',
+                    prevText: '<div class="bt_pre"></div>'
+                });
+
+            },
+            error : function() {
+                alert("다시 시도해 주세요.");
+            }
+        });
+
+        $('.bt_next, .bt_pre').click(function(){
+            // time to wait (in ms)
+            var wait = 3000;
+            setTimeout(function(){
+                slider.startAuto();
+            }, wait);
+        });
+
+
+    });
+
+    function write(){
+        location.href = '/gallery/customer_write/?page='+$("#page").val()+'&b_code='+$("#b_code").val()+'&search_type='+$("#search_type option:selected").val()+'&search_value'+$("#search_value").val()
+    }
+
+    function get_list(page){
+        var html_list ='';
+
+        $(".gallery_out").empty();
+        $.ajax({
+
+            type : "POST",
+            url : "/ajax/board/get_gallery_list",
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+                search_type: $("#search_type option:selected").val(),
+                search_value: $("#search_value").val(),
+                page : page,
+                mode : 'site'
+            },
+            cache : false,
+            success : function(result) {
+                var data   = $.parseJSON(result);
+                var list_cnt = 0;
+
+                $.each( data.list, function( key, value ) {
+                    list_cnt = (key) % 4;
+
+                    if(list_cnt == '0') {
+                        html_list += '<div class="gallery_set">';
+                    }
+                    html_list += '   <ul class="gallery_list" onclick="page_view(' + value.b_index + ');">';
+                    if(value.f_rename == "no_image" ) {
+
+                        html_list += '       <li class="thumb"><img src="/public_html/images/icon/icon_noimage.png" width="145" height="90" valign="center"></li>';
+                    }else{
+                        html_list += '       <li class="thumb"><img src="' + value.f_rename + '" width="145" height="90" valign="center"></li>';
+                    }
+                    html_list += '      <li class="title ellipsis">' + value.b_title + '</li>';
+                    html_list += '      <li class="info" style="margin-top:10px;">';
+                    html_list += '          <span class="name ellipsis" style="font-size:15px;">' + value.b_writer + '</span>';
+                    if(value.reply != '0') {
+                        html_list += '          <span style="vertical-align:text-top; position: inline-block;"><img src="/public_html/images/icon/icon_re.png" title="reply"></span>';
+                    }
+                    html_list += '      </li>';
+                    html_list += '      <li style="position:relative;"><span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">' + value.b_regdate + '</span><span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">view ' + value.b_hit + '</span></li>';
+                    html_list += '   </ul>';
+                    if(list_cnt == '3') {
+                        html_list += '</div>';
+                    }
+                });
+                if(list_cnt == 0 && data.page_navi.total == 0){
+                    html_list = '<div style="padding:15px;padding-left:45%;"><b>검색된 게시물이 없습니다.</b></div>'
+                }
+
+                $(".gallery_out").append(html_list);
+
+                /* 현재 페이지, 마지막 페이지, 보여주는 데이터 수, 전체 데이터 수, 한 페이지에 보여주는 페이징 수 */
+                pagination(data.page_navi.current_page, data.page_navi.last_page, data.page_navi.per_page, data.page_navi.total, 10);
+                var msg ="Total " + data.page_navi.total + " 건 " +data.page_navi.current_page+ " 페이지";
+                $("#total_page").text(msg);
+                $("#page").val(page);
+            },
+            error : function() {
+                alert("다시 시도해 주세요.");
+            }
+        });
+    }
+
+    function page_view(id){
+        $.ajax({
+            type : "POST",
+            url : "/ajax/board/get_permission_check",
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+                b_index : id
+            },
+            cache : false,
+            success : function(result) {
+                var data   = $.parseJSON(result);
+                if(data.lock == 'Y'){
+
+                }else{
+                    location.href = '/gallery/customer_view?b_index='+id+'&page='+$("#page").val()+'&search_type='+$("#search_type option:selected").val()+'&search_value='+$("#search_value").val();
+                }
+
+            },
+            error : function() {
+                alert("다시 시도해 주세요.");
+            }
+        });
+
+    }
+
+</script>
