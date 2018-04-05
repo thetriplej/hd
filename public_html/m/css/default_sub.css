@@ -156,6 +156,6 @@
 
 
 .go_top {position:fixed; left:50%; margin-left:510px; bottom:190px; z-index:2;  }
-.go_top a {display:block;width:26px; height:23px;background:url('../img/btn_top.png') no-repeat; }
-.go_top a:hover {background:url('../img/btn_top_over.png') no-repeat;}
+.go_top a {display:block;width:26px; height:23px;background:url('/public_html/m/images/btn_top.png') no-repeat; }
+.go_top a:hover {background:url('/public_html/m/images/btn_top_over.png') no-repeat;}
 .go_top span {visibility:hidden; overflow:hidden;}

@@ -1,9 +1,7 @@
-<!-- video popup open  -->
-<script type="text/javascript" src="/public_html/js/open_video.js"></script>
 <!-- mySlider script file -->
-<script src="/public_html/js/myslider.js"></script>
+<script src="/public_html/m/js/myslider.js"></script>
 <!-- mySlider css file -->
-<link rel="stylesheet" type="text/css" href="/public_html/css/myslider.css" />
+<link rel="stylesheet" type="text/css" href="/public_html/m/css/myslider.css" />
 	<div id="" class="wrap_middle">
 		<div class="main_img">
 			<div class="myslider">
@@ -90,23 +88,13 @@
 			</div>
 
 		</div>
-		<div id="" class="movie bgcolor-ivory">
+		<div id="" class="movie_m bgcolor-ivory">
 			<div id="" class="title_movie">
 				<img src="public_html/img/title_movie.png" border="0" alt="">
 			</div>
-			<div id="wrap_mainvideo" class="mainvideo">
+			<div id="wrap_mainvideo_m" class="mainvideo">
 				<ul>
-					<!-- <li>
-						<div id="" class="box_brandstory">
-						brand story
-						</div>
-					</li>
-					<li> --><a href="javascript:layer_open();"><img src="public_html/img/bt_youtube.jpg" border="0" alt=""></a><!-- <input type="button" onclick="javascript:layer_open();" value="확인"> --><!-- </li>
-					<li>
-						<div id="" class="box_faq">
-						FAQ
-						</div>
-					</li> -->
+					<iframe id="player" type="text/html" width="720" height="480" src="https://player.vimeo.com/video/208591714" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 				</ul>
 			</div>
 		</div>
@@ -137,65 +125,5 @@
 			</div>
 		</div>
 	</div>
-	<div id="youtubeframe" class="" style="display:none;">
-		<a href="javascript:layer_close();"><div id="" class="popupdivbg">
-		</div></a>
-		<div id="" class="popupdiv">
-			<!-- <iframe id="player" width="1000" height="560" src="https://www.youtube.com/embed/h-emsmP-WE0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe> -->
-			<!-- <iframe id="player" type="text/html" width="1000" height="560"
-            src="http://www.youtube.com/embed/h-emsmP-WE0?rel=0&amp;showinfo=0&enablejsapi=1"
-            frameborder="0"></iframe> -->
-			<!-- <div id="player"></div> -->
-			<!-- <iframe id="player" type="text/html" width="1000" height="560"
-    src="http://www.youtube.com/embed/1-bif6Grp9k?rel=0&amp;showinfo=0&enablejsapi=1"
-    frameborder="0"></iframe> 20170307 youtube setting-->
-
-			<iframe id="player" type="text/html" width="1000" height="560" src="https://player.vimeo.com/video/208591714" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-			<!-- <iframe src="https://player.vimeo.com/video/102289307" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-    <p><a href="https://vimeo.com/102289307">HASSED SOFA</a> from <a href="https://vimeo.com/denamoofly001">dnamoofly</a> on <a href="https://vimeo.com">Vimeo</a>.</p> -->
-		</div>
-	</div>
-	<script>
-        // 2. This code loads the IFrame Player API code asynchronously.
-        var tag = document.createElement('script');
-
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        // 3. This function creates an <iframe> (and YouTube player)
-        //    after the API code downloads.
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                // height: '560',
-                //  width: '1000',
-                // videoId: 'h-emsmP-WE0',
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        // 4. The API will call this function when the video player is ready.
-        function onPlayerReady(event) {
-            //event.target.playVideo();  플레이어 자동실행 (주의: 모바일에서는 자동실행되지 않음)
-        }
-
-        // 5. The API calls this function when the player's state changes.
-        //    The function indicates that when playing a video (state=1),
-        //    the player should play for six seconds and then stop.
-        var done = false;
-        function onPlayerStateChange(event) {
-            if (event.data == YT.PlayerState.PLAYING && !done) {
-                //setTimeout(stopVideo, 6000);
-                done = true;
-            }
-        }
-        function stopVideo() {
-            player.stopVideo();
-        }
-	</script>
 
 

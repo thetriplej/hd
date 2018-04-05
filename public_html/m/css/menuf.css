@@ -63,7 +63,7 @@
 	height:120px;
 	left:0px;
 	top:0px;
-	background: url('/public_html/m/img/toggle_pluse.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/toggle_pluse.png') 0 0 no-repeat;
 	overflow:hidden;
 	text-indent:-50px;
 }
@@ -74,7 +74,7 @@
 	height:120px;
 	left:600px;
 	top:-120px;
-	background: url('/public_html/m/img/toggle_minuse.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/toggle_minuse.png') 0 0 no-repeat;
 	text-indent:-50px;
 	overflow:hidden;
 	display: none;
@@ -93,7 +93,7 @@
 
 
 .back_transe{
-	background: url('/public_html/m/img/black60.png') 0 0 repeat;
+	background: url('/public_html/m/images/black60.png') 0 0 repeat;
 	position:absolute;
 	display:none;
 	width:1080px;
@@ -110,7 +110,7 @@
 	font-size:20px;
 	text-indent:-300px;
 	overflow:hidden;
-	background: url('/public_html/m/img/mobile_menu.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/mobile_menu.png') 0 0 no-repeat;
 	float:left;
 }
 
@@ -124,7 +124,7 @@
 	font-size:20px;
 	text-indent:-300px;
 	overflow:hidden;
-	background: url('/public_html/m/img/emobile_menu.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/emobile_menu.png') 0 0 no-repeat;
 	float:left;
 }
 
@@ -584,7 +584,7 @@ a:hover{text-decoration:none;}
 	width:106px;
 	display:block;
 	color: #777;
-	background: url('/public_html/m/img/leftmenu_back01.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/leftmenu_back01.png') 0 0 no-repeat;
 }
 
 
@@ -595,7 +595,7 @@ a:hover{text-decoration:none;}
 	width:106px;
 	display:block;
 	color: #777;
-	background: url('/public_html/m/img/leftmenu_back02.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/leftmenu_back02.png') 0 0 no-repeat;
 }
 
 .dan_left03
@@ -604,7 +604,7 @@ a:hover{text-decoration:none;}
 	width:106px;
 	display:block;
 	color: #777;
-	background: url('/public_html/m/img/leftmenu_back03.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/leftmenu_back03.png') 0 0 no-repeat;
 }
 
 
@@ -642,5 +642,5 @@ a:hover{text-decoration:none;}
 
 
 #btsound:hover
-{	background: url('/public_html/m/img/bt_soundnew.png') -44px 0px no-repeat;}
+{	background: url('/public_html/m/images/bt_soundnew.png') -44px 0px no-repeat;}
 

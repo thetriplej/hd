@@ -73,7 +73,7 @@
     height:180px; /*메뉴백 높이*/
     display:none;
     padding-top:16px;
-	background: url('../img/smenuback01.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/smenuback01.png') 0 0 no-repeat;
 }
 
 
@@ -117,7 +117,7 @@
     display:none;
     padding-top:16px;
     margin-left:0px;
-	background: url('../img/smenuback02.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/smenuback02.png') 0 0 no-repeat;
 }
 
 #sub_gnb02 > ul{overflow:hidden;}
@@ -157,7 +157,7 @@
     height:410px; /*메뉴백 높이*/
     display:none;
     padding-top:16px;
-	background: url('../img/smenuback03.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/smenuback03.png') 0 0 no-repeat;
 	z-index:900;
 }
 
@@ -197,7 +197,7 @@
     display:none; 
 	padding-top:16px;
     margin-left:0px;
-	background: url('../img/smenuback02.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/smenuback02.png') 0 0 no-repeat;
 }
 
 #sub_gnb04 > ul{overflow:hidden;}
@@ -240,7 +240,7 @@
     display:none; 
 	padding-top:16px;
     margin-left:0px;
-	background: url('../img/smenuback02.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/smenuback02.png') 0 0 no-repeat;
 }
 
 #sub_gnb05 > ul{overflow:hidden;}
@@ -426,7 +426,7 @@
 	width:106px;
 	display:block;
 	color: #777;
-	background: url('../img/leftmenu_back01.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/leftmenu_back01.png') 0 0 no-repeat;
 }
 
 
@@ -437,7 +437,7 @@
 	width:106px;
 	display:block;
 	color: #777;
-	background: url('../img/leftmenu_back02.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/leftmenu_back02.png') 0 0 no-repeat;
 }
 
 .dan_left03
@@ -446,7 +446,7 @@
 	width:106px;
 	display:block;
 	color: #777;
-	background: url('../img/leftmenu_back03.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/leftmenu_back03.png') 0 0 no-repeat;
 }
 
 
@@ -484,4 +484,4 @@
 
 
 #btsound:hover
-	{	background: url('../img/bt_soundnew.png') -44px 0px no-repeat;}
+	{	background: url('/public_html/m/images/bt_soundnew.png') -44px 0px no-repeat;}

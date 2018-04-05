@@ -33,7 +33,7 @@ h7 {font-size:14px; color:#6f7070;}
 	display:block;
 	color: #888;
 	float:left;
-	background: url('../images_e/photo_ceo.jpg') 0 130px no-repeat;
+	background: url('/public_html/m/images_e/photo_ceo.jpg') 0 130px no-repeat;
 	background-color:#b2a8a0;
 }
 
@@ -45,7 +45,7 @@ h7 {font-size:14px; color:#6f7070;}
 	display:block;
 	color: #888;
 	left:425px;
-	background: url('../images/photo_ceo_r.jpg') 0 130px no-repeat;
+	background: url('/public_html/m/images/photo_ceo_r.jpg') 0 130px no-repeat;
 	background-color:#f2eeeb;
 }
 
@@ -198,7 +198,7 @@ h7 {font-size:14px; color:#6f7070;}
 	width:25px;
 	height:25px;
 	display:block;
-	background: url('../img/dan_corner.png') 0 0 repeat-y;
+	background: url('/public_html/m/img/dan_corner.png') 0 0 repeat-y;
     z-index:303;
 }
 
@@ -217,7 +217,7 @@ h7 {font-size:14px; color:#6f7070;}
 	border-color:#b2a8a0;
 	color: #888;
 	float:left;
-	background: url('../images_e/one_system.jpg') 0 560px no-repeat;
+	background: url('/public_html/m/images_e/one_system.jpg') 0 560px no-repeat;
 }
 
 .dan2_h530_R
@@ -1317,7 +1317,7 @@ h7 {font-size:14px; color:#6f7070;}
 	color:#888;
 	width:644px;
 	padding:30px;
-	/*background: url('../images/mat_image_s06.png') 40px 280px no-repeat;*/
+	/*background: url('/public_html/m/images/mat_image_s06.png') 40px 280px no-repeat;*/
 	text-align:justify;
 }
 
@@ -1356,7 +1356,7 @@ h7 {font-size:14px; color:#6f7070;}
 	color:#fff;
 	width:185px;
 	height:40px;
-	background: url('../images/mat_image_s04.jpg') 0px 0px no-repeat;
+	background: url('/public_html/m/images/mat_image_s04.jpg') 0px 0px no-repeat;
 }
 
 .midtit2
@@ -1368,7 +1368,7 @@ h7 {font-size:14px; color:#6f7070;}
 	color:#fff;
 	width:185px;
 	height:40px;
-	background: url('../images/mat_image_s05.jpg') 0px -4px no-repeat;
+	background: url('/public_html/m/images/mat_image_s05.jpg') 0px -4px no-repeat;
 }
 
 .txt_law_tit

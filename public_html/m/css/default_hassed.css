@@ -124,7 +124,7 @@ h6 {font-size:15px; font-weight:400;}
 	margin:0 auto;
 	height:140px;
 	text-align:center;
-	background: url('/public_html/m/img/logo_hassed.png') 0 0 repeat;
+	background: url('/public_html/m/images/logo_hassed.png') 0 0 repeat;
 }
 
 
@@ -229,7 +229,7 @@ h6 {font-size:15px; font-weight:400;}
 	margin:0 auto;
 	height:70px;
 	text-align:center;
-	background: url('/public_html/m/img/logo_mobile.png') center 0 no-repeat;
+	background: url('/public_html/m/images/logo_mobile.png') center 0 no-repeat;
 }
 
 
@@ -333,12 +333,12 @@ h6 {font-size:15px; font-weight:400;}
 	top:300px;
 	left:68px;
 	float:left;
-	background: url('/public_html/m/img/side_btn01.png') 0px 0px no-repeat;
+	background: url('/public_html/m/images/side_btn01.png') 0px 0px no-repeat;
 }
 
 #sideleft_btn:hover
 {
-	background: url('/public_html/m/img/side_btn01.png') 0px -84px no-repeat;
+	background: url('/public_html/m/images/side_btn01.png') 0px -84px no-repeat;
 }
 
 #sideleft_btn > a
@@ -356,7 +356,7 @@ h6 {font-size:15px; font-weight:400;}
 	height:446px;
 	top:-330px;
 	left:600px;
-	background: url('/public_html/m/img/btn_grand_new.png') 0px 0px no-repeat;
+	background: url('/public_html/m/images/btn_grand_new.png') 0px 0px no-repeat;
 	z-index:905;
 }
 
@@ -367,12 +367,12 @@ h6 {font-size:15px; font-weight:400;}
 	height:19px;
 	top:160px;
 	left:70px;
-	background: url('/public_html/m/img/btn_close.png') 0px 0px no-repeat;
+	background: url('/public_html/m/images/btn_close.png') 0px 0px no-repeat;
 }
 
 #btn_close:hover
 {
-	background: url('/public_html/m/img/btn_close.png') 0px -19px no-repeat;
+	background: url('/public_html/m/images/btn_close.png') 0px -19px no-repeat;
 }
 
 .div_hidden
@@ -977,7 +977,7 @@ h6 {font-size:15px; font-weight:400;}
 	width:23px; height:23px;
 	overflow:hidden;
 	display:block;
-	background: url('/public_html/m/img/bt_pluse.png') 0px -23px no-repeat;
+	background: url('/public_html/m/images/bt_pluse.png') 0px -23px no-repeat;
 	position:absolute;
 	left:930px;
 	top:10px;
@@ -985,14 +985,14 @@ h6 {font-size:15px; font-weight:400;}
 
 
 .btpluse1:hover{
-	background: url('/public_html/m/img/bt_pluse.png') 0px -46px no-repeat;
+	background: url('/public_html/m/images/bt_pluse.png') 0px -46px no-repeat;
 }
 
 .btpluse2{
 	width:23px; height:23px;
 	overflow:hidden;
 	display:block;
-	background: url('/public_html/m/img/bt_pluse.png') 0px -23px no-repeat;
+	background: url('/public_html/m/images/bt_pluse.png') 0px -23px no-repeat;
 	position:absolute;
 	left:390px;
 	top:20px;
@@ -1000,14 +1000,14 @@ h6 {font-size:15px; font-weight:400;}
 
 
 .btpluse2:hover{
-	background: url('/public_html/m/img/bt_pluse.png') 0px -46px no-repeat;
+	background: url('/public_html/m/images/bt_pluse.png') 0px -46px no-repeat;
 }
 
 .btpluse3{
 	width:23px; height:23px;
 	overflow:hidden;
 	display:block;
-	background: url('/public_html/m/img/bt_pluse.png') 0px -23px no-repeat;
+	background: url('/public_html/m/images/bt_pluse.png') 0px -23px no-repeat;
 	position:absolute;
 	left:430px;
 	top:148px;
@@ -1015,7 +1015,7 @@ h6 {font-size:15px; font-weight:400;}
 
 
 .btpluse3:hover{
-	background: url('/public_html/m/img/bt_pluse.png') 0px -46px no-repeat;
+	background: url('/public_html/m/images/bt_pluse.png') 0px -46px no-repeat;
 }
 
 /* ////////////////////// 소재 3  ///////////////////////////////////  */
@@ -1127,7 +1127,7 @@ h6 {font-size:15px; font-weight:400;}
 	/*border-top:1px solid #eee;*/
 	line-height:35px;
 	font-style:italic;
-	background: url('/public_html/m/img/img_title_bar.png') 0 0 no-repeat;
+	background: url('/public_html/m/images/img_title_bar.png') 0 0 no-repeat;
 }
 
 
