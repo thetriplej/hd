@@ -440,6 +440,8 @@ class Admin extends Common {
         $b_content      =   $this->input->post("b_content");
         $b_locked       =   $this->input->post("b_locked");
         $position       = $this->input->post("position[]");
+        $b_special       =   $this->input->post("b_special");
+
 
         if(empty($b_locked)) $b_locked = "N";
         $attach_image   =   $this->input->post("attach_image[]",false);
@@ -583,6 +585,7 @@ class Admin extends Common {
             'b_code'        =>   $b_code,
             'proc_type'     =>   $proc_type,
             'b_sequence'    =>   $b_sequence,
+            'b_special'     =>   $b_special,
             'b_depth'       =>   $b_depth,
             'b_parentindex' =>   $b_parentindex,
             'b_board_type'  =>   $b_board_type,

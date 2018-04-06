@@ -263,12 +263,19 @@ class Board_model extends CI_Model {
             $b_sequence = 1;
         }
 
+        if(!empty($params['b_special'])){
+            $b_special = $params['b_special'];
+        }else{
+            $b_special = 0;
+        }
+
         $data = array(
             'b_group'		=> $params['b_group'],
             'b_code'		=> $params['b_code'],
             'b_depth'       => $params['b_depth'],
             'b_parentindex' => $params['b_parentindex'],
             'b_sequence'    => $b_sequence,
+            'b_special'     => $b_special,
             'b_title'		=> $params['b_title'],
             'b_writer'      => $params['b_writer'],
             'b_content'		=> $params['b_content'],
@@ -278,6 +285,7 @@ class Board_model extends CI_Model {
             'b_ip'		    => $_SERVER['REMOTE_ADDR'],
             'b_board_type'	=> $params['b_board_type'],
             'b_regdate'		=> date('Y-m-d H:i:s',time()),
+
 
         );
 
