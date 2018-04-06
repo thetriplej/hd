@@ -4,6 +4,7 @@
 <script src="/public_html/js/myslider.js"></script>
 <!-- mySlider css file -->
 <link rel="stylesheet" type="text/css" href="/public_html/css/myslider.css" />
+<input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>"/>
 <div id="" class="wrap_middle">
     <div class="main_img">
         <div class="myslider">

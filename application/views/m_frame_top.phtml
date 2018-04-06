@@ -22,6 +22,7 @@
 
 </head>
 <body onload="">
+<input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>"/>
 <div id="" class="wrap">
     <div id="wrap_top">
         <div id="main_header" class="">

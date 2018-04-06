@@ -87,6 +87,7 @@
     </script>
 </head>
 <body ><!-- onload="javascript:windOPrenewal();" -->
+<input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>"/>
 <div id="blind"></div>
 <div id="" class="wrap">
     <div id="" class="wrap_top">
