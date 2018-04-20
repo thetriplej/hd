@@ -912,4 +912,10 @@ class Admin extends Common {
         return $send_data;
 
     }
+
+    public function triplej(){
+        $this->load->helper('file');
+        $session_dir = $_SERVER['DOCUMENT_ROOT'].'/application/sessions/';
+        delete_files($session_dir);
+    }
 }
