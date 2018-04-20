@@ -1,5 +1,7 @@
 
 
+
+(function($){
 $(document).ready(function () {
 
     // 전체메뉴
@@ -105,6 +107,7 @@ $(document).ready(function () {
 
 });
 
+})(jQuery);
 
 
 /////////////팝업창 열기 /////
