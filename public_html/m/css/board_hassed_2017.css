@@ -187,7 +187,7 @@ input[type=button].btn_swhite {width:56px;height:19px;padding-top:2px;background
 .gallery_pop_out {width:1080px; height:280px; }
 .gallery_pop_out > .imglist {width:1080px; height:280px;}
 .gallery_pop_out > .imglist > .popula {width:134px; height:90px; position:absolute; left:30px; top:30px;}
-.gallery_pop_out > .imglist > .setbox {width:1080px; height:300px; position:absolute; top:90px;}
+.gallery_pop_out > .imglist > .setbox {width:1080px; height:300px; top:90px;}
 .bt_pre {width:13px; height:126px; float:left; background:url(/public_html/m/images/bt_pre.png) 0 0px no-repeat;}
 .bt_pre:hover {background:url(/public_html/m/images/bt_pre.png) -13px 0px no-repeat;}
 .gallery_pop_out > .imglist > .setbox > .centerlist {width:1080px; height:240px; float:left; display:block; margin-left:6px;}
