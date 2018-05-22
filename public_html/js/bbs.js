@@ -13,7 +13,7 @@ function send(uri,mode){
 
 	//화면의 높이와 너비를 구한다.
 	var maskHeight = $(document).height();
-	var maskWidth = $(window).width();
+	var maskWidth = $(document).width();
 
 	//마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
 	$('#blind').css({'width':maskWidth,'height':maskHeight});
