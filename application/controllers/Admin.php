@@ -437,7 +437,7 @@ class Admin extends Common {
         $b_title        =   $this->input->post("b_title");
         if(empty($b_title)) $b_title = ".";
         $b_email        = $this->input->post("b_email1")."@".$this->input->post("b_email2");
-        $b_content      =   $this->input->post("b_content");
+        $b_content      =   $this->input->post("b_content",false);
         $b_locked       =   $this->input->post("b_locked");
         $position       = $this->input->post("position[]");
         $b_special       =   $this->input->post("b_special");
