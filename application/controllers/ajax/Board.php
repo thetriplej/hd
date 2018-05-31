@@ -530,7 +530,7 @@ class Board extends Common {
                         $return = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,700);
                     }else{
                         $return_thum = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,300);
-                        $return = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,231);
+                        $return = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,$image_width);
                     }
 
                     (!empty($return_thum) && !empty($return))? $status = 'success' : $status = 'fail';
