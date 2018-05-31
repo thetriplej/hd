@@ -218,7 +218,7 @@ class Board extends Common {
         $post = $this->input->post(null, true);
         if(empty($post['page'])) $post['page'] = 1;
         if(empty($post['search_type'])) $post['search_type'] = 1;
-        if(empty($post['search_value'])) $post['search_value'] = 1;
+        if(empty($post['search_value'])) $post['search_value'] = "";
         $p_data = array(
             'table_name' 	=> 'board',
             'search_type'	=> $post['search_type'],
