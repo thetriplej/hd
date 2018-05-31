@@ -232,8 +232,7 @@ class Gallery extends Common {
         $b_title        =   $this->input->post("b_title");
         if(empty($b_title)) $b_title = ".";
         $b_email        = $this->input->post("b_email1")."@".$this->input->post("b_email2");
-        $b_content      =   $this->input->post("b_content");
-        $this->security->xss_clean($b_content, FALSE, TRUE);
+        $b_content      = $this->security->xss_clean($this->input->post("b_content"), FALSE, TRUE);
         $b_locked       =   $this->input->post("b_locked");
         if(empty($b_locked)) $b_locked = "N";
         $attach_image   =   $this->input->post("attach_image[]",false);
