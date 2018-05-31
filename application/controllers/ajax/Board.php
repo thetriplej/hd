@@ -513,7 +513,7 @@ class Board extends Common {
                     }
                     $img_rename = date("Ymd")."_".time().rand(0,100000);
                     $setPath = $upload_dir.$img_rename;
-                    $set_width_array = array(300,780);
+                    $set_width_array = array(300,700);
 
                     $oldfile = $tmp_name;
                     $newfile = $upload_dir.$img_rename."_origin.".$filename_ext;
@@ -523,9 +523,16 @@ class Board extends Common {
                         } else if(file_exists($newfile)) {
                         }
                     }
+                    $info = getimagesize($newfile);
+                    $image_width = $info[0];
+                    if($image_width > 250){
+                        $return_thum = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,300);
+                        $return = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,700);
+                    }else{
+                        $return_thum = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,300);
+                        $return = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,231);
+                    }
 
-                    $return_thum = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,300);
-                    $return = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,780);
                     (!empty($return_thum) && !empty($return))? $status = 'success' : $status = 'fail';
 
                     $img_600 = $upload_dir.$img_rename.'.'.$filename_ext;
