@@ -17,21 +17,16 @@ class Board extends Common {
             exit;
         }
         $this->{"{$method}"}();
-
     }
 
     public function get_porpula_list(){
-
         $list =  $this->board_model->get_porpula_list();
         foreach ( $list as $key => $value){
             $path = '/public_html'.$value->file_path;
             $value->f_rename = $path.$value->f_rename;
         }
-
         echo json_encode($list);
-
     }
-
 
     public function get_qna_list(){
         $post = $this->input->post(null, true);
@@ -136,6 +131,7 @@ class Board extends Common {
 
         echo json_encode($send_data);
     }
+
     public function get_gallery_list(){
 
         $post = $this->input->post(null, true);
@@ -280,6 +276,7 @@ class Board extends Common {
         echo json_encode($send_data);
 
     }
+
     public function page_navi($params){
         $table_name = 'board';
         $page = $params['page'];
@@ -341,16 +338,17 @@ class Board extends Common {
     }
 
     public function get_file($b_index){
-
         $image_data = $this->board_model->get_file($b_index,'image');
         foreach($image_data as $key => $value){
             $value->file_path = $value->file_path.$value->f_rename;
-            if(intval($value->f_width) > 780){
-                $value->f_width = 780;
+            if(intval($value->f_width) > 700){
+                $value->f_width = 700;
             }
         }
+
         echo json_encode($image_data);
     }
+
     public function get_view(){
         $post = $this->input->post(null, true);
         $b_index = $post['b_index'];
@@ -426,9 +424,6 @@ class Board extends Common {
         if($file_cnt>0) {
             $send_data['file'] = $files_array;
         }
-
-
-
         //var_dump(json_encode($files_array));exit;
         echo json_encode($send_data);
     }
@@ -474,7 +469,6 @@ class Board extends Common {
 
         echo json_encode($send_result);
     }
-
 
     public function gallery_file_upload(){
         ini_set("memory_limit", "-1");
@@ -525,7 +519,7 @@ class Board extends Common {
                     }
                     $info = getimagesize($newfile);
                     $image_width = $info[0];
-                    if($image_width > 250){
+                    if($image_width > 700){
                         $return_thum = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,300);
                         $return = $this->image_resize($tmp_name,$img_rename,$filename_ext,$upload_dir,700);
                     }else{
@@ -562,9 +556,7 @@ class Board extends Common {
             }
         }
 
-
         echo json_encode($send_data);
-
     }
 
     private function get_image_resource_from_file($path_file){

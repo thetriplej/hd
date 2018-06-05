@@ -207,15 +207,15 @@
         }
 
         if($(this).html() == "추가"){
-            html = "";
-            html += "<li>";
-            html += "<input type=\"file\" name=\"files[]\" size=\"50\" class=\"checking_file\"> ||| 위치 : ";
-            html += "<select name=\"position[]\">";
-            html += "   <option value=\"T\">상단</option>";
-            html += "   <option value=\"B\">하단</option>";
-            html += "</select>";
-            html += " <a href=\"javascript:void(0);\" name=\"btn\" class=\"btn\">삭제</a>";
-            html += "</li>";
+            html = '';
+            html += '<li>';
+            html += '<input type="file" name="files[]" size="50" class="checking_file"  onchange="checking_file();"> ||| 위치 : ';
+            html += '<select name="position[]">';
+            html += '   <option value="T">상단</option>';
+            html += '   <option value="B">하단</option>';
+            html += '</select>';
+            html += ' <a href="javascript:void(0);" name="btn" class="btn">삭제</a>';
+            html += '</li>';
 
             $("#FileDiv").append(html); //.append(html);
         }

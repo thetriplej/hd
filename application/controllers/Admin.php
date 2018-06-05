@@ -441,6 +441,7 @@ class Admin extends Common {
         $b_locked       =   $this->input->post("b_locked");
         $position       = $this->input->post("position[]");
         $b_special       =   $this->input->post("b_special");
+        $files       =   $_FILES;
 
 
         if(empty($b_locked)) $b_locked = "N";
@@ -624,6 +625,7 @@ class Admin extends Common {
 
                 $bSuccessUpload = is_uploaded_file($_FILES['files']['tmp_name'][$i]);
                 $img_info = array();
+
                 if($bSuccessUpload) {
                     $tmp_name = $_FILES['files']['tmp_name'][$i];
                     $name = $_FILES['files']['name'][$i];
@@ -642,7 +644,7 @@ class Admin extends Common {
                     if(move_uploaded_file($tmp_name, $setPath.'.'.$filename_ext)){
                         $send_data = array(
                             'b_code'    => $b_code,
-                            'b_index'   => $b_index,
+                            'b_index'   => $result,
                             'f_name'    => $name,
                             'f_type'    => $upload_type,
                             'f_position'=> $position[$i],
