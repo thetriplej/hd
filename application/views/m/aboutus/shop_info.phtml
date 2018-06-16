@@ -50,6 +50,440 @@
             }
         }
 
+
+//imageslideA // 
+
+			var mapA = 1; // 
+			
+			setInterval(imgslideA, 3200); // 매 4초마다 함수 실행
+
+			function imgslideA(j){
+				if(j != null){ mapA = j;}
+				mapA = mapA * -1; // 매 4초마다 toggle
+					if(mapA < 0){ 
+						$('#bttoggleA').animate({left: '-72px' });
+						$('#bttoggleB').animate({left: '0px' });
+						$('.img_toggleA').animate({left: '0px' });
+						$('.img_toggleB').animate({left: '690px' });
+					}
+					else if(mapA > 0){
+						$('#bttoggleA').animate({left: '0px' });
+						$('#bttoggleB').animate({left: '-72px' });
+						$('.img_toggleA').animate({left: '-690px' });
+						$('.img_toggleB').animate({left: '0px' });
+					}
+					else if(mapA == 0){
+
+					}
+			}
+
+			$("#mapstoreA").mouseover(function(event){
+				if(mapA != 0){
+					imgslideA(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreA").mouseout(function(event){
+					mapA = 1;
+					imgslideA();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+//imageslideB // 
+			var mapB = -1; // 
+
+			setInterval(imgslideB, 3200); // 매 4초마다 함수 실행
+
+			function imgslideB(j){
+				if(j != null){ mapB = j;}
+				mapB = mapB * -1; // 매 4초마다 toggle
+					if(mapB < 0){ 
+						$('#bttoggleC').animate({left: '-72px' });
+						$('#bttoggleD').animate({left: '0px' });
+						$('.img_toggleC').animate({left: '0px' });
+						$('.img_toggleD').animate({left: '690px' });
+					}
+					else if(mapB > 0){
+						$('#bttoggleC').animate({left: '0px' });
+						$('#bttoggleD').animate({left: '-72px' });
+						$('.img_toggleC').animate({left: '-690px' });
+						$('.img_toggleD').animate({left: '0px' });
+					}
+					else if(mapB == 0){
+
+					}
+			}
+
+			$("#mapstoreB").mouseover(function(event){
+				if(mapB != 0){
+					imgslideB(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreB").mouseout(function(event){
+					mapB = 1;
+					imgslideB();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+//imageslideC // 
+			var mapC = 1; // 
+
+			setInterval(imgslideC, 3200); // 매 4초마다 함수 실행
+
+			function imgslideC(j){
+				if(j != null){ mapC = j;}
+				mapC = mapC * -1; // 매 4초마다 toggle
+					if(mapC < 0){ 
+						$('#bttoggleE').animate({left: '-72px' });
+						$('#bttoggleF').animate({left: '0px' });
+						$('.img_toggleE').animate({left: '0px' });
+						$('.img_toggleF').animate({left: '690px' });
+					}
+					else if(mapC > 0){
+						$('#bttoggleE').animate({left: '0px' });
+						$('#bttoggleF').animate({left: '-72px' });
+						$('.img_toggleE').animate({left: '-690px' });
+						$('.img_toggleF').animate({left: '0px' });
+					}
+					else if(mapC == 0){
+
+					}
+			}
+
+			$("#mapstoreC").mouseover(function(event){
+				if(mapC != 0){
+					imgslideC(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreC").mouseout(function(event){
+					mapC = 1;
+					imgslideC();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+//imageslideD //
+			var mapD = -1; // 
+			setInterval(imgslideD, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD(j){
+				if(j != null){ mapD = j;}
+				mapD = mapD * -1; // 매 4초마다 toggle
+					if(mapD < 0){ 
+						$('#bttoggleG').animate({left: '-72px' });
+						$('#bttoggleH').animate({left: '0px' });
+						$('.img_toggleG').animate({left: '0px' });
+						$('.img_toggleH').animate({left: '690px' });
+					}
+					else if(mapD > 0){
+						$('#bttoggleG').animate({left: '0px' });
+						$('#bttoggleH').animate({left: '-72px' });
+						$('.img_toggleG').animate({left: '-690px' });
+						$('.img_toggleH').animate({left: '0px' });
+					}
+					else if(mapD == 0){
+
+					}
+			}
+
+			$("#mapstoreD").mouseover(function(event){
+				if(mapD != 0){
+					imgslideD(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD").mouseout(function(event){
+					mapD = -1;
+					imgslideD();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+//imageslideD1 //
+			var mapD1 = 1; // 
+			setInterval(imgslideD1, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD1(j){
+				if(j != null){ mapD1 = j;}
+				mapD1 = mapD1 * -1; // 매 4초마다 toggle
+					if(mapD1 < 0){ 
+						$('#departA1').animate({left: '-72px' });
+						$('#departA2').animate({left: '0px' });
+						$('.img_departA1').animate({left: '0px' });
+						$('.img_departA2').animate({left: '690px' });
+					}
+					else if(mapD1 > 0){
+						$('#departA1').animate({left: '0px' });
+						$('#departA2').animate({left: '-72px' });
+						$('.img_departA1').animate({left: '-690px' });
+						$('.img_departA2').animate({left: '0px' });
+					}
+					else if(mapD1 == 0){
+
+					}
+			}
+
+			$("#mapstoreD1").mouseover(function(event){
+				if(mapD1 != 0){
+					imgslideD1(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD1").mouseout(function(event){
+					mapD1 = 1;
+					imgslideD1();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+//imageslideD2 //
+			var mapD2 = -1; // 
+			setInterval(imgslideD2, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD2(j){
+				if(j != null){ mapD2 = j;}
+				mapD2 = mapD2 * -1; // 매 4초마다 toggle
+					if(mapD2 < 0){ 
+						$('#departA3').animate({left: '-72px' });
+						$('#departA4').animate({left: '0px' });
+						$('.img_departA3').animate({left: '0px' });
+						$('.img_departA4').animate({left: '690px' });
+					}
+					else if(mapD2 > 0){
+						$('#departA3').animate({left: '0px' });
+						$('#departA4').animate({left: '-72px' });
+						$('.img_departA3').animate({left: '-690px' });
+						$('.img_departA4').animate({left: '0px' });
+					}
+					else if(mapD2 == 0){
+
+					}
+			}
+
+			$("#mapstoreD2").mouseover(function(event){
+				if(mapD2 != 0){
+					imgslideD2(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD2").mouseout(function(event){
+					mapD2 = -1;
+					imgslideD2();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+
+//imageslideD3 //
+			var mapD3 = 1; // 
+			setInterval(imgslideD3, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD3(j){
+				if(j != null){ mapD3 = j;}
+				mapD3 = mapD3 * -1; // 매 4초마다 toggle
+					if(mapD3 < 0){ 
+						$('#departA5').animate({left: '-72px' });
+						$('#departA6').animate({left: '0px' });
+						$('.img_departA5').animate({left: '0px' });
+						$('.img_departA6').animate({left: '690px' });
+					}
+					else if(mapD3 > 0){
+						$('#departA5').animate({left: '0px' });
+						$('#departA6').animate({left: '-72px' });
+						$('.img_departA5').animate({left: '-690px' });
+						$('.img_departA6').animate({left: '0px' });
+					}
+					else if(mapD3 == 0){
+
+					}
+			}
+
+			$("#mapstoreD3").mouseover(function(event){
+				if(mapD3 != 0){
+					imgslideD3(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD3").mouseout(function(event){
+					mapD3 = 1;
+					imgslideD3();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+//imageslideD4 //
+			var mapD4 = -1; // 
+			setInterval(imgslideD4, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD4(j){
+				if(j != null){ mapD4 = j;}
+				mapD4 = mapD4 * -1; // 매 4초마다 toggle
+					if(mapD4 < 0){ 
+						$('#departA7').animate({left: '-72px' });
+						$('#departA8').animate({left: '0px' });
+						$('.img_departA7').animate({left: '0px' });
+						$('.img_departA8').animate({left: '690px' });
+					}
+					else if(mapD4 > 0){
+						$('#departA7').animate({left: '0px' });
+						$('#departA8').animate({left: '-72px' });
+						$('.img_departA7').animate({left: '-690px' });
+						$('.img_departA8').animate({left: '0px' });
+					}
+					else if(mapD4 == 0){
+
+					}
+			}
+
+			$("#mapstoreD4").mouseover(function(event){
+				if(mapD4 != 0){
+					imgslideD4(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD4").mouseout(function(event){
+					mapD4 = -1;
+					imgslideD4();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+//imageslideD5 //
+			var mapD5 = 1; // 
+			setInterval(imgslideD5, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD5(j){
+				if(j != null){ mapD5 = j;}
+				mapD5 = mapD5 * -1; // 매 4초마다 toggle
+					if(mapD5 < 0){ 
+						$('#departA9').animate({left: '-72px' });
+						$('#departA10').animate({left: '0px' });
+						$('.img_departA9').animate({left: '0px' });
+						$('.img_departA10').animate({left: '690px' });
+					}
+					else if(mapD5 > 0){
+						$('#departA9').animate({left: '0px' });
+						$('#departA10').animate({left: '-72px' });
+						$('.img_departA9').animate({left: '-690px' });
+						$('.img_departA10').animate({left: '0px' });
+					}
+					else if(mapD5 == 0){
+
+					}
+			}
+
+			$("#mapstoreD5").mouseover(function(event){
+				if(mapD5 != 0){
+					imgslideD5(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD5").mouseout(function(event){
+					mapD5 = 1;
+					imgslideD5();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+//imageslideD6 //
+			var mapD6 = -1; // 
+			setInterval(imgslideD6, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD6(j){
+				if(j != null){ mapD6 = j;}
+				mapD6 = mapD6 * -1; // 매 4초마다 toggle
+					if(mapD6 < 0){ 
+						$('#departA11').animate({left: '-72px' });
+						$('#departA12').animate({left: '0px' });
+						$('.img_departA11').animate({left: '0px' });
+						$('.img_departA12').animate({left: '690px' });
+					}
+					else if(mapD6 > 0){
+						$('#departA11').animate({left: '0px' });
+						$('#departA12').animate({left: '-72px' });
+						$('.img_departA11').animate({left: '-690px' });
+						$('.img_departA12').animate({left: '0px' });
+					}
+					else if(mapD6 == 0){
+
+					}
+			}
+
+			$("#mapstoreD6").mouseover(function(event){
+				if(mapD6 != 0){
+					imgslideD6(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD6").mouseout(function(event){
+					mapD6 = -1;
+					imgslideD6();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+//imageslideD7 //
+			var mapD7 = 1; // 
+			setInterval(imgslideD7, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD7(j){
+				if(j != null){ mapD7 = j;}
+				mapD7 = mapD7 * -1; // 매 4초마다 toggle
+					if(mapD7 < 0){ 
+						$('#departA13').animate({left: '-72px' });
+						$('#departA14').animate({left: '0px' });
+						$('.img_departA13').animate({left: '0px' });
+						$('.img_departA14').animate({left: '690px' });
+					}
+					else if(mapD7 > 0){
+						$('#departA13').animate({left: '0px' });
+						$('#departA14').animate({left: '-72px' });
+						$('.img_departA13').animate({left: '-690px' });
+						$('.img_departA14').animate({left: '0px' });
+					}
+					else if(mapD7 == 0){
+
+					}
+			}
+
+			$("#mapstoreD7").mouseover(function(event){
+				if(mapD7 != 0){
+					imgslideD7(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD7").mouseout(function(event){
+					mapD7 = 1;
+					imgslideD7();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+//////////////////////
+
+
+
         $("#bttoggleA").on({
             mousedown: function () {
                 $('#bttoggleA').animate({left: '-72px' });
@@ -117,6 +551,128 @@
                 $('.img_toggleH').animate({left: '0px' });
             }
         });
+
+
+
+			$("#departA1").on({
+               mousedown: function () {
+				$('#departA1').animate({left: '-72px' });
+				$('#departA2').animate({left: '0px' });
+				$('.img_departA1').animate({left: '0px' });
+				$('.img_departA2').animate({left: '690px' });
+               }
+			});
+			$("#departA2").on({
+               mousedown: function () {
+				$('#departA1').animate({left: '0px' });
+				$('#departA2').animate({left: '-72px' });
+				$('.img_departA1').animate({left: '-690px' });
+				$('.img_departA2').animate({left: '0px' });
+               }
+			});
+
+			$("#departA3").on({
+               mousedown: function () {
+				$('#departA3').animate({left: '-72px' });
+				$('#departA4').animate({left: '0px' });
+				$('.img_departA3').animate({left: '0px' });
+				$('.img_departA4').animate({left: '690px' });
+               }
+			});
+			$("#departA4").on({
+               mousedown: function () {
+				$('#departA3').animate({left: '0px' });
+				$('#departA4').animate({left: '-72px' });
+				$('.img_departA3').animate({left: '-690px' });
+				$('.img_departA4').animate({left: '0px' });
+               }
+			});
+
+			$("#departA5").on({
+               mousedown: function () {
+				$('#departA5').animate({left: '-72px' });
+				$('#departA6').animate({left: '0px' });
+				$('.img_departA5').animate({left: '0px' });
+				$('.img_departA6').animate({left: '690px' });
+               }
+			});
+			$("departA6").on({
+               mousedown: function () {
+				$('#departA5').animate({left: '0px' });
+				$('#departA6').animate({left: '-72px' });
+				$('.img_departA5').animate({left: '-690px' });
+				$('.img_departA6').animate({left: '0px' });
+               }
+			});
+
+			$("#departA7").on({
+               mousedown: function () {
+				$('#departA7').animate({left: '-72px' });
+				$('#departA8').animate({left: '0px' });
+				$('.img_departA7').animate({left: '0px' });
+				$('.img_departA8').animate({left: '690px' });
+               }
+			});
+			$("departA8").on({
+               mousedown: function () {
+				$('#departA7').animate({left: '0px' });
+				$('#departA8').animate({left: '-72px' });
+				$('.img_departA7').animate({left: '-690px' });
+				$('.img_departA8').animate({left: '0px' });
+               }
+			});
+
+			$("#departA9").on({
+               mousedown: function () {
+				$('#departA9').animate({left: '-72px' });
+				$('#departA10').animate({left: '0px' });
+				$('.img_departA9').animate({left: '0px' });
+				$('.img_departA10').animate({left: '690px' });
+               }
+			});
+			$("departA10").on({
+               mousedown: function () {
+				$('#departA9').animate({left: '0px' });
+				$('#departA10').animate({left: '-72px' });
+				$('.img_departA9').animate({left: '-690px' });
+				$('.img_departA10').animate({left: '0px' });
+               }
+			});
+
+			$("#departA11").on({
+               mousedown: function () {
+				$('#departA11').animate({left: '-72px' });
+				$('#departA12').animate({left: '0px' });
+				$('.img_departA11').animate({left: '0px' });
+				$('.img_departA12').animate({left: '690px' });
+               }
+			});
+			$("departA12").on({
+               mousedown: function () {
+				$('#departA11').animate({left: '0px' });
+				$('#departA12').animate({left: '-72px' });
+				$('.img_departA11').animate({left: '-690px' });
+				$('.img_departA12').animate({left: '0px' });
+               }
+			});
+
+			$("#departA13").on({
+               mousedown: function () {
+				$('#departA13').animate({left: '-72px' });
+				$('#departA14').animate({left: '0px' });
+				$('.img_departA13').animate({left: '0px' });
+				$('.img_departA14').animate({left: '690px' });
+               }
+			});
+			$("departA14").on({
+               mousedown: function () {
+				$('#departA13').animate({left: '0px' });
+				$('#departA14').animate({left: '-72px' });
+				$('.img_departA13').animate({left: '-690px' });
+				$('.img_departA14').animate({left: '0px' });
+               }
+			});
+
 
 
         $(".bt_depart").click(function(event){
@@ -238,12 +794,12 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
+        <a href="#A"><div id="mapstoreA" class="box_shop_right">
             <div id="" class="img_toggleA">
-                <img src="/public_html/img/store01_store.jpg" border="0" alt="">
+                <img src="/public_html/img/store01_map.jpg" border="0" alt="">
             </div>
             <div id="" class="img_toggleB">
-                <img src="/public_html/img/store01_map.jpg" border="0" alt="">
+                <img src="/public_html/img/store01_store2018.jpg" border="0" alt="">
             </div>
         </div>
     </div>
@@ -293,12 +849,12 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
+        <a href="#A"><div id="mapstoreB" class="box_shop_right">
             <div id="" class="img_toggleC">
-                <img src="/public_html/img/store02_store.jpg" border="0" alt="">
+                <img src="/public_html/img/store02_map.jpg" border="0" alt="">
             </div>
             <div id="" class="img_toggleD">
-                <img src="/public_html/img/store02_map.jpg" border="0" alt="">
+                <img src="/public_html/img/store02_store.jpg" border="0" alt="">
             </div>
         </div>
     </div>
@@ -348,12 +904,12 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
+        <a href="#A"><div id="mapstoreC" class="box_shop_right">
             <div id="" class="img_toggleE">
-                <img src="/public_html/img/store03_store-20180501.jpg" border="0" alt="">
+                <img src="/public_html/img/store03_map-20180501.jpg" border="0" alt="">
             </div>
             <div id="" class="img_toggleF">
-                <img src="/public_html/img/store03_map-20180501.jpg" border="0" alt="">
+                <img src="/public_html/img/store03_store-20180501.jpg" border="0" alt="">
             </div>
         </div>
     </div>
@@ -402,13 +958,13 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
+        <a href="#A"><div id="mapstoreD" class="box_shop_right">
             <div id="" class="img_toggleG">
-                <img src="/public_html/img/store04_store.jpg" border="0" alt="">
-            </div>
-            <div id="" class="img_toggleH">
                 <img src="/public_html/img/store04_map-20180501.jpg" border="0" alt="">
             </div>
+            <div id="" class="img_toggleH">
+                <img src="/public_html/img/store04_store.jpg" border="0" alt="">
+            </div></a>
         </div>
     </div>
 
@@ -428,11 +984,19 @@
 
     <!-- 신세계백화점 대구점 -->
     <div id="" class="box_shop">
-        <div id="" class="box_shop_left02">
-            <div id="" class="box_shop_left_div04" style="background-color:#a93a2d;">
-                <span class="" style="letter-spacing: 2px;">department store</span>
+        <div id="" class="box_shop_leftB">
+            <div id="" class="box_shop_left_div01B">
+                <span class="" style="letter-spacing: 2px;">department store</span><br>
                 신세계백화점 대구점
-            </div>
+        </div>
+	<div id="" class="bt_mapstore">
+		<div id="departA1" class="toggleC">
+			<a href="#a">매장</a>
+		</div>
+		<div id="departA2" class="toggleD">
+			<a href="#b">약도</a>
+		</div>
+	</div>
 
             <div id="" class="box_shop_left_div05">
                 <b>영업시간</b><br>
@@ -460,20 +1024,31 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
-            <div id="" class="">
-                <img src="/public_html/img/store12_map.jpg" border="0" alt="">
-            </div>
-        </div>
+	<a href=""><div id="mapstoreD1" class="box_shop_rightB">
+				<div id="" class="img_departA1">
+					<img src="/public_html/img/store12_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA2">
+					<img src="/public_html/img/depart01_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
     </div>
 
     <!-- 신세계백화점 부산센텀시티점 -->
     <div id="" class="box_shop">
-        <div id="" class="box_shop_left02">
-            <div id="" class="box_shop_left_div04" style="background-color:#a93a2d;">
-                <span class="" style="letter-spacing: 2px;">department store</span>
+        <div id="" class="box_shop_leftB">
+            <div id="" class="box_shop_left_div01B">
+                <span class="" style="letter-spacing: 2px;">department store</span><br>
                 신세계백화점 부산센텀시티점
             </div>
+	    <div id="" class="bt_mapstore">
+		<div id="departA3" class="toggleC">
+			<a href="#a">매장</a>
+		</div>
+		<div id="departA4" class="toggleD">
+			<a href="#b">약도</a>
+		</div>
+	</div>
 
             <div id="" class="box_shop_left_div05">
                 <b>영업시간</b><br>
@@ -501,11 +1076,14 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
-            <div id="" class="">
-                <img src="/public_html/img/store13_map.jpg" border="0" alt="">
-            </div>
-        </div>
+	<a href=""><div id="mapstoreD2" class="box_shop_rightB">
+				<div id="" class="img_departA3">
+					<img src="/public_html/img/store13_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA4">
+					<img src="/public_html/img/depart02_store.jpg" border="0" alt="">
+				</div></a>
+			</div>
     </div>
 
 
@@ -514,11 +1092,19 @@
 
     <!-- 롯데백화점 명동점 -->
     <div id="" class="box_shop">
-        <div id="" class="box_shop_left02">
-            <div id="" class="box_shop_left_div04">
-                <span class="" style="letter-spacing: 2px;">department store</span>
+        <div id="" class="box_shop_leftB">
+            <div id="" class="box_shop_left_div01C">
+                <span style="letter-spacing: 2px;">department store</span><br>
                 롯데백화점 명동점
             </div>
+	    <div id="" class="bt_mapstore">
+					<div id="departA5" class="toggleC">
+						<a href="#a">매장</a>
+					</div>
+					<div id="departA6" class="toggleD">
+						<a href="#b">약도</a>
+					</div>
+				</div>
 
             <div id="" class="box_shop_left_div05">
                 <b>영업시간</b><br>
@@ -545,21 +1131,32 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
-            <div id="" class="">
-                <img src="/public_html/img/store05_map.jpg" border="0" alt="">
-            </div>
-        </div>
+        <a href=""><div id="mapstoreD3" class="box_shop_rightB">
+				<div id="" class="img_departA5">
+					<img src="/public_html/img/store05_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA6">
+					<img src="/public_html/img/depart03_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
     </div>
 
 
     <!-- 롯데백화점 잠실점 -->
     <div id="" class="box_shop">
-        <div id="" class="box_shop_left02">
-            <div id="" class="box_shop_left_div04">
-                <span class="" style="letter-spacing: 2px;">department store</span>
-                롯데백화점 잠실점
-            </div>
+       <div id="" class="box_shop_leftB">
+				<div id="" class="box_shop_left_div01C">
+					<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>롯데백화점 잠실점
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA7" class="toggleC">
+						<a href="#a">매장</a>
+					</div>
+					<div id="departA8" class="toggleD">
+						<a href="#b">약도</a>
+					</div>
+				</div>
 
             <div id="" class="box_shop_left_div05">
                 <b>영업시간</b><br>
@@ -574,33 +1171,44 @@
                     각 백화점 휴무 일정에 따름<br>
                 </div>
             </div>
-            <div id="" class="box_shop_left_div06">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    02-2143-1896<br>
-                    서울시 송파구 올림픽로 240,10F<br>
-                </div>
-            </div>
+           <div id="" class="box_shop_left_div06">
+					<b>매장정보</b><br>
+					<div class="box_shop_left_div06_in01">
+						T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
+						도로명<br>
+					</div>
+					<div class="box_shop_left_div06_in02">
+						02-2143-1896<br>
+						서울시 송파구 올림픽로 240,10F<br>
+					</div>
+				</div>
         </div>
-        <div id="" class="box_shop_right">
-            <div id="" class="">
-                <img src="/public_html/img/store11_map.jpg" border="0" alt="">
-            </div>
-        </div>
+       <a href=""><div id="mapstoreD4" class="box_shop_rightB">
+				<div id="" class="img_departA7">
+					<img src="/public_html/img/store11_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA8">
+					<img src="/public_html/img/depart04_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
     </div>
 
 
     <!-- 롯데백화점 강남점 -->
     <div id="" class="box_shop">
-        <div id="" class="box_shop_left02">
-            <div id="" class="box_shop_left_div04">
-                <span class="" style="letter-spacing: 2px;">department store</span>
-                롯데백화점 강남점
-            </div>
+        <div id="" class="box_shop_leftB">
+				<div id="" class="box_shop_left_div01C">
+					<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>롯데백화점 강남점
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA9" class="toggleC">
+						<a href="#a">매장</a>
+					</div>
+					<div id="departA10" class="toggleD">
+						<a href="#b">약도</a>
+					</div>
+				</div>
 
             <div id="" class="box_shop_left_div05">
                 <b>영업시간</b><br>
@@ -627,18 +1235,21 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
-            <div id="" class="">
-                <img src="/public_html/img/store07_map.jpg" border="0" alt="">
-            </div>
-        </div>
+        <a href=""><div id="mapstoreD5" class="box_shop_rightB">
+				<div id="" class="img_departA9">
+					<img src="/public_html/img/store07_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA10">
+					<img src="/public_html/img/depart05_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
     </div>
 
-    <!-- 롯데백화점 영등포점 -->
+    <!-- 롯데백화점 영등포점
     <div id="" class="box_shop">
         <div id="" class="box_shop_left02">
             <div id="" class="box_shop_left_div04">
-                <span class="" style="letter-spacing: 2px;">department store</span>
+                <span class="" style="letter-spacing: 2px;">department store</span><br>
                 롯데백화점 영등포점
             </div>
 
@@ -672,15 +1283,23 @@
                 <img src="/public_html/img/store10_map.jpg" border="0" alt="">
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- 롯데백화점 대전점 -->
     <div id="" class="box_shop">
-        <div id="" class="box_shop_left02">
-            <div id="" class="box_shop_left_div04">
-                <span class="" style="letter-spacing: 2px;">department store</span>
-                롯데백화점 대전점
-            </div>
+       <div id="" class="box_shop_leftB">
+				<div id="" class="box_shop_left_div01C">
+					<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>롯데백화점 대전점
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA11" class="toggleC">
+						<a href="#a">매장</a>
+					</div>
+					<div id="departA12" class="toggleD">
+						<a href="#b">약도</a>
+					</div>
+				</div>
 
             <div id="" class="box_shop_left_div05">
                 <b>영업시간</b><br>
@@ -707,53 +1326,14 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
-            <div id="" class="">
-                <img src="/public_html/img/store08_map.jpg" border="0" alt="">
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- 롯데백화점 광복점 -->
-    <div id="" class="box_shop">
-        <div id="" class="box_shop_left02">
-            <div id="" class="box_shop_left_div04">
-                <span class="" style="letter-spacing: 2px;">department store</span>
-                롯데백화점 광복점
-            </div>
-
-            <div id="" class="box_shop_left_div05">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div05_in01">
-                    정&nbsp;&nbsp;&nbsp;상<br>
-                    연&nbsp;&nbsp;&nbsp;장<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:30<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    각 백화점 휴무 일정에 따름<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div06">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    051-678-3020<br>
-                    부산시 중구 중앙동 7가 20-1,9F<br>
-                </div>
-            </div>
-        </div>
-        <div id="" class="box_shop_right">
-            <div id="" class="">
-                <img src="/public_html/img/store09_map.jpg" border="0" alt="">
-            </div>
-        </div>
+       <a href=""><div id="mapstoreD6" class="box_shop_rightB">
+				<div id="" class="img_departA11">
+					<img src="/public_html/img/store08_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA12">
+					<img src="/public_html/img/depart06_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
     </div>
 
 
