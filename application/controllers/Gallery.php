@@ -406,6 +406,7 @@ class Gallery extends Common {
                 mkdir($upload_dir, 0777);
             }
             if(file_exists($old_path.$value->f_name)) {
+                var_dump($old_path.$value->f_name);
                 if (rename($old_path . $value->f_name, $path.$value->file_path.$value->f_name)) {
 
                 } else {
