@@ -391,59 +391,57 @@ class Gallery extends Common {
 //// 업데이트 안해도 됩 다음에디터에서 오류 풀url사용해야함
         //update board set b_content = REPLACE(b_content, 'http://www.hassed.kr/',  '/')
         //update board set b_content = REPLACE(b_content, 'http://www.hassed.co.kr/',  '/')
-//update boardfile set f_rename = f_name where f_rename is null
+//update boardfile setc f_rename = f_name where f_rename is null
 
 
         $result = $this->board_model->movie_img();
-        $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload/';
-        $old_path2 = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
+        $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
+        //$old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload/';
 
         $path = $_SERVER['DOCUMENT_ROOT'].'/public_html';
 
         foreach ($result as $key=>$value){
-            $upload_dir = $path.$value->file_path;
-            if(!is_dir($upload_dir)){
-                var_dump($upload_dir);
-                mkdir($upload_dir, 0777);
-            }
-            if(file_exists($old_path.$value->f_name)) {
-                var_dump($old_path.$value->f_name);
-                rename($old_path.$value->f_name, $path.$value->file_path.$value->f_name);
+            $file_name = iconv("utf-8","CP949",$value->f_name);
+            $check_img = false;
+            if($value->move == '0') {
+                $result = $this->board_model->check_img($value->f_index);
+                $upload_dir = $path . $value->file_path;
+                if (!is_dir($upload_dir)) {
+                    var_dump($upload_dir);
+                    mkdir($upload_dir, 0777);
+                }
+                if(rename($old_path .$file_name, $path.$value->file_path.$file_name)){
+                    $check_img = true;
+                }else{
+                    $check_img = false;
+                }
+                var_dump($old_path . $file_name);
+                var_dump($path.$value->file_path .$file_name);
+                $temp_cnt = substr_count($file_name, ".");
+                if($temp_cnt == 1) {
+                    $temp_fname = explode('.', $file_name);
+                    $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
+                }else if($temp_cnt == 2){
+                    $temp_fname = explode('.', $file_name);
+                    $thum_file = $temp_fname[0].$temp_fname[1]."_145x90." . $temp_fname[2];
 
-//                if (rename($old_path . $value->f_name, $path.$value->file_path.$value->f_name)) {
-//
-//                } else {
-//                    var_dump($old_path . $value->f_name);
-//                    var_dump($path.$value->file_path . $value->f_name);
-//                }
-                $temp_fname = explode('.', $value->f_name);
-                $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
-                rename($old_path.$thum_file, $path.$value->file_path.$thum_file);
-//                if (rename($old_path.$thum_file, $path.$value->file_path.$thum_file)) {
-//
-//                } else {
-//                    $file_result = false;
-//                }
-            }
-            if(file_exists($old_path2.$value->f_name)) {
-                var_dump($old_path.$value->f_name);
-                rename($old_path.$value->f_name, $path.$value->file_path.$value->f_name);
+                }else if($temp_cnt == 3){
+                    $temp_fname = explode('.', $file_name);
+                    $thum_file = $temp_fname[0].$temp_fname[1].$temp_fname[2]."_145x90." . $temp_fname[3];
 
-//                if (rename($old_path . $value->f_name, $path.$value->file_path.$value->f_name)) {
-//
-//                } else {
-//                    var_dump($old_path . $value->f_name);
-//                    var_dump($path.$value->file_path . $value->f_name);
-//                }
-                $temp_fname = explode('.', $value->f_name);
-                $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
-                rename($old_path.$thum_file, $path.$value->file_path.$thum_file);
-//                if (rename($old_path.$thum_file, $path.$value->file_path.$thum_file)) {
-//
-//                } else {
-//                    $file_result = false;
-//                }
+                }
+
+                if(rename($old_path.$thum_file, $path.$value->file_path.$thum_file)){
+                    $check_img = true;
+                }else{
+                    $check_img = false;
+                }
+                if($check_img) {
+
+                }
             }
+
+
 
         }
     }
@@ -451,32 +449,52 @@ class Gallery extends Common {
     public function set_img(){   //파일이동
 
         $result = $this->board_model->movie_img();
+        //$old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
         $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload/';
-        $old_path2 = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
 
         $path = $_SERVER['DOCUMENT_ROOT'].'/public_html';
 
         foreach ($result as $key=>$value){
-            $upload_dir = $path.$value->file_path;
+            $file_name = iconv("utf-8","CP949",$value->f_name);
+            $check_img = false;
+            if($value->move == '0') {
+                $result = $this->board_model->check_img($value->f_index);
+                $upload_dir = $path . $value->file_path;
+                if (!is_dir($upload_dir)) {
+                    var_dump($upload_dir);
+                    mkdir($upload_dir, 0777);
+                }
+                if(rename($old_path .$file_name, $path.$value->file_path.$file_name)){
+                    $check_img = true;
+                }else{
+                    $check_img = false;
+                }
+                var_dump($old_path . $file_name);
+                var_dump($path.$value->file_path .$file_name);
 
-            if(!is_dir($upload_dir)){
-                mkdir($upload_dir, 0777);
+                $temp_cnt = substr_count($file_name, ".");
+                if($temp_cnt == 1) {
+                    $temp_fname = explode('.', $file_name);
+                    $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
+                }else if($temp_cnt == 2){
+                    $temp_fname = explode('.', $file_name);
+                    $thum_file = $temp_fname[0].$temp_fname[1]."_145x90." . $temp_fname[2];
+
+                }else if($temp_cnt == 3){
+                    $temp_fname = explode('.', $file_name);
+                    $thum_file = $temp_fname[0].$temp_fname[1].$temp_fname[2]."_145x90." . $temp_fname[3];
+
+                }
+
+                if(rename($old_path.$thum_file, $path.$value->file_path.$thum_file)){
+                    $check_img = true;
+                }else{
+                    $check_img = false;
+                }
+                if($check_img) {
+
+                }
             }
-
-                var_dump($old_path.$value->f_name);
-                rename($old_path.$value->f_name, $path.$value->file_path.$value->f_name);
-                $temp_fname = explode('.', $value->f_name);
-                $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
-                rename($old_path.$thum_file, $path.$value->file_path.$thum_file);
-
-//
-//
-//                var_dump($old_path2.$value->f_name);
-//                rename($old_path2.$value->f_name, $path.$value->file_path.$value->f_name);
-//
-//                $temp_fname = explode('.', $value->f_name);
-//                $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
-//                rename($old_path2.$thum_file, $path.$value->file_path.$thum_file);
 
 
 

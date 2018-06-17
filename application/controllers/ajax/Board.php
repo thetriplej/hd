@@ -175,7 +175,11 @@ class Board extends Common {
             if(!empty($value->file_path)) {
                 $path = '/public_html'.$value->file_path;
                 $temp_fname = explode('.', $value->f_rename);
-                $value->f_rename = $path . $temp_fname[0] . "_145x90." . $temp_fname[1];
+                if(count($temp_fname) > 1) {
+                    $value->f_rename = $path . $temp_fname[0] . "_145x90." . $temp_fname[1];
+                }else{
+                    $value->f_rename = 'no_image';
+                }
             }else{
                 $value->f_rename = 'no_image';
             }

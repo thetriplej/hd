@@ -418,9 +418,16 @@ class Board_model extends CI_Model {
 
     public function movie_img(){
         //$query = "select f_Index,b_index,f_name ,f_rename,file_path,reg_date from boardfile ";
-        $query ="select bf.f_Index,bf.b_index,bf.f_name ,bf.f_rename,bf.file_path,bf.reg_date from board as b left join boardfile bf on b.b_index = bf.b_index where bf.f_index is not null";
+        $query ="select bf.f_index,bf.b_index,bf.f_name ,bf.f_rename,bf.file_path,bf.reg_date ,bf.move from board as b left join boardfile bf on b.b_index = bf.b_index where bf.f_index is not null";
 
         return $this->db->query($query)->result();
+    }
+
+    public function check_img($param){
+        $data = array(
+            'move'		=> 1,
+        );
+        $result = $this->db->update('boardfile', $data,array('f_index'=>$param));
     }
 
     function insert_query($table,$data) {
