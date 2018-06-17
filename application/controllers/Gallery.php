@@ -395,9 +395,9 @@ class Gallery extends Common {
 
 
         $result = $this->board_model->movie_img();
-        //$old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload/';
+        $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload/';
 
-        $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
+        //$old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
         $path = $_SERVER['DOCUMENT_ROOT'].'/public_html';
         foreach ($result as $key=>$value){
             $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html'.$value->file_path;
