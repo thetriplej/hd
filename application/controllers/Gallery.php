@@ -469,14 +469,14 @@ class Gallery extends Common {
                 $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
                 rename($old_path.$thum_file, $path.$value->file_path.$thum_file);
 
-
-
-                var_dump($old_path2.$value->f_name);
-                rename($old_path2.$value->f_name, $path.$value->file_path.$value->f_name);
-
-                $temp_fname = explode('.', $value->f_name);
-                $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
-                rename($old_path2.$thum_file, $path.$value->file_path.$thum_file);
+//
+//
+//                var_dump($old_path2.$value->f_name);
+//                rename($old_path2.$value->f_name, $path.$value->file_path.$value->f_name);
+//
+//                $temp_fname = explode('.', $value->f_name);
+//                $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
+//                rename($old_path2.$thum_file, $path.$value->file_path.$thum_file);
 
 
 
