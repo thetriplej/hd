@@ -396,8 +396,8 @@ class Gallery extends Common {
 
         $result = $this->board_model->movie_img();
         $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload/';
+        $old_path2 = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
 
-        //$old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
         $path = $_SERVER['DOCUMENT_ROOT'].'/public_html';
 
         foreach ($result as $key=>$value){
@@ -408,20 +408,41 @@ class Gallery extends Common {
             }
             if(file_exists($old_path.$value->f_name)) {
                 var_dump($old_path.$value->f_name);
-                if (rename($old_path . $value->f_name, $path.$value->file_path.$value->f_name)) {
+                rename($old_path.$value->f_name, $path.$value->file_path.$value->f_name);
 
-                } else {
-                    var_dump($old_path . $value->f_name);
-                    var_dump($path.$value->file_path . $value->f_name);
-                }
+//                if (rename($old_path . $value->f_name, $path.$value->file_path.$value->f_name)) {
+//
+//                } else {
+//                    var_dump($old_path . $value->f_name);
+//                    var_dump($path.$value->file_path . $value->f_name);
+//                }
                 $temp_fname = explode('.', $value->f_name);
                 $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
+                rename($old_path.$thum_file, $path.$value->file_path.$thum_file);
+//                if (rename($old_path.$thum_file, $path.$value->file_path.$thum_file)) {
+//
+//                } else {
+//                    $file_result = false;
+//                }
+            }
+            if(file_exists($old_path2.$value->f_name)) {
+                var_dump($old_path.$value->f_name);
+                rename($old_path.$value->f_name, $path.$value->file_path.$value->f_name);
 
-                if (rename($old_path.$thum_file, $path.$value->file_path.$thum_file)) {
-
-                } else {
-                    $file_result = false;
-                }
+//                if (rename($old_path . $value->f_name, $path.$value->file_path.$value->f_name)) {
+//
+//                } else {
+//                    var_dump($old_path . $value->f_name);
+//                    var_dump($path.$value->file_path . $value->f_name);
+//                }
+                $temp_fname = explode('.', $value->f_name);
+                $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
+                rename($old_path.$thum_file, $path.$value->file_path.$thum_file);
+//                if (rename($old_path.$thum_file, $path.$value->file_path.$thum_file)) {
+//
+//                } else {
+//                    $file_result = false;
+//                }
             }
 
         }
