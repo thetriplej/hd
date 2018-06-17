@@ -395,42 +395,51 @@ class Gallery extends Common {
 
 
         $result = $this->board_model->movie_img();
-        $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
-        //$old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload/';
 
         $path = $_SERVER['DOCUMENT_ROOT'].'/public_html';
 
         foreach ($result as $key=>$value){
             $file_name = iconv("utf-8","CP949",$value->f_name);
+            //$file_name = $value->f_name;
             $check_img = false;
+            if($value->b_board_Type == 0){
+                $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload/';
+            }else if($value->b_board_Type == 1){
+                $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
+            }
             if($value->move == '0') {
                 $result = $this->board_model->check_img($value->f_index);
-                $upload_dir = $path . $value->file_path;
+                $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html' . $value->file_path;
                 if (!is_dir($upload_dir)) {
                     var_dump($upload_dir);
                     mkdir($upload_dir, 0777);
                 }
                 if(rename($old_path .$file_name, $path.$value->file_path.$file_name)){
-                    $check_img = true;
+                    $result = $this->board_model->check_img($value->f_index);
                 }else{
                     $check_img = false;
                 }
                 var_dump($old_path . $file_name);
                 var_dump($path.$value->file_path .$file_name);
                 $temp_cnt = substr_count($file_name, ".");
+
                 if($temp_cnt == 1) {
                     $temp_fname = explode('.', $file_name);
                     $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
+                    $thum_file2 = $temp_fname[0] . "_90x55." . $temp_fname[1];
+
                 }else if($temp_cnt == 2){
                     $temp_fname = explode('.', $file_name);
                     $thum_file = $temp_fname[0].$temp_fname[1]."_145x90." . $temp_fname[2];
+                    $thum_file2 = $temp_fname[0].$temp_fname[1]."_90x55." . $temp_fname[2];
 
                 }else if($temp_cnt == 3){
                     $temp_fname = explode('.', $file_name);
                     $thum_file = $temp_fname[0].$temp_fname[1].$temp_fname[2]."_145x90." . $temp_fname[3];
+                    $thum_file2 = $temp_fname[0].$temp_fname[1].$temp_fname[2]."_90x55." . $temp_fname[3];
 
                 }
-
+                rename($old_path.$thum_file2, $path.$value->file_path.$thum_file);
                 if(rename($old_path.$thum_file, $path.$value->file_path.$thum_file)){
                     $check_img = true;
                 }else{
@@ -459,13 +468,13 @@ class Gallery extends Common {
             $check_img = false;
             if($value->move == '0') {
                 $result = $this->board_model->check_img($value->f_index);
-                $upload_dir = $path . $value->file_path;
+                $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html' . $value->file_path;
                 if (!is_dir($upload_dir)) {
                     var_dump($upload_dir);
                     mkdir($upload_dir, 0777);
                 }
                 if(rename($old_path .$file_name, $path.$value->file_path.$file_name)){
-                    $check_img = true;
+                    $result = $this->board_model->check_img($value->f_index);
                 }else{
                     $check_img = false;
                 }
