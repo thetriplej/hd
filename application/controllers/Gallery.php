@@ -448,6 +448,41 @@ class Gallery extends Common {
         }
     }
 
+    public function set_img(){   //파일이동
+
+        $result = $this->board_model->movie_img();
+        $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload/';
+        $old_path2 = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
+
+        $path = $_SERVER['DOCUMENT_ROOT'].'/public_html';
+
+        foreach ($result as $key=>$value){
+            $upload_dir = $path.$value->file_path;
+            var_dump($upload_dir);
+            if(!is_dir($upload_dir)){
+                mkdir($upload_dir, 0777);
+            }
+            if(file_exists($old_path.$value->f_name)) {
+                var_dump($old_path.$value->f_name);
+                rename($old_path.$value->f_name, $path.$value->file_path.$value->f_name);
+                $temp_fname = explode('.', $value->f_name);
+                $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
+                rename($old_path.$thum_file, $path.$value->file_path.$thum_file);
+
+            }
+            if(file_exists($old_path2.$value->f_name)) {
+                var_dump($old_path.$value->f_name);
+                rename($old_path.$value->f_name, $path.$value->file_path.$value->f_name);
+
+                $temp_fname = explode('.', $value->f_name);
+                $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
+                rename($old_path.$thum_file, $path.$value->file_path.$thum_file);
+
+            }
+
+        }
+    }
+
     public function hmagajine(){
         $page = $this->input->get('page');
         if(empty($page)) $page = 1;
