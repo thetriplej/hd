@@ -458,27 +458,27 @@ class Gallery extends Common {
 
         foreach ($result as $key=>$value){
             $upload_dir = $path.$value->file_path;
-            var_dump($upload_dir);
+
             if(!is_dir($upload_dir)){
                 mkdir($upload_dir, 0777);
             }
-            if(file_exists($old_path.$value->f_name)) {
+
                 var_dump($old_path.$value->f_name);
                 rename($old_path.$value->f_name, $path.$value->file_path.$value->f_name);
                 $temp_fname = explode('.', $value->f_name);
                 $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
                 rename($old_path.$thum_file, $path.$value->file_path.$thum_file);
 
-            }
-            if(file_exists($old_path2.$value->f_name)) {
-                var_dump($old_path.$value->f_name);
-                rename($old_path.$value->f_name, $path.$value->file_path.$value->f_name);
+
+
+                var_dump($old_path2.$value->f_name);
+                rename($old_path2.$value->f_name, $path.$value->file_path.$value->f_name);
 
                 $temp_fname = explode('.', $value->f_name);
                 $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
-                rename($old_path.$thum_file, $path.$value->file_path.$thum_file);
+                rename($old_path2.$thum_file, $path.$value->file_path.$thum_file);
 
-            }
+
 
         }
     }
