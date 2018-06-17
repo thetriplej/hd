@@ -399,8 +399,9 @@ class Gallery extends Common {
 
         //$old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/upload2/';
         $path = $_SERVER['DOCUMENT_ROOT'].'/public_html';
+        var_dump($result);
         foreach ($result as $key=>$value){
-            $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html'.$value->file_path;
+            $upload_dir = $path.$value->file_path;
             if(!is_dir($upload_dir)){
                 var_dump($upload_dir);
                 mkdir($upload_dir, 0777);
