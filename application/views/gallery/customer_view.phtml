@@ -66,7 +66,7 @@ if(!empty($movie_data)){
         }
     }
 ?>
-            <?php echo nl2br(htmlspecialchars_decode($view_data->b_content)) ?>
+            <?php echo (htmlspecialchars_decode($view_data->b_content)) ?>
 
 <?php
 if(!empty($image_data)){
@@ -157,7 +157,7 @@ if(!empty($movie_data)){
         }
     }
     ?>
-    <?php echo nl2br(htmlspecialchars_decode($reply_view_data->b_content)) ?>
+    <?php echo (htmlspecialchars_decode($reply_view_data->b_content)) ?>
 
     <?php
     if(!empty($reply_image_data)){

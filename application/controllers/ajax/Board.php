@@ -409,12 +409,12 @@ class Board extends Common {
 
             }
             $view['b_index']       = $view_data->b_index;
-            $view['b_writer']      = nl2br(htmlspecialchars_decode($view_data->b_writer));
-            $view['b_title']       = nl2br(htmlspecialchars_decode($view_data->b_title));
-            $view['b_email']       = nl2br(htmlspecialchars_decode($view_data->b_email));
+            $view['b_writer']      = (htmlspecialchars_decode($view_data->b_writer));
+            $view['b_title']       = (htmlspecialchars_decode($view_data->b_title));
+            $view['b_email']       = (htmlspecialchars_decode($view_data->b_email));
             $view['b_locked']      = $view_data->b_locked;
             $view['b_password']      = $view_data->b_password;
-            $view['b_content']     = nl2br(htmlspecialchars_decode($view_data->b_content));
+            $view['b_content']     = (htmlspecialchars_decode($view_data->b_content));
             //$view['b_content']     = $view_data->b_content;
             $view['b_board_type']  = $view_data->b_board_type;
             $view['file_cnt']  = $file_cnt;
