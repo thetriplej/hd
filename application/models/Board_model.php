@@ -315,7 +315,7 @@ class Board_model extends CI_Model {
                     $data = array(
                         'b_code' => $params['b_code'],
                         'b_index' => $id,
-                        'f_name' => $temp_image[1],
+                        'f_name' => $temp_image[0],
                         'f_type' => $temp_image[2],
                         'f_width' => $temp_image[3],
                         'f_size' => $temp_image[4],
