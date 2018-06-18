@@ -303,7 +303,7 @@ class Gallery extends Common {
             foreach ($attach_image as $key => $value) {
                 $temp_image = explode('|', $attach_image[$key]);
                 $re_filename = $temp_image[0];
-
+                chmod($old_path . $re_filename, 0755);
                 if (rename($old_path . $re_filename, $path . $re_filename)) {
                     $file_result = true;
                 } else {
@@ -311,13 +311,14 @@ class Gallery extends Common {
                 }
                 $temp_fname = explode('.', $re_filename);
                 $thum_file = $temp_fname[0] . "_145x90." . $temp_fname[1];
-
+                chmod($old_path . $thum_file, 0755);
                 if (rename($old_path . $thum_file, $path . $thum_file)) {
                     $file_result = true;
                 } else {
                     $file_result = false;
                 }
                 $origin_file = $temp_fname[0] . "_origin." . $temp_fname[1];
+                chmod($old_path . $origin_file, 0755);
                 if (rename($old_path . $origin_file, $path . $origin_file)) {
                     $file_result = true;
                 } else {
