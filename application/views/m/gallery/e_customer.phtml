@@ -158,7 +158,7 @@
 
     function get_list(page){
         var html_list ='';
-
+        var timestamp = + new Date();
         $(".gallery_out").empty();
         $.ajax({
 
@@ -187,7 +187,7 @@
 
                         html_list += '       <li class="thumb"><img src="/public_html/images/icon/icon_noimage.png" width="145" height="90" valign="center"></li>';
                     }else{
-                        html_list += '       <li class="thumb"><img src="' + value.f_rename + '" width="145" height="90" valign="center"></li>';
+                        html_list += '       <li class="thumb"><img src="' + value.f_rename + '?'+ timestamp +'" width="145" height="90" valign="center"></li>';
                     }
                     html_list += '      <li class="title ellipsis">' + value.b_title + '</li>';
                     html_list += '      <li class="info" style="margin-top:10px;">';
