@@ -440,7 +440,7 @@ class Gallery extends Common {
                     $thum_file2 = $temp_fname[0].$temp_fname[1].$temp_fname[2]."_90x55." . $temp_fname[3];
 
                 }
-                rename($old_path.$thum_file2, $path.$value->file_path.$thum_file);
+                rename($old_path.$thum_file2, $path.$value->file_path.$thum_file2);
                 if(rename($old_path.$thum_file, $path.$value->file_path.$thum_file)){
                     $check_img = true;
                 }else{
