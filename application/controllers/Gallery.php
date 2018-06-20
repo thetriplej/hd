@@ -431,13 +431,13 @@ class Gallery extends Common {
 
                 }else if($temp_cnt == 2){
                     $temp_fname = explode('.', $file_name);
-                    $thum_file = $temp_fname[0].$temp_fname[1]."_145x90." . $temp_fname[2];
-                    $thum_file2 = $temp_fname[0].$temp_fname[1]."_90x55." . $temp_fname[2];
+                    $thum_file = $temp_fname[0].".".$temp_fname[1]."_145x90." . $temp_fname[2];
+                    $thum_file2 = $temp_fname[0].".".$temp_fname[1]."_90x55." . $temp_fname[2];
 
                 }else if($temp_cnt == 3){
                     $temp_fname = explode('.', $file_name);
-                    $thum_file = $temp_fname[0].$temp_fname[1].$temp_fname[2]."_145x90." . $temp_fname[3];
-                    $thum_file2 = $temp_fname[0].$temp_fname[1].$temp_fname[2]."_90x55." . $temp_fname[3];
+                    $thum_file = $temp_fname[0].".".$temp_fname[1].".".$temp_fname[2]."_145x90." . $temp_fname[3];
+                    $thum_file2 = $temp_fname[0].".".$temp_fname[1].".".$temp_fname[2]."_90x55." . $temp_fname[3];
 
                 }
                 rename($old_path.$thum_file2, $path.$value->file_path.$thum_file2);

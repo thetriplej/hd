@@ -177,7 +177,14 @@ class Board extends Common {
                 //$value->f_rename = iconv("utf-8","CP949",$value->f_rename);
                 $temp_fname = explode('.', $value->f_rename);
                 if(count($temp_fname) > 1) {
-                    $value->f_rename = $path . $temp_fname[0] . "_145x90." . $temp_fname[1];
+                    $temp_cnt = substr_count($value->f_rename, ".");
+                    if($temp_cnt == 1) {
+                        $value->f_rename = $path .$temp_fname[0] . "_145x90." . $temp_fname[1];
+                    }else if($temp_cnt == 2){
+                        $value->f_rename = $path .$temp_fname[0].".".$temp_fname[1]."_145x90." . $temp_fname[2];
+                    }else if($temp_cnt == 3){
+                        $value->f_rename = $path .$temp_fname[0].".".$temp_fname[1].".".$temp_fname[2]."_145x90." . $temp_fname[3];
+                    }
                 }else{
                     $value->f_rename = 'no_image';
                 }
