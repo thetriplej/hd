@@ -486,6 +486,11 @@ class Admin extends Common {
         }else if($proc_type == "M"){    // 수정
 //            $b_writer = "HASSED";
 //            $b_password = "1234567890";
+            $b_parentindex = $view_data->b_parentindex;
+            $b_index = $view_data->b_index;
+            $b_depth = $view_data->b_depth;
+            $b_group = $view_data->b_group;
+            $b_sequence = $view_data->b_sequence;
             $old_image = array();
             $new_image = array();
             $image_data = $this->board_model->get_file($b_index,'image');
