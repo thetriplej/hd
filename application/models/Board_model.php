@@ -284,15 +284,15 @@ class Board_model extends CI_Model {
             'b_locked'		=> $params['b_locked'],
             'b_ip'		    => $_SERVER['REMOTE_ADDR'],
             'b_board_type'	=> $params['b_board_type'],
-            'b_regdate'		=> date('Y-m-d H:i:s',time()),
+            'b_updated_at'		=> date('Y-m-d H:i:s',time()),
 
 
         );
-
         if(!empty($b_index)){
             $result = $this->db->update('board', $data,array('b_index'=>$b_index));
             $id = $b_index;
         }else{
+            $data['b_regDate'] = date('Y-m-d H:i:s',time());
             $result = $this->db->insert('board', $data);
             $id = $this->db->insert_id();
         }
@@ -305,8 +305,15 @@ class Board_model extends CI_Model {
         }else{
 
             if(!empty($params["attach_image"])) {
+
+                $update_data = array(
+                    'list_img' => 'N',
+                );
+                $update_result = $this->db->update('boardfile', $update_data,array('b_index'=>$b_index));
+
                 foreach ($params["attach_image"] as $key => $value) {
                     $temp_image = explode('|', $params["attach_image"][$key]);
+
                     if ($key == intval($params['select_img'])) {
                         $list_img = 'Y';
                     } else {
@@ -373,7 +380,7 @@ class Board_model extends CI_Model {
                 'f_position'=> $params['f_position'],
                 'list_img'  => $params['list_img'],
                 'file_path' => $params['file_path'],
-                'reg_date'  => date('Y-m-d H:i:s',time())
+                'b_regdate'  => date('Y-m-d H:i:s',time())
             );
 
             $file_result = $this->db->insert('boardfile', $data);
