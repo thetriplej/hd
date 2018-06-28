@@ -134,7 +134,7 @@ $(function(){
 		    <dd>
 		    	확인을 누르시면 임시 데이터가 사진첨부 됩니다.<br />
 				<Form name="ajaxform" id="ajaxform"  method="post"  action="/ajax/board/gallery_file_upload"  enctype="multipart/form-data">
-					<Input Type="file" name="attachFile[]" id="attachFile" size='80' multiple>
+					<Input Type="file" name="attachFile[]" id="attachFile" size='30' multiple>
 					<input type="hidden" id="attachType" name="attachType[]" value="image" />
 				</Form>
 			</dd>
