@@ -29,9 +29,18 @@ class Board_model extends CI_Model {
         );
         $result = $this->update_query('popular_log', $updata,$where);
 
-
         return $result;
     }
+    function set_show_date($params){
+        $this->load->helper('date');
+        $b_index = $params['b_index'];
+        $show_date = $params['show_date'];
+
+        $query = "update board set show_date = DATE_FORMAT('$show_date','%Y-%m-%d %H:%i:%s') where b_index = ? ";
+        return $this->db->query($query, array($b_index));
+
+    }
+
 
     function set_popular($params){
         $idx = $params['idx'];
@@ -76,7 +85,7 @@ class Board_model extends CI_Model {
     }
 
     function get_admin_porpula_list(){
-        $query = "select pl.idx,bd.b_depth,bd.b_code,bd.b_index,bd.b_special,bd.b_title,bd.b_writer,bd.b_regdate,bd.b_hit from popular_log as pl left join board as bd on pl.board_idx = bd.b_index where pl.show_flag =1";
+        $query = "select pl.idx,bd.b_depth,bd.b_code,bd.b_index,bd.b_special,bd.b_title,bd.b_writer,bd.b_regdate,bd.show_date,bd.b_hit from popular_log as pl left join board as bd on pl.board_idx = bd.b_index where pl.show_flag =1";
         return $this->db->query($query)->result();
     }
 
@@ -118,14 +127,14 @@ class Board_model extends CI_Model {
             if($board_type == "FREEBOARD0") {
                 $orderby = "board.b_special desc, board.b_group desc, board.b_sequence asc";
             }else{
-                $orderby = "board.b_index desc";
+                $orderby = "board.show_date desc";
             }
         }else{
             $orderby = "b_group desc, b_sequence asc ";
         }
-
+//             DATE_FORMAT(board.b_regdate,'%Y-%m-%d') b_regdate,DATE_FORMAT(board.show_date,'%Y-%m-%d') show_date,board.b_writer,board.b_board_type,tmp_boardfile.f_name,tmp_boardfile.f_rename,tmp_boardfile.file_path,
         $query = "SELECT board.b_title,board.b_board_type,board.b_code,board.b_index,board.b_hit,board.b_locked,board.b_special,board.b_depth,
-                    DATE_FORMAT(board.b_regdate,'%Y-%m-%d') b_regdate,board.b_writer,board.b_board_type,tmp_boardfile.f_name,tmp_boardfile.f_rename,tmp_boardfile.file_path,
+                    DATE_FORMAT(board.b_regdate,'%Y-%m-%d') b_regdate,DATE_FORMAT(board.show_date,'%Y-%m-%d') show_date,DATE_FORMAT(board.show_date,'%H:%i:%s')show_time,board.b_writer,board.b_board_type,tmp_boardfile.f_name,tmp_boardfile.f_rename,tmp_boardfile.file_path,
                     tmp_boardfile.list_img,tmp_boardfile.f_index,(select count(*) from board tmp where tmp.b_parentindex = board.b_index) as reply
                     FROM board as board 
                     left join  (select f_name,f_rename,list_img,f_index,b_index,file_path from boardfile where boardfile.list_img='Y') as tmp_boardfile on board.b_index = tmp_boardfile.b_index
@@ -203,7 +212,7 @@ class Board_model extends CI_Model {
         }
 
         $query = "select b_title,b_board_type,b_code,b_index,b_hit,b_content,b_email,b_special,b_locked,b_password,
-                    DATE_FORMAT(b_regdate,'%Y-%m-%d') b_regdate,b_writer,b_board_type,(select count(*) from board tmp where tmp.b_parentindex = b_index) as reply
+                    DATE_FORMAT(b_regdate,'%Y-%m-%d') b_regdate,DATE_FORMAT(show_date,'%Y-%m-%d') show_date,b_writer,b_board_type,(select count(*) from board tmp where tmp.b_parentindex = b_index) as reply
                   from board where ".$where;
 
         $result =  $this->db->query($query,array($id))->row();
@@ -214,7 +223,7 @@ class Board_model extends CI_Model {
 
         $id = $params['id'];
 
-        $query = "select b_title,b_board_type,b_code,b_index,b_hit,b_content,b_email,b_special,DATE_FORMAT(b_regdate,'%Y-%m-%d') b_regdate,b_writer,b_board_type,
+        $query = "select b_title,b_board_type,b_code,b_index,b_hit,b_content,b_email,b_special,DATE_FORMAT(b_regdate,'%Y-%m-%d') b_regdate,DATE_FORMAT(show_date,'%Y-%m-%d') show_date,b_writer,b_board_type,
                           b_parentindex,b_depth,b_group,b_sequence, case when popular_log.show_flag is null then 0 else popular_log.show_flag end as show_flag ,b_locked,b_password,
                           (select count(*) from board tmp where tmp.b_parentindex = board.b_index) as reply
                   from board left join popular_log  on board.b_index = popular_log.board_idx where board.b_index = ?";

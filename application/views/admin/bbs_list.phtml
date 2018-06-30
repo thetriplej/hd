@@ -3,6 +3,9 @@
                         </tr>
                     </tbody>
                 </table>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
                 <table width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tbody>
                     <tr>
@@ -103,7 +106,7 @@
                                                         <td><input type="checkbox" name="chk" value="<?=$value->idx?>"></td>
                                                         <td align="left"><span style='padding-left:<%= Depth %>px;'><a href=javascript:page_view('<?=$value->b_index?>')><?=$value->b_title?></a></td>
                                                         <td><?=$value->b_writer?></td>
-                                                        <td><?=$value->b_regdate?></td>
+                                                        <td><?=$value->show_date?></td>
                                                         <td><?=$value->b_hit?></td>
                                                     </tr>
                                                 <?php }
@@ -127,6 +130,7 @@
         </tr>
     </tbody>
 </table>
+
 <script type="text/javascript">
     if($("#page").val() == "") {
         get_list(1);
@@ -168,9 +172,10 @@
                 html_list += '<tr bgcolor="#dddddd" height="25" align=center>';
                 html_list += '  <td class="table" width=8%>번호</td>';
                 html_list += '  <td class="table" width=8%>강조</td>';
-                html_list += '  <td class="table" width=50%>제목</td>';
+                html_list += '  <td class="table" width=40%>제목</td>';
                 html_list += '  <td class="table" width=10%>글쓴이</td>';
                 html_list += '  <td class="table" width=12%>등록일</td>';
+                html_list += '  <td class="table" width=12%>show_date</td>';
                 html_list += '  <td class="table" width=8%>조회</td>';
                 html_list += '</tr>';
                 $.each( data.list, function( key, value ) {
@@ -188,6 +193,11 @@
                     html_list += '  <td align="left"><span style="padding-left:' + depth + 'px;"><a href=javascript:page_view(' + value.b_index + ')>' + depth_char + value.b_title + '</a></td>';
                     html_list += '  <td>' + value.b_writer + '</td>';
                     html_list += '  <td>' + value.b_regdate + '</td>';
+                    if (Number(depth) > 0) {
+                        html_list += '  <td> - </td>';
+                    }else{
+                        html_list += '  <td><input type="text" class="show_date" value="' + value.show_date + ' " id="date' + value.b_index + '" readonly size="12"><input type="text" class="show_time" value="' + value.show_time + ' " id="time' + value.b_index + '" readonly size="8"><input type="button" value="수정" onclick="set_showDate(' + value.b_index + ');" ></td>';
+                    }
                     html_list += '  <td>' + value.b_hit + '</td>';
                     html_list += '</tr>';
                     list_cnt++;
@@ -248,5 +258,55 @@
 
     });
 
+    $(function() {
+        $.datepicker.setDefaults({
+            dateFormat: 'yy-mm-dd',
+            prevText: '이전 달',
+            nextText: '다음 달',
+            monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+            monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+            dayNames: ['일','월','화','수','목','금','토'],
+            dayNamesShort: ['일','월','화','수','목','금','토'],
+            dayNamesMin: ['일','월','화','수','목','금','토'],
+            showMonthAfterYear: true,
+            changeMonth: true,
+            changeYear: true,
+            maxDate : $(".show_date").val(),
+            defaultDate : $(".show_date").val(),
+            yearSuffix: '년'
+        });
+        $(function() {
+            $(".show_date").datepicker();
+        });
+    });
+
+    $(document).on('focus',".show_date", function(){
+        $(this).datepicker();
+    });
+
+    function set_showDate(no){
+        var update_date = $("#date"+no).val();
+        var update_time = $("#time"+no).val();
+        var show_date = update_date +" " + update_time;
+
+        $.ajax({
+            type:"POST",
+            url:"/ajax/admin/show_date",
+            data: {
+                csrf_token: $('input[name=csrf_token]').val(),
+                show_date: show_date,
+                b_index: no,
+            },
+            success:function(data){
+                if(data = "success"){
+                    alert("수정되었습니다.")
+                    location.reload();
+                }else if(data = "fail"){
+                    alert("실패하였습니다.");
+                }
+
+            }
+        });
+    }
 
 </script>
