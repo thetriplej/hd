@@ -126,6 +126,22 @@ class Admin extends Common {
         echo json_encode($send_result);
     }
 
+    public function show_date(){
+        $post = $this->input->post(null, true);
+        $send_date = array(
+            'b_index'   =>  $post['b_index'],
+            'show_date'   =>  $post['show_date'],
+        );
+
+        $result =  $this->board_model->set_show_date($send_date);
+        if($result){
+            $send_result = 'success';
+        }else{
+            $send_result = 'fail';
+        }
+        echo json_encode($send_result);
+    }
+
     public function log_out(){
         $this->session->sess_destroy();
         $send_result = 'success';

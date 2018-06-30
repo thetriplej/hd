@@ -135,14 +135,18 @@ class Board extends Common {
     public function get_gallery_list(){
 
         $post = $this->input->post(null, true);
-
+        if($post['mode'] == "admin"){
+            $list_rows = 20;
+        }else{
+            $list_rows = 12;
+        }
         $p_data = array(
             'table_name' 	=> 'board',
             'search_type'	=> $post['search_type'],
             'search_value'  => $post['search_value'],
             'page'			=> $post['page'],
             'board_type'    => 'CEPILOGUE0',
-            'list_rows'		=> 12,
+            'list_rows'		=> $list_rows,
             'page_no'		=> 10,
             'mode'          => $post['mode'],
 

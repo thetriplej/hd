@@ -34,7 +34,7 @@
                             <h1 class="tit"><?php echo $view_data->b_title;?></h1>
                             <ul class="info">
                                 <!--                                                                <li class="name"><span>--><?php //echo $view_data->b_writer;?><!--</span></li>-->
-                                <li class="date">등록일 : <span><?php echo $view_data->b_regdate;?></span></li>
+                                <li class="date">등록일 : <span><?php echo $view_data->show_date;?></span></li>
                                 <li class="count">조회 : <span><?php echo $view_data->b_hit;?></span></li>
                             </ul>
                         </div>
@@ -125,7 +125,7 @@
                             <div class="bbs_view" style="margin-top:0px;">
                                 <h1 class="tit_re"><img src="/public_html/images/icon/icon_reply.png" title="reply" style="vertical-align:middle;"><?php echo $reply_view_data->b_title;?></h1>
                                 <ul class="info">
-                                    <li  style="float:right;" class="date">등록일 : <span><?php echo $reply_view_data->b_regdate;?></span></li>
+                                    <li  style="float:right;" class="date">등록일 : <span><?php echo $reply_view_data->show_date;?></span></li>
                                     <!--<li class="count">조회 : <span><%=repRs("B_Hit")%></span></li-->
                                 </ul>
                             </div>

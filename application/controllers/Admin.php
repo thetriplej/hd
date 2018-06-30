@@ -489,7 +489,7 @@ class Admin extends Common {
             $b_parentindex = $view_data->b_parentindex;
             $b_index = $view_data->b_index;
             $b_depth = $view_data->b_depth;
-            $b_group = $view_data->b_group;
+            $group_no = $view_data->b_group;
             $b_sequence = $view_data->b_sequence;
             $old_image = array();
             $new_image = array();
@@ -527,11 +527,11 @@ class Admin extends Common {
             $b_parentindex = $view_data->b_index;
             $b_index = null;
             $b_depth = ($view_data->b_depth) + 1;
-            $b_group = $view_data->b_group;
+            $group_no = $view_data->b_group;
             $b_sequence = $view_data->b_sequence;
             $send_data = array(
                 'b_sequence'  =>   $b_sequence,
-                'b_group'     =>   $b_group,
+                'b_group'     =>   $group_no,
             );
             $b_sequence = $b_sequence +1;
             $result = $this->board_model->set_board_reply($send_data);

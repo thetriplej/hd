@@ -103,7 +103,7 @@
                                                         <td><input type="checkbox" name="chk" value="<?=$value->idx?>"></td>
                                                         <td align="left"><span style='padding-left:<%= Depth %>px;'><a href=javascript:page_view('<?=$value->b_index?>')><?=$value->b_title?></a></td>
                                                         <td><?=$value->b_writer?></td>
-                                                        <td><?=$value->b_regdate?></td>
+                                                        <td><?=$value->show_date?></td>
                                                         <td><?=$value->b_hit?></td>
                                                     </tr>
                                                 <?php }
@@ -187,7 +187,7 @@
                     html_list += '      <td>'+ notice_class +'</td>';
                     html_list += '  <td align="left"><span style="padding-left:' + depth + 'px;"><a href=javascript:page_view(' + value.b_index + ')>' + depth_char + value.b_title + '</a></td>';
                     html_list += '  <td>' + value.b_writer + '</td>';
-                    html_list += '  <td>' + value.b_regdate + '</td>';
+                    html_list += '  <td>' + value.show_date + '</td>';
                     html_list += '  <td>' + value.b_hit + '</td>';
                     html_list += '</tr>';
                     list_cnt++;
