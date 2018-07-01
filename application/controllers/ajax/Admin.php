@@ -128,9 +128,11 @@ class Admin extends Common {
 
     public function show_date(){
         $post = $this->input->post(null, true);
+        $show_date = $post['show_date']." ".trim($post['time_h']).':'.trim($post['time_m']).':'.trim($post['time_s']);
+
         $send_date = array(
             'b_index'   =>  $post['b_index'],
-            'show_date'   =>  $post['show_date'],
+            'show_date' =>  $show_date,
         );
 
         $result =  $this->board_model->set_show_date($send_date);
@@ -139,7 +141,7 @@ class Admin extends Common {
         }else{
             $send_result = 'fail';
         }
-        echo json_encode($send_result);
+        echo $send_result;
     }
 
     public function log_out(){

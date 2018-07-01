@@ -171,11 +171,11 @@
                 var html_list = ""
                 html_list += '<tr bgcolor="#dddddd" height="25" align=center>';
                 html_list += '  <td class="table" width=8%>번호</td>';
-                html_list += '  <td class="table" width=8%>강조</td>';
+                html_list += '  <td class="table" width=3%>강조</td>';
                 html_list += '  <td class="table" width=40%>제목</td>';
                 html_list += '  <td class="table" width=10%>글쓴이</td>';
                 html_list += '  <td class="table" width=12%>등록일</td>';
-                html_list += '  <td class="table" width=12%>show_date</td>';
+                html_list += '  <td class="table" width=20%>show_date</td>';
                 html_list += '  <td class="table" width=8%>조회</td>';
                 html_list += '</tr>';
                 $.each( data.list, function( key, value ) {
@@ -192,11 +192,20 @@
                     html_list += '      <td>'+ notice_class +'</td>';
                     html_list += '  <td align="left"><span style="padding-left:' + depth + 'px;"><a href=javascript:page_view(' + value.b_index + ')>' + depth_char + value.b_title + '</a></td>';
                     html_list += '  <td>' + value.b_writer + '</td>';
-                    html_list += '  <td>' + value.b_regdate + '</td>';
+                    html_list += '  <td>' + value.created_at + '</td>';
                     if (Number(depth) > 0) {
                         html_list += '  <td> - </td>';
                     }else{
-                        html_list += '  <td><input type="text" class="show_date" value="' + value.show_date + ' " id="date' + value.b_index + '" readonly size="12"><input type="text" class="show_time" value="' + value.show_time + ' " id="time' + value.b_index + '" readonly size="8"><input type="button" value="수정" onclick="set_showDate(' + value.b_index + ');" ></td>';
+                        var dt = value.show_time;
+                        var dtArray = dt.split(':')
+                        html_list += '  <td>';
+                        html_list += '      <input type="text" class="show_date" value="' + value.show_date + '" id="date' + value.b_index + '" readonly size="12">';
+                        html_list += '      <input type="text" class="show_time" value="' + $.trim(dtArray[0]) + '" id="time_h' + value.b_index + '" maxlength="2" size="2"> : ';
+                        html_list += '      <input type="text" class="show_time" value="' + $.trim(dtArray[1]) + '" id="time_m' + value.b_index + '" maxlength="2" size="2"> : ';
+                        html_list += '      <input type="text" class="show_time" value="' + $.trim(dtArray[2]) + '" id="time_s' + value.b_index + '" maxlength="2" size="2">';
+                        html_list += '      <input type="button" value="수정" onclick="set_showDate(' + value.b_index + ');" >';
+                        html_list += '  </td>';
+
                     }
                     html_list += '  <td>' + value.b_hit + '</td>';
                     html_list += '</tr>';
@@ -246,10 +255,10 @@
                 mode : 'admin'
             },
             success:function(data){
-                if(data = "success"){
+                if(data == "success"){
                     alert("삭제되었습니다.")
                     location.reload();
-                }else if(data = "fail"){
+                }else if(data == "fail"){
                     alert("실패하였습니다.");
                 }
 
@@ -285,9 +294,10 @@
     });
 
     function set_showDate(no){
-        var update_date = $("#date"+no).val();
-        var update_time = $("#time"+no).val();
-        var show_date = update_date +" " + update_time;
+        var show_date = $("#date"+no).val();
+        var time_h = $("#time_h"+no).val();
+        var time_m = $("#time_m"+no).val();
+        var time_s = $("#time_s"+no).val();
 
         $.ajax({
             type:"POST",
@@ -295,13 +305,16 @@
             data: {
                 csrf_token: $('input[name=csrf_token]').val(),
                 show_date: show_date,
+                time_h: time_h,
+                time_m: time_m,
+                time_s: time_s,
                 b_index: no,
             },
             success:function(data){
-                if(data = "success"){
+                if(data == "success"){
                     alert("수정되었습니다.")
                     location.reload();
-                }else if(data = "fail"){
+                }else if(data == "fail"){
                     alert("실패하였습니다.");
                 }
 

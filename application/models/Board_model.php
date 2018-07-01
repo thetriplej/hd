@@ -134,7 +134,7 @@ class Board_model extends CI_Model {
         }
 //             DATE_FORMAT(board.b_regdate,'%Y-%m-%d') b_regdate,DATE_FORMAT(board.show_date,'%Y-%m-%d') show_date,board.b_writer,board.b_board_type,tmp_boardfile.f_name,tmp_boardfile.f_rename,tmp_boardfile.file_path,
         $query = "SELECT board.b_title,board.b_board_type,board.b_code,board.b_index,board.b_hit,board.b_locked,board.b_special,board.b_depth,
-                    DATE_FORMAT(board.b_regdate,'%Y-%m-%d') b_regdate,DATE_FORMAT(board.show_date,'%Y-%m-%d') show_date,DATE_FORMAT(board.show_date,'%H:%i:%s')show_time,board.b_writer,board.b_board_type,tmp_boardfile.f_name,tmp_boardfile.f_rename,tmp_boardfile.file_path,
+                    DATE_FORMAT(board.b_regdate,'%Y-%m-%d') b_regdate,board.b_regdate as created_at,DATE_FORMAT(board.show_date,'%Y-%m-%d') show_date,DATE_FORMAT(board.show_date,'%H:%i:%s')show_time,board.b_writer,board.b_board_type,tmp_boardfile.f_name,tmp_boardfile.f_rename,tmp_boardfile.file_path,
                     tmp_boardfile.list_img,tmp_boardfile.f_index,(select count(*) from board tmp where tmp.b_parentindex = board.b_index) as reply
                     FROM board as board 
                     left join  (select f_name,f_rename,list_img,f_index,b_index,file_path from boardfile where boardfile.list_img='Y') as tmp_boardfile on board.b_index = tmp_boardfile.b_index
