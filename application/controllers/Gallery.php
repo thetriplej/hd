@@ -260,12 +260,18 @@ class Gallery extends Common {
                 }
                 $attach_image = $new_attach_image;
             }
+            $group_no = $this->board_model->get_last_group_no();
 
         }else if($proc_type == "M"){    // 수정
+            $view_send = array(
+                'id'  => $b_index,
+            );
+            $view_data = $this->board_model->get_admin_view($view_send);
             $old_image = array();
             $new_image = array();
             $image_data = $this->board_model->get_file($b_index,'image');
             $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html';
+            $group_no = $view_data->b_group;
             foreach($image_data as $key => $value){
                 $old_image[$key] = $value->f_rename;
             }
@@ -278,7 +284,7 @@ class Gallery extends Common {
                 }
 
                 foreach ($image_data as $key => $value) {
-                    var_dump($new_image);
+                    //var_dump($new_image);
 
                     if (!in_array($value->f_rename, $new_image)) {
                         var_dump($value->f_rename);
@@ -329,7 +335,7 @@ class Gallery extends Common {
         }
 
         $b_content = str_replace ("/temp","/board/".$today,$b_content);
-        $max_group_no = $this->board_model->get_last_group_no();
+
 
         $send_data = array(
             'b_code'        =>   $b_code,
@@ -348,7 +354,7 @@ class Gallery extends Common {
             'attach_image'  =>   $attach_image,
             'select_img'    =>   $select_img,
             'file_path'     =>   '/upload/board/'.$today.'/',
-            'b_group'       =>   $max_group_no->max_group
+            'b_group'       =>   $group_no
         );
 
         $result = $this->board_model->set_bbs_save($send_data);
