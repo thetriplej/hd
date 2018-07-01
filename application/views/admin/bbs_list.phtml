@@ -200,9 +200,9 @@
                         var dtArray = dt.split(':')
                         html_list += '  <td>';
                         html_list += '      <input type="text" class="show_date" value="' + value.show_date + '" id="date' + value.b_index + '" readonly size="12">';
-                        html_list += '      <input type="text" class="show_time" value="' + $.trim(dtArray[0]) + '" id="time_h' + value.b_index + '" maxlength="2" size="2"> : ';
-                        html_list += '      <input type="text" class="show_time" value="' + $.trim(dtArray[1]) + '" id="time_m' + value.b_index + '" maxlength="2" size="2"> : ';
-                        html_list += '      <input type="text" class="show_time" value="' + $.trim(dtArray[2]) + '" id="time_s' + value.b_index + '" maxlength="2" size="2">';
+                        html_list += '      <input type="text" class="show_time" value="' + $.trim(dtArray[0]) + '" id="time_h' + value.b_index + '" maxlength="2" size="2" numberonly="true"> : ';
+                        html_list += '      <input type="text" class="show_time" value="' + $.trim(dtArray[1]) + '" id="time_m' + value.b_index + '" maxlength="2" size="2" numberonly="true"> : ';
+                        html_list += '      <input type="text" class="show_time" value="' + $.trim(dtArray[2]) + '" id="time_s' + value.b_index + '" maxlength="2" size="2" numberonly="true">';
                         html_list += '      <input type="button" value="수정" onclick="set_showDate(' + value.b_index + ');" >';
                         html_list += '  </td>';
 
@@ -321,5 +321,13 @@
             }
         });
     }
+
+    $(document).on('keyup',".show_time", function(event){
+        if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
+            var inputVal = $(this).val();
+            $(this).val(inputVal.replace(/[^0-9]/gi,''));
+        }
+    });
+
 
 </script>
