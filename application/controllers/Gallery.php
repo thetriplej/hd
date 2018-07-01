@@ -260,7 +260,8 @@ class Gallery extends Common {
                 }
                 $attach_image = $new_attach_image;
             }
-            $group_no = $this->board_model->get_last_group_no();
+            $max_group_no = $this->board_model->get_last_group_no();
+            $group_no = $max_group_no->max_group;
 
         }else if($proc_type == "M"){    // 수정
             $view_send = array(
