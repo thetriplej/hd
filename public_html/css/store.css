@@ -586,6 +586,27 @@
 	float:left;
 }
 
+.img_departA15
+{
+	position:absolute;
+	width:690px;
+	height:460px;
+	left:0px;
+	margin-top:0px;
+	float:left;
+}
+
+.img_departA16
+{
+	position:absolute;
+	width:690px;
+	height:460px;
+	left:690px;
+	margin-top:0px;
+	float:left;
+}
+
+
 .box_space
 {
 	width:1080px;

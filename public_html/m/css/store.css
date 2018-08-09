@@ -142,6 +142,17 @@
 	padding-top:26px;
 }
 
+.box_shop_left_div01D
+{
+	width:354px;
+	height:106px;
+	background-color:#484659;
+	background:url('/public_html/img/store_select_back4.jpg') no-repeat;
+	color:#fff;
+	padding-left:20px;
+	padding-top:26px;
+}
+
 .box_shop_left_div02
 {
 	width:354px;
@@ -603,6 +614,26 @@
 	float:left;
 }
 
+
+.img_departA15
+{
+	position:absolute;
+	width:690px;
+	height:460px;
+	left:0px;
+	margin-top:0px;
+	float:left;
+}
+
+.img_departA16
+{
+	position:absolute;
+	width:690px;
+	height:460px;
+	left:690px;
+	margin-top:0px;
+	float:left;
+}
 
 .box_space
 {
