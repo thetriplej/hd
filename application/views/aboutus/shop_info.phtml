@@ -54,7 +54,7 @@
 
 			var mapA = 1; // 
 			
-			setInterval(imgslideA, 3200); // 매 4초마다 함수 실행
+			setInterval(imgslideA, 3200); // 매 3.2초마다 함수 실행
 
 			function imgslideA(j){
 				if(j != null){ mapA = j;}
@@ -479,6 +479,45 @@
 			});
 
 
+//imageslideD8 //
+			var mapD8 = -1; // 
+			setInterval(imgslideD8, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD8(j){
+				if(j != null){ mapD8 = j;}
+				mapD8 = mapD8 * -1; // 매 4초마다 toggle
+					if(mapD8 < 0){ 
+						$('#departA15').animate({left: '-72px' });
+						$('#departA16').animate({left: '0px' });
+						$('.img_departA15').animate({left: '0px' });
+						$('.img_departA16').animate({left: '690px' });
+					}
+					else if(mapD8 > 0){
+						$('#departA15').animate({left: '0px' });
+						$('#departA16').animate({left: '-72px' });
+						$('.img_departA15').animate({left: '-690px' });
+						$('.img_departA16').animate({left: '0px' });
+					}
+					else if(mapD8 == 0){
+
+					}
+			}
+
+			$("#mapstoreD8").mouseover(function(event){
+				if(mapD8 != 0){
+					imgslideD8(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD8").mouseout(function(event){
+					mapD8 = 1;
+					imgslideD8();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
 //////////////////////
 
         $("#bttoggleA").on({
@@ -668,6 +707,23 @@
 				$('.img_departA14').animate({left: '0px' });
                }
 			});
+			$("#departA15").on({
+               mousedown: function () {
+				$('#departA15').animate({left: '-72px' });
+				$('#departA16').animate({left: '0px' });
+				$('.img_departA15').animate({left: '0px' });
+				$('.img_departA16').animate({left: '690px' });
+               }
+			});
+			$("departA16").on({
+               mousedown: function () {
+				$('#departA15').animate({left: '0px' });
+				$('#departA16').animate({left: '-72px' });
+				$('.img_departA15').animate({left: '-690px' });
+				$('.img_departA16').animate({left: '0px' });
+               }
+			});
+
 
 
 
@@ -903,10 +959,10 @@
         </div>
         <a href="#A"><div id="mapstoreC" class="box_shop_right">
             <div id="" class="img_toggleE">
-                <img src="/public_html/img/store03_map-20180501.jpg" border="0" alt="">
+                <img src="/public_html/img/store03_map-20180809.jpg" border="0" alt="">
             </div>
             <div id="" class="img_toggleF">
-                <img src="/public_html/img/store03_store-20180501.jpg" border="0" alt="">
+                <img src="/public_html/img/store03_store-20180809.jpg" border="0" alt="">
             </div>
         </div>
     </div>
@@ -957,7 +1013,7 @@
         </div>
         <a href="#A"><div id="mapstoreD" class="box_shop_right">
             <div id="" class="img_toggleG">
-                <img src="/public_html/img/store04_map-20180501.jpg" border="0" alt="">
+                <img src="/public_html/img/store04_map-20180809.jpg" border="0" alt="">
             </div>
             <div id="" class="img_toggleH">
                 <img src="/public_html/img/store04_store.jpg" border="0" alt="">
@@ -1382,6 +1438,57 @@
 				</div>
 				<div id="" class="img_departA14">
 					<img src="/public_html/img/depart07_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
+    </div>
+
+      <!-- 현대백화점 충청점 -->
+    <div id="" class="box_shop">
+       <div id="" class="box_shop_leftB">
+		<div id="" class="box_shop_left_div01D">
+			<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>현대백화점 충청점
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA15" class="toggleC">
+						<a href="#a">매장</a>
+					</div>
+					<div id="departA16" class="toggleD">
+						<a href="#b">약도</a>
+					</div>
+				</div>
+
+            <div id="" class="box_shop_left_div05">
+                <b>영업시간</b><br>
+                <div class="box_shop_left_div05_in01">
+                    정&nbsp;&nbsp;&nbsp;상<br>
+                    연&nbsp;&nbsp;&nbsp;장<br>
+                    공휴일<br>
+                </div>
+                <div class="box_shop_left_div05_in02">
+                    AM 11:00 ~ PM 08:30<br>
+                    AM 11:00 ~ PM 09:00<br>
+                    각 백화점 휴무 일정에 따름<br>
+                </div>
+            </div>
+            <div id="" class="box_shop_left_div06">
+                <b>매장정보</b><br>
+                <div class="box_shop_left_div06_in01">
+                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
+                    도로명<br>
+                </div>
+                <div class="box_shop_left_div06_in02">
+                    043-909-4541(충청 현대백화점)<br>
+                    충북 청주시 흥덕구 직지대로308, 5F<br>
+                </div>
+            </div>
+        </div>
+        <a href=""><div id="mapstoreD8" class="box_shop_rightB">
+				<div id="" class="img_departA15">
+					<img src="/public_html/img/depart12_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA16">
+					<img src="/public_html/img/depart12_store.jpg" border="0" alt="">
 				</div>
 			</div></a>
     </div>
