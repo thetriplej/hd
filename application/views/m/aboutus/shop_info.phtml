@@ -480,7 +480,7 @@
 			});
 
 //imageslideD8 //
-			var mapD8 = 1; // 
+			var mapD8 = -1; // 
 			setInterval(imgslideD8, 3200); // 매 4초마다 함수 실행
 
 			function imgslideD8(j){
@@ -516,6 +516,84 @@
 					var offset_top = $(document).scrollTop();
 					$('html, body').animate({scrollTop: offset_top}, 500);
 			});
+
+
+//imageslideD9 //
+			var mapD9 = 1; // 
+			setInterval(imgslideD9, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD9(j){
+				if(j != null){ mapD9 = j;}
+				mapD9 = mapD9 * -1; // 매 4초마다 toggle
+					if(mapD9 < 0){ 
+						$('#departA17').animate({left: '-72px' });
+						$('#departA18').animate({left: '0px' });
+						$('.img_departA17').animate({left: '0px' });
+						$('.img_departA18').animate({left: '690px' });
+					}
+					else if(mapD9 > 0){
+						$('#departA17').animate({left: '0px' });
+						$('#departA18').animate({left: '-72px' });
+						$('.img_departA17').animate({left: '-690px' });
+						$('.img_departA18').animate({left: '0px' });
+					}
+					else if(mapD8 == 0){
+
+					}
+			}
+
+			$("#mapstoreD9").mouseover(function(event){
+				if(mapD9 != 0){
+					imgslideD9(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD9").mouseout(function(event){
+					mapD9 = 1;
+					imgslideD9();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+//imageslideD10 //
+			var mapD10 = -1; // 
+			setInterval(imgslideD10, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD10(j){
+				if(j != null){ mapD10 = j;}
+				mapD10 = mapD10 * -1; // 매 4초마다 toggle
+					if(mapD10 < 0){ 
+						$('#departA19').animate({left: '-72px' });
+						$('#departA20').animate({left: '0px' });
+						$('.img_departA19').animate({left: '0px' });
+						$('.img_departA20').animate({left: '690px' });
+					}
+					else if(mapD10 > 0){
+						$('#departA19').animate({left: '0px' });
+						$('#departA20').animate({left: '-72px' });
+						$('.img_departA19').animate({left: '-690px' });
+						$('.img_departA20').animate({left: '0px' });
+					}
+					else if(mapD8 == 0){
+
+					}
+			}
+
+			$("#mapstoreD10").mouseover(function(event){
+				if(mapD10 != 0){
+					imgslideD10(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD10").mouseout(function(event){
+					mapD10 = 1;
+					imgslideD10();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
 
 
 //////////////////////
@@ -711,6 +789,7 @@
                }
 			});
 
+////////  현대백화점 /////
 			$("#departA15").on({
                mousedown: function () {
 				$('#departA15').animate({left: '-72px' });
@@ -727,6 +806,40 @@
 				$('.img_departA16').animate({left: '0px' });
                }
 			});
+
+			$("#departA17").on({
+               mousedown: function () {
+				$('#departA17').animate({left: '-72px' });
+				$('#departA18').animate({left: '0px' });
+				$('.img_departA17').animate({left: '0px' });
+				$('.img_departA18').animate({left: '690px' });
+               }
+			});
+			$("departA18").on({
+               mousedown: function () {
+				$('#departA17').animate({left: '0px' });
+				$('#departA18').animate({left: '-72px' });
+				$('.img_departA17').animate({left: '-690px' });
+				$('.img_departA18').animate({left: '0px' });
+               }
+			});
+			$("#departA19").on({
+               mousedown: function () {
+				$('#departA19').animate({left: '-72px' });
+				$('#departA20').animate({left: '0px' });
+				$('.img_departA19').animate({left: '0px' });
+				$('.img_departA20').animate({left: '690px' });
+               }
+			});
+			$("departA20").on({
+               mousedown: function () {
+				$('#departA19').animate({left: '0px' });
+				$('#departA20').animate({left: '-72px' });
+				$('.img_departA19').animate({left: '-690px' });
+				$('.img_departA20').animate({left: '0px' });
+               }
+			});
+
 
 
 
@@ -1438,6 +1551,112 @@
 				</div>
 				<div id="" class="img_departA16">
 					<img src="/public_html/img/depart12_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
+    </div>
+
+
+
+     <!-- 현대백화점 목동점 -->
+    <div id="" class="box_shop">
+       <div id="" class="box_shop_leftB">
+		<div id="" class="box_shop_left_div01D">
+			<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>현대백화점 목동점
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA17" class="toggleC">
+						<a href="#a">매장</a>
+					</div>
+					<div id="departA18" class="toggleD">
+						<a href="#b">약도</a>
+					</div>
+				</div>
+
+            <div id="" class="box_shop_left_div05">
+                <b>영업시간</b><br>
+                <div class="box_shop_left_div05_in01">
+                    정&nbsp;&nbsp;&nbsp;상<br>
+                    연&nbsp;&nbsp;&nbsp;장<br>
+                    공휴일<br>
+                </div>
+                <div class="box_shop_left_div05_in02">
+                    AM 10:30 ~ PM 08:00<br>
+                    AM 10:30 ~ PM 08:30<br>
+                    각 백화점 휴무 일정에 따름<br>
+                </div>
+            </div>
+            <div id="" class="box_shop_left_div06">
+                <b>매장정보</b><br>
+                <div class="box_shop_left_div06_in01">
+                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
+                    도로명<br>
+                </div>
+                <div class="box_shop_left_div06_in02">
+                    02-2163-1045(목동 현대백화점)<br>
+                    서울 양천구 목동동로 257, 1B<br>
+                </div>
+            </div>
+        </div>
+        <a href=""><div id="mapstoreD9" class="box_shop_rightB">
+				<div id="" class="img_departA17">
+					<img src="/public_html/img/depart17_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA18">
+					<img src="/public_html/img/depart17_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
+    </div>
+
+     <!-- 현대백화점 대구점 -->
+    <div id="" class="box_shop">
+       <div id="" class="box_shop_leftB">
+		<div id="" class="box_shop_left_div01D">
+			<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>현대백화점 대구점
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA19" class="toggleC">
+						<a href="#a">매장</a>
+					</div>
+					<div id="departA20" class="toggleD">
+						<a href="#b">약도</a>
+					</div>
+				</div>
+
+            <div id="" class="box_shop_left_div05">
+                <b>영업시간</b><br>
+                <div class="box_shop_left_div05_in01">
+                    정&nbsp;&nbsp;&nbsp;상<br>
+                    연&nbsp;&nbsp;&nbsp;장<br>
+                    공휴일<br>
+                </div>
+                <div class="box_shop_left_div05_in02">
+                    AM 10:30 ~ PM 08:00<br>
+                    AM 10:30 ~ PM 08:30<br>
+                    각 백화점 휴무 일정에 따름<br>
+                </div>
+            </div>
+            <div id="" class="box_shop_left_div06">
+                <b>매장정보</b><br>
+                <div class="box_shop_left_div06_in01">
+                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
+		    F&nbsp;&nbsp;A&nbsp;&nbsp;X<br>
+                    도로명<br>
+                </div>
+                <div class="box_shop_left_div06_in02">
+                    053-245-2788(대구 현대백화점)<br>
+		    053-245-3788<br>
+                    대구 중구 달구벌대로 2077, 7F<br>
+                </div>
+            </div>
+        </div>
+        <a href=""><div id="mapstoreD9" class="box_shop_rightB">
+				<div id="" class="img_departA19">
+					<img src="/public_html/img/depart18_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA20">
+					<img src="/public_html/img/depart18_store.jpg" border="0" alt="">
 				</div>
 			</div></a>
     </div>
