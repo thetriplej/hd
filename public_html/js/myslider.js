@@ -105,7 +105,6 @@ setInterval(imgslidec, 5000);
 			$('#bt_pointb03').css({"background-position":"0px -13px"});
 			$('#bt_pointb04').css({"background-position":"0px 0px"});
 			$('#bt_pointb05').css({"background-position":"0px 0px"});
-			imgnumb = 0;
 		}
 		else if(imgnumb == 4){
 			//네번째 이미지 위치
