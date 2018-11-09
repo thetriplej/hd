@@ -103,9 +103,15 @@ $(document).ready(function () {
             $("#sub_gnb07").hide(100); }
     });
 
+//////////////////////////////// 팝업 사라지기 ////////
+
+		//   $('#hclose').click(function(){
+		//	   $('#hpopup').hide(100);
+		//   });
 
 
 });
+
 
 })(jQuery);
 

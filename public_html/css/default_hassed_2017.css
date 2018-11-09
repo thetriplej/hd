@@ -1608,3 +1608,21 @@ margin: 0 auto;}
 	height:100px;
 	margin: 0 auto;
 }
+
+.main_pop{
+	width: 420px;
+	height: 503px;
+	position: absolute;
+	top: 200px;
+	left: 180px;
+	z-index: 2000;
+	}
+
+.pop_close{
+	width:420px; 
+	height:28px; 
+	background-color:#fff;
+	text-align:right;
+	margin-top: -5px;
+	padding-right:10px;
+	}

@@ -2,9 +2,12 @@
 <!-- <script type="text/javascript" src="/public_html/js/open_video.js"></script>  -->
 <!-- mySlider script file -->
 <script src="/public_html/js/myslider.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- mySlider css file -->
 <link rel="stylesheet" type="text/css" href="/public_html/css/myslider.css" />
 <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>"/>
+
+
 	<div id="" class="wrap_middle">
 		<div class="main_img">
 			<div class="myslider">
@@ -147,6 +150,16 @@
 			<iframe id="player" type="text/html" width="1000" height="560" src="https://player.vimeo.com/video/208591714" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 		</div>
 	</div>
+
+	<!-- <div id="hpopup" class="main_pop">
+		<div>
+		<img src="public_html/images/workshop2018.jpg">
+		</div>
+		<a href="#1"><div id="hclose" class="pop_close"> close </div></a>
+	</div> -->
+
+
+
 	<script>
         // 2. This code loads the IFrame Player API code asynchronously.
         var tag = document.createElement('script');
@@ -189,5 +202,3 @@
             player.stopVideo();
         }
 	</script>
-
-
