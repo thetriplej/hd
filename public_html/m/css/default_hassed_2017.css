@@ -894,3 +894,22 @@ b {display:inline;}
 	color:#867f7b;
 	padding-top:52px;
 }
+
+
+.main_pop{
+	width: 420px;
+	height: 503px;
+	position: absolute;
+	top: 220px;
+	left: 180px;
+	z-index: 2000;
+	}
+
+.pop_close{
+	width:420px; 
+	height:28px; 
+	background-color:#fff;
+	text-align:right;
+	margin-top: -5px;
+	padding-right:10px;
+	}
