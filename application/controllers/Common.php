@@ -17,10 +17,12 @@ class Common extends CI_Controller
             $agent_mode = "1";
         }
         $this->agent_mode = $agent_mode;
-        if(empty(get_cookie('tj_lang_type'))) {
-            $this->utilcommon->set_lang();
-        }
         $this->lang_type = get_cookie('tj_lang_type');
+
+        if(empty($this->lang_type)) {
+            $this->utilcommon->set_lang();
+            $this->lang_type = get_cookie('tj_lang_type');
+        }
 
         if(empty(get_cookie('tj_visit_log'))) {
             $this->visit_log($agent_mode);
@@ -90,8 +92,10 @@ class Common extends CI_Controller
         $send_data = array(
             'url'           => $uri.$add_uri,
             'agent_mode'    => $agent_mode,
+            'lang_type'    => $lang_type,
         );
         $result = $this->visit_model->get_log_check($send_data);
+
         if($agent_mode == "2"){
             $agent_name = "(M) ";
         }else{

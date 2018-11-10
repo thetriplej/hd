@@ -48,7 +48,8 @@ class Utilcommon{
             }
 
         }
-        set_cookie('tj_lang_type','ko',86000);
+
+        set_cookie($cookie);
         $lang_type = get_cookie('tj_lang_type');
         if($lang_type != $cookie['value']){
             $result = "OK";

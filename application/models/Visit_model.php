@@ -115,10 +115,11 @@ class Visit_model extends CI_Model {
 
     function get_log_check($params){
         $agent_mode = $params['agent_mode'];
+        $lang_type = $params['lang_type'];
         $url = $params['url'];
         $today = date("Y-m-d");
 
-        $query = "select l_hit from pagelog where l_url='".$url."' and mode ='".$agent_mode."' and l_date ='".$today."'";
+        $query = "select l_hit from pagelog where l_url='".$url."' and mode ='".$agent_mode."' and l_date ='".$today."' and lang_type ='".$lang_type."'";
         return $this->db->query($query)->result();
     }
 
@@ -127,20 +128,22 @@ class Visit_model extends CI_Model {
         $type = $params['type'];
         $agent_mode = $params['agent_mode'];
         $url = $params['url'];
+        $lang_type = $params['lang_type'];
         $today = date("Y-m-d");
 
 
         if($type == "update"){
-            $query = "update pagelog set l_hit = l_hit + 1 where mode=? and l_date = ? and l_url = ?";
-            $result = $this->db->query($query, array('mode'=>$agent_mode,'l_date'=>$today,'l_url'=>$url));
+            $query = "update pagelog set l_hit = l_hit + 1 where mode=? and l_date = ? and l_url = ? and lang_type = ?";
+            $result = $this->db->query($query, array('mode'=>$agent_mode,'l_date'=>$today,'l_url'=>$url,'lang_type'=>$lang_type));
 
         }else{
             $data = array(
-                'l_date'    =>$today,
+                'l_date'    => $today,
                 'l_url'		=> $url,
                 'l_title'	=> $params['l_title'],
                 'l_hit'     => 1,
                 'mode'      => $agent_mode,
+                'lang_type' => $lang_type,
             );
             $result = $this->db->insert('pagelog', $data);
 
