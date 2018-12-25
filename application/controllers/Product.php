@@ -169,9 +169,9 @@ class Product extends Common {
             case 'lavien' :
                 $this->load->view($this->type.'product/'.$lang_type.'lavien.phtml');
                 break;
-//            case 'becky' :
-//                $this->load->view($this->type.'product/'.$lang_type.'becky.phtml');
-//                break;
+            case 'boheme' :
+                $this->load->view($this->type.'product/'.$lang_type.'boheme.phtml');
+                break;
 //            case 'becky' :
 //                $this->load->view($this->type.'product/'.$lang_type.'becky.phtml');
 //                break;

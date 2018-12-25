@@ -152,6 +152,7 @@ class Common extends CI_Controller
                 "/product/detail_view?code=olo" => "<font color='blue'>".$agent_name."제품소개</font> - Olo".$lang_name,
                 "/product/detail_view?code=mobilian" => "<font color='blue'>".$agent_name."제품소개</font> - Mobilian".$lang_name,
                 "/product/detail_view?code=lavien" => "<font color='blue'>".$agent_name."제품소개</font> - Lavien".$lang_name,
+                "/product/detail_view?code=boheme" => "<font color='blue'>".$agent_name."제품소개</font> - BOHEME".$lang_name,
                 "/gallery/customer" => "<font color='blue'>".$agent_name."갤러리</font> - 고객후기".$lang_name,
                 "/gallery/hmagajine" => "<font color='blue'>".$agent_name."갤러리</font> - H_매거진".$lang_name,
                 "/notice/notice" => "<font color='blue'>".$agent_name."notice</font> - 공지사항".$lang_name,
