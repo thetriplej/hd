@@ -1,6 +1,6 @@
 ﻿.box_outline{
 	width:1080px;
-	height:1180px;
+	/*height:1180px;*/
 	margin: 0 auto;
 	margin-top:50px;
 	border:solid 1px #dfdddc;
@@ -42,8 +42,27 @@
 .div_proimg_center
 {
 	width:1080px;
-	height:800px;
+	/*height:800px;*/
 	padding-top:150px;
+	padding-bottom:150px;
+	padding-left:215px;
+	border-top:solid 1px #d6d2ce;
+}
+
+.div_proimg_center > img
+{
+	border:solid 1px #ececec;
+}
+
+.div_proimg_center-2 > img
+{
+	border:solid 1px #ececec;
+}
+
+.div_proimg_center-2
+{
+	width:1080px;
+	padding-bottom:150px;
 	padding-left:215px;
 }
 
@@ -185,7 +204,7 @@
 
 .txt_concept_div02
 {
-	width:402px;
+	width:373px;
 	height:15px;
 	font-weight:bold;
 	text-align:center;

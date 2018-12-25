@@ -164,7 +164,7 @@
     font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
     color:#b6bea5;
     width:485px; 
-    height:400px; /*메뉴백 높이*/
+    height:370px; /*메뉴백 높이*/
     display:none;
     padding-top:16px;
 	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
