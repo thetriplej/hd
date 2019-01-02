@@ -555,6 +555,9 @@ class Admin extends Common {
 
         $old_path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/temp/';
         $path = $_SERVER['DOCUMENT_ROOT'].'/public_html/upload/board/'.$today.'/';
+        if(!is_dir($path)){
+            mkdir($path, 0777);
+        }
         $file_result = true;
         if(!empty($attach_image)) {
             foreach ($attach_image as $key => $value) {
