@@ -6,7 +6,6 @@ class Board extends Common {
 
     public function  __construct() {
         parent::__construct();
-
         $this->load->model(array('board_model'));
         $this->load->helper('cookie');
     }
@@ -173,9 +172,8 @@ class Board extends Common {
         }
         $list =  $this->board_model->get_gallery_list($list_data);
 
-
         foreach ( $list as $key => $value){
-
+            $value->b_writer = $this->utilcommon->masking('N', $value->b_writer);
             if(!empty($value->file_path)) {
                 $path = '/public_html'.$value->file_path;
                 //$value->f_rename = iconv("utf-8","CP949",$value->f_rename);

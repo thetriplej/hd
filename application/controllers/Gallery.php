@@ -127,6 +127,7 @@ class Gallery extends Common {
         );
 
         $view_data = $this->board_model->get_view($view_send);
+        $view_data->b_writer = $this->utilcommon->masking('N', $view_data->b_writer);
         if(!empty($b_code)){
             $b_code = $view_data->b_code;
         }
