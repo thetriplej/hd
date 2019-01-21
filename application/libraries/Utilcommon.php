@@ -110,13 +110,13 @@ class Utilcommon{
                     $maskingValue = mb_substr($_data, 0, 1, "UTF-8").' * ';
                     break;
                 case 3:
-                    $maskingValue = mb_substr($_data, 0, 1, "UTF-8").' * '.mb_substr($_data, 2, 11, "UTF-8");;
+                    $maskingValue = mb_substr($_data, 0, 1, "UTF-8").' * '.mb_substr($_data, 2, 11, "UTF-8");
                     break;
                 case 4:
-                    $maskingValue = mb_substr($_data, 0, 1, "UTF-8").'*'.mb_substr($_data, 2, 11, "UTF-8");;
+                    $maskingValue = mb_substr($_data, 0, 1, "UTF-8").' * '.mb_substr($_data, 2, 15, "UTF-8");
                     break;
                 default:
-                    $maskingValue = mb_substr($_data, 0, 1, "UTF-8").'*';
+                    $maskingValue = mb_substr($_data, 0, 1, "UTF-8").' * '.mb_substr($_data, 2, 15, "UTF-8");;
                     break;
             }
         }else if($_type == 'P'){
