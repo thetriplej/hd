@@ -1,9 +1,11 @@
-<link rel="stylesheet" type="text/css" href="/public_html/css_e/imgslider.css" />
+<!-- mySlider css file -->
+<link rel="stylesheet" type="text/css" href="/public_html/css/imgslider.css" />
 <!-- mySlider script file -->
 <script src="/public_html/js/myslider.js"></script>
 <script>
     $(document).ready(function () {
         //$('.main_img_toggle1').fadeOut(10);
+
         $('.main_img_toggle2').fadeOut(10);
         $('.main_img_toggle3').fadeOut(10);
 
@@ -45,6 +47,555 @@
                 sum = -1;
             }
         }
+
+
+
+//imageslideA // 
+
+			var mapA = 1; // 
+			
+			setInterval(imgslideA, 3200); // 매 3.2초마다 함수 실행
+
+			function imgslideA(j){
+				if(j != null){ mapA = j;}
+				mapA = mapA * -1; // 매 4초마다 toggle
+					if(mapA < 0){ 
+						$('#bttoggleA').animate({left: '-72px' });
+						$('#bttoggleB').animate({left: '0px' });
+						$('.img_toggleA').animate({left: '0px' });
+						$('.img_toggleB').animate({left: '690px' });
+					}
+					else if(mapA > 0){
+						$('#bttoggleA').animate({left: '0px' });
+						$('#bttoggleB').animate({left: '-72px' });
+						$('.img_toggleA').animate({left: '-690px' });
+						$('.img_toggleB').animate({left: '0px' });
+					}
+					else if(mapA == 0){
+
+					}
+			}
+
+			$("#mapstoreA").mouseover(function(event){
+				if(mapA != 0){
+					imgslideA(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreA").mouseout(function(event){
+					mapA = 1;
+					imgslideA();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+//imageslideB // 
+			var mapB = -1; // 
+
+			setInterval(imgslideB, 3200); // 매 4초마다 함수 실행
+
+			function imgslideB(j){
+				if(j != null){ mapB = j;}
+				mapB = mapB * -1; // 매 4초마다 toggle
+					if(mapB < 0){ 
+						$('#bttoggleC').animate({left: '-72px' });
+						$('#bttoggleD').animate({left: '0px' });
+						$('.img_toggleC').animate({left: '0px' });
+						$('.img_toggleD').animate({left: '690px' });
+					}
+					else if(mapB > 0){
+						$('#bttoggleC').animate({left: '0px' });
+						$('#bttoggleD').animate({left: '-72px' });
+						$('.img_toggleC').animate({left: '-690px' });
+						$('.img_toggleD').animate({left: '0px' });
+					}
+					else if(mapB == 0){
+
+					}
+			}
+
+			$("#mapstoreB").mouseover(function(event){
+				if(mapB != 0){
+					imgslideB(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreB").mouseout(function(event){
+					mapB = 1;
+					imgslideB();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+//imageslideC // 
+			var mapC = 1; // 
+
+			setInterval(imgslideC, 3200); // 매 4초마다 함수 실행
+
+			function imgslideC(j){
+				if(j != null){ mapC = j;}
+				mapC = mapC * -1; // 매 4초마다 toggle
+					if(mapC < 0){ 
+						$('#bttoggleE').animate({left: '-72px' });
+						$('#bttoggleF').animate({left: '0px' });
+						$('.img_toggleE').animate({left: '0px' });
+						$('.img_toggleF').animate({left: '690px' });
+					}
+					else if(mapC > 0){
+						$('#bttoggleE').animate({left: '0px' });
+						$('#bttoggleF').animate({left: '-72px' });
+						$('.img_toggleE').animate({left: '-690px' });
+						$('.img_toggleF').animate({left: '0px' });
+					}
+					else if(mapC == 0){
+
+					}
+			}
+
+			$("#mapstoreC").mouseover(function(event){
+				if(mapC != 0){
+					imgslideC(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreC").mouseout(function(event){
+					mapC = 1;
+					imgslideC();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+//imageslideD //
+			var mapD = -1; // 
+			setInterval(imgslideD, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD(j){
+				if(j != null){ mapD = j;}
+				mapD = mapD * -1; // 매 4초마다 toggle
+					if(mapD < 0){ 
+						$('#bttoggleG').animate({left: '-72px' });
+						$('#bttoggleH').animate({left: '0px' });
+						$('.img_toggleG').animate({left: '0px' });
+						$('.img_toggleH').animate({left: '690px' });
+					}
+					else if(mapD > 0){
+						$('#bttoggleG').animate({left: '0px' });
+						$('#bttoggleH').animate({left: '-72px' });
+						$('.img_toggleG').animate({left: '-690px' });
+						$('.img_toggleH').animate({left: '0px' });
+					}
+					else if(mapD == 0){
+
+					}
+			}
+
+			$("#mapstoreD").mouseover(function(event){
+				if(mapD != 0){
+					imgslideD(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD").mouseout(function(event){
+					mapD = -1;
+					imgslideD();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+//imageslideD1 //
+			var mapD1 = 1; // 
+			setInterval(imgslideD1, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD1(j){
+				if(j != null){ mapD1 = j;}
+				mapD1 = mapD1 * -1; // 매 4초마다 toggle
+					if(mapD1 < 0){ 
+						$('#departA1').animate({left: '-72px' });
+						$('#departA2').animate({left: '0px' });
+						$('.img_departA1').animate({left: '0px' });
+						$('.img_departA2').animate({left: '690px' });
+					}
+					else if(mapD1 > 0){
+						$('#departA1').animate({left: '0px' });
+						$('#departA2').animate({left: '-72px' });
+						$('.img_departA1').animate({left: '-690px' });
+						$('.img_departA2').animate({left: '0px' });
+					}
+					else if(mapD1 == 0){
+
+					}
+			}
+
+			$("#mapstoreD1").mouseover(function(event){
+				if(mapD1 != 0){
+					imgslideD1(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD1").mouseout(function(event){
+					mapD1 = 1;
+					imgslideD1();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+//imageslideD2 //
+			var mapD2 = -1; // 
+			setInterval(imgslideD2, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD2(j){
+				if(j != null){ mapD2 = j;}
+				mapD2 = mapD2 * -1; // 매 4초마다 toggle
+					if(mapD2 < 0){ 
+						$('#departA3').animate({left: '-72px' });
+						$('#departA4').animate({left: '0px' });
+						$('.img_departA3').animate({left: '0px' });
+						$('.img_departA4').animate({left: '690px' });
+					}
+					else if(mapD2 > 0){
+						$('#departA3').animate({left: '0px' });
+						$('#departA4').animate({left: '-72px' });
+						$('.img_departA3').animate({left: '-690px' });
+						$('.img_departA4').animate({left: '0px' });
+					}
+					else if(mapD2 == 0){
+
+					}
+			}
+
+			$("#mapstoreD2").mouseover(function(event){
+				if(mapD2 != 0){
+					imgslideD2(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD2").mouseout(function(event){
+					mapD2 = -1;
+					imgslideD2();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+
+//imageslideD3 //
+			var mapD3 = 1; // 
+			setInterval(imgslideD3, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD3(j){
+				if(j != null){ mapD3 = j;}
+				mapD3 = mapD3 * -1; // 매 4초마다 toggle
+					if(mapD3 < 0){ 
+						$('#departA5').animate({left: '-72px' });
+						$('#departA6').animate({left: '0px' });
+						$('.img_departA5').animate({left: '0px' });
+						$('.img_departA6').animate({left: '690px' });
+					}
+					else if(mapD3 > 0){
+						$('#departA5').animate({left: '0px' });
+						$('#departA6').animate({left: '-72px' });
+						$('.img_departA5').animate({left: '-690px' });
+						$('.img_departA6').animate({left: '0px' });
+					}
+					else if(mapD3 == 0){
+
+					}
+			}
+
+			$("#mapstoreD3").mouseover(function(event){
+				if(mapD3 != 0){
+					imgslideD3(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD3").mouseout(function(event){
+					mapD3 = 1;
+					imgslideD3();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+//imageslideD4 //
+			var mapD4 = -1; // 
+			setInterval(imgslideD4, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD4(j){
+				if(j != null){ mapD4 = j;}
+				mapD4 = mapD4 * -1; // 매 4초마다 toggle
+					if(mapD4 < 0){ 
+						$('#departA7').animate({left: '-72px' });
+						$('#departA8').animate({left: '0px' });
+						$('.img_departA7').animate({left: '0px' });
+						$('.img_departA8').animate({left: '690px' });
+					}
+					else if(mapD4 > 0){
+						$('#departA7').animate({left: '0px' });
+						$('#departA8').animate({left: '-72px' });
+						$('.img_departA7').animate({left: '-690px' });
+						$('.img_departA8').animate({left: '0px' });
+					}
+					else if(mapD4 == 0){
+
+					}
+			}
+
+			$("#mapstoreD4").mouseover(function(event){
+				if(mapD4 != 0){
+					imgslideD4(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD4").mouseout(function(event){
+					mapD4 = -1;
+					imgslideD4();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+//imageslideD5 //
+			var mapD5 = 1; // 
+			setInterval(imgslideD5, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD5(j){
+				if(j != null){ mapD5 = j;}
+				mapD5 = mapD5 * -1; // 매 4초마다 toggle
+					if(mapD5 < 0){ 
+						$('#departA9').animate({left: '-72px' });
+						$('#departA10').animate({left: '0px' });
+						$('.img_departA9').animate({left: '0px' });
+						$('.img_departA10').animate({left: '690px' });
+					}
+					else if(mapD5 > 0){
+						$('#departA9').animate({left: '0px' });
+						$('#departA10').animate({left: '-72px' });
+						$('.img_departA9').animate({left: '-690px' });
+						$('.img_departA10').animate({left: '0px' });
+					}
+					else if(mapD5 == 0){
+
+					}
+			}
+
+			$("#mapstoreD5").mouseover(function(event){
+				if(mapD5 != 0){
+					imgslideD5(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD5").mouseout(function(event){
+					mapD5 = 1;
+					imgslideD5();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+//imageslideD6 //
+			var mapD6 = -1; // 
+			setInterval(imgslideD6, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD6(j){
+				if(j != null){ mapD6 = j;}
+				mapD6 = mapD6 * -1; // 매 4초마다 toggle
+					if(mapD6 < 0){ 
+						$('#departA11').animate({left: '-72px' });
+						$('#departA12').animate({left: '0px' });
+						$('.img_departA11').animate({left: '0px' });
+						$('.img_departA12').animate({left: '690px' });
+					}
+					else if(mapD6 > 0){
+						$('#departA11').animate({left: '0px' });
+						$('#departA12').animate({left: '-72px' });
+						$('.img_departA11').animate({left: '-690px' });
+						$('.img_departA12').animate({left: '0px' });
+					}
+					else if(mapD6 == 0){
+
+					}
+			}
+
+			$("#mapstoreD6").mouseover(function(event){
+				if(mapD6 != 0){
+					imgslideD6(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD6").mouseout(function(event){
+					mapD6 = -1;
+					imgslideD6();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+//imageslideD7 //
+			var mapD7 = 1; // 
+			setInterval(imgslideD7, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD7(j){
+				if(j != null){ mapD7 = j;}
+				mapD7 = mapD7 * -1; // 매 4초마다 toggle
+					if(mapD7 < 0){ 
+						$('#departA13').animate({left: '-72px' });
+						$('#departA14').animate({left: '0px' });
+						$('.img_departA13').animate({left: '0px' });
+						$('.img_departA14').animate({left: '690px' });
+					}
+					else if(mapD7 > 0){
+						$('#departA13').animate({left: '0px' });
+						$('#departA14').animate({left: '-72px' });
+						$('.img_departA13').animate({left: '-690px' });
+						$('.img_departA14').animate({left: '0px' });
+					}
+					else if(mapD7 == 0){
+
+					}
+			}
+
+			$("#mapstoreD7").mouseover(function(event){
+				if(mapD7 != 0){
+					imgslideD7(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD7").mouseout(function(event){
+					mapD7 = 1;
+					imgslideD7();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+//imageslideD8 //
+			var mapD8 = -1; // 
+			setInterval(imgslideD8, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD8(j){
+				if(j != null){ mapD8 = j;}
+				mapD8 = mapD8 * -1; // 매 4초마다 toggle
+					if(mapD8 < 0){ 
+						$('#departA15').animate({left: '-72px' });
+						$('#departA16').animate({left: '0px' });
+						$('.img_departA15').animate({left: '0px' });
+						$('.img_departA16').animate({left: '690px' });
+					}
+					else if(mapD8 > 0){
+						$('#departA15').animate({left: '0px' });
+						$('#departA16').animate({left: '-72px' });
+						$('.img_departA15').animate({left: '-690px' });
+						$('.img_departA16').animate({left: '0px' });
+					}
+					else if(mapD8 == 0){
+
+					}
+			}
+
+			$("#mapstoreD8").mouseover(function(event){
+				if(mapD8 != 0){
+					imgslideD8(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD8").mouseout(function(event){
+					mapD8 = 1;
+					imgslideD8();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+//imageslideD9 //
+			var mapD9 = 1; // 
+			setInterval(imgslideD9, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD9(j){
+				if(j != null){ mapD9 = j;}
+				mapD9 = mapD9 * -1; // 매 4초마다 toggle
+					if(mapD9 < 0){ 
+						$('#departA17').animate({left: '-72px' });
+						$('#departA18').animate({left: '0px' });
+						$('.img_departA17').animate({left: '0px' });
+						$('.img_departA18').animate({left: '690px' });
+					}
+					else if(mapD9 > 0){
+						$('#departA17').animate({left: '0px' });
+						$('#departA18').animate({left: '-72px' });
+						$('.img_departA17').animate({left: '-690px' });
+						$('.img_departA18').animate({left: '0px' });
+					}
+					else if(mapD8 == 0){
+
+					}
+			}
+
+			$("#mapstoreD9").mouseover(function(event){
+				if(mapD9 != 0){
+					imgslideD9(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD9").mouseout(function(event){
+					mapD9 = 1;
+					imgslideD9();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+//imageslideD10 //
+			var mapD10 = -1; // 
+			setInterval(imgslideD10, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD10(j){
+				if(j != null){ mapD10 = j;}
+				mapD10 = mapD10 * -1; // 매 4초마다 toggle
+					if(mapD10 < 0){ 
+						$('#departA19').animate({left: '-72px' });
+						$('#departA20').animate({left: '0px' });
+						$('.img_departA19').animate({left: '0px' });
+						$('.img_departA20').animate({left: '690px' });
+					}
+					else if(mapD10 > 0){
+						$('#departA19').animate({left: '0px' });
+						$('#departA20').animate({left: '-72px' });
+						$('.img_departA19').animate({left: '-690px' });
+						$('.img_departA20').animate({left: '0px' });
+					}
+					else if(mapD8 == 0){
+
+					}
+			}
+
+			$("#mapstoreD10").mouseover(function(event){
+				if(mapD10 != 0){
+					imgslideD10(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD10").mouseout(function(event){
+					mapD10 = 1;
+					imgslideD10();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+//////////////////////
 
         $("#bttoggleA").on({
             mousedown: function () {
@@ -115,6 +666,179 @@
         });
 
 
+			$("#departA1").on({
+               mousedown: function () {
+				$('#departA1').animate({left: '-72px' });
+				$('#departA2').animate({left: '0px' });
+				$('.img_departA1').animate({left: '0px' });
+				$('.img_departA2').animate({left: '690px' });
+               }
+			});
+			$("#departA2").on({
+               mousedown: function () {
+				$('#departA1').animate({left: '0px' });
+				$('#departA2').animate({left: '-72px' });
+				$('.img_departA1').animate({left: '-690px' });
+				$('.img_departA2').animate({left: '0px' });
+               }
+			});
+
+			$("#departA3").on({
+               mousedown: function () {
+				$('#departA3').animate({left: '-72px' });
+				$('#departA4').animate({left: '0px' });
+				$('.img_departA3').animate({left: '0px' });
+				$('.img_departA4').animate({left: '690px' });
+               }
+			});
+			$("#departA4").on({
+               mousedown: function () {
+				$('#departA3').animate({left: '0px' });
+				$('#departA4').animate({left: '-72px' });
+				$('.img_departA3').animate({left: '-690px' });
+				$('.img_departA4').animate({left: '0px' });
+               }
+			});
+
+			$("#departA5").on({
+               mousedown: function () {
+				$('#departA5').animate({left: '-72px' });
+				$('#departA6').animate({left: '0px' });
+				$('.img_departA5').animate({left: '0px' });
+				$('.img_departA6').animate({left: '690px' });
+               }
+			});
+			$("departA6").on({
+               mousedown: function () {
+				$('#departA5').animate({left: '0px' });
+				$('#departA6').animate({left: '-72px' });
+				$('.img_departA5').animate({left: '-690px' });
+				$('.img_departA6').animate({left: '0px' });
+               }
+			});
+
+			$("#departA7").on({
+               mousedown: function () {
+				$('#departA7').animate({left: '-72px' });
+				$('#departA8').animate({left: '0px' });
+				$('.img_departA7').animate({left: '0px' });
+				$('.img_departA8').animate({left: '690px' });
+               }
+			});
+			$("departA8").on({
+               mousedown: function () {
+				$('#departA7').animate({left: '0px' });
+				$('#departA8').animate({left: '-72px' });
+				$('.img_departA7').animate({left: '-690px' });
+				$('.img_departA8').animate({left: '0px' });
+               }
+			});
+
+			$("#departA9").on({
+               mousedown: function () {
+				$('#departA9').animate({left: '-72px' });
+				$('#departA10').animate({left: '0px' });
+				$('.img_departA9').animate({left: '0px' });
+				$('.img_departA10').animate({left: '690px' });
+               }
+			});
+			$("departA10").on({
+               mousedown: function () {
+				$('#departA9').animate({left: '0px' });
+				$('#departA10').animate({left: '-72px' });
+				$('.img_departA9').animate({left: '-690px' });
+				$('.img_departA10').animate({left: '0px' });
+               }
+			});
+
+			$("#departA11").on({
+               mousedown: function () {
+				$('#departA11').animate({left: '-72px' });
+				$('#departA12').animate({left: '0px' });
+				$('.img_departA11').animate({left: '0px' });
+				$('.img_departA12').animate({left: '690px' });
+               }
+			});
+			$("departA12").on({
+               mousedown: function () {
+				$('#departA11').animate({left: '0px' });
+				$('#departA12').animate({left: '-72px' });
+				$('.img_departA11').animate({left: '-690px' });
+				$('.img_departA12').animate({left: '0px' });
+               }
+			});
+
+			$("#departA13").on({
+               mousedown: function () {
+				$('#departA13').animate({left: '-72px' });
+				$('#departA14').animate({left: '0px' });
+				$('.img_departA13').animate({left: '0px' });
+				$('.img_departA14').animate({left: '690px' });
+               }
+			});
+			$("departA14").on({
+               mousedown: function () {
+				$('#departA13').animate({left: '0px' });
+				$('#departA14').animate({left: '-72px' });
+				$('.img_departA13').animate({left: '-690px' });
+				$('.img_departA14').animate({left: '0px' });
+               }
+			});
+
+////////  현대백화점 /////
+			$("#departA15").on({
+               mousedown: function () {
+				$('#departA15').animate({left: '-72px' });
+				$('#departA16').animate({left: '0px' });
+				$('.img_departA15').animate({left: '0px' });
+				$('.img_departA16').animate({left: '690px' });
+               }
+			});
+			$("departA16").on({
+               mousedown: function () {
+				$('#departA15').animate({left: '0px' });
+				$('#departA16').animate({left: '-72px' });
+				$('.img_departA15').animate({left: '-690px' });
+				$('.img_departA16').animate({left: '0px' });
+               }
+			});
+
+			$("#departA17").on({
+               mousedown: function () {
+				$('#departA17').animate({left: '-72px' });
+				$('#departA18').animate({left: '0px' });
+				$('.img_departA17').animate({left: '0px' });
+				$('.img_departA18').animate({left: '690px' });
+               }
+			});
+			$("departA18").on({
+               mousedown: function () {
+				$('#departA17').animate({left: '0px' });
+				$('#departA18').animate({left: '-72px' });
+				$('.img_departA17').animate({left: '-690px' });
+				$('.img_departA18').animate({left: '0px' });
+               }
+			});
+			$("#departA19").on({
+               mousedown: function () {
+				$('#departA19').animate({left: '-72px' });
+				$('#departA20').animate({left: '0px' });
+				$('.img_departA19').animate({left: '0px' });
+				$('.img_departA20').animate({left: '690px' });
+               }
+			});
+			$("departA20").on({
+               mousedown: function () {
+				$('#departA19').animate({left: '0px' });
+				$('#departA20').animate({left: '-72px' });
+				$('.img_departA19').animate({left: '-690px' });
+				$('.img_departA20').animate({left: '0px' });
+               }
+			});
+
+
+
+
         $(".bt_depart").click(function(event){
             var offset_top = 3000;
             $('html, body').animate({scrollTop: offset_top}, 500);
@@ -124,10 +848,11 @@
             var offset_top = 600;
             $('html, body').animate({scrollTop: offset_top}, 500);
         });
+
         <?php if(!empty($type) && $type =='point_store'){ ?>
-        $(".bt_store").click();
+            $(".bt_store").click();
         <?php }else if(!empty($type) && $type =='point_depart'){ ?>
-        $(".bt_depart").click();
+         $(".bt_depart").click();
         <?php } ?>
 
     });//ready end ////////////////
@@ -135,29 +860,55 @@
 
 </script>
 <div id="" class="wrap_middle">
-
     <div class="main_img">
         <div class="myslider">
-            <div id='layerA' class="slider_img01"><img src="/public_html/img_e/img_store01.jpg" border="0" alt=""></div>
-            <div class="slider_img02"><img src="/public_html/img_e/img_store02.jpg" border="0" alt=""></div>
-            <div class="slider_img03"><img src="/public_html/img_e/img_store03.jpg" border="0" alt=""></div>
+            <div id='layerA' class="slider_img01"><img src="/public_html/img/img_store01.jpg" border="0" alt=""></div>
+            <div class="slider_img02"><img src="/public_html/img/img_store02.jpg" border="0" alt=""></div>
+            <div class="slider_img03"><img src="/public_html/img/img_store03.jpg" border="0" alt=""></div>
         </div>
     </div>
     <div id="bx-point">
-        <a href="#a"><div id="bt_point01"><img src="/public_html/img_e/pagepoint.png" /></div></a>
-        <a href="#a"><div id="bt_point02"><img src="/public_html/img_e/pagepoint.png" /></div></a>
-        <a href="#a"><div id="bt_point03"><img src="/public_html/img_e/pagepoint.png" /></div></a>
+        <a href="#a"><div id="bt_point01"><img src="/public_html/img/pagepoint.png" /></div></a>
+        <a href="#a"><div id="bt_point02"><img src="/public_html/img/pagepoint.png" /></div></a>
+        <a href="#a"><div id="bt_point03"><img src="/public_html/img/pagepoint.png" /></div></a>
     </div>
 
-    <div id="point_store"  class="box_title3" style="padding-top:40px;">
-        <img src="/public_html/img_e/title_shopinfo.png" border="0" alt="">
+    <!-- 메인 이미지영역 시작 dnamooM_20160328
+    <div id="image_area" class="">
+        <div id="wrap_img_slider" class="">
+            <div class="slider_img_toggle1">
+                <img src="/public_html/img/img_store01.jpg" border="0" alt="">
+            </div>
+            <div class="slider_img_toggle2">
+                <img src="/public_html/img/img_store02.jpg" border="0" alt="">
+            </div>
+            <div class="slider_img_toggle3">
+                <img src="/public_html/img/img_store03.jpg" border="0" alt="">
+            </div>
+        </div>
+        <div class="point_toggle_a">
+            <div id="btpoint_img01" class="pointMa">
+                <a href="#a"><img src="img/btn_point_area.png" width="17" height="23" border="0" alt=""></a>
+            </div>
+            <div id="btpoint_img02" class="pointMb">
+                <a href="#a"><img src="img/btn_point_area.png" width="17" height="23" border="0" alt=""></a>
+            </div>
+            <div id="btpoint_img03" class="pointMc">
+                <a href="#a"><img src="img/btn_point_area.png" width="17" height="23" border="0" alt=""></a>
+            </div>
+        </div>
+    </div>
+    메인 이미지영역 끝 -->
+
+    <div id="point_store"  class="box_title3_store">
+        <img src="/public_html/img/title_shopinfo.png" border="0" alt="">
     </div>
 
     <div id="" class="box_2dept_menu">
-        <div id="" class="bt_2dept_left_menu bt_store">
+        <div class="bt_2dept_left_menu bt_store">
             <a href="#">road shop</a>
         </div>
-        <div id="bt_depart" class="bt_2dept_right_menu bt_depart">
+        <div class="bt_2dept_right_menu bt_depart">
             <a href="#">department store</a>
         </div>
     </div>
@@ -172,10 +923,10 @@
             </div>
             <div id="" class="bt_mapstore">
                 <div id="bttoggleA" class="toggleA">
-                    <a href="#a">Shop</a>
+                    <a href="#a">shop</a>
                 </div>
                 <div id="bttoggleB" class="toggleB">
-                    <a href="#b">Map</a>
+                    <a href="#b">map</a>
                 </div>
             </div>
             <div id="" class="box_shop_left_div02">
@@ -186,13 +937,13 @@
                     Holiday<br>
                 </div>
                 <div class="box_shop_left_div02_in02">
-                    AM 10:00 ~ PM 08:30<br>
+                    AM 10:00 ~ PM 08:00<br>
                     Close<br>
                     Partial open [Notice before holiday]<br>
                 </div>
             </div>
             <div id="" class="box_shop_left_div03">
-                <b>Shop info.</b><br>
+                <b>shop info</b><br>
                 <div class="box_shop_left_div03_in01">
                     T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
                     Road name<br>
@@ -207,12 +958,12 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
+        <a href="#A"><div id="mapstoreA" class="box_shop_right">
             <div id="" class="img_toggleA">
-                <img src="/public_html/img_e/store01_store.jpg" border="0" alt="">
+                <img src="/public_html/img_e/store01_map.jpg" border="0" alt="">
             </div>
             <div id="" class="img_toggleB">
-                <img src="/public_html/img_e/store01_map.jpg" border="0" alt="">
+                <img src="/public_html/img/store01_store2018.jpg" border="0" alt="">
             </div>
         </div>
     </div>
@@ -227,10 +978,10 @@
             </div>
             <div id="" class="bt_mapstore">
                 <div id="bttoggleC" class="toggleC">
-                    <a href="#a">Shop</a>
+                    <a href="#a">shop</a>
                 </div>
                 <div id="bttoggleD" class="toggleD">
-                    <a href="#b">Map</a>
+                    <a href="#b">map</a>
                 </div>
             </div>
             <div id="" class="box_shop_left_div02">
@@ -241,13 +992,13 @@
                     Holiday<br>
                 </div>
                 <div class="box_shop_left_div02_in02">
-                    AM 10:00 ~ PM 08:30<br>
+                    AM 10:00 ~ PM 08:00<br>
                     Close<br>
                     Partial open [Notice before holiday]<br>
                 </div>
             </div>
             <div id="" class="box_shop_left_div03">
-                <b>Shop info</b><br>
+                <b>shop info</b><br>
                 <div class="box_shop_left_div03_in01">
                     T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
                     Road name<br>
@@ -262,12 +1013,12 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
+        <a href="#A"><div id="mapstoreB" class="box_shop_right">
             <div id="" class="img_toggleC">
-                <img src="/public_html/img_e/store02_store.jpg" border="0" alt="">
+                <img src="/public_html/img_e/store02_map.jpg" border="0" alt="">
             </div>
             <div id="" class="img_toggleD">
-                <img src="/public_html/img_e/store02_map.jpg" border="0" alt="">
+                <img src="/public_html/img/store02_store.jpg" border="0" alt="">
             </div>
         </div>
     </div>
@@ -282,10 +1033,10 @@
             </div>
             <div id="" class="bt_mapstore">
                 <div id="bttoggleE" class="toggleA">
-                    <a href="#a">Shop</a>
+                    <a href="#a">shop</a>
                 </div>
                 <div id="bttoggleF" class="toggleB">
-                    <a href="#b">Map</a>
+                    <a href="#b">map</a>
                 </div>
             </div>
             <div id="" class="box_shop_left_div02">
@@ -296,33 +1047,33 @@
                     Holiday<br>
                 </div>
                 <div class="box_shop_left_div02_in02">
-                    AM 10:00 ~ PM 08:30<br>
+                    AM 10:00 ~ PM 08:00<br>
                     Close<br>
-                    Partial open [Notice before holiday]
+                    Partial open [Notice before holiday]<br>
                 </div>
             </div>
-            <div id="" class="box_shop_left_div03" style="padding-top:20px;">
-                <b>Shop info</b><br>
+            <div id="" class="box_shop_left_div03">
+                <b>shop info</b><br>
                 <div class="box_shop_left_div03_in01">
                     T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    Road name<br><br>
+                    Road name<br>
                     Lot no.<br>
                     Parking
                 </div>
-                <div class="box_shop_left_div03_in02" style="font-size:13px;">
+                <div class="box_shop_left_div03_in02" >
                     82-51 - 743 - 5093<br>
-                    458, jwadongsunhwan-ro, Haeundae-gu, Busan<br>
+                    <div style="font-size:11px; display: inline;" > 458, jwadongsunhwan-ro, Haeundae-gu, Busan </div><br>
                     1780-1,Jung-dong,Haeundae-gu,Busan<br>
-                    Parking equipped (B/D)
+                    Parking equipped (B/D underground)
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
+        <a href="#A"><div id="mapstoreC" class="box_shop_right">
             <div id="" class="img_toggleE">
-                <img src="/public_html/img_e/store03_store-20180501.jpg" border="0" alt="">
+                <img src="/public_html/img/store03_map-20181102.jpg" border="0" alt="">
             </div>
             <div id="" class="img_toggleF">
-                <img src="/public_html/img_e/store03_map-20180501.jpg" border="0" alt="">
+                <img src="/public_html/img/store03_store-20180809.jpg" border="0" alt="">
             </div>
         </div>
     </div>
@@ -336,10 +1087,10 @@
             </div>
             <div id="" class="bt_mapstore">
                 <div id="bttoggleG" class="toggleC">
-                    <a href="#a">Shop</a>
+                    <a href="#a">shop</a>
                 </div>
                 <div id="bttoggleH" class="toggleD">
-                    <a href="#b">Map</a>
+                    <a href="#b">map</a>
                 </div>
             </div>
             <div id="" class="box_shop_left_div02">
@@ -350,13 +1101,13 @@
                     Holiday<br>
                 </div>
                 <div class="box_shop_left_div02_in02">
-                    AM 10:00 ~ PM 08:30<br>
+                    AM 10:00 ~ PM 08:00<br>
                     Close<br>
-                    Partial open [Notice before holiday]
+                    Partial open [Notice before holiday]<br>
                 </div>
             </div>
             <div id="" class="box_shop_left_div03">
-                <b>Shop info</b><br>
+                <b>shop info</b><br>
                 <div class="box_shop_left_div03_in01">
                     T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
                     Road name<br>
@@ -371,13 +1122,13 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
+        <a href="#A"><div id="mapstoreD" class="box_shop_right">
             <div id="" class="img_toggleG">
-                <img src="/public_html/img_e/store04_store.jpg" border="0" alt="">
+                <img src="/public_html/img/store04_map-20180809.jpg" border="0" alt="">
             </div>
             <div id="" class="img_toggleH">
-                <img src="/public_html/img_e/store04_map-20180501.jpg" border="0" alt="">
-            </div>
+                <img src="/public_html/img/store04_store.jpg" border="0" alt="">
+            </div></a>
         </div>
     </div>
 
@@ -387,7 +1138,7 @@
 
 
     <div id="" class="box_2dept_menu">
-        <div id="bt_store" class="bt_2dept_left_menu bt_store">
+        <div id="" class="bt_2dept_left_menu bt_store">
             <a href="#">road shop</a>
         </div>
         <div id="" class="bt_2dept_right_menu bt_depart">
@@ -397,27 +1148,35 @@
 
     <!-- 신세계백화점 대구점 -->
     <div id="" class="box_shop">
-        <div id="" class="box_shop_left02">
-            <div id="" class="box_shop_left_div04" style="background-color:#a93a2d;">
-                <span class="" style="letter-spacing: 2px;">Shinsegae department store</span><br>
+        <div id="" class="box_shop_leftB">
+            <div id="" class="box_shop_left_div01B">
+                <span class="" style="letter-spacing: 2px;">department store</span><br>
                 Dae-gu Shop
-            </div>
+        </div>
+	<div id="" class="bt_mapstore">
+		<div id="departA1" class="toggleC">
+			<a href="#a">shop</a>
+		</div>
+		<div id="departA2" class="toggleD">
+			<a href="#b">map</a>
+		</div>
+	</div>
 
             <div id="" class="box_shop_left_div05">
-                <b>Opening hour </b><br>
+                <b>Opening hour</b><br>
                 <div class="box_shop_left_div05_in01">
                     Normal<br>
                     Extension<br>
                     Holiday<br>
                 </div>
                 <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:30<br>
-                    AM 10:30 ~ PM 08:30<br>
+                    AM 11:00 ~ PM 08:00<br>
+                    AM 11:00 ~ PM 08:30<br>
                     Comply with closing schedule of Department Store.<br>
                 </div>
             </div>
-            <div id="" class="box_shop_left_div06">
-                <b>Shop info</b><br>
+            <div id="" class="box_shop_left_div06" style="padding-top:0px;">
+                <b>shop info</b><br>
                 <div class="box_shop_left_div06_in01">
                     T&nbsp;&nbsp;E&nbsp;&nbsp;L<br><br>
                     Road name<br>
@@ -429,119 +1188,207 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
-            <div id="" class="">
-                <img src="/public_html/img_e/store12_map.jpg" border="0" alt="">
-            </div>
-        </div>
+	<a href=""><div id="mapstoreD1" class="box_shop_rightB">
+				<div id="" class="img_departA1">
+					<img src="/public_html/img/store12_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA2">
+					<img src="/public_html/img/depart01_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
     </div>
 
-
-    <!-- 롯데백화점 명동점 -->
+    <!-- 신세계백화점 부산센텀시티점 -->
     <div id="" class="box_shop">
-        <div id="" class="box_shop_left02">
-            <div id="" class="box_shop_left_div04">
-                <span class="" style="letter-spacing: 2px;">Lotte department store</span><br>
-                Myeongdong Shop
+        <div id="" class="box_shop_leftB">
+            <div id="" class="box_shop_left_div01B">
+                <span class="" style="letter-spacing: 2px;">department store</span><br>
+                Busan Centum City
             </div>
+	    <div id="" class="bt_mapstore">
+		<div id="departA3" class="toggleC">
+			<a href="#a">shop</a>
+		</div>
+		<div id="departA4" class="toggleD">
+			<a href="#b">map</a>
+		</div>
+	</div>
 
             <div id="" class="box_shop_left_div05">
-                <b>Opening hour </b><br>
+                <b>Opening hour</b><br>
                 <div class="box_shop_left_div05_in01">
                     Normal<br>
                     Extension<br>
                     Holiday<br>
                 </div>
                 <div class="box_shop_left_div05_in02">
+                    AM 11:00 ~ PM 08:00<br>
+                    AM 11:00 ~ PM 08:30<br>
+                    Comply with closing schedule of Department Store.<br>
+                </div>
+            </div>
+            <div id="" class="box_shop_left_div06" style="padding-top:0px;">
+                <b>shop info</b><br>
+                <div class="box_shop_left_div06_in01">
+                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>F&nbsp;&nbsp;A&nbsp;&nbsp;X<br>
+                    Road name<br>
+                </div>
+                <div class="box_shop_left_div06_in02">
+                    82-51 - 745 - 2229<br>
+                    82-51 - 745 - 2715<br>
+                    <div style="font-size:11px; display: inline;" >35, Centum nam-daero, Haeundae-gu, Busan</div><br>
+                </div>
+            </div>
+        </div>
+	<a href=""><div id="mapstoreD2" class="box_shop_rightB">
+				<div id="" class="img_departA3">
+					<img src="/public_html/img/store13_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA4">
+					<img src="/public_html/img/depart02_store.jpg" border="0" alt="">
+				</div></a>
+			</div>
+    </div>
+
+
+
+
+
+    <!-- 롯데백화점 명동점 -->
+    <div id="" class="box_shop">
+        <div id="" class="box_shop_leftB">
+            <div id="" class="box_shop_left_div01C">
+                <span style="letter-spacing: 2px;">department store</span><br>
+                Myeongdong Shop
+            </div>
+	    <div id="" class="bt_mapstore">
+					<div id="departA5" class="toggleC">
+						<a href="#a">shop</a>
+					</div>
+					<div id="departA6" class="toggleD">
+						<a href="#b">map</a>
+					</div>
+				</div>
+
+            <div id="" class="box_shop_left_div05">
+                <b>Opening hour</b><br>
+                <div class="box_shop_left_div05_in01">
+                    Normal<br>
+                    Extension<br>
+                    Holiday<br>
+                </div>
+                <div class="box_shop_left_div05_in02">
+                    AM 10:30 ~ PM 08:00<br>
                     AM 10:30 ~ PM 08:30<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    Comply with closing schedule of Department Store<br>
+                    Comply with closing schedule of Department Store.<br>
                 </div>
             </div>
             <div id="" class="box_shop_left_div06">
-                <b>Shop info</b><br>
+                <b>shop info</b><br>
                 <div class="box_shop_left_div06_in01">
                     T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
                     Road name<br>
                 </div>
                 <div class="box_shop_left_div06_in02">
-                    82-2-772-3849<br>
+                    02-772-3849<br>
                     8F, 81, Namdaemun-ro, Jung-gu, Seoul<br>
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
-            <div id="" class="">
-                <img src="/public_html/img_e/store05_map.jpg" border="0" alt="">
-            </div>
-        </div>
+        <a href=""><div id="mapstoreD3" class="box_shop_rightB">
+				<div id="" class="img_departA5">
+					<img src="/public_html/img/store05_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA6">
+					<img src="/public_html/img/depart03_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
     </div>
 
 
     <!-- 롯데백화점 잠실점 -->
     <div id="" class="box_shop">
-        <div id="" class="box_shop_left02">
-            <div id="" class="box_shop_left_div04">
-                <span class="" style="letter-spacing: 2px;">Lotte department store</span><br>
-                Jamsil Shop
-            </div>
+       <div id="" class="box_shop_leftB">
+				<div id="" class="box_shop_left_div01C">
+					<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>Jamsil Shop
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA7" class="toggleC">
+						<a href="#a">shop</a>
+					</div>
+					<div id="departA8" class="toggleD">
+						<a href="#b">map</a>
+					</div>
+				</div>
 
             <div id="" class="box_shop_left_div05">
-                <b>Opening hour </b><br>
+                <b>Opening hour</b><br>
                 <div class="box_shop_left_div05_in01">
                     Normal<br>
                     Extension<br>
                     Holiday<br>
                 </div>
                 <div class="box_shop_left_div05_in02">
+                    AM 10:30 ~ PM 08:00<br>
                     AM 10:30 ~ PM 08:30<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    Comply with closing schedule of Department Store<br>
+                    Comply with closing schedule of Department Store.<br>
                 </div>
             </div>
-            <div id="" class="box_shop_left_div06">
-                <b>Shop info</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    Road name<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    82-2-2143-1896<br>
-                    10F, 240, Olympic-ro, Songpa-gu, Seoul<br>
-                </div>
-            </div>
+           <div id="" class="box_shop_left_div06">
+					<b>shop info</b><br>
+					<div class="box_shop_left_div06_in01">
+						T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
+						Road name<br>
+					</div>
+					<div class="box_shop_left_div06_in02">
+						82-2-2143-1896<br>
+						10F, 240, Olympic-ro, Songpa-gu, Seoul<br>
+					</div>
+				</div>
         </div>
-        <div id="" class="box_shop_right">
-            <div id="" class="">
-                <img src="/public_html/img_e/store11_map.jpg" border="0" alt="">
-            </div>
-        </div>
+       <a href=""><div id="mapstoreD4" class="box_shop_rightB">
+				<div id="" class="img_departA7">
+					<img src="/public_html/img/store11_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA8">
+					<img src="/public_html/img/depart04_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
     </div>
 
 
     <!-- 롯데백화점 강남점 -->
     <div id="" class="box_shop">
-        <div id="" class="box_shop_left02">
-            <div id="" class="box_shop_left_div04">
-                <span class="" style="letter-spacing: 2px;">Lotte department store</span><br>
-                Gangnam Shop
-            </div>
+        <div id="" class="box_shop_leftB">
+				<div id="" class="box_shop_left_div01C">
+					<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>Gangnam Shop
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA9" class="toggleC">
+						<a href="#a">shop</a>
+					</div>
+					<div id="departA10" class="toggleD">
+						<a href="#b">map</a>
+					</div>
+				</div>
 
             <div id="" class="box_shop_left_div05">
-                <b>Opening hour </b><br>
+                <b>Opening hour</b><br>
                 <div class="box_shop_left_div05_in01">
                     Normal<br>
                     Extension<br>
                     Holiday<br>
                 </div>
                 <div class="box_shop_left_div05_in02">
+                    AM 10:30 ~ PM 08:00<br>
                     AM 10:30 ~ PM 08:30<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    Comply with closing schedule of Department Store<br>
+                    Comply with closing schedule of Department Store.<br>
                 </div>
             </div>
             <div id="" class="box_shop_left_div06">
-                <b>Shop info</b><br>
+                <b>shop info</b><br>
                 <div class="box_shop_left_div06_in01">
                     T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
                     Road name<br>
@@ -552,76 +1399,87 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
-            <div id="" class="">
-                <img src="/public_html/img_e/store07_map.jpg" border="0" alt="">
-            </div>
-        </div>
+        <a href=""><div id="mapstoreD5" class="box_shop_rightB">
+				<div id="" class="img_departA9">
+					<img src="/public_html/img/store07_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA10">
+					<img src="/public_html/img/depart05_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
     </div>
 
     <!-- 롯데백화점 영등포점
     <div id="" class="box_shop">
         <div id="" class="box_shop_left02">
             <div id="" class="box_shop_left_div04">
-                <span class="" style="letter-spacing: 2px;">Lotte department store</span><br>
-                Yeongdeungpo Shop
+                <span class="" style="letter-spacing: 2px;">department store</span><br>
+                롯데백화점 영등포점
             </div>
 
             <div id="" class="box_shop_left_div05">
-                <b>Opening hour </b><br>
+                <b>Opening hour</b><br>
                 <div class="box_shop_left_div05_in01">
                     Normal<br>
                     Extension<br>
                     Holiday<br>
                 </div>
                 <div class="box_shop_left_div05_in02">
+                    AM 10:30 ~ PM 08:00<br>
                     AM 10:30 ~ PM 08:30<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    Comply with closing schedule of Department Store<br>
+                    Comply with closing schedule of Department Store.<br>
                 </div>
             </div>
             <div id="" class="box_shop_left_div06">
-                <b>Shop info</b><br>
+                <b>shop info</b><br>
                 <div class="box_shop_left_div06_in01">
                     T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
                     Road name<br>
                 </div>
                 <div class="box_shop_left_div06_in02">
-                    82-2-2630-6966<br>
-                    9F, 846, Gyeongin-ro, Yeongdeungpo-gu, Seoul<br>
+                    02-2630-6966<br>
+                    영등포구 경인로 846, 9F<br>
                 </div>
             </div>
         </div>
         <div id="" class="box_shop_right">
             <div id="" class="">
-                <img src="/public_html/img_e/store10_map.jpg" border="0" alt="">
+                <img src="/public_html/img/store10_map.jpg" border="0" alt="">
             </div>
         </div>
     </div> -->
 
     <!-- 롯데백화점 대전점 -->
     <div id="" class="box_shop">
-        <div id="" class="box_shop_left02">
-            <div id="" class="box_shop_left_div04">
-                <span class="" style="letter-spacing: 2px;">Lotte department store</span><br>
-                Daejeon Shop
-            </div>
+       <div id="" class="box_shop_leftB">
+				<div id="" class="box_shop_left_div01C">
+					<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>Daejeon Shop
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA11" class="toggleC">
+						<a href="#a">shop</a>
+					</div>
+					<div id="departA12" class="toggleD">
+						<a href="#b">map</a>
+					</div>
+				</div>
 
             <div id="" class="box_shop_left_div05">
-                <b>Opening hour </b><br>
+                <b>Opening hour</b><br>
                 <div class="box_shop_left_div05_in01">
                     Normal<br>
                     Extension<br>
                     Holiday<br>
                 </div>
                 <div class="box_shop_left_div05_in02">
+                    AM 10:30 ~ PM 08:00<br>
                     AM 10:30 ~ PM 08:30<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    Comply with closing schedule of Department Store<br>
+                    Comply with closing schedule of Department Store.<br>
                 </div>
             </div>
             <div id="" class="box_shop_left_div06">
-                <b>Shop info</b><br>
+                <b>shop info</b><br>
                 <div class="box_shop_left_div06_in01">
                     T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
                     Road name<br>
@@ -632,38 +1490,49 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
-            <div id="" class="">
-                <img src="/public_html/img_e/store08_map.jpg" border="0" alt="">
-            </div>
-        </div>
+       <a href=""><div id="mapstoreD6" class="box_shop_rightB">
+				<div id="" class="img_departA11">
+					<img src="/public_html/img/store08_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA12">
+					<img src="/public_html/img/depart06_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
     </div>
 
 
 
     <!-- 롯데백화점 광복점 -->
     <div id="" class="box_shop">
-        <div id="" class="box_shop_left02">
-            <div id="" class="box_shop_left_div04">
-                <span class="" style="letter-spacing: 2px;">Lotte department store</span><br>
-                Gwangbok Shop
-            </div>
+       <div id="" class="box_shop_leftB">
+				<div id="" class="box_shop_left_div01C">
+					<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>Gwangbok Shop
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA13" class="toggleC">
+						<a href="#a">shop</a>
+					</div>
+					<div id="departA14" class="toggleD">
+						<a href="#b">map</a>
+					</div>
+				</div>
 
             <div id="" class="box_shop_left_div05">
-                <b>Opening hour </b><br>
+                <b>Opening hour</b><br>
                 <div class="box_shop_left_div05_in01">
                     Normal<br>
                     Extension<br>
                     Holiday<br>
                 </div>
                 <div class="box_shop_left_div05_in02">
+                    AM 10:30 ~ PM 08:00<br>
                     AM 10:30 ~ PM 08:30<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    Comply with closing schedule of Department Store<br>
+                    Comply with closing schedule of Department Store.<br>
                 </div>
             </div>
             <div id="" class="box_shop_left_div06">
-                <b>Shop info</b><br>
+                <b>shop info</b><br>
                 <div class="box_shop_left_div06_in01">
                     T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
                     Road name<br>
@@ -674,11 +1543,169 @@
                 </div>
             </div>
         </div>
-        <div id="" class="box_shop_right">
-            <div id="" class="">
-                <img src="/public_html/img_e/store09_map.jpg" border="0" alt="">
+        <a href=""><div id="mapstoreD7" class="box_shop_rightB">
+				<div id="" class="img_departA13">
+					<img src="/public_html/img/store09_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA14">
+					<img src="/public_html/img/depart07_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
+    </div>
+
+      <!-- 현대백화점 충청점 -->
+    <div id="" class="box_shop">
+       <div id="" class="box_shop_leftB">
+		<div id="" class="box_shop_left_div01D">
+			<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>Chungcheong shop
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA15" class="toggleC">
+						<a href="#a">shop</a>
+					</div>
+					<div id="departA16" class="toggleD">
+						<a href="#b">map</a>
+					</div>
+				</div>
+
+            <div id="" class="box_shop_left_div05">
+                <b>Opening hour</b><br>
+                <div class="box_shop_left_div05_in01">
+                    Normal<br>
+                    Extension<br>
+                    Holiday<br>
+                </div>
+                <div class="box_shop_left_div05_in02">
+                    AM 11:00 ~ PM 08:30<br>
+                    AM 11:00 ~ PM 09:00<br>
+                    Comply with closing schedule of Department Store.<br>
+                </div>
+            </div>
+            <div id="" class="box_shop_left_div06">
+                <b>shop info</b><br>
+                <div class="box_shop_left_div06_in01">
+                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
+                    Road name<br>
+                </div>
+                <div class="box_shop_left_div06_in02">
+                    82-43-909-4541<br>
+                    <div style="font-size:11px; display: inline;" > 308, Jikji-daero, Heungdeok-gu, Cheongju-si, Chungcheongbuk-do</div><br>
+                </div>
             </div>
         </div>
+        <a href=""><div id="mapstoreD8" class="box_shop_rightB">
+				<div id="" class="img_departA15">
+					<img src="/public_html/img/depart12_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA16">
+					<img src="/public_html/img/depart12_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
+    </div>
+
+     <!-- 현대백화점 목동점 -->
+    <div id="" class="box_shop">
+       <div id="" class="box_shop_leftB">
+		<div id="" class="box_shop_left_div01D">
+			<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>Mokdong shop
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA17" class="toggleC">
+						<a href="#a">shop</a>
+					</div>
+					<div id="departA18" class="toggleD">
+						<a href="#b">map</a>
+					</div>
+				</div>
+
+            <div id="" class="box_shop_left_div05">
+                <b>Opening hour</b><br>
+                <div class="box_shop_left_div05_in01">
+                    Normal<br>
+                    Extension<br>
+                    Holiday<br>
+                </div>
+                <div class="box_shop_left_div05_in02">
+                    AM 10:30 ~ PM 08:00<br>
+                    AM 10:30 ~ PM 08:30<br>
+                    Comply with closing schedule of Department Store.<br>
+                </div>
+            </div>
+            <div id="" class="box_shop_left_div06">
+                <b>shop info</b><br>
+                <div class="box_shop_left_div06_in01">
+                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
+                    Road name<br>
+                </div>
+                <div class="box_shop_left_div06_in02">
+                    82-2-2163-1045<br>
+                    257, Mokdongdong-ro, Yangcheon-gu, Seoul <br>
+                </div>
+            </div>
+        </div>
+        <a href=""><div id="mapstoreD9" class="box_shop_rightB">
+				<div id="" class="img_departA17">
+					<img src="/public_html/img/depart17_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA18">
+					<img src="/public_html/img/depart17_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
+    </div>
+
+     <!-- 현대백화점 대구점 -->
+    <div id="" class="box_shop">
+       <div id="" class="box_shop_leftB">
+		<div id="" class="box_shop_left_div01D">
+			<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>Daegu shop
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA19" class="toggleC">
+						<a href="#a">shop</a>
+					</div>
+					<div id="departA20" class="toggleD">
+						<a href="#b">map</a>
+					</div>
+				</div>
+
+            <div id="" class="box_shop_left_div05">
+                <b>Opening hour</b><br>
+                <div class="box_shop_left_div05_in01">
+                    Normal<br>
+                    Extension<br>
+                    Holiday<br>
+                </div>
+                <div class="box_shop_left_div05_in02">
+                    AM 10:30 ~ PM 08:00<br>
+                    AM 10:30 ~ PM 08:30<br>
+                    Comply with closing schedule of Department Store.<br>
+                </div>
+            </div>
+            <div id="" class="box_shop_left_div06">
+                <b>shop info</b><br>
+                <div class="box_shop_left_div06_in01">
+                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
+		    F&nbsp;&nbsp;A&nbsp;&nbsp;X<br>
+                    Road name<br>
+                </div>
+                <div class="box_shop_left_div06_in02">
+                    82-53-245-2788<br>
+		    82-53-245-3788<br>
+                    	2077, Dalgubeol-daero, Jung-gu, Daegu<br>
+                </div>
+            </div>
+        </div>
+        <a href=""><div id="mapstoreD9" class="box_shop_rightB">
+				<div id="" class="img_departA19">
+					<img src="/public_html/img/depart18_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA20">
+					<img src="/public_html/img/depart18_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
     </div>
 
 
