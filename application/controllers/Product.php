@@ -97,6 +97,96 @@ class Product extends Common {
             case 'swingchair' :
                 $this->load->view($this->type.'product/'.$lang_type.'swingchair.phtml');
             break;
+            case 'mors' :
+                $this->load->view($this->type.'product/'.$lang_type.'mors.phtml');
+                break;
+            case 'settle2' :
+                $this->load->view($this->type.'product/'.$lang_type.'settle2.phtml');
+                break;
+            case 'settle3' :
+                $this->load->view($this->type.'product/'.$lang_type.'settle3.phtml');
+                break;
+            case 'adams' :
+                $this->load->view($this->type.'product/'.$lang_type.'adams.phtml');
+                break;
+            case 'anjoo_sofa' :
+                $this->load->view($this->type.'product/'.$lang_type.'anjoo_sofa.phtml');
+                break;
+            case 'veronica' :
+                $this->load->view($this->type.'product/'.$lang_type.'veronica.phtml');
+                break;
+            case 'peradi' :
+                $this->load->view($this->type.'product/'.$lang_type.'peradi.phtml');
+                break;
+            case 'anjoo_bed' :
+                $this->load->view($this->type.'product/'.$lang_type.'anjoo_bed.phtml');
+                break;
+            case 'amier' :
+                $this->load->view($this->type.'product/'.$lang_type.'amier.phtml');
+                break;
+            case 'nubeca' :
+                $this->load->view($this->type.'product/'.$lang_type.'nubeca.phtml');
+                break;
+            case 'arponio' :
+                $this->load->view($this->type.'product/'.$lang_type.'arponio.phtml');
+                break;
+            case 'miner' :
+                $this->load->view($this->type.'product/'.$lang_type.'miner.phtml');
+                break;
+            case 'peanut' :
+                $this->load->view($this->type.'product/'.$lang_type.'peanut.phtml');
+                break;
+            case 'offe' :
+                $this->load->view($this->type.'product/'.$lang_type.'offe.phtml');
+                break;
+            case 'feecore' :
+                $this->load->view($this->type.'product/'.$lang_type.'feecore.phtml');
+                break;
+            case 'cozzy' :
+                $this->load->view($this->type.'product/'.$lang_type.'cozzy.phtml');
+                break;
+            case 'haesta' :
+                $this->load->view($this->type.'product/'.$lang_type.'haesta.phtml');
+                break;
+            case 'pippi' :
+                $this->load->view($this->type.'product/'.$lang_type.'pippi.phtml');
+                break;
+            case 'fliche' :
+                $this->load->view($this->type.'product/'.$lang_type.'fliche.phtml');
+                break;
+            case 'brise' :
+                $this->load->view($this->type.'product/'.$lang_type.'brise.phtml');
+                break;
+            case 'august' :
+                $this->load->view($this->type.'product/'.$lang_type.'august.phtml');
+                break;
+            case 'olo' :
+                $this->load->view($this->type.'product/'.$lang_type.'olo.phtml');
+                break;
+            case 'mobilian' :
+                $this->load->view($this->type.'product/'.$lang_type.'mobilian.phtml');
+                break;
+            case 'lavien' :
+                $this->load->view($this->type.'product/'.$lang_type.'lavien.phtml');
+                break;
+            case 'boheme' :
+                $this->load->view($this->type.'product/'.$lang_type.'boheme.phtml');
+                break;
+//            case 'becky' :
+//                $this->load->view($this->type.'product/'.$lang_type.'becky.phtml');
+//                break;
+//            case 'becky' :
+//                $this->load->view($this->type.'product/'.$lang_type.'becky.phtml');
+//                break;
+//            case 'becky' :
+//                $this->load->view($this->type.'product/'.$lang_type.'becky.phtml');
+//                break;
+//            case 'becky' :
+//                $this->load->view($this->type.'product/'.$lang_type.'becky.phtml');
+//                break;
+//            case 'becky' :
+//                $this->load->view($this->type.'product/'.$lang_type.'becky.phtml');
+//                break;
 
         }
     }

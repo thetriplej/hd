@@ -897,17 +897,17 @@ b {display:inline;}
 
 
 .main_pop{
-	width: 420px;
-	height: 503px;
+	width: 500px;
+	height: 599px;
 	position: absolute;
-	top: 220px;
+	top: 200px;
 	left: 180px;
 	z-index: 2000;
 	}
 
 .pop_close{
-	width:420px; 
-	height:28px; 
+	width:500px;
+	height:28px;
 	background-color:#fff;
 	text-align:right;
 	margin-top: -5px;

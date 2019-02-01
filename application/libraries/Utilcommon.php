@@ -48,7 +48,8 @@ class Utilcommon{
             }
 
         }
-        set_cookie('tj_lang_type','ko',86000);
+
+        set_cookie($cookie);
         $lang_type = get_cookie('tj_lang_type');
         if($lang_type != $cookie['value']){
             $result = "OK";
@@ -82,6 +83,58 @@ class Utilcommon{
         }
         return $result;
 
+    }
+
+    public function masking($_type, $_data){
+        $_data = str_replace('-','',$_data);
+        $strlen = mb_strlen($_data, 'utf-8');
+        $maskingValue = "";
+
+        $useHyphen = "-";
+
+        if($_type == 'N'){
+            switch($strlen){
+//                case 2:
+//                    $maskingValue = mb_strcut($_data, 0, 3, "UTF-8").' * ';
+//                    break;
+//                case 3:
+//                    $maskingValue = mb_strcut($_data, 0, 3, "UTF-8").' * '.mb_strcut($_data, 8, 11, "UTF-8");
+//                    break;
+//                case 4:
+//                    $maskingValue = mb_strcut($_data, 0, 3, "UTF-8").'**'.mb_strcut($_data, 12, 15, "UTF-8");
+//                    break;
+//                default:
+//                    $maskingValue = mb_strcut($_data, 0, 3, "UTF-8").'**'.mb_strcut($_data, 12, 15, "UTF-8");
+//                    break;
+                case 2:
+                    $maskingValue = mb_substr($_data, 0, 1, "UTF-8").' * ';
+                    break;
+                case 3:
+                    $maskingValue = mb_substr($_data, 0, 1, "UTF-8").' * '.mb_substr($_data, 2, 11, "UTF-8");
+                    break;
+                case 4:
+                    $maskingValue = mb_substr($_data, 0, 1, "UTF-8").' * '.mb_substr($_data, 2, 15, "UTF-8");
+                    break;
+                default:
+                    $maskingValue = mb_substr($_data, 0, 1, "UTF-8").' * '.mb_substr($_data, 2, 15, "UTF-8");;
+                    break;
+            }
+        }else if($_type == 'P'){
+            switch($strlen){
+                case 10:
+                    $maskingValue = mb_substr($_data, 0, 3)."{$useHyphen}***{$useHyphen}".mb_substr($_data, 6, 4);
+                    break;
+                case 11:
+                    $maskingValue = mb_substr($_data, 0, 3)."{$useHyphen}****{$useHyphen}".mb_substr($_data, 7, 4);
+                    break;
+                default:
+                    trigger_error('Not a known format parametter in function', E_USER_NOTICE);
+                    break;
+            }
+        }else{
+            trigger_error('Masking Function Parameter Error', E_USER_NOTICE);
+        }
+        return $maskingValue;
     }
 
 

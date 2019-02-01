@@ -1,6 +1,6 @@
 .box_outline{
 	width:1080px;
-	height:1180px;
+	/*height:100%;*/
 	margin: 0 auto;
 	margin-top:50px;
 	border:solid 1px #dfdddc;
@@ -42,7 +42,6 @@
 .div_proimg_center
 {
 	width:1080px;
-	height:800px;
 	padding-top:150px;
 	padding-left:215px;
 }
@@ -73,7 +72,7 @@
 	height:102px;
 	margin-top:80px;
 	/*border:solid 1px #d6d2ce;*/
-	font-size:26px;
+	font-size:14px;
 	font-weight:bold;
 	letter-spacing: -3px;
 	word-spacing:4px;

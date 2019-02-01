@@ -402,6 +402,7 @@ margin: 0 auto;}
 	height:125px;
 	margin: 0 auto;
 	margin-top:50px;
+	padding-left:17px;
 }
 
 .box_title img{
@@ -1602,7 +1603,6 @@ margin: 0 auto;}
 	float:left;
 }
 
-
 .box_space
 {
 	width:1080px;
@@ -1614,14 +1614,14 @@ margin: 0 auto;}
 	width: 420px;
 	height: 503px;
 	position: absolute;
-	top: 142px;
+	top: 200px;
 	left: 180px;
 	z-index: 2000;
 	}
 
 .pop_close{
-	width:420px; 
-	height:28px; 
+	width:420px;
+	height:28px;
 	background-color:#fff;
 	text-align:right;
 	margin-top: -5px;

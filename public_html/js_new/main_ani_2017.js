@@ -40,4 +40,3 @@ $(window).ready(function(){
 
 	/* fadinout action*/
  }); 
-

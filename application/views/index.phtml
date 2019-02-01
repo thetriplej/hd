@@ -2,9 +2,12 @@
 <!-- <script type="text/javascript" src="/public_html/js/open_video.js"></script>  -->
 <!-- mySlider script file -->
 <script src="/public_html/js/myslider.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- mySlider css file -->
 <link rel="stylesheet" type="text/css" href="/public_html/css/myslider.css" />
 <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>"/>
+
+
 	<div id="" class="wrap_middle">
 		<div class="main_img">
 			<div class="myslider">
@@ -14,9 +17,11 @@
 			</div>
 		</div>
 		<div id="bx-point">
-			<a href="#a"><div id="bt_point01"><img src="public_html/img/pagepoint.png" /></div></a>
-			<a href="#b"><div id="bt_point02"><img src="public_html/img/pagepoint.png" /></div></a>
-			<a href="#c"><div id="bt_point03"><img src="public_html/img/pagepoint.png" /></div></a>
+			<a href="#a1"><div id="bt_point01"><img src="public_html/img/pagepoint.png" /></div></a>
+			<a href="#a2"><div id="bt_point02"><img src="public_html/img/pagepoint.png" /></div></a>
+			<a href="#a3"><div id="bt_point03"><img src="public_html/img/pagepoint.png" /></div></a>
+			<!-- <a href="#a4"><div id="bt_point02"><img src="public_html/img/pagepoint.png" /></div></a>
+			<a href="#a5"><div id="bt_point03"><img src="public_html/img/pagepoint.png" /></div></a> -->
 		</div>
 
 		<div id="" class="reviewnews">
@@ -146,12 +151,13 @@
 		</div>
 	</div>
 
-	<!--<div id="hpopup" class="main_pop">
+	<!-- <div id="hpopup" class="main_pop">
 		<div>
 		<img src="public_html/images/workshop2018.jpg">
 		</div>
 		<a href="#1"><div id="hclose" class="pop_close"> close </div></a>
-	</div>-->
+	</div> -->
+
 
 
 	<script>
@@ -196,5 +202,3 @@
             player.stopVideo();
         }
 	</script>
-
-

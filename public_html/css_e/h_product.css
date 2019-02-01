@@ -1,6 +1,5 @@
 ﻿.box_outline{
 	width:1080px;
-	height:1280px;
 	margin: 0 auto;
 	margin-top:50px;
 	border:solid 1px #dfdddc;
@@ -42,8 +41,8 @@
 .div_proimg_center
 {
 	width:1080px;
-	height:800px;
 	padding-top:150px;
+	padding-bottom:100px;
 	padding-left:215px;
 }
 
@@ -58,6 +57,22 @@
 	font-size:12px;
 }
 
+.div_proimg_center > img
+{
+	border:solid 1px #ececec;
+}
+
+.div_proimg_center-2 > img
+{
+	border:solid 1px #ececec;
+}
+
+.div_proimg_center-2
+{
+	width:1080px;
+	padding-bottom:100px;
+	padding-left:215px;
+}
 
 .box_special{
 	width:1000px;
@@ -127,6 +142,15 @@
 .box_premium{
 	width:1000px;
 	height:400px;
+	margin: 0 auto;
+	overflow:hidden;
+	border-top:solid 1px #d6d2ce;
+	color:#7e7773;
+}
+
+.box_premium_e1{
+	width:1000px;
+	height:520px;
 	margin: 0 auto;
 	overflow:hidden;
 	border-top:solid 1px #d6d2ce;

@@ -17,10 +17,12 @@ class Common extends CI_Controller
             $agent_mode = "1";
         }
         $this->agent_mode = $agent_mode;
-        if(empty(get_cookie('tj_lang_type'))) {
-            $this->utilcommon->set_lang();
-        }
         $this->lang_type = get_cookie('tj_lang_type');
+
+        if(empty($this->lang_type)) {
+            $this->utilcommon->set_lang();
+            $this->lang_type = get_cookie('tj_lang_type');
+        }
 
         if(empty(get_cookie('tj_visit_log'))) {
             $this->visit_log($agent_mode);
@@ -90,8 +92,10 @@ class Common extends CI_Controller
         $send_data = array(
             'url'           => $uri.$add_uri,
             'agent_mode'    => $agent_mode,
+            'lang_type'    => $lang_type,
         );
         $result = $this->visit_model->get_log_check($send_data);
+
         if($agent_mode == "2"){
             $agent_name = "(M) ";
         }else{
@@ -124,6 +128,31 @@ class Common extends CI_Controller
                 "/product/detail_view?code=amore" => "<font color='blue'>".$agent_name."제품소개</font> - AMORE".$lang_name,
                 "/product/detail_view?code=twinsofa" => "<font color='blue'>".$agent_name."제품소개</font> - TWINSOFA".$lang_name,
                 "/product/detail_view?code=swingchair" => "<font color='blue'>".$agent_name."제품소개</font> - SWINGCHAIR".$lang_name,
+                "/product/detail_view?code=mors" => "<font color='blue'>".$agent_name."제품소개</font> - Mors".$lang_name,
+                "/product/detail_view?code=settle2" => "<font color='blue'>".$agent_name."제품소개</font> - Settle2".$lang_name,
+                "/product/detail_view?code=settle3" => "<font color='blue'>".$agent_name."제품소개</font> - Settle3".$lang_name,
+                "/product/detail_view?code=adams" => "<font color='blue'>".$agent_name."제품소개</font> - Adams".$lang_name,
+                "/product/detail_view?code=anjoo_sofa" => "<font color='blue'>".$agent_name."제품소개</font> - Anjoo_sofa".$lang_name,
+                "/product/detail_view?code=veronica" => "<font color='blue'>".$agent_name."제품소개</font> - Veronica".$lang_name,
+                "/product/detail_view?code=peradi" => "<font color='blue'>".$agent_name."제품소개</font> - Peradi".$lang_name,
+                "/product/detail_view?code=anjoo_bed" => "<font color='blue'>".$agent_name."제품소개</font> - Anjoo_bed".$lang_name,
+                "/product/detail_view?code=amier" => "<font color='blue'>".$agent_name."제품소개</font> - Amier".$lang_name,
+                "/product/detail_view?code=nubeca" => "<font color='blue'>".$agent_name."제품소개</font> - Nubeca".$lang_name,
+                "/product/detail_view?code=arponio" => "<font color='blue'>".$agent_name."제품소개</font> - Arponio".$lang_name,
+                "/product/detail_view?code=miner" => "<font color='blue'>".$agent_name."제품소개</font> - Miner".$lang_name,
+                "/product/detail_view?code=peanut" => "<font color='blue'>".$agent_name."제품소개</font> - Peanut".$lang_name,
+                "/product/detail_view?code=offe" => "<font color='blue'>".$agent_name."제품소개</font> - Offe".$lang_name,
+                "/product/detail_view?code=feecore" => "<font color='blue'>".$agent_name."제품소개</font> - Feecore".$lang_name,
+                "/product/detail_view?code=cozzy" => "<font color='blue'>".$agent_name."제품소개</font> - Cozzy".$lang_name,
+                "/product/detail_view?code=haesta" => "<font color='blue'>".$agent_name."제품소개</font> - Haesta".$lang_name,
+                "/product/detail_view?code=pippi" => "<font color='blue'>".$agent_name."제품소개</font> - Pippi".$lang_name,
+                "/product/detail_view?code=fliche" => "<font color='blue'>".$agent_name."제품소개</font> - Fliche".$lang_name,
+                "/product/detail_view?code=brise" => "<font color='blue'>".$agent_name."제품소개</font> - Brise".$lang_name,
+                "/product/detail_view?code=august" => "<font color='blue'>".$agent_name."제품소개</font> - August".$lang_name,
+                "/product/detail_view?code=olo" => "<font color='blue'>".$agent_name."제품소개</font> - Olo".$lang_name,
+                "/product/detail_view?code=mobilian" => "<font color='blue'>".$agent_name."제품소개</font> - Mobilian".$lang_name,
+                "/product/detail_view?code=lavien" => "<font color='blue'>".$agent_name."제품소개</font> - Lavien".$lang_name,
+                "/product/detail_view?code=boheme" => "<font color='blue'>".$agent_name."제품소개</font> - BOHEME".$lang_name,
                 "/gallery/customer" => "<font color='blue'>".$agent_name."갤러리</font> - 고객후기".$lang_name,
                 "/gallery/hmagajine" => "<font color='blue'>".$agent_name."갤러리</font> - H_매거진".$lang_name,
                 "/notice/notice" => "<font color='blue'>".$agent_name."notice</font> - 공지사항".$lang_name,
