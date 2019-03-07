@@ -1,7 +1,7 @@
-function searchList(){
-	
-	location.href="./List.asp?B_Code="+$("#B_Code").val()+"&searchValue="+$("#searchValue").val()+"&searchType="+$("#searchType").val();
-}
+// function searchList(){
+//
+// 	location.href="./List.asp?B_Code="+$("#B_Code").val()+"&searchValue="+$("#searchValue").val()+"&searchType="+$("#searchType").val();
+// }
 
 function goto(url, option) {
 	if(url) {
@@ -72,19 +72,19 @@ function CheckPW(){
 
 }
 
-function frmSend(IDX, URL){	
-	with(document.frm01){
-		B_IDX.value = IDX;
-		action = URL;
-		submit();
-	}
-}
-
-function frmDel(){	
-	with(document.frm01){
-		method = 'post';
-		ProcType.value = "D";
-		action = "Proc.asp";
-		submit();
-	}
-}
+// function frmSend(IDX, URL){
+// 	with(document.frm01){
+// 		B_IDX.value = IDX;
+// 		action = URL;
+// 		submit();
+// 	}
+// }
+//
+// function frmDel(){
+// 	with(document.frm01){
+// 		method = 'post';
+// 		ProcType.value = "D";
+// 		action = "Proc.asp";
+// 		submit();
+// 	}
+// }
