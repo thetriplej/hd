@@ -257,34 +257,34 @@
         return true;
     }
 
-    //Element 추가
-    function ElementAdd(Target, Position, Content, Url, Params, Method){ //Target - 대상, Position - 위치 (beforeBegin, afterBegin, beforeEnd, afterEnd), Url - 경로, Params - 파라미터, Method - GET/POST
-        Obj = document.getElementById(Target);
-
-        if(!Url){ //URL이 없을 경우 그 페이지에서 바로 실행
-            Obj.insertAdjacentHTML(Position, Content);
-        }else{
-            Data = sendRequest(Url, Params, Method);
-
-            Content = "<div style='width:600px'>"+Content+"<img src='/Images/ico_del.gif' class='imghand' onclick=\"ElementDel(this, 'Proc_Application.asp','"+ Data +"','POST')\"></div>";
-            Obj.insertAdjacentHTML(Position, Content);
-        }
-    }
-
-    //Element 삭제
-    function ElementDel(Target, Url, Params, Method){ //Target - 대상, Url - 경로, Params - 파라미터, Method - GET/POST
-        Obj = Target.parentElement; //부모엘레먼트
-
-        if(!Url){ //URL이 없을 경우 그 페이지에서 바로 실행
-            Obj.removeNode(Obj);
-        }else{
-            Data = sendRequest(Url, Params, Method);
-            if(Data == "OK"){
-                Obj.removeNode(Obj);
-            }else{
-                alert('삭제가 실패하였습니다.\n다시한번 시도해 주시기 바랍니다.');
-            }
-        }
-    }
+//    //Element 추가
+//    function ElementAdd(Target, Position, Content, Url, Params, Method){ //Target - 대상, Position - 위치 (beforeBegin, afterBegin, beforeEnd, afterEnd), Url - 경로, Params - 파라미터, Method - GET/POST
+//        Obj = document.getElementById(Target);
+//
+//        if(!Url){ //URL이 없을 경우 그 페이지에서 바로 실행
+//            Obj.insertAdjacentHTML(Position, Content);
+//        }else{
+//            Data = sendRequest(Url, Params, Method);
+//
+//            Content = "<div style='width:600px'>"+Content+"<img src='/Images/ico_del.gif' class='imghand' onclick=\"ElementDel(this, 'Proc_Application.asp','"+ Data +"','POST')\"></div>";
+//            Obj.insertAdjacentHTML(Position, Content);
+//        }
+//    }
+//
+//    //Element 삭제
+//    function ElementDel(Target, Url, Params, Method){ //Target - 대상, Url - 경로, Params - 파라미터, Method - GET/POST
+//        Obj = Target.parentElement; //부모엘레먼트
+//
+//        if(!Url){ //URL이 없을 경우 그 페이지에서 바로 실행
+//            Obj.removeNode(Obj);
+//        }else{
+//            Data = sendRequest(Url, Params, Method);
+//            if(Data == "OK"){
+//                Obj.removeNode(Obj);
+//            }else{
+//                alert('삭제가 실패하였습니다.\n다시한번 시도해 주시기 바랍니다.');
+//            }
+//        }
+//    }
 </script>
 
