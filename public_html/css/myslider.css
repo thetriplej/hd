@@ -92,6 +92,14 @@
 	display:none;
 }
 
+.sliderb_img06
+{
+	width:337x;
+	height:393px;
+	position:absolute;
+	display:none;
+}
+
 .mysliderc
 {
 	width:1080x;
@@ -182,7 +190,7 @@
 	top:26px;
 	right:10px;
 	overflow:hidden;
-	width:100px;
+	width:120px;
 	height:15px;
 }
 
@@ -245,6 +253,13 @@
 	float:left;
 }
 #bt_pointb05{
+	background:url('/public_html/img/pagepointbk.png') 0 0 no-repeat;
+	width:20px;
+	height:12px;
+	float:left;
+}
+
+#bt_pointb06{
 	background:url('/public_html/img/pagepointbk.png') 0 0 no-repeat;
 	width:20px;
 	height:12px;

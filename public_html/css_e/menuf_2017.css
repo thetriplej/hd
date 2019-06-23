@@ -3,7 +3,7 @@
 
 #main_header
 {
-    width:820px;
+    width:825px;
     margin:0 auto;
     height:96px;
 }
@@ -14,7 +14,7 @@
 	font-family: "Noto Sans KR",  "Malgun Gothic", sans-serif;
 	top:47px;
     font-size:13px;
-	font-weight:700;
+	font-weight:400;
 }
 
 /*main manu list*/
@@ -24,15 +24,15 @@
     display:block;
     width:164px; 
     text-align:center;
-    color:#484952;
+    color:#877e79;
 	font-size:13px;
 }
 
 #main_gnb > ul > li >a:hover{
     display:block;
-	font-weight:700;
+	font-weight:400;
 	font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
-    color:#777;
+    color:#877e79;
 }
 
 /*subpage main menu*/
