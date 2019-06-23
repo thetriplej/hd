@@ -5,7 +5,7 @@ $(window).ready(function(){
 
 	var count = 0;
 	var imgnum = 2;
-	var imgnumb = 2;
+	var imgnumb = 1;
 	var imgnumc = 2;
 
 setInterval(imgslide, 6000); // 매 1초마다 함수 실행			
@@ -74,11 +74,13 @@ setInterval(imgslidec, 5000);
 			$('.sliderb_img03').fadeOut();
 			$('.sliderb_img04').fadeOut();
 			$('.sliderb_img05').fadeOut();
+			$('.sliderb_img06').fadeOut();
 			$('#bt_pointb01').css({"background-position":"0px -13px"});
 			$('#bt_pointb02').css({"background-position":"0px 0px"});
 			$('#bt_pointb03').css({"background-position":"0px 0px"});
 			$('#bt_pointb04').css({"background-position":"0px 0px"});
 			$('#bt_pointb05').css({"background-position":"0px 0px"});
+			$('#bt_pointb06').css({"background-position":"0px 0px"});
 		}
 		else if(imgnumb == 2){
 			//두번째 이미지 위치
@@ -87,11 +89,13 @@ setInterval(imgslidec, 5000);
 			$('.sliderb_img03').fadeOut();
 			$('.sliderb_img04').fadeOut();
 			$('.sliderb_img05').fadeOut();
+			$('.sliderb_img06').fadeOut();
 			$('#bt_pointb01').css({"background-position":"0px 0px"});
 			$('#bt_pointb02').css({"background-position":"0px -13px"});
 			$('#bt_pointb03').css({"background-position":"0px 0px"});
 			$('#bt_pointb04').css({"background-position":"0px 0px"});
 			$('#bt_pointb05').css({"background-position":"0px 0px"});
+			$('#bt_pointb06').css({"background-position":"0px 0px"});
 		}
 		else if(imgnumb == 3){
 			//세번째 이미지 위치
@@ -100,12 +104,13 @@ setInterval(imgslidec, 5000);
 			$('.sliderb_img03').fadeIn();
 			$('.sliderb_img04').fadeOut();
 			$('.sliderb_img05').fadeOut();
+			$('.sliderb_img06').fadeOut();
 			$('#bt_pointb01').css({"background-position":"0px 0px"});
 			$('#bt_pointb02').css({"background-position":"0px 0px"});
 			$('#bt_pointb03').css({"background-position":"0px -13px"});
 			$('#bt_pointb04').css({"background-position":"0px 0px"});
 			$('#bt_pointb05').css({"background-position":"0px 0px"});
-			//imgnumb = 0;
+			$('#bt_pointb06').css({"background-position":"0px 0px"});
 		}
 		else if(imgnumb == 4){
 			//네번째 이미지 위치
@@ -114,12 +119,14 @@ setInterval(imgslidec, 5000);
 			$('.sliderb_img03').fadeOut();
 			$('.sliderb_img04').fadeIn();
 			$('.sliderb_img05').fadeOut();
+			$('.sliderb_img06').fadeOut();
 			$('#bt_pointb01').css({"background-position":"0px 0px"});
 			$('#bt_pointb02').css({"background-position":"0px 0px"});
 			$('#bt_pointb03').css({"background-position":"0px 0px"});
 			$('#bt_pointb04').css({"background-position":"0px -13px"});
 			$('#bt_pointb05').css({"background-position":"0px 0px"});
-			
+			$('#bt_pointb06').css({"background-position":"0px 0px"});
+			//imgnumb = 0;
 		}
 		else if(imgnumb == 5){
 			//다섯번째 이미지 위치
@@ -128,11 +135,29 @@ setInterval(imgslidec, 5000);
 			$('.sliderb_img03').fadeOut();
 			$('.sliderb_img04').fadeOut();
 			$('.sliderb_img05').fadeIn();
+			$('.sliderb_img06').fadeOut();
 			$('#bt_pointb01').css({"background-position":"0px 0px"});
 			$('#bt_pointb02').css({"background-position":"0px 0px"});
 			$('#bt_pointb03').css({"background-position":"0px 0px"});
 			$('#bt_pointb04').css({"background-position":"0px 0px"});
 			$('#bt_pointb05').css({"background-position":"0px -13px"});
+			$('#bt_pointb06').css({"background-position":"0px 0px"});
+			//imgnumb = 0;
+		}
+		else if(imgnumb == 6){
+			//다섯번째 이미지 위치
+			$('.sliderb_img01').fadeOut();
+			$('.sliderb_img02').fadeOut();
+			$('.sliderb_img03').fadeOut();
+			$('.sliderb_img04').fadeOut();
+			$('.sliderb_img05').fadeOut();
+			$('.sliderb_img06').fadeIn();
+			$('#bt_pointb01').css({"background-position":"0px 0px"});
+			$('#bt_pointb02').css({"background-position":"0px 0px"});
+			$('#bt_pointb03').css({"background-position":"0px 0px"});
+			$('#bt_pointb04').css({"background-position":"0px 0px"});
+			$('#bt_pointb05').css({"background-position":"0px 0px"});
+			$('#bt_pointb06').css({"background-position":"0px -13px"});
 			imgnumb = 0;
 		}
 		imgnumb = imgnumb + 1;
@@ -158,6 +183,11 @@ setInterval(imgslidec, 5000);
         //$("#bt_point02").addClass("bgupdown");
 		imgslideb(5);
     });
+	$("#bt_pointb06").click(function(){
+        //$("#bt_point02").addClass("bgupdown");
+		imgslideb(6);
+    });
+
 
 
 

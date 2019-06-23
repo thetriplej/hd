@@ -595,6 +595,44 @@
 			});
 
 
+//imageslideD11 //
+			var mapD11 = 1; // 
+			setInterval(imgslideD11, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD11(j){
+				if(j != null){ mapD11 = j;}
+				mapD11 = mapD11 * -1; // 매 4초마다 toggle
+					if(mapD11 < 0){ 
+						$('#departA21').animate({left: '-72px' });
+						$('#departA22').animate({left: '0px' });
+						$('.img_departA21').animate({left: '0px' });
+						$('.img_departA22').animate({left: '690px' });
+					}
+					else if(mapD11 > 0){
+						$('#departA21').animate({left: '0px' });
+						$('#departA22').animate({left: '-72px' });
+						$('.img_departA21').animate({left: '-690px' });
+						$('.img_departA22').animate({left: '0px' });
+					}
+					else if(mapD11 == 0){
+
+					}
+			}
+
+			$("#mapstoreD11").mouseover(function(event){
+				if(mapD11 != 0){
+					imgslideD11(0);
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD11").mouseout(function(event){
+					mapD11 = 1;
+					imgslideD11();
+					var offset_top = $(document).scrollTop();
+					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
 
 //////////////////////
 
@@ -837,6 +875,23 @@
 				$('#departA20').animate({left: '-72px' });
 				$('.img_departA19').animate({left: '-690px' });
 				$('.img_departA20').animate({left: '0px' });
+               }
+			});
+
+			$("#departA21").on({
+               mousedown: function () {
+				$('#departA21').animate({left: '-72px' });
+				$('#departA22').animate({left: '0px' });
+				$('.img_departA21').animate({left: '0px' });
+				$('.img_departA22').animate({left: '690px' });
+               }
+			});
+			$("departA22").on({
+               mousedown: function () {
+				$('#departA21').animate({left: '0px' });
+				$('#departA22').animate({left: '-72px' });
+				$('.img_departA21').animate({left: '-690px' });
+				$('.img_departA22').animate({left: '0px' });
                }
 			});
 
@@ -1708,6 +1763,57 @@
 				</div>
 				<div id="" class="img_departA20">
 					<img src="/public_html/img/depart18_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
+    </div>
+
+     <!-- 현대백화점 미아점 -->
+    <div id="" class="box_shop">
+       <div id="" class="box_shop_leftB">
+		<div id="" class="box_shop_left_div01D">
+			<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>현대백화점 미아점
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA21" class="toggleC">
+						<a href="#a">매장</a>
+					</div>
+					<div id="departA22" class="toggleD">
+						<a href="#b">약도</a>
+					</div>
+				</div>
+
+            <div id="" class="box_shop_left_div05">
+                <b>영업시간</b><br>
+                <div class="box_shop_left_div05_in01">
+                    정&nbsp;&nbsp;&nbsp;상<br>
+                    연&nbsp;&nbsp;&nbsp;장<br>
+                    공휴일<br>
+                </div>
+                <div class="box_shop_left_div05_in02">
+                    AM 10:30 ~ PM 08:00<br>
+                    AM 10:30 ~ PM 08:30<br>
+                    각 백화점 휴무 일정에 따름<br>
+                </div>
+            </div>
+            <div id="" class="box_shop_left_div06">
+                <b>매장정보</b><br>
+                <div class="box_shop_left_div06_in01">
+                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
+                    도로명<br>
+                </div>
+                <div class="box_shop_left_div06_in02">
+                     02-2117-1734<br>
+                    서울 성북구 동소문로 315, 7F<br>
+                </div>
+            </div>
+        </div>
+        <a href=""><div id="mapstoreD11" class="box_shop_rightB">
+				<div id="" class="img_departA21">
+					<img src="/public_html/img/depart19_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA22">
+					<img src="/public_html/img/depart19_store.jpg" border="0" alt="">
 				</div>
 			</div></a>
     </div>
