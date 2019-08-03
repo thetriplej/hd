@@ -24,11 +24,13 @@
 #main_gnb > ul{overflow:hidden;}
 #main_gnb > ul > li{float:left; margin-top:1px;}
 #main_gnb > ul > li >a{
+	font-family: "Nanum Myeongjo"; font-weight: 800; font-style: normal;
     display:block;
     width:155px; 
     text-align:center;
     color:#877e79;
-	font-size:13px;
+	font-size:10px;
+	margin-top: 10px;
 }
 
 #main_gnb > ul > li >a:hover{
