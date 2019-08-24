@@ -4,11 +4,11 @@ $(window).ready(function(){
 
 
 	var count = 0;
-	var imgnum = 2;
+	var imgnum = 1;
 	var imgnumb = 1;
 	var imgnumc = 2;
 
-setInterval(imgslide, 6000); // 매 1초마다 함수 실행			
+setInterval(imgslide, 4000); // 매 1초마다 함수 실행			
 setInterval(imgslideb, 2000); 
 setInterval(imgslidec, 5000); 
 
@@ -21,27 +21,45 @@ setInterval(imgslidec, 5000);
 			$('.slider_img01').fadeIn();
 			$('.slider_img02').fadeOut();
 			$('.slider_img03').fadeOut();
+			$('.slider_img04').fadeOut();
 			$('#bt_point01').css({"background-position":"0px -13px"});
 			$('#bt_point02').css({"background-position":"0px 0px"});
 			$('#bt_point03').css({"background-position":"0px 0px"});
+			$('#bt_point04').css({"background-position":"0px 0px"});
 		}
 		else if(imgnum == 2){
 			//두번째 이미지 위치
 			$('.slider_img01').fadeOut();
 			$('.slider_img02').fadeIn();
 			$('.slider_img03').fadeOut();
+			$('.slider_img04').fadeOut();
 			$('#bt_point01').css({"background-position":"0px 0px"});
 			$('#bt_point02').css({"background-position":"0px -13px"});
 			$('#bt_point03').css({"background-position":"0px 0px"});
+			$('#bt_point04').css({"background-position":"0px 0px"});
 		}
 		else if(imgnum == 3){
 			//세번째 이미지 위치
 			$('.slider_img01').fadeOut();
 			$('.slider_img02').fadeOut();
 			$('.slider_img03').fadeIn();
+			$('.slider_img04').fadeOut();
 			$('#bt_point01').css({"background-position":"0px 0px"});
 			$('#bt_point02').css({"background-position":"0px 0px"});
 			$('#bt_point03').css({"background-position":"0px -13px"});
+			$('#bt_point04').css({"background-position":"0px 0px"});
+		}
+
+		else if(imgnum == 4){
+			//네번째 이미지 위치
+			$('.slider_img01').fadeOut();
+			$('.slider_img02').fadeOut();
+			$('.slider_img03').fadeOut();
+			$('.slider_img04').fadeIn();
+			$('#bt_point01').css({"background-position":"0px 0px"});
+			$('#bt_point02').css({"background-position":"0px 0px"});
+			$('#bt_point03').css({"background-position":"0px 0px"});
+			$('#bt_point04').css({"background-position":"0px -13px"});
 			imgnum = 0;
 		}
 		imgnum = imgnum + 1;
@@ -58,6 +76,10 @@ setInterval(imgslidec, 5000);
 	$("#bt_point03").click(function(){
         //$("#bt_point03").addClass("bgupdown");
 		imgslide(3);
+    });
+	$("#bt_point04").click(function(){
+        //$("#bt_point03").addClass("bgupdown");
+		imgslide(4);
     });
 	
 

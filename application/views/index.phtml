@@ -1,28 +1,188 @@
 <!-- video popup open  -->
 <!-- <script type="text/javascript" src="/public_html/js/open_video.js"></script>  -->
+<link rel="stylesheet" type="text/css" href="/public_html/css/new-default-hassed.css" />
+
+<!-- video popup open  -->
+<!-- <script type="text/javascript" src="/public_html/js/open_video.js"></script>  -->
 <!-- mySlider script file -->
 <script src="/public_html/js/myslider.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- mySlider css file -->
-<link rel="stylesheet" type="text/css" href="/public_html/css/myslider.css" />
+<link rel="stylesheet" type="text/css" href="/public_html/css/myslider20190819.css" />
 <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>"/>
 
+<script>//메인이미지 슬라이딩
+	'use strict';
+
+	$(function() {
+
+		//이 부분을 자신의 상황에 맞게 수정
+		//window.innerWidth : 브라우저 화면의 너비
+
+		var width = window.innerWidth-20; //슬라이드 한 개의 폭
+		var height = 700; //슬라이드 높이
+		var animationSpeed = 1000; //화면전환 속도
+		var pause = 6000; //화면전환 후 일시 정지 속도
+		var totalSlides = 6; //복제 슬라이드를 포함한 전체 슬라이드 개수
+
+		var currentSlide = 2; //이 항목은 수정하지 않음
+		var interval;
+		var action;
+		var dotNum;
+		var dMinusC;
+
+		//cache DOM elements
+		var $slideCon = $('#slider');
+		var $slideUl = $('.slides');
+		var $slides = $('.slide');
+		var $dots = $('.slider-nav-dot');
+		var $sliderNavPrv = $('#slider-nav-prv');
+		var $sliderNavNxt = $('#slider-nav-nxt');
+
+		function initSlider(){
+			$slideCon.css('width',width);
+			$slideCon.css('height',height);
+			$slideUl.css('margin-left',-width);
+			$slideUl.css('width',totalSlides*width);
+			$slides.css('width',width);
+			$slides.css('height',height);
+		}
+
+		function startSlider(action, dotNum) {
+
+			if(action == 'prv'){
+				$slideUl.animate({'margin-left': '+='+width}, animationSpeed, function() {
+					if (--currentSlide === 1) {
+						currentSlide = $slides.length-1;
+						$slideUl.css('margin-left', -($slides.length-2)*width);
+					}else{}
+
+					for(var i=0; i<$dots.length; i++){$dots[i].style.background = "";}
+					$dots[currentSlide-2].style.background = "white";
+				});
+			} else if(action == 'nxt') {
+				$slideUl.animate({'margin-left': '-='+width}, animationSpeed, function() {
+					if (++currentSlide === $slides.length) {
+						currentSlide = 2;
+						$slideUl.css('margin-left', -width);
+					}else{}
+
+					for(var i=0; i<$dots.length; i++){$dots[i].style.background = "";}
+					$dots[currentSlide-2].style.background = "white";
+				});
+			} else if(action == 'dot') {
+				dMinusC = dotNum-currentSlide;
+				currentSlide = dotNum;
+
+				for(var i=0; i<$dots.length; i++){$dots[i].style.background = "";}
+				$dots[currentSlide-2].style.background = "white";
+
+				$slideUl.animate({'margin-left': '-='+(dMinusC*width)}, animationSpeed);
+
+			} else {
+				// setInterval(function,milliseconds)
+				// 지정한 시간에 한번씩 함수를 실행
+				// 3초 마다 $slideUl 의 왼쪽 마진을 -width 함. 에니메이션 속도는 1초.
+				interval = setInterval(function() {
+
+					//.animate( CSS properties [, duration ] [, complete ] )
+					$slideUl.animate({'margin-left': '-='+width}, animationSpeed, function() {
+						if (++currentSlide === $slides.length) { // $slides.length == 7
+							currentSlide = 2;
+							$slideUl.css('margin-left', -width);
+						}
+
+						for(var i=0; i<$dots.length; i++){$dots[i].style.background = "";}
+						$dots[currentSlide-2].style.background = "white";
+					});	
+
+				}, pause);
+			}
+
+		}
+
+
+		function pauseSlider() {
+			clearInterval(interval);
+		}
+
+		function prvSlide(){
+			startSlider('prv');
+		}
+
+		function nxtSlide(){
+			startSlider('nxt');
+		}
+
+		function dotSelected(){
+			dotNum = $(this).attr('id');
+			dotNum = parseInt(dotNum.substring(7))+1;
+			startSlider('dot', dotNum);
+		}
+
+
+		$slideUl
+			.on('mouseenter', pauseSlider)
+			.on('mouseleave', startSlider);
+
+		$sliderNavPrv
+			.on('click',prvSlide)
+			.on('mouseenter', pauseSlider)
+			.on('mouseleave', startSlider);
+
+		$sliderNavNxt
+			.on('click',nxtSlide)
+			.on('mouseenter', pauseSlider)
+			.on('mouseleave', startSlider);
+
+		$dots
+			.on('click', dotSelected)
+			.on('mouseenter', pauseSlider)
+			.on('mouseleave', startSlider);		
+
+		
+		initSlider();
+		startSlider();
+
+	});
+
+</script>
 
 	<div id="" class="wrap_middle">
-		<div class="main_img">
-			<div class="myslider">
-				<div id='layerA' class="slider_img01"><img src="public_html/img/main_img01.jpg" border="0" alt=""></div>
-				<div class="slider_img02"><img src="public_html/img/main_img02.jpg" border="0" alt=""></div>
-				<div class="slider_img03"><img src="public_html/img/main_img03.jpg" border="0" alt=""></div>
+<div class="main_img_new">
+	<div id="slider">
+
+		<ul class="slides">
+			<!-- 이 부분을 자신의 상황에 맞게 수정 -->
+			<!-- 5개의 이미지 목록으로 구성한 슬라이드를 만들고 싶다면, 목록 처음과 끝에 복사본을 붙여넣어야함 -->
+			<!-- 목록 처음에는 5번 이미지의 복사본을 붙여넣음  -->
+			<!-- 목록 끝에는 1번 이미지의 복사본을 붙여넣음  -->
+			<li class="slide slide4"><img src="/public_html/newimg/mainimgsl03.jpg"></li>
+			<li class="slide slide1"><img src="/public_html/newimg/mainimgsl01.jpg"></li>
+			<li class="slide slide2"><img src="/public_html/newimg/mainimgsl05.jpg"></li>
+			<li class="slide slide3"><img src="/public_html/newimg/mainimgsl02.jpg"></li>
+			<li class="slide slide4"><img src="/public_html/newimg/mainimgsl03.jpg"></li>
+			<li class="slide slide1"><img src="/public_html/newimg/mainimgsl01.jpg"></li>
+			<!-- 여기까지 수정 -->
+		</ul>
+
+		<div id="slider-nav">
+			<div id="slider-nav-prv">&#10094;</div>
+			<div id="slider-nav-nxt">&#10095;</div>
+			<div id="slider-nav-dot-con">
+				<!-- 이 부분을 자신의 상황에 맞게 수정 -->
+				<!-- 복사본을 제외한 슬라이드 개수가 5개라면 span은 5개-->
+				<!-- id는 반드시 nav-dot1 부터 시작해서 nva-dot2 nav-dot3 ... nav-dot5와 같은 형태로 작성해야 함 -->
+				<span class="slider-nav-dot" style="background:white" id="nav-dot1"></span>
+				<span class="slider-nav-dot" id="nav-dot2"></span>
+				<span class="slider-nav-dot" id="nav-dot3"></span>
+				<span class="slider-nav-dot" id="nav-dot4"></span>
+				<!-- <span class="slider-nav-dot" id="nav-dot5"></span> -->
+				<!-- 여기까지 수정 -->
 			</div>
 		</div>
-		<div id="bx-point">
-			<a href="#a1"><div id="bt_point01"><img src="public_html/img/pagepoint.png" /></div></a>
-			<a href="#a2"><div id="bt_point02"><img src="public_html/img/pagepoint.png" /></div></a>
-			<a href="#a3"><div id="bt_point03"><img src="public_html/img/pagepoint.png" /></div></a>
-			<!-- <a href="#a4"><div id="bt_point02"><img src="public_html/img/pagepoint.png" /></div></a>
-			<a href="#a5"><div id="bt_point03"><img src="public_html/img/pagepoint.png" /></div></a> -->
-		</div>
+
+	</div>
+</div>
 
 		<div id="" class="reviewnews">
 			<div id="" class="box_news">
@@ -121,7 +281,17 @@
 			</div>
 		</div>
 
-		<div id="" class="product_store">
+		<div>
+		<img src="public_html/img/mainimg05.jpg" border="0" alt="">
+		</div>
+		<div>
+		<img src="public_html/newimg/mainimg06.jpg" border="0" alt="">
+		</div>
+		<div>
+		<img src="public_html/newimg/mainimg07.jpg" border="0" alt="">
+		</div>
+
+		<!-- <div id="" class="product_store">
 			<div id="" class="product_store_left">
 				<img src="public_html/img/title_product.jpg" border="0" alt="">
 				<div id="" class="box_product">
@@ -145,7 +315,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>-->
 	</div>
 	<div id="youtubeframe" class="" style="display:none;">
 		<a href="javascript:layer_close();"><div id="" class="popupdivbg">
@@ -206,3 +376,5 @@
             player.stopVideo();
         }
 	</script>
+
+
