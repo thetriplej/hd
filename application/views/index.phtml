@@ -1,6 +1,6 @@
 <!-- video popup open  -->
 <!-- <script type="text/javascript" src="/public_html/js/open_video.js"></script>  -->
-<link rel="stylesheet" type="text/css" href="/public_html/css/new-default-hassed.css" />
+ <link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/main_20190827.css" />
 
 <!-- video popup open  -->
 <!-- <script type="text/javascript" src="/public_html/js/open_video.js"></script>  -->
@@ -18,8 +18,8 @@
 		//이 부분을 자신의 상황에 맞게 수정
 		//window.innerWidth : 브라우저 화면의 너비
 
-		var width = window.innerWidth-20; //슬라이드 한 개의 폭
-		var height = 700; //슬라이드 높이
+		var width = 1080; //슬라이드 한 개의 폭
+		var height = 420; //슬라이드 높이
 		var animationSpeed = 1000; //화면전환 속도
 		var pause = 6000; //화면전환 후 일시 정지 속도
 		var totalSlides = 6; //복제 슬라이드를 포함한 전체 슬라이드 개수
@@ -156,12 +156,12 @@
 			<!-- 5개의 이미지 목록으로 구성한 슬라이드를 만들고 싶다면, 목록 처음과 끝에 복사본을 붙여넣어야함 -->
 			<!-- 목록 처음에는 5번 이미지의 복사본을 붙여넣음  -->
 			<!-- 목록 끝에는 1번 이미지의 복사본을 붙여넣음  -->
-			<li class="slide slide4"><img src="/public_html/newimg/mainimgsl03.jpg"></li>
-			<li class="slide slide1"><img src="/public_html/newimg/mainimgsl01.jpg"></li>
-			<li class="slide slide2"><img src="/public_html/newimg/mainimgsl05.jpg"></li>
-			<li class="slide slide3"><img src="/public_html/newimg/mainimgsl02.jpg"></li>
-			<li class="slide slide4"><img src="/public_html/newimg/mainimgsl03.jpg"></li>
-			<li class="slide slide1"><img src="/public_html/newimg/mainimgsl01.jpg"></li>
+			<li class="slide slide4"><img src="/public_html/newimg/mainimgsl304.jpg"></li>
+			<li class="slide slide1"><img src="/public_html/newimg/mainimgsl301.jpg"></li>
+			<li class="slide slide2"><img src="/public_html/newimg/mainimgsl302.jpg"></li>
+			<li class="slide slide3"><img src="/public_html/newimg/mainimgsl303.jpg"></li>
+			<li class="slide slide4"><img src="/public_html/newimg/mainimgsl304.jpg"></li>
+			<li class="slide slide1"><img src="/public_html/newimg/mainimgsl301.jpg"></li>
 			<!-- 여기까지 수정 -->
 		</ul>
 
@@ -183,139 +183,180 @@
 
 	</div>
 </div>
+<div id="" class="reviewnews">
+	<div class="frame-news">
+		<ul>
+		NEWS
+		</ul>
+		<ul>
+			<li><img src="public_html/img/news_img190430-0.jpg" border="0" alt=""></li>
+		</ul>
+	</div>
 
-		<div id="" class="reviewnews">
-			<div id="" class="box_news">
-				<div id="" class="box_news_inline">
-					<div class="mysliderb">
-						
-						<div class="sliderb_img02"><a href="/notice/notice"><img src="public_html/img/news_img180830-2.jpg" border="0" alt=""></a></div>
-						<div class="sliderb_img03"><a href="/notice/notice"><img src="public_html/img/news_img180830-3.jpg" border="0" alt=""></a></div>
-						<div class="sliderb_img04"><a href="/notice/notice"><img src="public_html/img/news_img180830-4.jpg" border="0" alt=""></a></div>
-						<div class="sliderb_img05"><a href="/notice/notice"><img src="public_html/img/news_img190430-1.jpg" border="0" alt=""></a></div>
-						<div class="sliderb_img01"><a href="/notice/notice"><img src="public_html/img/news_img190430-0.jpg" border="0" alt=""></a></div>
-						<div class="sliderb_img06"><a href="/notice/notice"><img src="public_html/img/news_img190430-2.jpg" border="0" alt=""></a></div>
-						
-						
-					</div>
-					<!-- <div id="" class="img_center">
-						<img src="public_html/img/news_img01.jpg" border="0" alt="">
-					</div> -->
-					<div id="" class="title_news txt_black">
-						news
-					</div>
-					<div id="bx-point-news">
-						<a href="#d"><div id="bt_pointb01"><img src="public_html/img/pagepoint.png" /></div></a>
-						<a href="#e"><div id="bt_pointb02"><img src="public_html/img/pagepoint.png" /></div></a>
-						<a href="#f"><div id="bt_pointb03"><img src="public_html/img/pagepoint.png" /></div></a>
-						<a href="#g"><div id="bt_pointb04"><img src="public_html/img/pagepoint.png" /></div></a>
-						<a href="#h"><div id="bt_pointb05"><img src="public_html/img/pagepoint.png" /></div></a>
-						<a href="#i"><div id="bt_pointb06"><img src="public_html/img/pagepoint.png" /></div></a>
-					</div>
 
-					<!-- <div id="" class="box_contest">
-					마이홈자랑 콘테스트 진행중
-					</div> -->
-				</div>
-			</div>
-			<div id="" class="box_review bgcolor-ivory">
-				<div id="" class="title_sub01 txt_darkgray">
-					review
-				</div>
-				<div id="" class="box_review_2d">
-					<div id="" class="mysliderc">
-						<div id="slideA" class="review_slideA">
-							<ul>
-								<li><a href="/gallery/customer"><img src="public_html/img/review_img01.jpg" border="0" alt=""></a></li>
-								<li><a href="/gallery/customer"><img src="public_html/img/review_img02.jpg" border="0" alt=""></a></li>
-							</ul>
-						</div>
-						<div id="slideB" class="review_slideB">
-							<ul>
-								<li><a href="/gallery/customer"><img src="public_html/img/review_img03.jpg" border="0" alt=""></a></li>
-								<li><a href="/gallery/customer"><img src="public_html/img/review_img04.jpg" border="0" alt=""></a></li>
-							</ul>
-						</div>
-						<div id="slideC" class="review_slideC">
-							<ul>
-								<li><a href="/gallery/customer"><img src="public_html/img/review_img05.jpg" border="0" alt=""></a></li>
-								<li><a href="/gallery/customer"><img src="public_html/img/review_img06.jpg" border="0" alt=""></a></li>
-							</ul>
-						</div>
-
-					</div>
-					<!-- <ul>
-						<li><img src="public_html/img/review_img01.jpg" border="0" alt=""></li>
-						<li><img src="public_html/img/review_img02.jpg" border="0" alt=""></li>
-					</ul> -->
-				</div>
-				<div id="" class="box_7years">
-					10 years of customer reviews
-				</div>
-				<div id="bx-point-review">
-					<a href="#i"><div id="bt_pointc01"><img src="public_html/img/pagepoint.png" /></div></a>
-					<a href="#j"><div id="bt_pointc02"><img src="public_html/img/pagepoint.png" /></div></a>
-					<a href="#k"><div id="bt_pointc03"><img src="public_html/img/pagepoint.png" /></div></a>
-				</div>
-			</div>
-
-		</div>
-		<div id="" class="movie bgcolor-ivory">
-			<div id="" class="title_movie">
-				<img src="public_html/img/title_movie.png" border="0" alt="">
-			</div>
-			<div id="wrap_mainvideo" class="mainvideo">
+	<div class="frame-review">
+		<ul>
+		REVIEW
+		</ul>
+		<ul>
+			<div class="reviewimg">
 				<ul>
-					<!-- <li>
-						<div id="" class="box_brandstory">
-						brand story
-						</div>
-					</li>
-					<li> --><a href="javascript:layer_open();"><img src="public_html/img/bt_youtube.jpg" border="0" alt=""></a><!-- <input type="button" onclick="javascript:layer_open();" value="확인"> --><!-- </li>
-					<li>
-						<div id="" class="box_faq">
-						FAQ
-						</div>
-					</li> -->
+					<li><img src="public_html/img/review_img01.jpg" border="0" alt=""></li>
+					<li><img src="public_html/img/review_img02.jpg" border="0" alt=""></li>
 				</ul>
 			</div>
-		</div>
+		</ul>
+		<ul>
+		10 years of customer reviews
+		</ul>
+	</div>
+</div>
 
-		<div>
-		<img src="public_html/img/mainimg05.jpg" border="0" alt="">
-		</div>
-		<div>
-		<img src="public_html/newimg/mainimg06.jpg" border="0" alt="">
-		</div>
-		<div>
-		<img src="public_html/newimg/mainimg07.jpg" border="0" alt="">
-		</div>
 
-		<!-- <div id="" class="product_store">
-			<div id="" class="product_store_left">
-				<img src="public_html/img/title_product.jpg" border="0" alt="">
-				<div id="" class="box_product">
-					<div id="" class="box_product_in01">
-						<a href="/product/detail_view?code=francis"><img src="public_html/img/img_product_sofa.jpg" border="0" alt=""></a>
-					</div>
-					<div id="" class="box_product_in02">
-						<a href="/product/detail_view?code=ailish"><img src="public_html/img/img_product_bed.jpg" border="0" alt=""></a>
-					</div>
-				</div>
-
+<div class="movie-new bgcolor-ivory">
+	<div class="movie-img">
+		<a href="javascript:layer_open();"><img src="public_html/img/bt_youtube.jpg" border="0" alt=""></a>
+	</div>
+	<div class="movie-copywrite">
+	 <!--most comfortable and beautiful life -->
+	 <img src="public_html/img/most-life.png" border="0" alt="">
+	</div>
+</div>
+		
+		<div class="div-product">
+			<div class="box-product">
+				<ul>
+					<li style="background-image: url('/public_html/imgpro/product-img01.png');"><a href="/product/detail_view?code=becky"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img02.png');"><a href="/product/detail_view?code=arriba"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img03.png');"><a href="/product/detail_view?code=calix"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img04.png');"><a href="/product/detail_view?code=ailish"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img05.png');"><a href="/product/detail_view?code=haesta"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+				</ul>
 			</div>
-			<div id="" class="product_store_right">
-				<img src="public_html/img/title_store.jpg" border="0" alt="">
-				<div id="" class="box_store">
-					<div id="" class="box_store_in01">
-						<a href="/about/shop_info?location=point_store"><img src="public_html/img/bt_roadshop.jpg" border="0" alt=""></a>
-					</div>
-					<div id="" class="box_store_in02">
-						<a href="/about/shop_info?location=point_depart"><img src="public_html/img/bt_depart.jpg" border="0" alt=""></a>
-					</div>
-				</div>
+			<div class="box-product">
+				<ul>
+					<li style="background-image: url('/public_html/imgpro/product-img06.png');"><a href="/product/detail_view?code=besso"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img07.png');"><a href="/product/detail_view?code=floria"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img08.png');"><a href="/product/detail_view?code=francis"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img09.png');"><a href="/product/detail_view?code=adela"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img10.png');"><a href="/product/detail_view?code=fliche"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+				</ul>
 			</div>
-		</div>-->
+			<div class="box-product">
+				<ul>
+					<li style="background-image: url('/public_html/imgpro/product-img11.png');"><a href="/product/detail_view?code=esther"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img12.png');"><a href="/product/detail_view?code=provance"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img13.png');"><a href="/product/detail_view?code=brise"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img14.png');"><a href="/product/detail_view?code=amore"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img15.png');"><a href="/product/detail_view?code=twin sofa"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+				</ul>
+			</div>
+			<div class="box-product">
+				<ul>
+					<li style="background-image: url('/public_html/imgpro/product-img16.png');"><a href="/product/detail_view?code=olo"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img17.png');"><a href="/product/detail_view?code=mors"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img18.png');"><a href="/product/detail_view?code=settle2"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img19.png');"><a href="/product/detail_view?code=mobilian"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img20.png');"><a href="/product/detail_view?code=adams"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+				</ul>
+			</div>
+			<div class="box-product">
+				<ul>
+					<li style="background-image: url('/public_html/imgpro/product-img01.png');"><a href="/product/detail_view?code=becky"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img02.png');"><a href="/product/detail_view?code=arriba"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img03.png');"><a href="/product/detail_view?code=calix"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img04.png');"><a href="/product/detail_view?code=ailish"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img05.png');"><a href="/product/detail_view?code=haesta"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+				</ul>
+			</div>
+			<div class="box-product">
+				<ul>
+					<li style="background-image: url('/public_html/imgpro/product-img06.png');"><a href="/product/detail_view?code=besso"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img07.png');"><a href="/product/detail_view?code=floria"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img08.png');"><a href="/product/detail_view?code=francis"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img09.png');"><a href="/product/detail_view?code=adela"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img10.png');"><a href="/product/detail_view?code=fliche"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+				</ul>
+			</div>
+			<div class="box-product">
+				<ul>
+					<li style="background-image: url('/public_html/imgpro/product-img11.png');"><a href="/product/detail_view?code=esther"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img12.png');"><a href="/product/detail_view?code=provance"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img13.png');"><a href="/product/detail_view?code=brise"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img14.png');"><a href="/product/detail_view?code=amore"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img15.png');"><a href="/product/detail_view?code=twin sofa"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+				</ul>
+			</div>
+			<div class="box-product">
+				<ul>
+					<li style="background-image: url('/public_html/imgpro/product-img16.png');"><a href="/product/detail_view?code=olo"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img17.png');"><a href="/product/detail_view?code=mors"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img18.png');"><a href="/product/detail_view?code=settle2"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img19.png');"><a href="/product/detail_view?code=mobilian"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+					<li style="background-image: url('/public_html/imgpro/product-img20.png');"><a href="/product/detail_view?code=adams"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
+				</ul>
+			</div>
+			
+		</div>
+
+
+		<div class="frame-shop">
+			<div class="frame-shop-leftdiv">
+				<ul>
+					<li class="title-middle txt_left">SHOP INFO</li>
+					<li>서울 송파 본점
+					<br>02-401-5073</li>
+					<li>부산 해운대점
+					<br>02-401-5073</li>
+					<li>대구 수성점
+					<br>02-401-5073</li>
+					<li>대전 지점
+					<br>02-401-5073</li>
+				</ul>
+				
+			</div>
+			<div class="frame-shop-rightdiv">
+				<ul>
+					<li><img src="/public_html/img/store01_store2018.jpg" width="294" height="196"><br>서울 송파 본점</li>
+					<li><img src="/public_html/img/store03_store-20180809.jpg" width="294" height="196"><br>부산 해운대점</li>
+					<li><img src="/public_html/img/store04_store.jpg" width="294" height="196">대구 수성점</li>
+					<li><img src="/public_html/img/store02_store.jpg" width="294" height="196">대전 지점</li>
+				</ul>
+			</div>
+			
+		</div>
+
+
+		<div class="frame-depart">
+			<div class="">
+				<ul>
+					<li class="title-middle txt_center">DEPARTMENT STORE</li>
+				</ul>
+				
+			</div>
+			<div class="frame-depart-div">
+				<ul>
+					<li><img src="/public_html/newimg/logo-lotte.png" width="294" height="196">
+					<br>명동점 02-772-3849
+					<br>잠실점 02-2143-1896
+					<br>강남점 02-531-2813
+					<br>대전점 042-601-2034
+					<br>광복점 051-678-3020</li>
+					<li><img src="/public_html/newimg/logo-hyundai.png" width="294" height="196">
+					<br>충청점 043-909-4541
+					<br>대구점 053-245-2788
+					<br>미아점 02-2117-1734
+					<br>목동점 02-2163-1045</li>
+					<li><img src="/public_html/newimg/logo-shinsegae.png" width="294" height="196">
+					<br>대구점 053-661-6948
+					<br>센텀시티점 051-745-2229
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+
+	
 	</div>
 	<div id="youtubeframe" class="" style="display:none;">
 		<a href="javascript:layer_close();"><div id="" class="popupdivbg">

@@ -1,10 +1,11 @@
 ﻿@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @import url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
 /*@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);*/
-
+@font-face { font-family: 'Chosunilbo_myungjo'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff'); font-weight: normal; font-style: normal; }
 
 @font-face {
     font-family: "Noto Sans KR";
@@ -51,6 +52,45 @@ b {display:inline;}
 
 .middlespace {display:block; width:100%; height:10px;}
 
+.txt_title {
+	width:1080px;
+	margin: 0 auto;
+	margin-top:64px;
+	overflow:hidden;
+	font-family: "Noto Sans KR", "Nanum Gothic", "dotum", '돋움', sans-serif;
+	font-size:1.5em; 
+	text-align:center;
+	color:#666;}
+
+
+.txt-m-title {
+	width:100%;
+	margin: 0 auto;
+	font-family: "Noto Sans KR", "Nanum Gothic", "dotum", '돋움', sans-serif;
+	font-size:1.5em; 
+	color:#666;}
+
+.txt-s-title {
+	font-family: "Noto Sans KR", "Nanum Gothic", "dotum", '돋움', sans-serif;
+	font-size:1.1em; 
+	color:#444;
+	font-weight:600;
+	padding-top:10px;
+	}
+
+.txt-contents {
+	font-family: "Noto Sans KR", "Nanum Gothic", "dotum", '돋움', sans-serif;
+	font-size:1em; 
+	color:#333;
+	font-weight:300;
+	padding-top:10px;
+	line-height:24px;
+	}
+
+.txt-myungjoo{
+	font-family: 'Chosunilbo_myungjo';
+}
+
 .txt_black{
 	color:#000;
 }
@@ -63,6 +103,10 @@ b {display:inline;}
 	color:#fff;
 }
 
+
+.txt_left{text-align: left;}
+.txt_right{text-align: right;}
+.txt_center{text-align: center;}
 .txt_just{text-align: justify;}
 
 .fl_left
@@ -107,28 +151,34 @@ b {display:inline;}
 .wrap_top
 {
     width:100%;
-    max-height:120px;
 	position:fixed;
 	top:0px;
 	/*left:50%;
 	margin-left:-558px;*/
 	z-index:1009;
+	background-color:#f9f8f6;
 }
 
 .top_menubar
 {
-    width:100%;
+    width:1080px;
     height:110px;
-	background:url('/public_html/img/top_menubar.png');
+	/*background:url('/public_html/img/top_menubar.png');*/
+	background-color: #fff;
 	z-index:1010;
+	margin:0 auto;
+	/*border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;*/
+	border-bottom:solid 1px #ddd;
 }
 
 .bar_visible
 {
 	display:black;
-    width:100%;
+    width:1080px;
     height:44px;
-	background-color:#f6f5f4;
+	background-color:#f9f8f6;
+	margin:0 auto;
 }
 
 .bar_hidden
@@ -139,11 +189,10 @@ b {display:inline;}
 
 .wrap_top_sns
 {
-    width:100%;
+    width:1080px;
     height:44px;
 	margin:0 auto;
 	z-index:200;
-	/*border:solid 1px; #ddd;*/
 }
 
 .box_sns{
@@ -172,7 +221,8 @@ b {display:inline;}
 
 .wrap_menu
 {
-    height:96px;
+    width:1080px;
+	height:96px;
 	z-index:200;
 	margin:0 auto;
 }
@@ -183,12 +233,12 @@ b {display:inline;}
     height:96px;
 	float:right;
 	padding-right:0px;
-    top: 0; bottom:0; margin-top:auto; margin-bottom:auto;
+    top: 0; bottom:0; margin-top:14px; margin-bottom:auto;
 }
 
 .box_menu
 {
-    width:825px;
+    width:780px;
     height:96px;
 	/*background:url('/public_html/img/sasun3.png') 0 60px no-repeat;*/
 	float:left;
@@ -207,12 +257,23 @@ b {display:inline;}
 
 .wrap_middle
 {
-    width:1116x;
+    width:1080x;
 	height:100%;
 	margin:0 auto;
-	margin-top:142px;
+	margin-top:154px;
 	overflow:hidden;
 	position:relative;
+	background-color:#f9f8f6;
+}
+
+.main_img_new
+{
+    width:1080px;
+	height:100%;
+	display:block;
+	margin: 0 auto;
+	/*border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;*/
 }
 
 .main_img
@@ -388,6 +449,59 @@ margin: 0 auto;}
 	font-weight:bold;
 
 }
+
+
+/*/////////////  company  ////////////////////////////*/
+
+.div-3dan
+{
+	width:1080px;
+	margin: 0 auto;
+	overflow:hidden;
+	margin-top:20px;
+	margin-bottom:50px;
+}
+
+.div-3dan > ul > li
+{
+	width:330px;
+	margin-right:45px;
+	float:left;
+}
+
+.div-3dan > ul > li:last-child
+{
+	margin-right:0px;
+}
+
+.div-3dan-inbox
+{
+	width:330px;
+	min-height:480px;
+	overflow:hidden;
+	font-family: "Jeju Gothic", sans-serif;
+	font-size:1.8em;
+	color:#666;
+	padding:20px;
+	/*border:solid 1px #ddd;*/
+	background-color:#fff;
+	border-radius: 15px;
+
+}
+
+.div-year
+{
+	font-size:20px;
+	color:#bbb;
+}
+
+.history-contents
+{
+	font-family: "Noto Sans KR", "Nanum Gothic", "dotum", '돋움', sans-serif;
+	font-size:15px;
+	color:#999;
+	margin-top:20px;
+}
 /*/////////////  brand  ////////////////////////////*/
 
 
@@ -407,7 +521,9 @@ margin: 0 auto;}
 	height:125px;
 	margin: 0 auto;
 	margin-top:50px;
-	padding-left:17px;
+	text-align:center;
+	font-size:36px;
+	padding-top:30px;
 }
 
 .box_title img{
@@ -489,7 +605,26 @@ margin: 0 auto;}
 
 .box_img{}
 
+.box-identity{
+	width:1080px;
+	min-height:400px;
+	margin: 0 auto;
+}
 
+.box-identity-img{
+	width:482px;
+	min-height:350px;
+}
+
+.box-brandtxt{
+	height:337px;
+	overflow:hidden;
+	border-style:solid;
+	border-color:#ddd;
+	border-width: 1px 0px;
+	padding:50px;
+	text-align: justify;
+}
 
 
 /*  ///////////////////////////// ceo //////////////////////*/
@@ -823,7 +958,7 @@ margin: 0 auto;}
 	margin-top:0px;
 	overflow:hidden;
 	padding:20px;
-	padding-bottom:70px;
+	/*padding-bottom:70px;*/
 }
 
 .div1dan_title
@@ -902,12 +1037,13 @@ margin: 0 auto;}
 /*Footer*/
 .wrap_bottom
 {
-    /*width:1116px;*/
-    height:74px;
+    /*width:1116px;
+    height:74px;*/
 	margin: 0 auto;
 	position:relative;
-	margin-top:150px;
-	border-top:2px solid #f6f4f4;
+	/*margin-top:150px;
+	border-top:2px solid #f6f4f4;*/
+	background-color:#f9f8f6;
 }
 
 
@@ -919,15 +1055,16 @@ margin: 0 auto;}
 
 .wrap_copyright
 {
-    width:100%;
-    height:175px;
-	background-color:#f4f3f1;
+    width:1080px;
+	height:120px;
+	background-color:#fff;
 	font-family: "Noto Sans KR", "Nanum Gothic", "dotum", '돋움', "Jeju Gothic", sans-serif;
 	font-size:12px;
 	line-height:30px;
 	text-align:center;
 	color:#867f7b;
-	padding-top:52px;
+	padding-top:19px;
+	margin: 0 auto;
 }
 
 

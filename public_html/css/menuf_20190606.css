@@ -3,7 +3,7 @@
 
 #main_header
 {
-    width:815px;
+    width:780px;
     /*margin:0 auto;*/
 	padding-top:10px;
     height:96px;
@@ -14,8 +14,8 @@
 {
     position:relative;
 	font-family: "Noto Sans KR",  "Malgun Gothic", sans-serif;
-	top:47px;
-	left:10px;
+	top:64px;
+	left:0px;
     font-size:13px;
 	font-weight:400;
 }
@@ -76,8 +76,8 @@
 #sub_gnb01
 {
     position:relative;
-	top:48px;
-    left:12px;
+	top:70px;
+    left:0px;
     font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
     color:#b6bea5;
     width:155px; 
@@ -121,8 +121,8 @@
 #sub_gnb02
 {
     position:relative;
-    top:48px;
-	left:167px;
+    top:70px;
+	left:157px;
     font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
     color:#b6bea5;
     width:155px; 
@@ -163,8 +163,8 @@
 #sub_gnb03
 {
     position:relative;
-    left:120px;
-	top:48px;
+    left:60px;
+	top:70px;
     font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
     color:#b6bea5;
     width:645px;
@@ -205,8 +205,8 @@
 #sub_gnb04
 {
     position:relative;
-    left:478px;
-	top:48px;
+    left:466px;
+	top:70px;
     font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
     color:#b6bea5;
     width:155px; 
@@ -246,8 +246,8 @@
 #sub_gnb05
 {
     position:relative;
-    left:633px;
-	top:48px;
+    left:620px;
+	top:70px;
     font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
     color:#b6bea5;
     width:155px; 
@@ -290,6 +290,7 @@
     height:72px;
 	margin:0 auto;
 	display:block;
+	background-color:#eee;
 }
 
 .wrap_bottom_menu > ul > li
