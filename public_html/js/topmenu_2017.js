@@ -150,7 +150,7 @@ function changeHeight(obj) {
 }
 
 // 2017 hassed top menu slider
-
+/*
 window.onscroll = function() {topbar()};
 
 function topbar() {
@@ -159,6 +159,6 @@ function topbar() {
     } else {
         document.getElementById("sns_frame").className = "bar_visible";
     }
-}
+}*/
 
 // 2017 hassed top menu slider end

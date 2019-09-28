@@ -144,7 +144,8 @@ b {display:inline;}
 .bgcolorbl	{background-color:#000;}
 .bg_history { background:url('/public_html/img/bg_history.jpg'); }
 .bgcolor_history	{background-color:#f8f4ee;}
-
+.bgcolor_ki	{background-color:#eff6f3;}
+.bgcolor_ki2	{background-color:#e6f5f5;}
 
 
 /* ///////////////////////////////////////  top ///////////////////////// */
@@ -156,7 +157,7 @@ b {display:inline;}
 	/*left:50%;
 	margin-left:-558px;*/
 	z-index:1009;
-	background-color:#f9f8f6;
+	background-color:#fff;
 }
 
 .top_menubar
@@ -222,7 +223,7 @@ b {display:inline;}
 .wrap_menu
 {
     width:1080px;
-	height:96px;
+	height:110px;
 	z-index:200;
 	margin:0 auto;
 }
@@ -257,13 +258,13 @@ b {display:inline;}
 
 .wrap_middle
 {
-    width:1080x;
+    width:1080px;
 	height:100%;
 	margin:0 auto;
-	margin-top:154px;
+	margin-top:110px;
 	overflow:hidden;
 	position:relative;
-	background-color:#f9f8f6;
+	background-color:#fff;
 }
 
 .main_img_new
@@ -434,12 +435,14 @@ margin: 0 auto;}
 	float:left;
 	margin-top:38px;
 	margin-left:0px;
+	padding-left:50px
 }
 
 .box_color6_div02{
 	width:500px;
 	float:right;
 	margin-top:38px;
+	padding-right:50px
 }
 
 .title_middle
@@ -464,8 +467,8 @@ margin: 0 auto;}
 
 .div-3dan > ul > li
 {
-	width:330px;
-	margin-right:45px;
+	width:310px;
+	margin-left:45px;
 	float:left;
 }
 
@@ -1042,8 +1045,8 @@ margin: 0 auto;}
 	margin: 0 auto;
 	position:relative;
 	/*margin-top:150px;
-	border-top:2px solid #f6f4f4;*/
-	background-color:#f9f8f6;
+	border-top:2px solid #f6f4f4;
+	background-color:#f9f8f6;*/
 }
 
 
@@ -1057,7 +1060,6 @@ margin: 0 auto;}
 {
     width:1080px;
 	height:120px;
-	background-color:#fff;
 	font-family: "Noto Sans KR", "Nanum Gothic", "dotum", '돋움', "Jeju Gothic", sans-serif;
 	font-size:12px;
 	line-height:30px;
