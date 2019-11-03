@@ -49,7 +49,7 @@
 	background: url('/public_html/img/br_slide_bt_r.png') 0 -100px no-repeat;
 	z-index:31;
 }
-.txtform01{ width:540px; line-height:26px; padding-right:40px;}
+.txtform01{ width:440px; line-height:26px; font-size:0.9em;}
 .txtintitle {display:inline-block; font-weight:bold; margin-right:10px;}
 
 

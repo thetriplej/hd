@@ -12,9 +12,9 @@
 	height:100%;
 	display:block;
 	margin:0 auto;
-	padding-top:70px;
 	overflow:hidden;
-	/*border-left: 1px solid #ddd;
+	/*padding-top:70px;
+	border-left: 1px solid #ddd;
 	border-right: 1px solid #ddd;
 	background-color:#fff;*/
 	
@@ -27,6 +27,8 @@
 	display:block;
 	overflow:hidden;
 	float:left;
+	border-style:solid;
+	border-width: 0px 1px 1px 1px;
 }
 
 .frame-news > ul
@@ -39,7 +41,7 @@
 	font-family: "Noto Sans KR";
 	color:#999;
 	text-align:center;
-	background-color:#eee;
+	/*background-color:#eee;*/
 }
 
 .frame-news > ul:first-child
@@ -55,8 +57,6 @@
   width: 23.2%;
   height:270px;
   margin-left: 23px; 
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
 }
 
 .frame-news > ul > li >img
@@ -79,8 +79,8 @@
 	margin:0 auto;
 	overflow:hidden;
 	float:right;
-	border-top:solid 1px #eae5e4;
-	border-bottom:solid 1px #eae5e4;
+	border-style: solid;
+    border-width: 0px 1px 1px 0px;
 }
 
 .frame-review > ul
@@ -90,7 +90,7 @@
 	font-family: "Noto Sans KR";
 	color:#999;
 	text-align:center;
-	background-image: url("/public_html/img/back-dot.gif");
+	/*background-image: url("/public_html/img/back-dot.gif");*/
 }
 
 .frame-review > ul:first-child
@@ -151,8 +151,8 @@
 	border-left:solid 1px #ddd;
 	border-right:solid 1px #ddd;*/
 	border-style:solid;
-	border-width:1px 1px 0px 1px;
-	border-color:#ddd;
+	border-width:10px 10px 0px 10px;
+	border-color:#deded7;
 	margin-top:70px;
 	padding-left:60px;
 	padding-top:60px;
@@ -206,7 +206,9 @@
 	height:500px;
 	display:block;
 	margin:0 auto;
-	border:solid 1px #ddd;
+	border-style:solid;
+	border-width:1px 10px 10px 10px;
+	border-color:#deded7;
 	padding-left:60px;
 	padding-right:60px;
 	padding-top:60px;
@@ -247,11 +249,13 @@
 .movie-new
 {
     width:1080px;
-	height:401px;
+	height:471px;
 	display:block;
 	margin:0 auto;
 	overflow:hidden;
 	padding-top:70px;
+	padding-bottom:70px;
+	border-width: 0px 1px;
 }
 
 .movie-img
@@ -261,15 +265,16 @@
 	display:block;
 	overflow:hidden;
 	float:left;
+	padding-left:50px;
 }
 
 .movie-copywrite
 {
-    width:380px;
+    width:340px;
 	height:331px;
 	display:block;
 	overflow:hidden;
-	float:right;
+	text-align:center;
 }
 
 .div-product

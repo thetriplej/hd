@@ -2,10 +2,12 @@
 	width:1080px;
 	/*height:1180px;*/
 	margin: 0 auto;
-	margin-top:50px;
-	/*border:solid 1px #dfdddc;*/
+	/*margin-top:50px;
+	border:solid 1px #dfdddc;*/
 	overflow:hidden;
 	position:relative;
+	border-color:#edf6f2; border-style:solid;
+	border-width: 0px 1px 0px 1px;
 }
 
 .txt_m_title
