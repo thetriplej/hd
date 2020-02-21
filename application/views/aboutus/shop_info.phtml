@@ -9,44 +9,6 @@
         $('.main_img_toggle2').fadeOut(10);
         $('.main_img_toggle3').fadeOut(10);
 
-        setInterval(imgfade, 3000); // 매 3초마다 함수 실행
-
-        $( '#btpoint_img01').click(function() {
-            imgfade(1);
-        });
-
-        $( '#btpoint_img02').click(function() {
-            imgfade(2);
-        });
-        $( '#btpoint_img03').click(function() {
-            imgfade(3);
-        });
-
-        var sum = 0; //
-
-        function imgfade(k){
-            if(k != null){sum = k-2;}
-            sum = sum + 1; // 매 4초마다 숫자 1을 sum 변수에 더합니다.
-            if(sum == 0){
-                $('.slider_img_toggle2').fadeOut(500);
-                $('.slider_img_toggle3').fadeOut(500);
-                $('.slider_img_toggle1').fadeIn(500);
-                $('.point_toggle_a').css({"background-position":"0px 0px"});
-            }
-            else if(sum == 1){
-                $('.slider_img_toggle1').fadeOut(500);
-                $('.slider_img_toggle3').fadeOut(500);
-                $('.slider_img_toggle2').fadeIn(500);
-                $('.point_toggle_a').css({"background-position":"0px -20px"});
-            }
-            else if(sum == 2){
-                $('.slider_img_toggle1').fadeOut(500);
-                $('.slider_img_toggle2').fadeOut(500);
-                $('.slider_img_toggle3').fadeIn(500);
-                $('.point_toggle_a').css({"background-position":"0px -40px"});
-                sum = -1;
-            }
-        }
 
 
 
@@ -860,7 +822,10 @@
 
 
 </script>
-<div id="" class="wrap_middle">
+<div id="" class="wrap_middle border-l19">
+	<div class="middle-top">
+
+	</div>
     <div class="main_img">
         <div class="myslider">
             <div id='layerA' class="slider_img01"><img src="/public_html/img/img_store01.jpg" border="0" alt=""></div>
@@ -965,7 +930,7 @@
                 <img src="/public_html/img/store01_map.jpg" border="0" alt="">
             </div>
             <div id="" class="img_toggleB">
-                <img src="/public_html/img/store01_store2018.jpg" border="0" alt="">
+                <img src="/public_html/img/store01_store2019.jpg" border="0" alt="">
             </div>
         </div>
     </div>

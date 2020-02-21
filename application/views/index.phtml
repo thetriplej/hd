@@ -1,425 +1,56 @@
-<!-- video popup open  -->
-<!-- <script type="text/javascript" src="/public_html/js/open_video.js"></script>  -->
- <link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/main_20190827.css" />
-
-<!-- video popup open  -->
-<!-- <script type="text/javascript" src="/public_html/js/open_video.js"></script>  -->
-<!-- mySlider script file -->
-<script src="/public_html/js/myslider.js"></script>
-<!-- mySlider css file -->
-<link rel="stylesheet" type="text/css" href="/public_html/css/myslider20190819.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/main_20190827.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/new-default-hassed.css" />
 <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>"/>
 
-<script>//메인이미지 슬라이딩
-	'use strict';
-
-	$(function() {
-
-		//이 부분을 자신의 상황에 맞게 수정
-		//window.innerWidth : 브라우저 화면의 너비
-
-		var width = 1080; //슬라이드 한 개의 폭
-		var height = 420; //슬라이드 높이
-		var animationSpeed = 1000; //화면전환 속도
-		var pause = 6000; //화면전환 후 일시 정지 속도
-		var totalSlides = 6; //복제 슬라이드를 포함한 전체 슬라이드 개수
-
-		var currentSlide = 2; //이 항목은 수정하지 않음
-		var interval;
-		var action;
-		var dotNum;
-		var dMinusC;
-
-		//cache DOM elements
-		var $slideCon = $('#slider');
-		var $slideUl = $('.slides');
-		var $slides = $('.slide');
-		var $dots = $('.slider-nav-dot');
-		var $sliderNavPrv = $('#slider-nav-prv');
-		var $sliderNavNxt = $('#slider-nav-nxt');
-
-		function initSlider(){
-			$slideCon.css('width',width);
-			$slideCon.css('height',height);
-			$slideUl.css('margin-left',-width);
-			$slideUl.css('width',totalSlides*width);
-			$slides.css('width',width);
-			$slides.css('height',height);
-		}
-
-		function startSlider(action, dotNum) {
-
-			if(action == 'prv'){
-				$slideUl.animate({'margin-left': '+='+width}, animationSpeed, function() {
-					if (--currentSlide === 1) {
-						currentSlide = $slides.length-1;
-						$slideUl.css('margin-left', -($slides.length-2)*width);
-					}else{}
-
-					for(var i=0; i<$dots.length; i++){$dots[i].style.background = "";}
-					$dots[currentSlide-2].style.background = "white";
-				});
-			} else if(action == 'nxt') {
-				$slideUl.animate({'margin-left': '-='+width}, animationSpeed, function() {
-					if (++currentSlide === $slides.length) {
-						currentSlide = 2;
-						$slideUl.css('margin-left', -width);
-					}else{}
-
-					for(var i=0; i<$dots.length; i++){$dots[i].style.background = "";}
-					$dots[currentSlide-2].style.background = "white";
-				});
-			} else if(action == 'dot') {
-				dMinusC = dotNum-currentSlide;
-				currentSlide = dotNum;
-
-				for(var i=0; i<$dots.length; i++){$dots[i].style.background = "";}
-				$dots[currentSlide-2].style.background = "white";
-
-				$slideUl.animate({'margin-left': '-='+(dMinusC*width)}, animationSpeed);
-
-			} else {
-				// setInterval(function,milliseconds)
-				// 지정한 시간에 한번씩 함수를 실행
-				// 3초 마다 $slideUl 의 왼쪽 마진을 -width 함. 에니메이션 속도는 1초.
-				interval = setInterval(function() {
-
-					//.animate( CSS properties [, duration ] [, complete ] )
-					$slideUl.animate({'margin-left': '-='+width}, animationSpeed, function() {
-						if (++currentSlide === $slides.length) { // $slides.length == 7
-							currentSlide = 2;
-							$slideUl.css('margin-left', -width);
-						}
-
-						for(var i=0; i<$dots.length; i++){$dots[i].style.background = "";}
-						$dots[currentSlide-2].style.background = "white";
-					});	
-
-				}, pause);
-			}
-
+<script>
+	$(window).ready(function(){
+		function fnMove(seq){
+		var offset = $("#block-div" + seq).offset();
+		var winH = $(window).height();
+		$('html, body').animate({scrollTop : (offset.top - winH/2 + 250)}, 400);
 		}
 
 
-		function pauseSlider() {
-			clearInterval(interval);
-		}
-
-		function prvSlide(){
-			startSlider('prv');
-		}
-
-		function nxtSlide(){
-			startSlider('nxt');
-		}
-
-		function dotSelected(){
-			dotNum = $(this).attr('id');
-			dotNum = parseInt(dotNum.substring(7))+1;
-			startSlider('dot', dotNum);
-		}
-
-
-		$slideUl
-			.on('mouseenter', pauseSlider)
-			.on('mouseleave', startSlider);
-
-		$sliderNavPrv
-			.on('click',prvSlide)
-			.on('mouseenter', pauseSlider)
-			.on('mouseleave', startSlider);
-
-		$sliderNavNxt
-			.on('click',nxtSlide)
-			.on('mouseenter', pauseSlider)
-			.on('mouseleave', startSlider);
-
-		$dots
-			.on('click', dotSelected)
-			.on('mouseenter', pauseSlider)
-			.on('mouseleave', startSlider);		
-
-		
-		initSlider();
-		startSlider();
-
-	});
-
+		$("#bt_point01").click(function(){
+			fnMove(1);
+		});
+		$("#bt_point02").click(function(){
+			fnMove(2);
+		});
+	});		
 </script>
 
-	<div id="" class="wrap_middle">
-<div class="main_img_new">
-	<div id="slider">
-
-		<ul class="slides">
-			<!-- 이 부분을 자신의 상황에 맞게 수정 -->
-			<!-- 5개의 이미지 목록으로 구성한 슬라이드를 만들고 싶다면, 목록 처음과 끝에 복사본을 붙여넣어야함 -->
-			<!-- 목록 처음에는 5번 이미지의 복사본을 붙여넣음  -->
-			<!-- 목록 끝에는 1번 이미지의 복사본을 붙여넣음  -->
-			<li class="slide slide4"><img src="/public_html/newimg/mainimgsl304.jpg"></li>
-			<li class="slide slide1"><img src="/public_html/newimg/mainimgsl301.jpg"></li>
-			<li class="slide slide2"><img src="/public_html/newimg/mainimgsl302.jpg"></li>
-			<li class="slide slide3"><img src="/public_html/newimg/mainimgsl303.jpg"></li>
-			<li class="slide slide4"><img src="/public_html/newimg/mainimgsl304.jpg"></li>
-			<li class="slide slide1"><img src="/public_html/newimg/mainimgsl301.jpg"></li>
-			<!-- 여기까지 수정 -->
-		</ul>
-
-		<div id="slider-nav">
-			<div id="slider-nav-prv">&#10094;</div>
-			<div id="slider-nav-nxt">&#10095;</div>
-			<div id="slider-nav-dot-con">
-				<!-- 이 부분을 자신의 상황에 맞게 수정 -->
-				<!-- 복사본을 제외한 슬라이드 개수가 5개라면 span은 5개-->
-				<!-- id는 반드시 nav-dot1 부터 시작해서 nva-dot2 nav-dot3 ... nav-dot5와 같은 형태로 작성해야 함 -->
-				<span class="slider-nav-dot" style="background:white" id="nav-dot1"></span>
-				<span class="slider-nav-dot" id="nav-dot2"></span>
-				<span class="slider-nav-dot" id="nav-dot3"></span>
-				<span class="slider-nav-dot" id="nav-dot4"></span>
-				<!-- <span class="slider-nav-dot" id="nav-dot5"></span> -->
-				<!-- 여기까지 수정 -->
-			</div>
-		</div>
-
-	</div>
-</div>
-<div id="" class="reviewnews bgcolor-ki">
-	<div class="frame-news bocolor01">
-		<ul>
-		NEWS
-		</ul>
-		<ul>
-			<li><img src="public_html/img/news_img190430-0.jpg" border="0" alt=""></li>
-		</ul>
-	</div>
-
-
-	<div class="frame-review bocolor01">
-		<ul>
-		REVIEW
-		</ul>
-		<ul>
-			<div class="reviewimg">
-				<ul>
-					<li><img src="public_html/img/review_img01.jpg" border="0" alt=""></li>
-					<li><img src="public_html/img/review_img02.jpg" border="0" alt=""></li>
-				</ul>
-			</div>
-		</ul>
-		<ul>
-		10 years of customer reviews
-		</ul>
-	</div>
+<div id="rh-nav">
+	<div id="bt_point01" class="bt_point"><a>1</a></div>
+	<div id="bt_point02" class="bt_point"><a>2</a></div>
 </div>
 
+<div class="wrap">
 
-<div class="movie-new bgcolor-ki border-base">
-	<div class="movie-img">
-		<a href="javascript:layer_open();"><img src="public_html/img/bt_youtube.jpg" border="0" alt=""></a>
-	</div>
-	<div class="movie-copywrite bgcolor-white">
-	 <!--most comfortable and beautiful life -->
-	 <img src="public_html/img/most-life.png" border="0" alt="">
-	</div>
+<div id="wrap-left">
+abcd
 </div>
-		
-		<div class="div-product">
-			<div class="box-product">
-				<ul>
-					<li style="background-image: url('/public_html/imgpro/product-img01.png');"><a href="/product/detail_view?code=becky"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img02.png');"><a href="/product/detail_view?code=arriba"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img03.png');"><a href="/product/detail_view?code=calix"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img04.png');"><a href="/product/detail_view?code=ailish"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img05.png');"><a href="/product/detail_view?code=haesta"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-				</ul>
-			</div>
-			<div class="box-product">
-				<ul>
-					<li style="background-image: url('/public_html/imgpro/product-img06.png');"><a href="/product/detail_view?code=besso"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img07.png');"><a href="/product/detail_view?code=floria"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img08.png');"><a href="/product/detail_view?code=francis"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img09.png');"><a href="/product/detail_view?code=adela"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img10.png');"><a href="/product/detail_view?code=fliche"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-				</ul>
-			</div>
-			<div class="box-product">
-				<ul>
-					<li style="background-image: url('/public_html/imgpro/product-img11.png');"><a href="/product/detail_view?code=esther"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img12.png');"><a href="/product/detail_view?code=provence"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img13.png');"><a href="/product/detail_view?code=brise"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img14.png');"><a href="/product/detail_view?code=amore"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img15.png');"><a href="/product/detail_view?code=twin sofa"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-				</ul>
-			</div>
-			<div class="box-product">
-				<ul>
-					<li style="background-image: url('/public_html/imgpro/product-img16.png');"><a href="/product/detail_view?code=olo"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img17.png');"><a href="/product/detail_view?code=mors"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img18.png');"><a href="/product/detail_view?code=settle2"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img19.png');"><a href="/product/detail_view?code=mobilian"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img20.png');"><a href="/product/detail_view?code=adams"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-				</ul>
-			</div>
-			<div class="box-product">
-				<ul>
-					<li style="background-image: url('/public_html/imgpro/product-img21.png');"><a href="/product/detail_view?code=anjoo_sofa"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img22.png');"><a href="/product/detail_view?code=veronica"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img23.png');"><a href="/product/detail_view?code=peradi"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img24.png');"><a href="/product/detail_view?code=nubeca"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img25.png');"><a href="/product/detail_view?code=offe"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-				</ul>
-			</div>
-			<div class="box-product">
-				<ul>
-					<li style="background-image: url('/public_html/imgpro/product-img26.png');"><a href="/product/detail_view?code=arponio"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img27.png');"><a href="/product/detail_view?code=lavien"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img28.png');"><a href="/product/detail_view?code=peanut"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img29.png');"><a href="/product/detail_view?code=nubeca"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img30.png');"><a href="/product/detail_view?code=feecore"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-				</ul>
-			</div>
-			<div class="box-product">
-				<ul>
-					<li style="background-image: url('/public_html/imgpro/product-img31.png');"><a href="/product/detail_view?code=cozzy"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img32.png');"><a href="/product/detail_view?code=whistle"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img33.png');"><a href="/product/detail_view?code=pippi"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img34.png');"><a href="/product/detail_view?code=bambi"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img35.png');"><a href="/product/detail_view?code=crane"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-				</ul>
-			</div>
-			<div class="box-product">
-				<ul>
-					<li style="background-image: url('/public_html/imgpro/product-img36.png');"><a href="/product/detail_view?code=august"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img37.png');"><a href="/product/detail_view?code=swingchair"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img38.png');"><a href="/product/detail_view?code=settle3"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img39.png');"><a href="/product/detail_view?code=boheme"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-					<li style="background-image: url('/public_html/imgpro/product-img40.png');"><a href="/product/detail_view?code=miner"><img src="/public_html/imgpro/product-imgbt.png"></a></li>
-				</ul>
-			</div>
-			
+<div id="wrap-right">
+	<div id="" class="wrap_middle"> 
+		<div id="block-div1"  class="box-img-frame">
+			<img src="public_html/newimg/oekotex.jpg" />
+		</div>
+		<div class="space-height"></div>
+
+		<div id="block-div2" class="frame-year" style="height:1500px;">
+			<img src="public_html/newimg/product-list.jpg" />
 		</div>
 
 
-		<div class="frame-shop">
-			<div class="frame-shop-leftdiv">
-				<ul>
-					<li class="title-middle txt_left">SHOP INFO</li>
-					<li>서울 송파 본점
-					<br>02-401-5073</li>
-					<li>부산 해운대점
-					<br>02-401-5073</li>
-					<li>대구 수성점
-					<br>02-401-5073</li>
-					<li>대전 지점
-					<br>02-401-5073</li>
-				</ul>
-				
-			</div>
-			<div class="frame-shop-rightdiv">
-				<ul>
-					<li><img src="/public_html/img/store01_store2018.jpg" width="294" height="196"><br>서울 송파 본점</li>
-					<li><img src="/public_html/img/store03_store-20180809.jpg" width="294" height="196"><br>부산 해운대점</li>
-					<li><img src="/public_html/img/store04_store.jpg" width="294" height="196">대구 수성점</li>
-					<li><img src="/public_html/img/store02_store.jpg" width="294" height="196">대전 지점</li>
-				</ul>
-			</div>
-			
-		</div>
 
-
-		<div class="frame-depart">
-			<div class="">
-				<ul>
-					<li class="title-middle txt_center">DEPARTMENT STORE</li>
-				</ul>
-				
-			</div>
-			<div class="frame-depart-div">
-				<ul>
-					<li><img src="/public_html/newimg/logo-lotte.png" width="294" height="196">
-					<br>명동점 02-772-3849
-					<br>잠실점 02-2143-1896
-					<br>강남점 02-531-2813
-					<br>대전점 042-601-2034
-					<br>광복점 051-678-3020</li>
-					<li><img src="/public_html/newimg/logo-hyundai.png" width="294" height="196">
-					<br>충청점 043-909-4541
-					<br>대구점 053-245-2788
-					<br>미아점 02-2117-1734
-					<br>목동점 02-2163-1045</li>
-					<li><img src="/public_html/newimg/logo-shinsegae.png" width="294" height="196">
-					<br>대구점 053-661-6948
-					<br>센텀시티점 051-745-2229
-					</li>
-				</ul>
-			</div>
-			
-		</div>
-
-	
 	</div>
 
-	<div class="box_center" style="height:80px;"></div>
 
-
-	<div id="youtubeframe" class="" style="display:none;">
-		<a href="javascript:layer_close();"><div id="" class="popupdivbg">
-		</div></a>
-		<div id="" class="popupdiv">
-			<iframe id="player" type="text/html" width="1000" height="560" src="https://player.vimeo.com/video/208591714" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-		</div>
-	</div>
-
-	<!-- <div id="hpopup" class="main_pop">
-		<div>
-		<img src="public_html/images/workshop2018.jpg">
-		</div>
-		<a href="#1"><div id="hclose" class="pop_close"> close </div></a>
+	<!-- <div class="main_img_new">
+	<video width="1064" height="550" autoplay loop muted>
+	  <source src="public_html/movie/hassed-main7.mp4" type="video/mp4"> 
+	Your browser does not support the video tag.
+	</video>
+	<br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br>
 	</div> -->
-
-
-
-	<script>
-        // 2. This code loads the IFrame Player API code asynchronously.
-        var tag = document.createElement('script');
-
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        // 3. This function creates an <iframe> (and YouTube player)
-        //    after the API code downloads.
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                // height: '560',
-                //  width: '1000',
-                // videoId: 'h-emsmP-WE0',
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        // 4. The API will call this function when the video player is ready.
-        function onPlayerReady(event) {
-            //event.target.playVideo();  플레이어 자동실행 (주의: 모바일에서는 자동실행되지 않음)
-        }
-
-        // 5. The API calls this function when the player's state changes.
-        //    The function indicates that when playing a video (state=1),
-        //    the player should play for six seconds and then stop.
-        var done = false;
-        function onPlayerStateChange(event) {
-            if (event.data == YT.PlayerState.PLAYING && !done) {
-                //setTimeout(stopVideo, 6000);
-                done = true;
-            }
-        }
-        function stopVideo() {
-            player.stopVideo();
-        }
-	</script>
-
-

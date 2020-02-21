@@ -13,6 +13,7 @@ setInterval(imgslideb, 2000);
 setInterval(imgslidec, 5000); 
 
 
+// 매장정보 메인 sliding *************************//
 	function imgslide(k){
 		if(k != null){imgnum = k;}
 		if(imgnum == 1){
@@ -21,47 +22,39 @@ setInterval(imgslidec, 5000);
 			$('.slider_img01').fadeIn();
 			$('.slider_img02').fadeOut();
 			$('.slider_img03').fadeOut();
-			$('.slider_img04').fadeOut();
+			//$('.slider_img04').fadeOut();
 			$('#bt_point01').css({"background-position":"0px -13px"});
 			$('#bt_point02').css({"background-position":"0px 0px"});
 			$('#bt_point03').css({"background-position":"0px 0px"});
-			$('#bt_point04').css({"background-position":"0px 0px"});
+			//$('.border-l19').css('border-color','tomato');
+			//$('#bt_point04').css({"background-position":"0px 0px"});
 		}
 		else if(imgnum == 2){
 			//두번째 이미지 위치
 			$('.slider_img01').fadeOut();
 			$('.slider_img02').fadeIn();
 			$('.slider_img03').fadeOut();
-			$('.slider_img04').fadeOut();
+			//$('.slider_img04').fadeOut();
 			$('#bt_point01').css({"background-position":"0px 0px"});
 			$('#bt_point02').css({"background-position":"0px -13px"});
 			$('#bt_point03').css({"background-position":"0px 0px"});
-			$('#bt_point04').css({"background-position":"0px 0px"});
+			//$('.border-l19').css('border-color','orange');
+			//$('#bt_point04').css({"background-position":"0px 0px"});
 		}
 		else if(imgnum == 3){
 			//세번째 이미지 위치
 			$('.slider_img01').fadeOut();
 			$('.slider_img02').fadeOut();
 			$('.slider_img03').fadeIn();
-			$('.slider_img04').fadeOut();
+			//$('.slider_img04').fadeOut();
 			$('#bt_point01').css({"background-position":"0px 0px"});
 			$('#bt_point02').css({"background-position":"0px 0px"});
 			$('#bt_point03').css({"background-position":"0px -13px"});
-			$('#bt_point04').css({"background-position":"0px 0px"});
-		}
-
-		else if(imgnum == 4){
-			//네번째 이미지 위치
-			$('.slider_img01').fadeOut();
-			$('.slider_img02').fadeOut();
-			$('.slider_img03').fadeOut();
-			$('.slider_img04').fadeIn();
-			$('#bt_point01').css({"background-position":"0px 0px"});
-			$('#bt_point02').css({"background-position":"0px 0px"});
-			$('#bt_point03').css({"background-position":"0px 0px"});
-			$('#bt_point04').css({"background-position":"0px -13px"});
+			//$('.border-l19').css('border-color','violet');
+			//$('#bt_point04').css({"background-position":"0px 0px"});
 			imgnum = 0;
 		}
+
 		imgnum = imgnum + 1;
 	}
 
@@ -265,63 +258,3 @@ function imgslidec(k){
 
  }); 
 
- /*  //////////// 가로 슬라이드 20170222
-function imgslide(k){
-	if(k != null){imgnum = k;}
-	if(imgnum == 1){
-		//$('#slider_review').fadeOut(500);
-		//천번째 이미지 위치
-		$('.slider_img01').animate({left: '0px' }, 1000);
-		$('.slider_img02').animate({left: '0px' }, 1000);
-		$('.slider_img03').animate({left: '0px' }, 1000);
-		$('#bt_point01').css({"background-position":"0px -13px"});
-		$('#bt_point02').css({"background-position":"0px 0px"});
-		$('#bt_point03').css({"background-position":"0px 0px"});
-	}
-	else if(imgnum == 2){
-		//두번째 이미지 위치
-		$('.slider_img01').animate({left: '-1080px'}, 1000 );
-		$('.slider_img02').animate({left: '-1080px'}, 1000 );
-		$('.slider_img03').animate({left: '-1080px'}, 1000 );
-		$('#bt_point01').css({"background-position":"0px 0px"});
-		$('#bt_point02').css({"background-position":"0px -13px"});
-		$('#bt_point03').css({"background-position":"0px 0px"});
-	}
-	else if(imgnum == 3){
-		//세번째 이미지 위치
-		$('.slider_img01').animate({left: '-2160px'}, 1000 );
-		$('.slider_img02').animate({left: '-2160px'}, 1000 );
-		$('.slider_img03').animate({left: '-2160px'}, 1000 );
-		$('#bt_point01').css({"background-position":"0px 0px"});
-		$('#bt_point02').css({"background-position":"0px 0px"});
-		$('#bt_point03').css({"background-position":"0px -13px"});
-	}
-	else if(imgnum == 4){
-		//리셑
-		$('.slider_img01').animate({left: '1080px'}, 1 );
-		$('.slider_img01').animate({left: '0px'}, 1000 );
-		$('.slider_img03').animate({left: '-3240px' }, 1000);
-		$('.slider_img02').animate({left: '0px'}, 1 );
-		$('.slider_img03').animate({left: '0px'}, 1);
-		$('#bt_point01').css({"background-position":"0px -13px"});
-		$('#bt_point02').css({"background-position":"0px 0px"});
-		$('#bt_point03').css({"background-position":"0px 0px"});
-		imgnum = 1;
-	}
-	imgnum = imgnum + 1;
-}
-
-	$("#bt_point01").click(function(){
-        //$("#bt_point01").addClass("bgupdown");
-		imgslide(1);
-    });
-	$("#bt_point02").click(function(){
-        //$("#bt_point02").addClass("bgupdown");
-		imgslide(2);
-    });
-	$("#bt_point03").click(function(){
-        //$("#bt_point03").addClass("bgupdown");
-		imgslide(3);
-    });
- }); 
-*/

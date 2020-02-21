@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8"/>
@@ -10,16 +10,17 @@
 
     <!-- 연관검색어 시작-->
     <script type="application/ld+json">
- {
-  "@context": "http://schema.org",
-  "@type": "Person",
-  "name": "Hassed",
-  "url": "http://www.hassed.co.kr",
-  "sameAs": [
-    "https://www.instagram.com/hassed_kr",
-    "http://blog.naver.com/hassed_kr"
-  ]
- }</script>
+	 {
+	  "@context": "http://schema.org",
+	  "@type": "Person",
+	  "name": "Hassed",
+	  "url": "http://www.hassed.co.kr",
+	  "sameAs": [
+	    "https://www.instagram.com/hassed_kr",
+	    "http://blog.naver.com/hassed_kr"
+	  ]
+	 }
+    </script>
     <!-- 연관검색어 끝-->
 
     <link rel="SHORTCUT ICON" href="/public_html/img/hassed.png"/>
@@ -27,186 +28,138 @@
     <link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/reset_style.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/default_hassed_20190606.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/menuf_20190606.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/new-default-hassed.css" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-    <script type="text/javascript"  src="<?php echo JS_DIR; ?>/jquery-1.11.1.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=DM+Serif+Display&display=swap" rel="stylesheet"> <!-- font- DM Serig Display-->
+    
+    <script type="text/javascript" src="<?php echo JS_DIR; ?>/jquery-1.11.1.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo JS_DIR; ?>/topmenu_2017.js"></script>
+    <script type="text/javascript" src="<?php echo JS_DIR; ?>/menu-onoff.js"></script>
+
+    <script>
+	///// 스크롤 80픽셀 내리면 상단메뉴 박스생김 /////
+	var currentScrollTop = 0;             
+	window.onload = function() {
+		scrollController();
+		$(window).on("scroll", function() {
+			scrollController();
+		});
+	}             
+	function scrollController() {
+		currentScrollTop = $(window).scrollTop();
+		if (currentScrollTop > 80) {
+			$("#wrap_top").addClass("top-80");
+		}else {
+			$("#wrap_top").removeClass("top-80");	
+		}
+	}
+
+	///// 상단 하위메뉴 생김 /////
+	$(document).ready(function(){
+		$("#topNav>ul>li").click(function(){
+			$("#topNav").find("div").fadeOut();
+			$(this).find("div").fadeIn();			
+		});
+	});
 
 
-    <script type="text/javascript">
-        <!--
-        function layer_open(){
-            document.getElementById("youtubeframe").style.display='';
-        }
+	//////////////////////제이쿼리 브라우져 크기변경에 따라 발생하는 이벤트 //////////////
 
-        function layer_close(){
-            document.getElementById("youtubeframe").style.display='none';
-        }
-        function layer_open2()
-        {
-            document.getElementById("youtubeframe2").style.display='';
-        }
 
-        function layer_close2()
-        {
-            document.getElementById("youtubeframe2").style.display='none';
-            stopVideo();
-        }
+	window.onload = function() {
+		//var leftwidth = 160;
+		var realwidth = window.innerWidth - 160;
+		var winH = $(window).height();
+		var realheight = $("#wrap-right").height(); 
+		$("#wrap-right").width(realwidth); 
+		$("#logo-top-right").width(realwidth); 
+		$("#wrap-left").height(realheight); 
 
-        //-->
+		$(window).resize(function (){
+		// width값을 가져오기
+		var width_size = window.innerWidth;
+		var realwidth = window.innerWidth - 160;
+		// height값을 가져오기
+		var realheight = window.innerHeight;
+	  
+		$("#wrap-right").width(realwidth); 
+		$("#logo-top-right").width(realwidth); 
 
-        //사이트 리뉴얼 중입니다.
-        function windOPrenewal(){
-            noticeWindow  =  window.open("renewal.html","ECSAINE",'left=200, top=200, width=300, height=370, resizable=no, scrollbars=no, status=no location=no ');
-        }
+		// 800 이하인지 if문으로 확인
+		// if (width_size <= 800) {
+		//  alert('현재 브라우저 크기가 <= 800px');
+		// }
+	});
 
-        function closewin() {
-            noticeWindow.close();   // Closes the new window
-        }
-
-        function set_lang(){
-            $.ajax({
-                type : "POST",
-                url : "/ajax/member/set_lang",
-                data: {
-                    csrf_token: $('input[name=csrf_token]').val(),
-                },
-                cache : false,
-                success : function(result) {
-                    if(result == "OK"){
-                        location.reload();
-                    }else{
-                        alert("다시 시도해 주세요.");
-                    }
-                },
-                error : function() {
-                    alert("다시 시도해 주세요.");
-                }
-            });
-        }
+	}
     </script>
 
 
 
+
 </head>
-<body ><!-- onload="javascript:windOPrenewal();" -->
+<body>
 <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>"/>
-<div id="blind"></div>
-<div id="" class="wrap">
-    <div id="" class="wrap_top">
-        <div id="" class="top_menubar">
-            <div id="" class="wrap_menu bgcolor-ki border-base">
-                <div id="" class="box_logo">
-                    <a href="/"><img src="/public_html/img/logo_hassed3.png" border="0" alt=""></a>
-                </div>
+<div id="lang">
+	ENG
+</div>
+<div id="logo-top-right">
+	<div class="toplogobar"><br><br><a href="/"><img src="../public_html/boxsvg/logo-hassed.svg" alt="Breaking Borders Logo" height="37" width="321"></a></div>
+</div>
+<div id="left-symbol-menu">
+	<img src="../public_html/img/logo-symbol-mini.png">
+</div>
 
-                <div id="" class="box_menu">
-                    <!-- topmenu ////////////////////////////// -->
-                    <div id="main_header" class="">
-                        <nav id="main_gnb">
-                            <ul>
-                                <li id="gnb01"><a href="/about/company">ABOUT US</a></li>
-                                <li id="gnb02"><a href="/ecsaine/material">ECSAINE</a></li>
-                                <li id="gnb03"><a href="/product/detail_view?code=becky">PRODUCT</a></li>
-                                <li id="gnb04"><a href="/gallery/customer">GALLERY</a></li>
-                                <li id="gnb05"><a href="/notice/notice">NOTICE</a></li>
-                            </ul>
-                        </nav>
-                        <!-- //회사소개 매뉴 -->
-                        <div id="sub_gnb01">
-                            <ul>
-                                <li><a href="/about/company">회사소개</a></li>
-                                <li><a href="/about/brand">브랜드스토리</a></li>
-                                <li><a href="/about/ceo">CEO 인사말</a></li>
-                                <li><a href="/about/shop_info">매장정보</a></li>
-                            </ul>
-                        </div>
-                        <!-- //소재 매뉴 -->
-                        <div id="sub_gnb02">
-                            <ul>
-                                <li><a href="/ecsaine/material">엑센느 소재</a></li>
-                                <li><a href="/ecsaine/strongpoint">엑센느 특장점</a></li>
-                                <li><a href="/ecsaine/maintain">엑센느 관리</a></li>
-                            </ul>
-                        </div>
-                        <!-- //제품소개 매뉴 -->
-                        <div id="sub_gnb03">
-                            <ul>
-                                <li><a href="/product/detail_view?code=becky">BECKY / 베키</a></li>
-                                <li><a href="/product/detail_view?code=arriba">ARRIBA / 아리바</a></li>
-                                <li><a href="/product/detail_view?code=calix">CALIX / 칼릭스</a></li>
-                                <li><a href="/product/detail_view?code=ailish">AILISH / 엘리쉬</a></li>
-
-				<li><a href="/product/detail_view?code=haesta">HAESTA / 헤스터</a></li>
-                                <li><a href="/product/detail_view?code=besso">BESSO / 베쏘</a></li>
-                                <li><a href="/product/detail_view?code=floria">FLORIA / 플로리아</a></li>
-                                <li><a href="/product/detail_view?code=francis">FRANCIS / 프란시스</a></li>
-                                
-                                <li><a href="/product/detail_view?code=adela">ADELA / 아델라</a></li>
-				<li><a href="/product/detail_view?code=fliche">FLICHE / 플리체</a></li>
-                                <li><a href="/product/detail_view?code=esther">ESTHER / 에스더</a></li>
-                                <li><a href="/product/detail_view?code=provence">PROVENCE / 프로방스</a></li>
-
-                                <li><a href="/product/detail_view?code=brise">BRISE / 브리즈</a></li>
-                                <li><a href="/product/detail_view?code=amore">AMORE / 아모르</a></li>
-                                <li><a href="/product/detail_view?code=twinsofa">TWIN SOFA&nbsp;/ 트윈소파</a></li>
-				<li><a href="/product/detail_view?code=olo">OLO / 올로</a></li>
-
-				<li><a href="/product/detail_view?code=mors">MORS / 모르스</a></li>
-                                <li><a href="/product/detail_view?code=settle2">SETTLEⅡ / 세틀2</a></li>
-                                <li><a href="/product/detail_view?code=mobilian">MOBILIAN / 모빌리안</a></li>                              
-                                <li><a href="/product/detail_view?code=adams">ADAMS / 아담스</a></li>
-                                
-                                <li><a href="/product/detail_view?code=anjoo_sofa">ANJOO SOFA / 앙쥬소파</a></li>
-				<li><a href="/product/detail_view?code=veronica">VERONICA / 베로니카</a></li>
-				<li><a href="/product/detail_view?code=peradi">PERADI / 페라디</a></li>
-				<li><a href="/product/detail_view?code=anjoo_bed">ANJOO BED / 앙쥬베드</a></li>
-				
-				<li><a href="/product/detail_view?code=offe">OFFE / 오페</a></li>
-				<li><a href="/product/detail_view?code=arponio">ARPONIO / 아르포니오</a></li>
-				<li><a href="/product/detail_view?code=lavien">LAVIEN / 라비앙</a></li>
-				<li><a href="/product/detail_view?code=peanut">PEANUT / 피넛</a></li>
-
-                                <li><a href="/product/detail_view?code=nubeca">NUBECA / 누베카</a></li>
-                                <li><a href="/product/detail_view?code=feecore">FEECORE / 피-코르</a></li>
-				<li><a href="/product/detail_view?code=cozzy">COZZY / 코지</a></li>
-				<li><a href="/product/detail_view?code=whistle">WHISTLE / 휘슬</a></li>
-				
-				<li><a href="/product/detail_view?code=pippi">PIPPI / 피피</a></li>
-				<li><a href="/product/detail_view?code=bambi">BAMBI / 밤비</a></li>
-				<li><a href="/product/detail_view?code=crane">CRANE / 크레인</a></li> 
-				<li><a href="/product/detail_view?code=august">AUGUST / 어거스트</a></li>
-				
-				<li><a href="/product/detail_view?code=swingchair">SWING CHAIR / 스윙체어</a></li>
-				<li><a href="/product/detail_view?code=settle3">SETTLE Ⅲ / 세틀3</a></li>
-                                <li><a href="/product/detail_view?code=boheme">BOHEME / 보헴</a></li>
-                                <li><a href="/product/detail_view?code=miner">MINER / 미네르</a></li>
-
-                                
-                                <!--<li><a href="/product/detail_view?code=amier">AMIER / 아미에르</a></li>-->
-                           
-                            </ul>
-                        </div>
-                        <!-- //갤러리 매뉴 -->
-                        <div id="sub_gnb04">
-                            <ul>
-                                <li><a href="/gallery/customer">고객후기</a></li>
-                                <li><a href="/gallery/hmagajine">H_매거진</a></li>
-                                <!-- <li><a href="haboard05.asp">영상자료</a></li> -->
-                            </ul>
-                        </div>
-                        <!-- //고객지원 매뉴 -->
-                        <div id="sub_gnb05">
-                            <ul>
-                                <li><a href="/notice/notice">공지사항</a></li>
-                                <li><a href="/notice/faq">F&nbsp;A&nbsp;Q</a></li>
-                                <li><a href="/notice/qna">Q&nbsp;&&nbsp;A</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- topmenu ////////////////////////////// -->
-                </div>
-            </div>
-        </div>
-    </div>
-
+<div class="box-menu">
+	<ul>
+		<li>
+		    <div id="" class="wrap_top_sns">
+			<div id="" class="box_sns">
+			    <ul>
+				<!--<li><a href="javascript:set_lang();"><img src="/public_html/img/bt_eng.png" border="0" alt="준비중입니다"></a></li>-->
+				<li><a href="http://cafe.naver.com/hassedhouse" target="_blink"><img src="/public_html/img/bt_cafe.png" border="0" alt=""></a></li>
+				<li><a href="https://www.instagram.com/hassed_kr/" target="_blink"><img src="/public_html/img/bt_instar.png" border="0" alt=""></a></li>
+				<li><a href="http://blog.naver.com/hassed_kr" target="_blink"><img src="/public_html/img/bt_blog.png" border="0" alt=""></a></li>
+			    </ul>
+			</div>
+		    </div>
+		<li>
+	</ul>
+	<ul>
+		<li><a href="/about/company">COMPANY </a><li>
+		<li>1970<li>
+		<li>2010<li>
+		<li>문화<li>
+		<li>CEO<li>
+		<li>매장찾기<li>
+	</ul>
+	<ul>
+		<li>BRAND<li>
+		<li>미학<li>
+		<li>공학<li>
+		<li>약속<li>
+		<li>신비<li>
+	</ul>
+	<ul>
+		<li>MATERIAL<li>
+		<li>원천기술<li>
+		<li>바이오<li>
+		<li>국내유일<li>
+		<li>검증<li>
+	</ul>
+	<ul>
+		<li>PRODUCT<li>
+	</ul>
+	<ul>
+		<li>GALLERY<li>
+		<li>고객후기<li>
+		<li>H매거진<li>
+	</ul>
+	<ul>
+		<li>NOTICE<li>
+		<li>공지사항<li>
+		<li>Q & A<li>
+		<li>F A Q<li>
+	</ul>
+</div>
