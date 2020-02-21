@@ -59,6 +59,10 @@
             get_list($("#page").val());
         }
 
+        function page_move(page){
+            location.href = '/gallery/hmagajine/?page='+page;
+        }
+
         function get_list(page){
             var html_list ='';
 
