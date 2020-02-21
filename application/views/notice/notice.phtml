@@ -43,7 +43,7 @@
                             <option value="b_writer" <?php if($search_type == "b_writer") echo "selected";?>>글쓴이</option>
                         </select>
                         <input type="text" name="search_value" id="search_value" class="input_find" style="width:90px;" value="<?php echo $search_value;?>">
-                        <input type="button" class="btn_find" title="찾아보기" onclick="get_list(1);" style="vertical-align: bottom">
+                        <input type="button" class="btn_find" title="찾아보기" onclick="page_move(1);" style="vertical-align: bottom">
                     </div>
                     <!-- BBS_find // -->
                 </div>
@@ -58,6 +58,11 @@
         get_list(1);
     }else{
         get_list($("#page").val());
+    }
+
+
+    function page_move(page){
+        location.href = '/notice/notice/?page='+page+'&search_type='+$("#search_type option:selected").val()+'&search_value='+$("#search_value").val();
     }
 
     function get_list(page){
