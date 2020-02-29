@@ -62,7 +62,10 @@
         get_list($("#page").val());
     }
 
-
+    function page_move(page){
+        location.href = $(location).attr('pathname')+"?start_date=" + $("#start_date").val() + "&end_date=" + $("#end_date").val() + "&mode=" + $("#mode").val() + "&page=" + page;
+    }
+    
     function get_list(page){
         var html_list ='';
 

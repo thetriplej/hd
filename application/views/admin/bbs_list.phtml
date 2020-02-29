@@ -142,6 +142,10 @@
         find_list(page,$("#b_special").val());
     }
 
+    function page_move(page){
+        location.href = $(location).attr('pathname')+'?b_code='+$("#b_code").val()+'&page='+page+'&search_type='+$("#search_type option:selected").val()+'&search_value='+$("#search_value").val();
+    }
+
     function find_list(page,mode){
         var html_list ='';
         if(mode == 0){
@@ -184,7 +188,7 @@
                     var depth = 0;
                     var depth_char = "";
                     if(Number(value.b_special) > 0){ notice_class = value.b_special}
-                    var num = (data.page_navi.total-(data.page_navi.current_page-1)*10)-list_cnt;
+                    var num = (data.page_navi.total-(data.page_navi.current_page-1)*data.page_navi.per_page)-list_cnt;
                     depth = Number(value.b_depth) * 10;
                     if (Number(depth) > 0) depth_char = depth_char + "->";
                     html_list += '<tr bgcolor="#FFFFFF" align="center">';
