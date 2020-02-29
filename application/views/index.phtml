@@ -4,6 +4,12 @@
 <script src="/public_html/js/myslider.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- mySlider css file -->
+<SCRIPT LANGUAGE="JavaSCRIPT">
+	window.onload = function () {
+	    window.open("public_html/popup-corona.html","공지사항",'left=200, top=200, width=402, height=404, resizable=no, scrollbars=no, status=no location=no ');
+	}
+</SCRIPT>
+
 <link rel="stylesheet" type="text/css" href="/public_html/css/myslider.css" />
 <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>"/>
 
