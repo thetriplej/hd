@@ -17,10 +17,29 @@
 		$("#bt_point02").click(function(){
 			fnMove(2);
 		});
+
 	});		
 </script>
 
-<div id="rh-nav">
+
+<SCRIPT LANGUAGE="JavaSCRIPT">
+
+	window.onload = function () {
+	    window.open("public_html/popup-corona.html","공지사항",'left=200, top=200, width=643, height=643, resizable=no, scrollbars=no, status=no location=no ');
+	}
+
+	//서버 이전 공지
+	function windOPcorona()
+	{
+		noticeWindow  =  window.open("public_html/popup-corona.html","공지사항",'left=200, top=200, width=400, height=450, resizable=no, scrollbars=no, status=no location=no ');
+	}
+
+	function closewin() {
+		noticeWindow.close();   // Closes the new window
+	}
+</SCRIPT>
+
+<div id="rh-nav" >
 	<div id="bt_point01" class="bt_point"><a>1</a></div>
 	<div id="bt_point02" class="bt_point"><a>2</a></div>
 </div>
@@ -45,6 +64,13 @@ abcd
 
 	</div>
 
+
+	<!-- <div id="hpopup" class="main_pop">
+		<div>
+		<img src="public_html/images/workshop2018.jpg">
+		</div>
+		<a href="http://www.hassed.kr/notice/notice_view?b_index=25758"><div id="hclose" class="pop_close"> close </div></a>
+	</div> -->
 
 	<!-- <div class="main_img_new">
 	<video width="1064" height="550" autoplay loop muted>

@@ -134,6 +134,11 @@ function windOPE3()
 }
 
 
+function windOPENP()
+{
+	noticeWindow  =  window.open("mystery.html","신비의물성",'left=200, top=40, width=360, height=720, resizable=no, scrollbars=no, status=no location=no ');
+}
+
 ///////////// 게시판 iframe 높이값 조종 ///////////////////////////
 
 
