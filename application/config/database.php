@@ -76,7 +76,7 @@ $query_builder = TRUE;
 if($_SERVER['HTTP_HOST'] == "127.0.0.1"){
     $db['default'] = array(
         'dsn'	=> '',
-        'hostname' => 'localhost',
+        'hostname' => '110.10.129.73',
         'username' => 'triplej',
         'password' => 'wjswowns',
         'database' => 'hassed_dev',
