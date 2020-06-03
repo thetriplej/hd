@@ -85,6 +85,7 @@ class Common extends CI_Controller
             $lang_name = " (Eng)";
             $add_uri = "/eng";
         }else{
+            $lang_type = "";
             $lang_name = "";
             $add_uri = "";
         }
