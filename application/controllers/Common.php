@@ -112,6 +112,7 @@ class Common extends CI_Controller
                 "/ecsaine/material" => "<font color='blue'>".$agent_name."소재</font> - 엑센느 소재".$lang_name,
                 "/ecsaine/strongpoint" => "<font color='blue'>".$agent_name."소재</font> - 엑센느 특장점".$lang_name,
                 "/ecsaine/maintain" => "<font color='blue'>".$agent_name."소재</font> - 엑센느 관리".$lang_name,
+                "/product" => "<font color='blue'>".$agent_name."제품랜딩페이지</font> ".$lang_name,
                 "/product/detail_view?code=becky" => "<font color='blue'>".$agent_name."제품소개</font> - BECKY".$lang_name,
                 "/product/detail_view?code=arriba" => "<font color='blue'>".$agent_name."제품소개</font> - FLORIA".$lang_name,
                 "/product/detail_view?code=calix" => "<font color='blue'>".$agent_name."제품소개</font> - CALIX".$lang_name,
