@@ -79,7 +79,7 @@ if($_SERVER['HTTP_HOST'] == "127.0.0.1"){
         'hostname' => 'localhost',
         'username' => 'triplej',
         'password' => 'wjswowns',
-        'database' => 'hassed',
+        'database' => 'hassed_dev',
         'dbdriver' => 'mysqli',
         'dbprefix' => '',
         'pconnect' => FALSE,
