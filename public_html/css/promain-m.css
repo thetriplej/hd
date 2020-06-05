@@ -1,0 +1,67 @@
+.space-top{
+	width:992px;
+	height:40px;
+	margin: 0 auto;
+	border-top:solid 5px #8d8479;
+	margin: 0px 44px;
+}
+
+
+.modlelist{
+	width:1080px;
+	height:330px;
+	margin: 0 auto;
+	font-family: gulim, 굴림, sans-serif;
+	margin-bottom:50px;
+
+}
+
+.modlelist > ul > li{
+	width:300px;
+	float:left;
+	margin-left:44px;
+}
+
+
+.modlelist > ul > li:last-child{
+	margin-right:44px;
+}
+
+.modelname{
+	width:300px;
+	height:30px;
+	font-size:20px;
+	text-align:right;
+}
+
+.dropdown{
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content{
+	display: none;
+	position: absolute;
+	margin-top:-300px;
+	z-index: 1;
+	width:300px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+span.kor{
+	font-size:15px;
+	text-align:right;
+	padding-left:12px;
+	display: inline;
+}
+
+.menuprolist{
+	width:120px;
+	height:120px;
+	position:fixed;
+	top:750px;
+	z-index:10000;
+}

@@ -88,3 +88,7 @@
 #bs03 { width:700px; height:800px; left:2100px; position:absolute;}
 #bs04 { width:700px; height:800px; left:2800px; position:absolute;}
 #bs05 { width:700px; height:800px; left:0px; position:absolute;}
+
+
+.pad-right{padding-right:20px;}
+.pad-left{padding-left:20px;}
