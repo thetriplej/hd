@@ -105,7 +105,8 @@
 	position:absolute;
 	width:146px;
 	height:120px;
-	top:50px;
+	top:100px;
+	left:0px;
 	font-family: "Noto Sans KR",  "Malgun Gothic", sans-serif;
 	font-size:20px;
 	text-indent:-300px;
