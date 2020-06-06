@@ -35,9 +35,9 @@ class Product extends Common {
     public function index()
     {
         if($this->lang_type == 'en') {
-            $this->load->view('product/e_productmain.phtml');
+            $this->load->view($this->type.'product/e_productmain.phtml');
         }else{
-            $this->load->view('product/productmain.phtml');
+            $this->load->view($this->type.'product/productmain.phtml');
         }
     }
     public function detail_view()
@@ -193,81 +193,81 @@ class Product extends Common {
 
     public function noname01(){
         if($this->lang_type == 'en') {
-            $this->load->view('product/e_noname01.phtml');
+            $this->load->view($this->type.'product/e_noname01.phtml');
         }else{
-            $this->load->view('product/noname01.phtml');
+            $this->load->view($this->type.'product/noname01.phtml');
         }
     }
 
     public function noname02(){
         if($this->lang_type == 'en') {
-            $this->load->view('product/e_noname02.phtml');
+            $this->load->view($this->type.'product/e_noname02.phtml');
         }else{
-            $this->load->view('product/noname02.phtml');
+            $this->load->view($this->type.'product/noname02.phtml');
         }
     }
 
     public function noname03(){
         if($this->lang_type == 'en') {
-            $this->load->view('product/e_noname03.phtml');
+            $this->load->view($this->type.'product/e_noname03.phtml');
         }else{
-            $this->load->view('product/noname03.phtml');
+            $this->load->view($this->type.'product/noname03.phtml');
         }
     }
 
     public function noname04(){
         if($this->lang_type == 'en') {
-            $this->load->view('product/e_noname04.phtml');
+            $this->load->view($this->type.'product/e_noname04.phtml');
         }else{
-            $this->load->view('product/noname04.phtml');
+            $this->load->view($this->type.'product/noname04.phtml');
         }
     }
 
     public function noname05(){
         if($this->lang_type == 'en') {
-            $this->load->view('product/e_noname05.phtml');
+            $this->load->view($this->type.'product/e_noname05.phtml');
         }else{
-            $this->load->view('product/noname05.phtml');
+            $this->load->view($this->type.'product/noname05.phtml');
         }
     }
 
     public function noname06(){
         if($this->lang_type == 'en') {
-            $this->load->view('product/e_noname06.phtml');
+            $this->load->view($this->type.'product/e_noname06.phtml');
         }else{
-            $this->load->view('product/noname06.phtml');
+            $this->load->view($this->type.'product/noname06.phtml');
         }
     }
 
     public function noname07(){
         if($this->lang_type == 'en') {
-            $this->load->view('product/e_noname07.phtml');
+            $this->load->view($this->type.'product/e_noname07.phtml');
         }else{
-            $this->load->view('product/noname07.phtml');
+            $this->load->view($this->type.'product/noname07.phtml');
         }
     }
 
     public function noname08(){
         if($this->lang_type == 'en') {
-            $this->load->view('product/e_noname08.phtml');
+            $this->load->view($this->type.'product/e_noname08.phtml');
         }else{
-            $this->load->view('product/noname08.phtml');
+            $this->load->view($this->type.'product/noname08.phtml');
         }
     }
 
     public function noname09(){
         if($this->lang_type == 'en') {
-            $this->load->view('product/e_noname09.phtml');
+            $this->load->view($this->type.'product/e_noname09.phtml');
         }else{
-            $this->load->view('product/noname09.phtml');
+            $this->load->view($this->type.'product/noname09.phtml');
         }
     }
 
     public function noname10(){
         if($this->lang_type == 'en') {
-            $this->load->view('product/e_noname10.phtml');
+            $this->load->view($this->type.'product/e_noname10.phtml');
         }else{
-            $this->load->view('product/noname10.phtml');
+            $this->load->view($this->type.'product/noname10.phtml');
         }
     }
 
