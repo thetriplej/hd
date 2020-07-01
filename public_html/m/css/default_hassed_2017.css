@@ -233,9 +233,9 @@ b {display:inline;}
 
 .sub_img
 {
-	width:1080px;
+	width:1036px;
 	overflow:hidden;
-	margin: 0 auto;
+	padding: 0px 44px;
 }
 
 #board_frame

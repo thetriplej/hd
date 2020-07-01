@@ -1,6 +1,6 @@
 .space-top{
 	width:992px;
-	height:40px;
+	height:60px;
 	margin: 0 auto;
 	border-top:solid 5px #8d8479;
 	margin: 0px 44px;
@@ -9,28 +9,42 @@
 
 .modlelist{
 	width:1080px;
-	height:330px;
+	height:370px;
 	margin: 0 auto;
-	font-family: gulim, 굴림, sans-serif;
+	font-family: "Noto Sans KR";
+	color:#877e79;
 	margin-bottom:50px;
-
 }
 
 .modlelist > ul > li{
-	width:300px;
+	width:280px;
 	float:left;
-	margin-left:44px;
+	margin-left:76px;
+	margin-right:76px;
 }
 
+.modlelist > ul > li:first-child{
+	margin-left:44px;
+	margin-right:0px;
+}
 
 .modlelist > ul > li:last-child{
+	margin-left:0px;
 	margin-right:44px;
 }
 
+.modelimg{
+	height:280px;
+}
+
+.modelimg > a > img{
+	width:280px;
+}
+ 
 .modelname{
-	width:300px;
+	width:280px;
 	height:30px;
-	font-size:20px;
+	font-size:24px;
 	text-align:right;
 }
 
@@ -44,7 +58,7 @@
 	position: absolute;
 	margin-top:-300px;
 	z-index: 1;
-	width:300px;
+	width:240px;
 }
 
 .dropdown:hover .dropdown-content {
@@ -52,16 +66,16 @@
 }
 
 span.kor{
-	font-size:15px;
+	font-size:18px;
 	text-align:right;
-	padding-left:12px;
-	display: inline;
+	padding-left:8px;
 }
 
 .menuprolist{
 	width:120px;
 	height:120px;
 	position:fixed;
-	top:750px;
+	top:60px;
+	right:25px;
 	z-index:10000;
 }

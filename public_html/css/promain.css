@@ -9,15 +9,16 @@
 	width:1080px;
 	height:270px;
 	margin: 0 auto;
-	font-family: gulim, 굴림, sans-serif;
+	font-family: "Noto Sans KR";
+	color:#877e79;
 	margin-bottom:50px;
-
 }
 
 .modlelist > ul > li{
-	width:240px;
+	width:216px;
+	height:236px;
 	float:left;
-	margin-right:40px;
+	margin-right:72px;
 }
 
 
@@ -25,10 +26,16 @@
 	margin-right:0px;
 }
 
+
+.modelimg{
+	width:216px;
+	height:216px;
+}
+
 .modelname{
-	width:240px;
-	height:20px;
-	font-size:14px;
+	width:216px;
+	height:15px;
+	font-size:15px;
 	text-align:right;
 }
 
@@ -40,7 +47,7 @@
 .dropdown-content{
 	display: none;
 	position: absolute;
-	margin-top:-243px;
+	margin-top:-221px;
 	z-index: 1;
 }
 
@@ -49,8 +56,8 @@
 }
 
 span.kor{
-	font-size:11px;
+	font-size:12px;
 	text-align:right;
-	padding-left:12px;
+	padding-left:6px;
 	display: inline;
 }

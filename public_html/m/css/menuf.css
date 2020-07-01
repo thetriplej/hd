@@ -105,7 +105,7 @@
 	position:absolute;
 	width:146px;
 	height:120px;
-	top:100px;
+	top:60px;
 	left:0px;
 	font-family: "Noto Sans KR",  "Malgun Gothic", sans-serif;
 	font-size:20px;
@@ -532,7 +532,7 @@
 
 .mo_bo_03
 {
-	width:820px;
+	width:840px;
 	height:20px;
 	display:block;
 	overflow:hidden;

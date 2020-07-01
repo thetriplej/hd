@@ -389,3 +389,13 @@ position:absolute; width:1080px; height:320px; left:50%; margin-left:-540px; mar
 	margin-left:250px;
 	margin-top:-500px;
 }
+
+.btprolist{
+	width:80px;
+	height:80px;
+	position:fixed;
+	top:670px;
+	left:50%;
+	margin-left: -500px;
+	z-index:10000;
+}
