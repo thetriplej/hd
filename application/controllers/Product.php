@@ -96,7 +96,7 @@ class Product extends Common {
                 break;
             case 'swingchair' :
                 $this->load->view($this->type.'product/'.$lang_type.'swingchair.phtml');
-            break;
+                break;
             case 'mors' :
                 $this->load->view($this->type.'product/'.$lang_type.'mors.phtml');
                 break;
@@ -172,6 +172,14 @@ class Product extends Common {
             case 'boheme' :
                 $this->load->view($this->type.'product/'.$lang_type.'boheme.phtml');
                 break;
+            case 'prince' :
+                $this->load->view($this->type.'product/'.$lang_type.'prince.phtml');
+                break;
+            case 'settle' :
+                $this->load->view($this->type.'product/'.$lang_type.'settle.phtml');
+                break;
+
+
 //            case 'becky' :
 //                $this->load->view($this->type.'product/'.$lang_type.'becky.phtml');
 //                break;
