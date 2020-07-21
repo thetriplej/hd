@@ -1,6 +1,6 @@
-<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/board_hassed_2017.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/board_hassed_mobile.css" />
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/public_html/d_editor/css/editor.css" type="text/css" charset="utf-8"/>
+<link rel="stylesheet" href="/public_html/d_editor/css/editor-mobile.css" type="text/css" charset="utf-8"/>
 <script src="/public_html/d_editor/js/editor_loader.js" type="text/javascript" charset="utf-8"></script>
 
 <!-- 전환페이지 설정 -->
@@ -20,7 +20,7 @@ _nasa["cnv"] = wcs.cnv("4","1"); // 전환유형, 전환가치 설정해야함. 
 
     <div class="box_full_in_center" style="margin-top:50px; postion:relative;">
         <!--contents_info-->
-        <div id="" style="width:1080px;height:879px">
+        <div id="" style="width:1080px; height:1000px">
             <div class="wrap_board">
                 <div class="board_area">
                     <?php echo form_open_multipart('/notice/qna_store/',array('name'=>"tx_editor_form", 'id'=>"tx_editor_form")); ?>
@@ -32,18 +32,18 @@ _nasa["cnv"] = wcs.cnv("4","1"); // 전환유형, 전환가치 설정해야함. 
                     <input type="hidden" name="b_board_type" id="b_board_type" value="1">
                     <input type="hidden" id="b_index" name="b_index" value="<?php echo($b_index);?>">
                     <input type="hidden" name="select_img" id="select_img">
-                    <div style="margin:0 0 14px;">
+                    <div style="margin:0 40px 34px;">
                         <label class="input_tit">고객명</label>
                         <input type="text" attr="1" name="b_writer" id="b_writer"  class="input_txt" style="width:200px;margin-right:206px;" value=""/>
                         <label class="input_tit">비밀번호</label>
                         <input type="password" attr="1" name="b_password" id="b_password" class="input_txt" style="width:200px;">
                     </div>
-                    <div style="margin-bottom:14px;">
+                    <div style="margin:0 40px 34px;">
                         <label class="input_tit" style="margin-right:13px;" >제목</label>
                         <input type="text" attr="1" id="b_title" name="b_title" class="input_txt" style="width:365px;margin-right:50px;" placeholder="제목을 입력해주세요"  value="" />
                         <label class="input_tit">E-mail</label>
                         <input type="text" attr="1"  name="b_email1" id="b_email1"  class="input_txt" style="width:66px;"   value="" />
-                        @
+                        <span style="font-size:30px;">@</span>
                         <input type="text" attr="1" id="b_email2" name="b_email2" class="input_txt" style="width:138px;" value="" />
                         <select id="s_email" attr="1" title="E-Mail 선택" class="input_sel" style="width:80px;height:26px;" onChange="if(this.value==''){with(document.tx_editor_form){B_Email2.readOnly=false;B_Email2.value='';B_Email2.focus();}}else{with(document.tx_editor_form){B_Email2.readOnly=true;B_Email2.value=this.value;}}">
                             <option value="">직접입력</option>
@@ -57,17 +57,19 @@ _nasa["cnv"] = wcs.cnv("4","1"); // 전환유형, 전환가치 설정해야함. 
                             <option value="msn.com">MSN</option>
                         </select>
                     </div>
-                    <div style="margin-bottom:20px;">
+                    <div style="margin:0 40px 34px; font-size:18px; line-height:28px;">
                         <input type="checkbox" name="b_locked" class="textbox" value="Y" <?php echo ($b_code == "QANDA0")?"checked" : ""?>>
-                        <font color="blue">※ 질문글 공개를 원하시는 고객님께서는 체크를 풀어주시기 바랍니다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 답변을 확인하실때 입력하신 비밀번호로 확인이 가능합니다.</br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">※ 사진을 첨부하신 뒤, 하단 파일첨부 영역에서 이미지 이름을 클릭하여, 메인이미지를 설정해주세요.</font>
+                        <font color="blue">※ 질문글 공개를 원하시는 고객님께서는 체크를 풀어주시기 바랍니다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 답변을 확인하실때 입력하신 비밀번호로 확인이 가능합니다.</br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">※ 사진을 첨부하신 뒤, 하단 파일첨부 영역에서 이미지 이름을 클릭하여, 메인이미지를 설정해주세요.</font>
                     </div>
-                    <?php $this->load->view('editor.phtml');?>
-                    <div style="height:25px;overflow:hidden;">
-                            <span style="float:right;">
-                                <input type="button" class="btn_gray" id="clear" value="다시작성">
-                                <input type="button" class="btn_blue" onclick="saveContent()" value="등록">
-                                <input type="button" class="btn_white" value="취소" onclick="javascript:history.back();">
+		    <div style="margin:0 40px 34px;">
+                    <?php $this->load->view('m/editor.phtml');?>
+		    </div>
+                    <div style="height:125px;overflow:hidden;">
+                            <span style="float:right; margin-right:40px;">
+                                <input type="button" class="btn_gray_m" id="clear" value="다시작성">
+                                <input type="button" class="btn_blue_m" onclick="saveContent()" value="등록">
+                                <input type="button" class="btn_white_m" value="취소" onclick="javascript:history.back();">
                             </span>
                     </div>
                 </div>
