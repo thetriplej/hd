@@ -245,18 +245,7 @@ _nasa["cnv"] = wcs.cnv("5","1"); // 전환유형, 전환가치 설정해야함. 
 </script>
 <script type="text/javascript">
     <!--
-    // 폼 초기화
-    $('#clear').click(function(){
-        if (confirm("작성하던 내용을 모두 삭제 하시겠습니까?") == true){    //확인
-            $('#b_writer').val("");
-            $('#b_password').val("");
-            $('#b_title').val("") ;
-            $('#b_email1').val("") ;
-            $('#b_email2').val("");
-            $('#s_email').val("");
-        }
-        //window.location.reload();
-    });
+
 
     $(function(){
         <?php if(!empty($b_index)) { ?>
@@ -370,6 +359,29 @@ _nasa["cnv"] = wcs.cnv("5","1"); // 전환유형, 전환가치 설정해야함. 
             alert("현재 이미지를 대표이미지로 선택합니다.");
             var index = $( ".tx-name" ).index( this );
             $("#select_img").val(index);
+        });
+
+        // 폼 초기화
+        $('#clear').click(function(){
+            if (confirm("작성하던 내용을 모두 삭제 하시겠습니까?") == true){    //확인
+                $('#b_writer').val("");
+                $('#b_password').val("");
+                $('#b_title').val("") ;
+                $('#b_email1').val("") ;
+                $('#b_email2').val("");
+                $('#s_email').val("");
+                Editor.modify({
+                    "attachments": function () { /* 저장된 첨부가 있을 경우 배열로 넘김, 위의 부분을 수정하고 아래 부분은 수정없이 사용 */
+                        var allattachments = [];
+                        return allattachments;
+                    }(),
+                    "content": function(){
+                        var temp ='<p></p>';
+                        return temp;
+                    }()	/* 내용 문자열, 주어진 필드(textarea) 엘리먼트 */
+                });
+            }
+            //window.location.reload();
         });
 
     });
