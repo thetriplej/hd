@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>이미지 첨부</title>
 <script src="../../js/popup.js" type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" href="../../css/popup.css" type="text/css"  charset="utf-8"/>
+<link rel="stylesheet" href="../../css/popup_mobile.css" type="text/css"  charset="utf-8"/>
 <script src="/public_html/js/jquery-1.11.1.min.js"></script>
 <script src="/public_html/js/jquery/plugins/jquery.form.js"></script>
 <script type="text/javascript">
