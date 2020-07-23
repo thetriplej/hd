@@ -28,15 +28,17 @@
                 <input type="hidden" name="ck_lock" id="ck_lock">
                 <input type="hidden" name="pass_uri" id="pass_uri">
                 <input type="hidden" name="pass_mode" id="pass_mode">
-                <img src="/public_html/images/bg/in_pass_01.png" title="Password" style="vertical-align:top;">
-                <div style="margin:0 23px 10px;overflow:hidden;">
-                    <div class="box_pw">비밀번호 &gt;</div>
-                    <input type="password" size="12" name="pw" id="pw" style="float:left;">
-                </div>
-                <div class="checkbt">
-                    <input type="button" class="btn_pw" title="확인" onclick="CheckPW();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="button" class="btn_cancel" title="취소" onclick="cancel();">
-                </div>
+		<div style="width:400px; height:300px; background-color:#ededed;">
+			<div style="font-size:40px; margin:0 auto; text-align:center;">Password</div>
+			<div style="margin:0 23px 10px; overflow:hidden; font-size:30px;">
+			    <div class="box_pw">비밀번호 &gt;</div>
+			    <div class="box_pw_input"><input type="password" size="12" name="pw" id="pw" style="float:left;"></div>
+			</div>
+			<div class="checkbt">
+			    <input type="button" class="btn_pw_m" title="확인" onclick="CheckPW();" value="확인">
+			    <input type="button" class="btn_cancel_m" title="취소" onclick="cancel();" value="최소">
+			</div>
+		</div>
             </form>
         </div>
         <!-- Password 입력 팝업 // -->

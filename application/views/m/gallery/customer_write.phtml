@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/board_hassed_mobile.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_MOBILE_DIR; ?>/board_hassed_mobile.css" />
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/public_html/d_editor/css/editor-mobile.css" type="text/css" charset="utf-8"/>
 <script src="/public_html/d_editor/js/editor_loader.js" type="text/javascript" charset="utf-8"></script>
@@ -47,8 +47,8 @@ _nasa["cnv"] = wcs.cnv("5","1"); // 전환유형, 전환가치 설정해야함. 
                             <label class="input_tit" style="margin-right:13px;">E-mail</label>
                             <input type="text" attr="1"  name="b_email1" id="b_email1"  class="input_txt" style="width:200px;"   value="" />
                             <span style="font-size:30px;">@ </span>
-                            <input type="text" attr="1" id="b_email2" name="b_email2" class="input_txt" style="width:400px;" value="" />
-                            <select id="s_email" attr="1" title="E-Mail 선택" class="input_sel" style="width:120px;height:36px;" onChange="if(this.value==''){with(document.tx_editor_form){b_email2.readOnly=false;b_email2.value='';b_email2.focus();}}else{with(document.tx_editor_form){b_email2.readOnly=true;b_email2.value=this.value;}}">
+                            <input type="text" attr="1" id="b_email2" name="b_email2" class="input_txt" style="width:450px; margin-right:10px;" value="" />
+                            <select id="s_email" attr="1" title="E-Mail 선택" class="input_sel" style="width:120px;height:36px;" onChange="if(this.value==''){with(document.tx_editor_form){B_Email2.readOnly=false;B_Email2.value='';B_Email2.focus();}}else{with(document.tx_editor_form){B_Email2.readOnly=true;B_Email2.value=this.value;}}">
                                 <option value="">직접입력</option>
                                 <option value="gmail.com">G메일</option>
                                 <option value="naver.com">네이버</option>
@@ -100,7 +100,7 @@ _nasa["cnv"] = wcs.cnv("5","1"); // 전환유형, 전환가치 설정해야함. 
             styles: {
                 color: "#123456", /* 기본 글자색 */
                 fontFamily: "굴림", /* 기본 글자체 */
-                fontSize: "10pt", /* 기본 글자크기 */
+                fontSize: "12pt", /* 기본 글자크기 */
                 backgroundColor: "#fff", /*기본 배경색 */
                 lineHeight: "1.5", /*기본 줄간격 */
                 padding: "8px" /* 위지윅 영역의 여백 */
@@ -126,7 +126,7 @@ _nasa["cnv"] = wcs.cnv("5","1"); // 전환유형, 전환가치 설정해야함. 
         },
 
         size: {
-            contentWidth: 700 /* 지정된 본문영역의 넓이가 있을 경우에 설정 */
+            contentWidth: 900 /* 지정된 본문영역의 넓이가 있을 경우에 설정 */
         }
 
 
@@ -194,7 +194,7 @@ _nasa["cnv"] = wcs.cnv("5","1"); // 전환유형, 전환가치 설정해야함. 
         }
         if($('#b_email1').val() == "" || $('#b_email2').val() == "") {
             alert('이메일을 입력해 주세요.');
-            b_email1.focus();
+            B_Email1.focus();
             return;
         }
         if (!validator.exists(content)) {
@@ -259,9 +259,6 @@ _nasa["cnv"] = wcs.cnv("5","1"); // 전환유형, 전환가치 설정해야함. 
             $('#b_email1').val("") ;
             $('#b_email2').val("");
             $('#s_email').val("");
-            $("#select_img").val('');
-            new Editor(config);
-
         }
         //window.location.reload();
     });

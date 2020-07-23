@@ -32,20 +32,20 @@ _nasa["cnv"] = wcs.cnv("4","1"); // 전환유형, 전환가치 설정해야함. 
                     <input type="hidden" name="b_board_type" id="b_board_type" value="1">
                     <input type="hidden" id="b_index" name="b_index" value="<?php echo($b_index);?>">
                     <input type="hidden" name="select_img" id="select_img">
-                    <div style="margin:0 40px 34px;">
-                        <label class="input_tit">고객명</label>
-                        <input type="text" attr="1" name="b_writer" id="b_writer"  class="input_txt" style="width:200px;margin-right:206px;" value=""/>
-                        <label class="input_tit">비밀번호</label>
-                        <input type="password" attr="1" name="b_password" id="b_password" class="input_txt" style="width:200px;">
-                    </div>
-                    <div style="margin:0 40px 34px;">
+
+		     <div style="margin:0 40px 34px;">
                         <label class="input_tit" style="margin-right:13px;" >제목</label>
-                        <input type="text" attr="1" id="b_title" name="b_title" class="input_txt" style="width:365px;margin-right:50px;" placeholder="제목을 입력해주세요"  value="" />
-                        <label class="input_tit">E-mail</label>
-                        <input type="text" attr="1"  name="b_email1" id="b_email1"  class="input_txt" style="width:66px;"   value="" />
+                        <input type="text" attr="1" id="b_title" name="b_title" class="input_txt" style="width:530px;margin-right:50px;" placeholder="제목을 입력해주세요"  value="" />
+                        <label class="input_tit">고객명</label>
+                        <input type="text" attr="1" name="b_writer" id="b_writer"  class="input_txt" style="width:200px;margin-right:6px;" value=""/>
+                    </div>
+
+                    <div style="margin:0 40px 34px;">
+			<label class="input_tit">E-mail</label>
+                        <input type="text" attr="1"  name="b_email1" id="b_email1"  class="input_txt" style="width:120px;"   value="" />
                         <span style="font-size:30px;">@</span>
-                        <input type="text" attr="1" id="b_email2" name="b_email2" class="input_txt" style="width:138px;" value="" />
-                        <select id="s_email" attr="1" title="E-Mail 선택" class="input_sel" style="width:80px;height:26px;" onChange="if(this.value==''){with(document.tx_editor_form){b_email2.readOnly=false;b_email2.value='';b_email2.focus();}}else{with(document.tx_editor_form){b_email2.readOnly=true;b_email2.value=this.value;}}">
+                        <input type="text" attr="1" id="b_email2" name="b_email2" class="input_txt" style="width:250px;" value="" />
+                        <select id="s_email" attr="1" title="E-Mail 선택" class="input_sel" style="width:100px;height:40px;" onChange="if(this.value==''){with(document.tx_editor_form){B_Email2.readOnly=false;B_Email2.value='';B_Email2.focus();}}else{with(document.tx_editor_form){B_Email2.readOnly=true;B_Email2.value=this.value;}}">
                             <option value="">직접입력</option>
                             <option value="gmail.com">G메일</option>
                             <option value="naver.com">네이버</option>
@@ -56,10 +56,14 @@ _nasa["cnv"] = wcs.cnv("4","1"); // 전환유형, 전환가치 설정해야함. 
                             <option value="hotmail.com">핫메일</option>
                             <option value="msn.com">MSN</option>
                         </select>
+			<span style="width:40px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <label class="input_tit">비밀번호</label>
+                        <input type="password" attr="1" name="b_password" id="b_password" class="input_txt" style="width:180px;">
+			
                     </div>
-                    <div style="margin:0 40px 34px; font-size:18px; line-height:28px;">
+                    <div style="margin:0 40px 34px; font-size:20px; line-height:28px;">
                         <input type="checkbox" name="b_locked" class="textbox" value="Y" <?php echo ($b_code == "QANDA0")?"checked" : ""?>>
-                        <font color="blue">※ 질문글 공개를 원하시는 고객님께서는 체크를 풀어주시기 바랍니다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 답변을 확인하실때 입력하신 비밀번호로 확인이 가능합니다.</font></br>
+                        <font color="blue">※ 질문글 공개를 원하시는 고객님께서는 체크를 풀어주시기 바랍니다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 답변을 확인하실때 입력하신 비밀번호로 확인이 가능합니다.</br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">※ 사진을 첨부하신 뒤, 하단 파일첨부 영역에서 이미지 이름을 클릭하여, 메인이미지를 설정해주세요.</font>
                     </div>
 		    <div style="margin:0 40px 34px;">
@@ -190,7 +194,7 @@ _nasa["cnv"] = wcs.cnv("4","1"); // 전환유형, 전환가치 설정해야함. 
         }
         if($('#b_email1').val() == "" || $('#b_email2').val() == "") {
             alert('이메일을 입력해 주세요.');
-            b_email1.focus();
+            B_Email1.focus();
             return;
         }
         if (!validator.exists(content)) {
@@ -259,8 +263,6 @@ _nasa["cnv"] = wcs.cnv("4","1"); // 전환유형, 전환가치 설정해야함. 
             $('#b_email1').val("") ;
             $('#b_email2').val("");
             $('#s_email').val("");
-            $("#select_img").val('');
-            new Editor(config);
         }
         //window.location.reload();
     });
