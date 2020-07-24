@@ -277,9 +277,9 @@ div.tx-loading{position:absolute;z-index:200;width:100%;height:29px;top:0;left:0
 .tx-backcolor a.tx-icon{background-position:-210px 0px;}
 .tx-alignleft a.tx-icon{background-position:0px -42px;}
 .tx-selected-image .tx-alignleft a.tx-icon{background-position:-83px -130px;}
-.tx-alignright a.tx-icon{background-position:-42px -42px;}
+.tx-alignright a.tx-icon{background-position:-84px -42px;}
 .tx-selected-image .tx-alignright a.tx-icon{background-position:-24px -130px;}
-.tx-aligncenter a.tx-icon{background-position:-84px -42px;}
+.tx-aligncenter a.tx-icon{background-position:-42px -42px;}
 .tx-selected-image .tx-aligncenter a.tx-icon{background-position:-45px -130px;}
 .tx-alignfull a.tx-icon{background-position:-126px -42px;}
 .tx-selected-image .tx-alignfull a.tx-icon{background-position:-65px -130px;}

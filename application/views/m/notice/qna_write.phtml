@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/board_hassed_mobile.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_MOBILE_DIR; ?>/board_hassed_mobile.css" />
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/public_html/d_editor/css/editor-mobile.css" type="text/css" charset="utf-8"/>
 <script src="/public_html/d_editor/js/editor_loader.js" type="text/javascript" charset="utf-8"></script>
@@ -34,19 +34,19 @@ _nasa["cnv"] = wcs.cnv("4","1"); // 전환유형, 전환가치 설정해야함. 
                     <input type="hidden" name="select_img" id="select_img">
 
 		     <div style="margin:0 40px 34px;">
-                        <label class="input_tit" style="margin-right:13px;" >제목</label>
-                        <input type="text" attr="1" id="b_title" name="b_title" class="input_txt" style="width:530px;margin-right:50px;" placeholder="제목을 입력해주세요"  value="" />
-                        <label class="input_tit">고객명</label>
-                        <input type="text" attr="1" name="b_writer" id="b_writer"  class="input_txt" style="width:200px;margin-right:6px;" value=""/>
+                        <label class="input_tit" style="margin-right:10px;" >제목</label>
+                        <input type="text" attr="1" id="b_title" name="b_title" class="input_txt" style="width:595px;margin-right:50px;" placeholder="제목을 입력해주세요"  value="" />
+                        <label class="input_tit" style="margin-right:10px;">고객명</label>
+                        <input type="text" attr="1" name="b_writer" id="b_writer"  class="input_txt" style="width:190px;margin-right:6px;" value=""/>
                     </div>
 
                     <div style="margin:0 40px 34px;">
-			<label class="input_tit">E-mail</label>
-                        <input type="text" attr="1"  name="b_email1" id="b_email1"  class="input_txt" style="width:120px;"   value="" />
-                        <span style="font-size:30px;">@</span>
-                        <input type="text" attr="1" id="b_email2" name="b_email2" class="input_txt" style="width:250px;" value="" />
-                        <select id="s_email" attr="1" title="E-Mail 선택" class="input_sel" style="width:100px;height:40px;" onChange="if(this.value==''){with(document.tx_editor_form){B_Email2.readOnly=false;B_Email2.value='';B_Email2.focus();}}else{with(document.tx_editor_form){B_Email2.readOnly=true;B_Email2.value=this.value;}}">
-                            <option value="">직접입력</option>
+			<label class="input_tit"  style="margin-right:10px;" >E-mail</label>
+                        <input type="text" attr="1"  name="b_email1" id="b_email1"  class="input_txt" style="width:120px;margin-right:10px;"   value="" />
+                        <span style="font-size:30px;margin-right:10px;">@</span>
+                        <input type="text" attr="1" id="b_email2" name="b_email2" class="input_txt" style="width:250px; margin-right:10px;" value="" />
+                        <select id="s_email" attr="1" title="E-Mail 선택" class="input_sel" style="width:120px;height:40px;" onChange="if(this.value==''){with(document.tx_editor_form){B_Email2.readOnly=false;B_Email2.value='';B_Email2.focus();}}else{with(document.tx_editor_form){B_Email2.readOnly=true;B_Email2.value=this.value;}}">
+                            <option value="">직접 입력</option>
                             <option value="gmail.com">G메일</option>
                             <option value="naver.com">네이버</option>
                             <option value="nate.com">네이트</option>
@@ -56,9 +56,9 @@ _nasa["cnv"] = wcs.cnv("4","1"); // 전환유형, 전환가치 설정해야함. 
                             <option value="hotmail.com">핫메일</option>
                             <option value="msn.com">MSN</option>
                         </select>
-			<span style="width:40px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <label class="input_tit">비밀번호</label>
-                        <input type="password" attr="1" name="b_password" id="b_password" class="input_txt" style="width:180px;">
+			<span style="width:40px; margin-right:10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <label class="input_tit" style="margin-right:10px;">비밀번호</label>
+                        <input type="password" attr="1" name="b_password" id="b_password" class="input_txt" style="width:170px;">
 			
                     </div>
                     <div style="margin:0 40px 34px; font-size:20px; line-height:28px;">
@@ -100,7 +100,7 @@ _nasa["cnv"] = wcs.cnv("4","1"); // 전환유형, 전환가치 설정해야함. 
             styles: {
                 color: "#123456", /* 기본 글자색 */
                 fontFamily: "굴림", /* 기본 글자체 */
-                fontSize: "10pt", /* 기본 글자크기 */
+                fontSize: "18pt", /* 기본 글자크기 */
                 backgroundColor: "#fff", /*기본 배경색 */
                 lineHeight: "1.5", /*기본 줄간격 */
                 padding: "8px" /* 위지윅 영역의 여백 */
@@ -126,7 +126,7 @@ _nasa["cnv"] = wcs.cnv("4","1"); // 전환유형, 전환가치 설정해야함. 
         },
 
         size: {
-            contentWidth: 700 /* 지정된 본문영역의 넓이가 있을 경우에 설정 */
+            contentWidth: 900 /* 지정된 본문영역의 넓이가 있을 경우에 설정 */
         }
 
 

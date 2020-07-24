@@ -34,22 +34,22 @@ _nasa["cnv"] = wcs.cnv("5","1"); // 전환유형, 전환가치 설정해야함. 
                         <input type="hidden" id="b_index" name="b_index" value="<?php echo($b_index);?>">
                         <input type="hidden" name="select_img" id="select_img">
 			<div style="margin:0 40px 34px;">
-			<label class="input_tit" style="margin-right:13px;" >제목</label>
-                        <input type="text" attr="1" id="b_title" name="b_title" class="input_txt" style="width:900px;" placeholder="제목을 입력해주세요"  value="" />
+			<label class="input_tit" style="margin-right:10px;" >제목</label>
+                        <input type="text" attr="1" id="b_title" name="b_title" class="input_txt" style="width:930px;" placeholder="제목을 입력해주세요"  value="" />
 			</div>
                         <div style="margin:0 40px 34px;">
-                            <label class="input_tit" style="margin-right:13px;">고객명</label>
-                            <input type="text" attr="1" name="b_writer" id="b_writer"  class="input_txt" style="width:310px;margin-right:206px;" value=""/>
-                            <label class="input_tit" style="margin-right:13px;">비밀번호</label>
+                            <label class="input_tit" style="margin-right:10px;">고객명</label>
+                            <input type="text" attr="1" name="b_writer" id="b_writer"  class="input_txt" style="width:380px;margin-right:206px;" value=""/>
+                            <label class="input_tit" style="margin-right:10px;">비밀번호</label>
                             <input type="password" attr="1" name="b_password" id="b_password" class="input_txt" style="width:200px;">
                         </div>
                         <div style="margin:0 40px 34px;">
-                            <label class="input_tit" style="margin-right:13px;">E-mail</label>
-                            <input type="text" attr="1"  name="b_email1" id="b_email1"  class="input_txt" style="width:200px;"   value="" />
-                            <span style="font-size:30px;">@ </span>
+                            <label class="input_tit" style="margin-right:10px;">E-mail</label>
+                            <input type="text" attr="1"  name="b_email1" id="b_email1"  class="input_txt" style="width:200px; margin-right:10px;"   value="" />
+                            <span style="font-size:30px; margin-right:10px;">@ </span>
                             <input type="text" attr="1" id="b_email2" name="b_email2" class="input_txt" style="width:450px; margin-right:10px;" value="" />
-                            <select id="s_email" attr="1" title="E-Mail 선택" class="input_sel" style="width:120px;height:36px;" onChange="if(this.value==''){with(document.tx_editor_form){B_Email2.readOnly=false;B_Email2.value='';B_Email2.focus();}}else{with(document.tx_editor_form){B_Email2.readOnly=true;B_Email2.value=this.value;}}">
-                                <option value="">직접입력</option>
+                            <select id="s_email" attr="1" title="E-Mail 선택" class="input_sel" style="width:170px;height:36px;" onChange="if(this.value==''){with(document.tx_editor_form){B_Email2.readOnly=false;B_Email2.value='';B_Email2.focus();}}else{with(document.tx_editor_form){B_Email2.readOnly=true;B_Email2.value=this.value;}}">
+                                <option value="">직접 입력</option>
                                 <option value="gmail.com">G메일</option>
                                 <option value="naver.com">네이버</option>
                                 <option value="nate.com">네이트</option>

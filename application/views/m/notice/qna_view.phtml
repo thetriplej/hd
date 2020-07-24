@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR; ?>/board_hassed_2017.css">
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_MOBILE_DIR; ?>/board_hassed_mobile.css">
 <script src="<?php echo JS_DIR; ?>/bbs.js"></script>
 <link rel="stylesheet" type="text/css" href="/public_html/video/css/site.css">
 <link rel="stylesheet" type="text/css" href="/public_html/video/ovp-min.css" />
@@ -109,15 +109,15 @@
                         ?>
                         <div style="float:right;"><?php echo $view_uri;?></div>
                     </div>
-                    <div id="buttons" style="height:25px;overflow:hidden;clear:both;">
+                    <div id="buttons" style="height:150px;overflow:hidden;clear:both;padding:0 10px;">
                         <?php if($view_data->b_code == "CEPILOGUE0" ||  $view_data->b_code == "QANDA0"){?>
                             <span style="float:left;">
-                            <input type="button" class="btn_blue" value="수정" onclick="send('<?='/notice/qna_write/?b_index='.$view_data->b_index.'&page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','edit');">
-                            <input type="button" class="btn_blue" value="삭제" onclick="send('<?='/notice/qna?page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','del');">
+                            <input type="button" class="btn_no01" value="수정" onclick="send('<?='/notice/qna_write/?b_index='.$view_data->b_index.'&page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','edit');">
+                            <input type="button" class="btn_no01" value="삭제" onclick="send('<?='/notice/qna?page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>','del');">
                         </span>
                         <?php }?>
                         <span style="float:right;">
-                            <input type="button" class="btn_gray" value="목록보기" onclick="goto('<?='/notice/qna?page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>');">
+                            <input type="button" class="btn_no01" value="목록보기" onclick="goto('<?='/notice/qna?page='.$page.'&b_code='.$view_data->b_code.'&search_type='.$search_type.'&search_value='.$search_value?>');">
                         </span>
                     </div>
                     <?php if(!empty($reply_view_data)){ ?>
