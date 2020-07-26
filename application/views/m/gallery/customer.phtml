@@ -182,13 +182,8 @@
             success : function(result) {
                 var data   = $.parseJSON(result);
                 var list_cnt = 0;
-
+                html_list += '<div class="gallery_set">';
                 $.each( data.list, function( key, value ) {
-                    list_cnt = (key) % 3;
-
-                    if(list_cnt == '0') {
-                        html_list += '<div class="gallery_set">';
-                    }
                     html_list += '   <div class="gallery_list" onclick="page_view(' + value.b_index + ');">';
                     if(value.f_rename == "no_image" ) {
 
@@ -205,11 +200,9 @@
                     html_list += '      </div>';
                     html_list += '      <div class="info" style="position:relative;"><span class="date" >' + value.show_date + '</span><span class="viewcount">view ' + value.b_hit + '</span></div>';
                     html_list += '   </div>';
-                    if(list_cnt == '2') {
-                        html_list += '</div>';
-                    }
+                    list_cnt++;
                 });
-
+                html_list += '</div>';
 
                 if(list_cnt == 0 && data.page_navi.total == 0){
                     html_list = '<div style="padding:15px;padding-left:45%;"><b>검색된 게시물이 없습니다.</b></div>'

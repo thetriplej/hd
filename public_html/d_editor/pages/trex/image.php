@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>이미지 첨부</title>
 <script src="../../js/popup.js" type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" href="../../css/popup_mobile.css" type="text/css"  charset="utf-8"/>
+<link rel="stylesheet" href="../../css/popup.css" type="text/css"  charset="utf-8"/>
 <script src="/public_html/js/jquery-1.11.1.min.js"></script>
 <script src="/public_html/js/jquery/plugins/jquery.form.js"></script>
 <script type="text/javascript">
@@ -126,21 +126,22 @@ $(function(){
 <body onload="initUploader();">
 <div class="wrapper">
 	<div class="header">
-		<h1>
-		<div style="padding: 80px 0 0 0;">사진 첨부</div></h1>
+		<h1>사진 첨부&nbsp;&nbsp;<b>(사진을 추가 등록하실수 있습니다.)</b></h1>
 	</div>
 	<div class="body">
-		<div class="txt-info">
-		
-		파일선택을 누르시면 <br>사진을 첨부 하실수 있습니다
-		</div>
-		<Form name="ajaxform" id="ajaxform"  method="post"  action="/ajax/board/gallery_file_upload"  enctype="multipart/form-data">
+		<dl class="alert">
+		    <dt>사진 첨부 확인</dt>
+		    <dd>
+		    	확인을 누르시면 임시 데이터가 사진첨부 됩니다.<br />
+				<Form name="ajaxform" id="ajaxform"  method="post"  action="/ajax/board/gallery_file_upload"  enctype="multipart/form-data">
 					<Input Type="file" name="attachFile[]" id="attachFile" size='30' multiple>
 					<input type="hidden" id="attachType" name="attachType[]" value="image" />
 				</Form>
+			</dd>
+		</dl>
 	</div>
 	<div class="footer">
-		<!--	<p><a href="#" onclick="closeWindow();" title="닫기" class="close">닫기</a></p> -->
+		<p><a href="#" onclick="closeWindow();" title="닫기" class="close">닫기</a></p>
 		<ul>
 <!--			<li class="submit"><a href="#" onclick="done();" title="등록" class="btnlink">등록</a> </li>-->
 			<li class="submit"><a href="#" id="submit" title="등록" class="btnlink">등록</a> </li>

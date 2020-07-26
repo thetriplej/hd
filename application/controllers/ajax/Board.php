@@ -510,6 +510,40 @@ class Board extends Common {
 
                 $allow_file = array("jpg", "png", "bmp", "gif","jpeg");
 
+                if($filename_ext == "jpg" || $filename_ext == "jpeg"){
+                    $image = imagecreatefromjpeg($tmp_name);
+                }else if($filename_ext == "png"){
+                    $image = imagecreatefrompng($tmp_name);
+                }else if($filename_ext == "bmp" || $filename_ext == "wbmp"){
+                    $image = imagecreatefromwbmp($tmp_name);
+                }else if($filename_ext == "gif"){
+                    $image = imagecreatefromgif($tmp_name);
+                }
+                $exif = exif_read_data($tmp_name);
+                if(!empty($exif['Orientation'])) {
+                    switch($exif['Orientation']) {
+                        case 8:
+                            $image = imagerotate($image,90,0);
+                            break;
+                        case 3:
+                            $image = imagerotate($image,180,0);
+                            break;
+                        case 6:
+                            $image = imagerotate($image,-90,0);
+                            break;
+                    }
+                    if($filename_ext == "jpg" || $filename_ext == "jpeg"){
+                        imagejpeg($image,$tmp_name);
+                    }else if($filename_ext == "png"){
+                        imagepng($image,$tmp_name);
+                    }else if($filename_ext == "bmp" || $filename_ext == "wbmp"){
+                        imagewbmp($image,$tmp_name);
+                    }else if($filename_ext == "gif"){
+                        imagegif($image,$tmp_name);
+                    }
+                }
+
+
                 if(!in_array($filename_ext, $allow_file)) {
                     $send_data['result'] = 'fail';
                     break;

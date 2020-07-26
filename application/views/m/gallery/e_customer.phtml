@@ -180,16 +180,10 @@
             success : function(result) {
                 var data   = $.parseJSON(result);
                 var list_cnt = 0;
-
+                html_list += '<div class="gallery_set">';
                 $.each( data.list, function( key, value ) {
-                    list_cnt = (key) % 4;
-
-                    if(list_cnt == '0') {
-                        html_list += '<div class="gallery_set">';
-                    }
                     html_list += '   <ul class="gallery_list" onclick="page_view(' + value.b_index + ');">';
                     if(value.f_rename == "no_image" ) {
-
                         html_list += '       <li class="thumb"><img src="/public_html/images/icon/icon_noimage.png" width="145" height="90" valign="center"></li>';
                     }else{
                         html_list += '       <li class="thumb"><img src="' + value.f_rename + '?'+ timestamp +'" width="145" height="90" valign="center"></li>';
@@ -203,10 +197,9 @@
                     html_list += '      </li>';
                     html_list += '      <li style="position:relative;"><span class="date" style="font-size:13px; width:85px; float:left; padding-top:4px;">' + value.show_date + '</span><span style="font-size:13px; font-weight:bold; vertical-align:middle; float:right;">view ' + value.b_hit + '</span></li>';
                     html_list += '   </ul>';
-                    if(list_cnt == '3') {
-                        html_list += '</div>';
-                    }
+                    list_cnt++;
                 });
+                html_list += '</div>';
                 if(list_cnt == 0 && data.page_navi.total == 0){
                     html_list = '<div style="padding:15px;padding-left:45%;"><b>No posts found.</b></div>'
                 }
