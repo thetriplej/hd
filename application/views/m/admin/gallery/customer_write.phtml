@@ -1,0 +1,87 @@
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_MOBILE_DIR; ?>/board_hassed_mobile.css" />
+<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/public_html/d_editor/css/editor-mobile.css" type="text/css" charset="utf-8"/>
+<script src="/public_html/d_editor/js/editor_loader.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- 전환페이지 설정 -->
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script> 
+<script type="text/javascript"> 
+var _nasa={};
+_nasa["cnv"] = wcs.cnv("5","1"); // 전환유형, 전환가치 설정해야함. 설치매뉴얼 참고
+</script> 
+
+<div id="wrap_middle" class="" style="">
+    <div id="" class="box_full">
+        <div class="sub_img">
+            <img src="/public_html/img/img_board_main.png" border="0" alt="">
+        </div>
+        <div id="" class="" style="width:100%; height:308px; position:absolute; background-color:#faf8f6; display:block; z-index:-10; margin-top:-570px;">
+        </div>
+    </div>
+
+    <div id="" class="box_full_in_center">
+        <!--contents_info-->
+        <div id="" style="width:1080px;">
+            <div class="wrap_board">
+                <div class="board_area">
+                    <?php echo form_open_multipart('/gallery/customer_store/',array('name'=>"tx_editor_form", 'id'=>"tx_editor_form")); ?>
+                        <input type="hidden" id="b_code" name="b_code" value="<?php echo($b_code);?>" />
+                        <input type="hidden" id="page" name="page" value="<?php echo($page);?>" />
+                        <input type="hidden" name="proc_type" id="proc_type" value="NW">
+                        <input type="hidden" name="b_depth" value="0">
+                        <input type="hidden" name="b_parentindex" value="">
+                        <input type="hidden" name="b_board_type" id="b_board_type" value="1">
+                        <input type="hidden" id="b_index" name="b_index" value="<?php echo($b_index);?>">
+                        <input type="hidden" name="select_img" id="select_img">
+			<div style="margin:0 40px 34px;">
+			<label class="input_tit" style="margin-right:10px;" >제목</label>
+                        <input type="text" attr="1" id="b_title" name="b_title" class="input_txt" style="width:930px;" placeholder="제목을 입력해주세요"  value="" />
+			</div>
+                        <div style="margin:0 40px 34px;">
+                            <label class="input_tit" style="margin-right:10px;">고객명</label>
+                            <input type="text" attr="1" name="b_writer" id="b_writer"  class="input_txt" style="width:380px;margin-right:206px;" value=""/>
+                            <label class="input_tit" style="margin-right:10px;">비밀번호</label>
+                            <input type="password" attr="1" name="b_password" id="b_password" class="input_txt" style="width:200px;">
+                        </div>
+                        <div style="margin:0 40px 34px;">
+                            <label class="input_tit" style="margin-right:10px;">E-mail</label>
+                            <input type="text" attr="1"  name="b_email1" id="b_email1"  class="input_txt" style="width:200px; margin-right:10px;"   value="" />
+                            <span style="font-size:30px; margin-right:10px;">@ </span>
+                            <input type="text" attr="1" id="b_email2" name="b_email2" class="input_txt" style="width:450px; margin-right:10px;" value="" />
+                            <select id="s_email" attr="1" title="E-Mail 선택" class="input_sel" style="width:170px;height:36px;" onChange="if(this.value==''){with(document.tx_editor_form){b_email2.readOnly=false;b_email2.value='';b_email2.focus();}}else{with(document.tx_editor_form){b_email2.readOnly=true;b_email2.value=this.value;}}">
+                                <option value="">직접 입력</option>
+                                <option value="gmail.com">G메일</option>
+                                <option value="naver.com">네이버</option>
+                                <option value="nate.com">네이트</option>
+                                <option value="daum.net">다음</option>
+                                <option value="hanmail.net">한메일</option>
+                                <option value="empal.com" >엠팔</option>
+                                <option value="hotmail.com">핫메일</option>
+                                <option value="msn.com">MSN</option>
+                            </select>
+                        </div>
+
+                        <div style="margin:0 40px 34px;">
+                           <div class="coment"><input type="checkbox" name="b_locked" class="textbox" value="Y" <?php ($b_code = "QANDA0")?"checked" : ""?>>
+                            ※ 답변을 확인하실때 입력하신 비밀번호로 확인이 가능합니다.</br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 사진을 첨부하신 뒤, 하단 파일첨부 영역에서 이미지 이름을 클릭하여, 메인이미지를 설정해주세요.</div>
+                        </div>
+			<div style="margin:0 40px 34px;">
+                        <?php $this->load->view('m/editor.phtml');?>
+			</div>
+                        <div style="height:125px;overflow:hidden;">
+                            <span style="float:right; margin-right:40px;">
+                                <input type="button" class="btn_gray_m" id="clear" value="다시작성">
+                                <input type="button" class="btn_blue_m" onclick="saveContent()" value="등록">
+                                <input type="button" class="btn_white_m" value="취소" onclick="javascript:history.back();">
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div style="height:200px;background:white;"></div>
+        </div>
+        <!--//contents_info-->
+    </div>
+</div>
+<!-- 에디터 끝 -->
