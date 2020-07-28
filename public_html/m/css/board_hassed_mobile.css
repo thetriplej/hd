@@ -69,7 +69,7 @@ body {
 
 
 /* paging */
-.bbs_page {width:1080px; margin-top:10px; text-align:center; z-index:999; font-size:30px;}
+.bbs_page {width:520px; margin: auto; z-index:999; font-size:35px;}
 .paging span, .paging a {color: #868686;}
 .paging a:hover, .paging a.on {color:red;}
 
@@ -82,8 +82,7 @@ body {
 	width:1080px;
 	height:80px;
 	text-align:center;
-	margin-top:20px;
-	margin-left:30px;
+	margin-top:50px;
 	overflow:hidden;
 	}
 .find_sel {width:150px; height:42px; border:0px solid #707070; background:#eee;font-family: "Dotum", 'Gulim';color:#444; font-size:24px;vertical-align:middle;text-align:center;line-height:42px;}
@@ -111,8 +110,8 @@ input[type=button].btn_swhite_m {width:160px;height:19px;padding-top:2px;backgro
 .file_input {float:left;width:202px;height:44px;padding:5px;margin-right:7px;border:1px solid #b0b9ca;background:#fff;vertical-align:top;box-shadow:inset 1px 1px 0 0 #ccc;-moz-box-shadow:inset 1px 1px 0 0 #ccc;-webkit-box-shadow:inset 1px 1px 0 0 #ccc;}
 
 .btn_first {width:35px; height:21px; background:url(/public_html/images/bg/btn_bgset.png) 0 -116px no-repeat; margin-right:-5px; }
-.btn_prev  {width:35px; height:21px; background:url(/public_html/images/bg/btn_bgset.png) -35px -116px no-repeat;}
-.btn_next  {width:35px; height:21px; background:url(/public_html/images/bg/btn_bgset.png) 0 -137px no-repeat;}
+.btn_prev  {width:30px; height:30px; background:url(/public_html/m/images/bg/btn_arrow.png) 0px 0px no-repeat;}
+.btn_next  {width:30px; height:30px; background:url(/public_html/m/images/bg/btn_arrow.png) -30px 0px no-repeat;}
 .btn_last  {width:35px; height:21px; background:url(/public_html/images/bg/btn_bgset.png) -35px -137px no-repeat; margin-left:-5px; }
 .btn_find  {width:42px; height:42px; background:url(/public_html/m/images/bg/btn-search.png) 0 0 no-repeat; margin-left:10px;}
 .btn_pw    {width:85px; height:20px; background:url(/public_html/images/bg/btn_bgset.png) 0 -158px no-repeat;}
