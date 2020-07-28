@@ -519,7 +519,7 @@ class Board extends Common {
                 }else if($filename_ext == "gif"){
                     $image = imagecreatefromgif($tmp_name);
                 }
-                $exif = exif_read_data($tmp_name);
+                $exif = @exif_read_data($tmp_name);
                 if(!empty($exif['Orientation'])) {
                     switch($exif['Orientation']) {
                         case 8:
