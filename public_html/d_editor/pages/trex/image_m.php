@@ -40,6 +40,24 @@
 				top:"50%",
 				width:"auto"
 			});
+
+
+			var fileTarget = $('.filebox .upload-hidden');
+			fileTarget.on('change', function(){ // 값이 변경되면
+			if(this.files.length >1 ){ // modern browser
+				var filename = this.files.length;
+			} else { // old IE
+				var filename = $(this).val();
+			}
+			// 추출한 파일명 삽입
+			$(this).siblings('.upload-name').val(filename+' 개 파일');
+			});
+
+
+			$( "#uploadlable" ).on( "click", function() {
+				$('#attachFile').trigger('click');
+			});
+
 		});
 
 
@@ -131,12 +149,20 @@
 	</div>
 	<div class="body">
 		<div class="txt-info">
-
 			파일선택을 누르시면 <br>사진을 첨부 하실수 있습니다
 		</div>
 		<Form name="ajaxform" id="ajaxform"  method="post"  action="/ajax/board/gallery_file_upload"  enctype="multipart/form-data">
-			<Input Type="file" name="attachFile[]" id="attachFile" class="iso-btn" size='30' multiple>
-			<input type="hidden" id="attachType" name="attachType[]" value="image" />
+			<div class="filebox">
+				<label for="ex_filename" id="uploadlable" style="margin-bottom: 10px">업로드</label>
+				<Input Type="file" name="attachFile[]" class="upload-hidden" id="attachFile" size='30' multiple>
+				<input type="hidden" id="attachType" name="attachType[]" value="image" />
+				<input class="upload-name" style="margin-bottom: 10px" value="파일선택" disabled="disabled">
+
+			</div>
+
+
+
+
 		</Form>
 	</div>
 	<div class="footer">
