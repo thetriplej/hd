@@ -45,12 +45,12 @@
 			var fileTarget = $('.filebox .upload-hidden');
 			fileTarget.on('change', function(){ // 값이 변경되면
 			if(this.files.length >1 ){ // modern browser
-				var filename = this.files.length;
+				var filename = this.files.length+' 개 파일';
 			} else { // old IE
-				var filename = $(this).val();
+				var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
 			}
 			// 추출한 파일명 삽입
-			$(this).siblings('.upload-name').val(filename+' 개 파일');
+			$(this).siblings('.upload-name').val(filename);
 			});
 
 
