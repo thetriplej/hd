@@ -134,9 +134,19 @@ dl, dt, dd, ul, ol, li, p {
 	vertical-align: middle;
 	}
 
+input[type="file"] {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+}
+
+.iso-btn {background-color:#fff;}
+
 input{
-	height: 125px;
-	margin: 0 100px;
+	/*height: 125px;
+	margin: 0 100px;*/
+	margin: 0 auto;
+	padding: 50px 50px;
 	font-size:40px;
 	}
 

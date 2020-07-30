@@ -135,7 +135,7 @@
 			파일선택을 누르시면 <br>사진을 첨부 하실수 있습니다
 		</div>
 		<Form name="ajaxform" id="ajaxform"  method="post"  action="/ajax/board/gallery_file_upload"  enctype="multipart/form-data">
-			<Input Type="file" name="attachFile[]" id="attachFile" size='30' multiple>
+			<Input Type="file" name="attachFile[]" id="attachFile" class="iso-btn" size='30' multiple>
 			<input type="hidden" id="attachType" name="attachType[]" value="image" />
 		</Form>
 	</div>
