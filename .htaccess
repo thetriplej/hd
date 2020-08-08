@@ -1,4 +1,5 @@
-
+RewriteRule (.*)-cb\d+\.(.*)$ $1.$2 [L]
+RewriteBase /
 <IfModule mod_rewrite.c>
     RewriteEngine On
  RewriteBase /
