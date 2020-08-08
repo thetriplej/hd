@@ -1,11 +1,11 @@
 <html><head>
     <title>Management Program</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="/public_html/css/admin_style.css">
+    <link rel="stylesheet" type="text/css" href="/public_html/css/admin_style-cb<?php echo CACHE_VERSION;?>.css">
     <script src="/public_html/js/jquery-1.11.1.js"></script>
-    <script src="/public_html/js/admin.js?<?=time()?>"></script>
-    <link rel="stylesheet" href="/public_html/d_editor/css/editor.css" type="text/css" charset="utf-8"/>
-    <script src="/public_html/d_editor/js/editor_loader.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/public_html/js/admin-cb<?php echo CACHE_VERSION;?>.js"></script>
+    <link rel="stylesheet" href="/public_html/d_editor/css/editor-cb<?php echo CACHE_VERSION;?>.css" type="text/css" charset="utf-8"/>
+    <script src="/public_html/d_editor/js/editor_loader-cb<?php echo CACHE_VERSION;?>.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>"/>
