@@ -149,7 +149,7 @@
 	</div>
 	<div class="body">
 		<div class="txt-info">
-			파일선택을 누르시면 <br>사진을 첨부 하실수 있습니다
+			업로드 버튼을 누르시면 <br>사진을 첨부 하실수 있습니다
 		</div>
 		<Form name="ajaxform" id="ajaxform"  method="post"  action="/ajax/board/gallery_file_upload"  enctype="multipart/form-data">
 			<div class="filebox">
