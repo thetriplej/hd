@@ -134,7 +134,7 @@ function windOPE2eng()
 
 function windOPE3()
 {
-    noticeWindow3  =  window.open("http://www.toray.com/technology/toray/history/index.html","",'scrollbars=yes, left=200, top=40');
+    noticeWindow3  =  window.open("http://www.toray.com/","",'scrollbars=yes, left=200, top=40');
 }
 
 
