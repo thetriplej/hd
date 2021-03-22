@@ -120,7 +120,7 @@ setInterval(imgslidec, 5000);
 			$('#bt_pointb05').css({"background-position":"0px 0px"});
 		}
 		else if(imgnumb == 5){
-			//네번째 이미지 위치
+			//다섯번째 이미지 위치
 			$('.sliderb_img01').fadeOut();
 			$('.sliderb_img02').fadeOut();
 			$('.sliderb_img03').fadeOut();
@@ -151,14 +151,6 @@ setInterval(imgslidec, 5000);
 	$("#bt_pointb04").click(function(){
         //$("#bt_point02").addClass("bgupdown");
 		imgslideb(4);
-    });
-	$("#bt_pointb05").click(function(){
-        //$("#bt_point02").addClass("bgupdown");
-		imgslideb(5);
-    });
-	$("#bt_pointb06").click(function(){
-        //$("#bt_point02").addClass("bgupdown");
-		imgslideb(6);
     });
 
 

@@ -480,7 +480,7 @@
 			});
 
 //imageslideD8 //
-			var mapD8 = -1; // 
+			var mapD8 = 1; // 
 			setInterval(imgslideD8, 3200); // 매 4초마다 함수 실행
 
 			function imgslideD8(j){
@@ -519,7 +519,7 @@
 
 
 //imageslideD9 //
-			var mapD9 = 1; // 
+			var mapD9 = -1; // 
 			setInterval(imgslideD9, 3200); // 매 4초마다 함수 실행
 
 			function imgslideD9(j){
@@ -631,6 +631,46 @@
 					imgslideD11();
 					var offset_top = $(document).scrollTop();
 					$('html, body').animate({scrollTop: offset_top}, 500);
+			});
+
+
+
+//imageslideD12 롯데상인 //
+			var mapD12 = -1; // 
+			setInterval(imgslideD12, 3200); // 매 4초마다 함수 실행
+
+			function imgslideD12(j){
+				if(j != null){ mapD12 = j;}
+				mapD12 = mapD12 * -1; // 매 4초마다 toggle
+					if(mapD12 < 0){ 
+						$('#departA23').animate({left: '-72px' });
+						$('#departA24').animate({left: '0px' });
+						$('.img_departA23').animate({left: '0px' });
+						$('.img_departA24').animate({left: '690px' });
+					}
+					else if(mapD12 > 0){
+						$('#departA23').animate({left: '0px' });
+						$('#departA24').animate({left: '-72px' });
+						$('.img_departA23').animate({left: '-690px' });
+						$('.img_departA24').animate({left: '0px' });
+					}
+					else if(mapD12 == 0){
+
+					}
+			}
+
+			$("#mapstoreD12").mouseover(function(event){
+				if(mapD12 != 0){
+					imgslideD12(0);
+					//var offset_top = $(document).scrollTop();
+					//$('html, body').animate({scrollTop: offset_top}, 500);
+				}
+			});
+			$("#mapstoreD12").mouseout(function(event){
+					mapD12 = 1;
+					imgslideD12();
+					//var offset_top = $(document).scrollTop();
+					//$('html, body').animate({scrollTop: offset_top}, 500);
 			});
 
 
@@ -1606,6 +1646,57 @@
 				</div>
 				<div id="" class="img_departA14">
 					<img src="/public_html/img/depart07_store.jpg" border="0" alt="">
+				</div>
+			</div></a>
+    </div>
+
+    <!-- 롯데백화점 상인점 -->
+    <div id="" class="box_shop">
+       <div id="" class="box_shop_leftB">
+				<div id="" class="box_shop_left_div01C">
+					<span class="" style="letter-spacing: 2px;">department store</span>
+					<br>롯데백화점 상인점
+				</div>
+				<div id="" class="bt_mapstore">
+					<div id="departA23" class="toggleA">
+						<a href="#a">매장</a>
+					</div>
+					<div id="departA24" class="toggleB">
+						<a href="#b">약도</a>
+					</div>
+				</div>
+
+            <div id="" class="box_shop_left_div05">
+                <b>영업시간</b><br>
+                <div class="box_shop_left_div05_in01">
+                    정&nbsp;&nbsp;&nbsp;상<br>
+                    연&nbsp;&nbsp;&nbsp;장<br>
+                    공휴일<br>
+                </div>
+                <div class="box_shop_left_div05_in02">
+                    AM 10:30 ~ PM 08:00<br>
+                    AM 10:30 ~ PM 08:30<br>
+                    각 백화점 휴무 일정에 따름<br>
+                </div>
+            </div>
+            <div id="" class="box_shop_left_div06">
+                <b>매장정보</b><br>
+                <div class="box_shop_left_div06_in01">
+                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
+                    도로명<br>
+                </div>
+                <div class="box_shop_left_div06_in02">
+                    053-258-3674<br>
+                    대구광역시 달서구 월배로 232, 6F<br>
+                </div>
+            </div>
+        </div>
+        <a href=""><div id="mapstoreD12" class="box_shop_rightB">
+				<div id="" class="img_departA23">
+					<img src="/public_html/img/depart21_map.jpg" border="0" alt="">
+				</div>
+				<div id="" class="img_departA24">
+					<img src="/public_html/img/depart21_store.jpg" border="0" alt="">
 				</div>
 			</div></a>
     </div>
