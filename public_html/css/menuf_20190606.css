@@ -388,7 +388,7 @@
 .bottom_menu07
 {
 	background:url('/public_html/img/bt_cafe2.png') 0 0 no-repeat;
-	width:52px;
+	width:50px;
 	height:74px;
 	display: block;
 	text-indent:-2000px;
@@ -402,7 +402,7 @@
 .bottom_menu08
 {
 	background:url('/public_html/img/bt_instar2.png') 0 0 no-repeat;
-	width:45px;
+	width:50px;
 	height:74px;
 	display: block;
 	text-indent:-2000px;
@@ -416,13 +416,27 @@
 .bottom_menu09
 {
 	background:url('/public_html/img/bt_blog2.png') 0 0 no-repeat;
-	width:47px;
+	width:50px;
 	height:74px;
 	display: block;
 	text-indent:-2000px;
 }
 
 .bottom_menu09:hover
+{
+	background-position: 0px -74px;
+}
+
+.bottom_menu10
+{
+	background:url('/public_html/img/bt_kakao2.png') 0 0 no-repeat;
+	width:50px;
+	height:74px;
+	display: block;
+	text-indent:-2000px;
+}
+
+.bottom_menu10:hover
 {
 	background-position: 0px -74px;
 }

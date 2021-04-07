@@ -35,14 +35,14 @@
     width:337px;
     height:390px;
 	float:left;
-	border:solid 1px #dfdcdd;
+	/*border:solid 1px #dfdcdd;*/
 	text-align:center;
 	position:relative;
 }
 
 .box_news_inline
 {
-    width:336px;
+    width:337px;
     height:390px;
 	border-bottom:solid 7px #f3f0f0;
 }

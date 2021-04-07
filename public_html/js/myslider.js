@@ -9,7 +9,7 @@ $(window).ready(function(){
 	var imgnumc = 2;
 
 setInterval(imgslide, 6000); // 매 1초마다 함수 실행			
-setInterval(imgslideb, 2000); 
+setInterval(imgslideb, 3000); 
 setInterval(imgslidec, 5000); 
 
 
@@ -120,7 +120,7 @@ setInterval(imgslidec, 5000);
 			$('#bt_pointb05').css({"background-position":"0px 0px"});
 		}
 		else if(imgnumb == 5){
-			//네번째 이미지 위치
+			//다섯번째 이미지 위치
 			$('.sliderb_img01').fadeOut();
 			$('.sliderb_img02').fadeOut();
 			$('.sliderb_img03').fadeOut();
@@ -156,10 +156,6 @@ setInterval(imgslidec, 5000);
         //$("#bt_point02").addClass("bgupdown");
 		imgslideb(5);
     });
-	$("#bt_pointb06").click(function(){
-        //$("#bt_point02").addClass("bgupdown");
-		imgslideb(6);
-    });
 
 
 
@@ -189,7 +185,7 @@ function imgslidec(k){
 			$('#bt_pointc03').css({"background-position":"0px 0px"});
 		}
 		else if(imgnumc == 3){
-			//두번째 이미지 위치
+			//세번째 이미지 위치
 			$('#slideA').animate({left: '-1420px' }, 1000);
 			$('#slideB').animate({left: '-720px' }, 1000);
 			$('#slideC').animate({left: '0px' }, 1000);
