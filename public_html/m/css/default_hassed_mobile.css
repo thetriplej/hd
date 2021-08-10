@@ -921,3 +921,13 @@ b {display:inline;}
 	margin-top: -5px;
 	padding-right:10px;
 	}
+
+/* 2021 카카오채팅 링크 /////////////////// */
+.menukakao{
+	width:120px;
+	height:120px;
+	position:fixed;
+	top:1300px;
+	right:25px;
+	z-index:11000;
+}
