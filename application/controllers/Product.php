@@ -178,6 +178,74 @@ class Product extends Common {
             case 'settle' :
                 $this->load->view($this->type.'product/'.$lang_type.'settle.phtml');
                 break;
+// 2021-10-24 상품 추가
+            case 'rosee' :
+                $this->load->view($this->type.'product/'.$lang_type.'rosee.phtml');
+                break;
+            case 'peony' :
+                $this->load->view($this->type.'product/'.$lang_type.'peony.phtml');
+                break;
+            case 'laffine' :
+                $this->load->view($this->type.'product/'.$lang_type.'laffine.phtml');
+                break;
+            case 'austin' :
+                $this->load->view($this->type.'product/'.$lang_type.'austin.phtml');
+                break;
+            case 'modnique' :
+                $this->load->view($this->type.'product/'.$lang_type.'modnique.phtml');
+                break;
+            case 'lucia' :
+                $this->load->view($this->type.'product/'.$lang_type.'lucia.phtml');
+                break;
+            case 'hestia' :
+                $this->load->view($this->type.'product/'.$lang_type.'hestia.phtml');
+                break;
+            case 'lottie' :
+                $this->load->view($this->type.'product/'.$lang_type.'lottie.phtml');
+                break;
+            case 'monica' :
+                $this->load->view($this->type.'product/'.$lang_type.'monica.phtml');
+                break;
+            case 'belita' :
+                $this->load->view($this->type.'product/'.$lang_type.'belita.phtml');
+                break;
+            case 'iris' :
+                $this->load->view($this->type.'product/'.$lang_type.'iris.phtml');
+                break;
+            case 'eldora' :
+                $this->load->view($this->type.'product/'.$lang_type.'eldora.phtml');
+                break;
+            case 'luna' :
+                $this->load->view($this->type.'product/'.$lang_type.'luna.phtml');
+                break;
+            case 'once' :
+                $this->load->view($this->type.'product/'.$lang_type.'once.phtml');
+                break;
+            case 'ella' :
+                $this->load->view($this->type.'product/'.$lang_type.'ella.phtml');
+                break;
+            case 'celine' :
+                $this->load->view($this->type.'product/'.$lang_type.'celine.phtml');
+                break;
+            case 'bonita' :
+                $this->load->view($this->type.'product/'.$lang_type.'bonita.phtml');
+                break;
+            case 'reve' :
+                $this->load->view($this->type.'product/'.$lang_type.'reve.phtml');
+                break;
+            case 'whistlebed' :
+                $this->load->view($this->type.'product/'.$lang_type.'whistlebed.phtml');
+                break;
+            case 'laurens' :
+                $this->load->view($this->type.'product/'.$lang_type.'laurens.phtml');
+                break;
+            case 'sofa' :
+                $this->load->view($this->type.'product/'.$lang_type.'sofa.phtml');
+                break;
+            case 'bed' :
+                $this->load->view($this->type.'product/'.$lang_type.'bed.phtml');
+                break;
+
 
 
 //            case 'becky' :
