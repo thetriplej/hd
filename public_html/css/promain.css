@@ -1,24 +1,24 @@
 .space-top{
 	width:1080px;
-	height:40px;
+	height:160px;
 	margin: 0 auto;
 }
 
 
 .modlelist{
-	width:1080px;
-	height:270px;
+	width:1460px;
+	height:100%;
 	margin: 0 auto;
 	font-family: "Noto Sans KR";
 	color:#877e79;
-	margin-bottom:50px;
 }
 
 .modlelist > ul > li{
 	width:216px;
-	height:236px;
+	height:300px;
 	float:left;
-	margin-right:72px;
+	margin-left:36px;
+	margin-right:36px;
 }
 
 
@@ -38,6 +38,8 @@
 	font-size:15px;
 	text-align:right;
 }
+
+
 
 .dropdown{
 	position: relative;

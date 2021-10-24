@@ -1,11 +1,76 @@
-﻿.box_outline{
-	width:1080px;
-	/*height:1180px;*/
+﻿/* titillium-web-regular - latin-ext_latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+
+  src: local(''),
+       url('../fonts/TitilliumWeb-SemiBold.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/TitilliumWeb-SemiBold.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+
+
+.sub_img
+{
+    width:100%;
+	height:580px;
+	overflow:hidden;
+	background-color:#f5f5f5;
+	margin-top:100px;
+}
+
+.sub_img > img
+{
+	display:block;
+	top:90px;
+	right:0px;
+	position:absolute;
+}
+
+
+.sub_img_title
+{
+	width: 330px;
+	height: 120px;
+}
+
+
+.box_outline{
+	width:100%;
 	margin: 0 auto;
-	margin-top:50px;
-	border:solid 1px #dfdddc;
+	margin-top:250px;
 	overflow:hidden;
 	position:relative;
+	padding:0px 28px;
+}
+
+.box_title{
+	width:380px;
+	height:190px;
+	display:block;
+	overflow:hidden;
+	position:absolute;
+	margin: 0 auto;
+	margin-top:-280px;
+	left:300px;
+}
+
+.box_title > .eng{
+	display:block;
+	position:absolute;
+	font-family: 'Titillium Web', 'Noto sans', 'Malgun Gothic', sans-serif;
+	font-weight: 200;
+	font-size:42px;
+	color:#a5a5a5;
+}
+
+.box_title > .kor{
+	display:block;
+	width:380px;
+	height:100px;
+	font-family: 'Noto sans', 'Malgun Gothic', sans-serif;
+	margin-top: 60px;
+	color:#454545;
 }
 
 .txt_m_title
@@ -39,14 +104,40 @@
 	font-size:12px;
 }
 
+.div_proimg_left
+{
+	width:36%;
+	height:970px;
+	overflow:hidden;
+	display:block;
+	border:solid 1px #d6d2ce;
+	float:left;
+}
+
 .div_proimg_center
 {
-	width:1080px;
-	padding-top:150px;
-	padding-bottom:100px;
-	padding-left:215px;
+	width:32%;
+	height:970px;
+	overflow:hidden;
+	display:block;
+	float:left;
 	border-top:solid 1px #d6d2ce;
+	border-bottom:solid 1px #d6d2ce;
 }
+
+
+.div_proimg_right
+{
+	width:32%;
+	height:970px;
+	overflow:hidden;
+	display:block;
+	border-top:solid 1px #d6d2ce;
+	border-right:solid 1px #d6d2ce;
+	border-bottom:solid 1px #d6d2ce;
+	float:right;
+}
+
 
 .div_proimg_center > img
 {
@@ -80,9 +171,9 @@
 .box_special{
 	width:1000px;
 	height:400px;
-	margin: 0 auto;
-	overflow:hidden;
-	border-top:solid 1px #d6d2ce;
+	position:absolute;
+	right:100px;
+	top:500px;
 }
 
 .box_special_div01{
