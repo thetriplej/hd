@@ -41,7 +41,15 @@
 {
 	width:1080px;
 	height:460px;
-	position:relative;
+	position:absolute;
+	display:none;
+}
+
+.slider_img05
+{
+	width:1080px;
+	height:460px;
+	position:absolute;
 	display:none;
 }
 

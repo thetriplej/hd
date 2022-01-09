@@ -4,50 +4,7 @@
 <script src="/public_html/js/myslider-cb<?php echo CACHE_VERSION;?>.js"></script>
 <script>
     $(document).ready(function () {
-        //$('.main_img_toggle1').fadeOut(10);
-
-        $('.main_img_toggle2').fadeOut(10);
-        $('.main_img_toggle3').fadeOut(10);
-
-        setInterval(imgfade, 3000); // 매 3초마다 함수 실행
-
-        $( '#btpoint_img01').click(function() {
-            imgfade(1);
-        });
-
-        $( '#btpoint_img02').click(function() {
-            imgfade(2);
-        });
-        $( '#btpoint_img03').click(function() {
-            imgfade(3);
-        });
-
-        var sum = 0; //
-
-        function imgfade(k){
-            if(k != null){sum = k-2;}
-            sum = sum + 1; // 매 4초마다 숫자 1을 sum 변수에 더합니다.
-            if(sum == 0){
-                $('.slider_img_toggle2').fadeOut(500);
-                $('.slider_img_toggle3').fadeOut(500);
-                $('.slider_img_toggle1').fadeIn(500);
-                $('.point_toggle_a').css({"background-position":"0px 0px"});
-            }
-            else if(sum == 1){
-                $('.slider_img_toggle1').fadeOut(500);
-                $('.slider_img_toggle3').fadeOut(500);
-                $('.slider_img_toggle2').fadeIn(500);
-                $('.point_toggle_a').css({"background-position":"0px -20px"});
-            }
-            else if(sum == 2){
-                $('.slider_img_toggle1').fadeOut(500);
-                $('.slider_img_toggle2').fadeOut(500);
-                $('.slider_img_toggle3').fadeIn(500);
-                $('.point_toggle_a').css({"background-position":"0px -40px"});
-                sum = -1;
-            }
-        }
-
+       
 
 
 //imageslideA // 
@@ -954,60 +911,151 @@
 <div id="" class="wrap_middle">
     <div class="main_img">
         <div class="myslider">
-            <div id='layerA' class="slider_img01"><img src="/public_html/img/img_store01.jpg" border="0" alt=""></div>
+            <div id='layerA' class="slider_img01">
+<img src="/public_html/img/img_store01.jpg" border="0" alt=""></div>
             <div class="slider_img02"><img src="/public_html/img/img_store02.jpg" border="0" alt=""></div>
-            <div class="slider_img03"><img src="/public_html/img/img_store03.jpg" border="0" alt=""></div>
         </div>
     </div>
     <div id="bx-point">
         <a href="#a"><div id="bt_point01"><img src="/public_html/img/pagepoint.png" /></div></a>
         <a href="#a"><div id="bt_point02"><img src="/public_html/img/pagepoint.png" /></div></a>
-        <a href="#a"><div id="bt_point03"><img src="/public_html/img/pagepoint.png" /></div></a>
     </div>
 
-    <!-- 메인 이미지영역 시작 dnamooM_20160328
-    <div id="image_area" class="">
-        <div id="wrap_img_slider" class="">
-            <div class="slider_img_toggle1">
-                <img src="/public_html/img/img_store01.jpg" border="0" alt="">
-            </div>
-            <div class="slider_img_toggle2">
-                <img src="/public_html/img/img_store02.jpg" border="0" alt="">
-            </div>
-            <div class="slider_img_toggle3">
-                <img src="/public_html/img/img_store03.jpg" border="0" alt="">
-            </div>
-        </div>
-        <div class="point_toggle_a">
-            <div id="btpoint_img01" class="pointMa">
-                <a href="#a"><img src="img/btn_point_area.png" width="17" height="23" border="0" alt=""></a>
-            </div>
-            <div id="btpoint_img02" class="pointMb">
-                <a href="#a"><img src="img/btn_point_area.png" width="17" height="23" border="0" alt=""></a>
-            </div>
-            <div id="btpoint_img03" class="pointMc">
-                <a href="#a"><img src="img/btn_point_area.png" width="17" height="23" border="0" alt=""></a>
-            </div>
-        </div>
-    </div>
-    메인 이미지영역 끝 -->
-
+   
     <div id="point_store"  class="box_title3_store">
-        <img src="/public_html/img/title_shopinfo.png" border="0" alt=""><br>
-        전국매장정보
-    </div>
-
-    <div id="" class="box_2dept_menu">
-        <div class="bt_2dept_left_menu bt_store">
-            <a href="#">road shop</a>
-        </div>
-        <div class="bt_2dept_right_menu bt_depart">
-            <a href="#">department store</a>
-        </div>
+        <img src="/public_html/img/flagshop.png" border="0" alt=""><br>
     </div>
 
 
-    <!-- 서울 본점 -->
+<!-- 강남압구정점 -->
+<div class="box_shop_A">
+
+<img src="/public_html/img/img-gangnam.png" border="0" alt=""><br>
+	<div class="box_shop_A_text">
+	강남 압구정점    |    Tel 02-515-5807    |    서울시 강남구 언주로 854 헷세드B/D    |    주차 완비 (지상/지하)<br>
+OPEN  AM 10:00~ PM 08:00    |    일요일 휴무
+	</div>
+
+</div>
+
+
+<!-- 송파 본점 -->
+<div class="box_shop_B">
+	<div class="box_shop_B_left fl_left" ><img src="/public_html/img/img-songpa.png" border="0" alt=""></div>
+	<div class="box_shop_B_right fl_right" >
+	<div class="box_shop_B_text">
+	서울 송파본점    |<br> 
+Tel 02-401-5077    |<br>  
+서울시 송파구 중대로 271 헷세드B/D    |<br>
+주차 완비 (B1)   |<br>
+OPEN  AM 10:00~ PM 08:00    |<br>
+일요일 휴무   |    </div>
+	</div>
+</div>
+
+
+<!-- 중부 대전지점 -->
+<div class="box_shop_C">
+	<div class="box_shop_C_left fl_left" >
+		<div class="box_shop_C_text">
+			|    중부 대전지점<br>
+			|    Tel 042 - 542 - 7328<br>
+			|    대전시 서구 계백로 1236 헷세드B/D <br>
+			|    주차 완비<br>
+			|    OPEN  AM 10:00~ PM 08:00<br>
+			|    일요일 휴무
+		</div>
+	</div>
+	<div class="box_shop_C_right fl_right" >
+		<img src="/public_html/img/img-daejoeun.png" border="0" alt="">
+	
+	</div>
+</div>
+
+
+<!-- 인첱 송도점 -->
+<div class="box_shop_B">
+	<div class="box_shop_B_left fl_left" ><img src="/public_html/img/img-songdo.png" border="0" alt=""></div>
+	<div class="box_shop_B_right fl_right" >
+	<div class="box_shop_B_text">
+	인천 송도점    |   <br> 
+Tel 02-401-5077    |    <br>
+인천시 연수구 송도동 10-96번지 헷세드B/D    |    <br>
+주차 완비 (B1)   |    <br>
+OPEN  AM 10:00~ PM 08:00    |  <br>  
+일요일 휴무   |     </div>
+	</div>
+</div>
+
+
+<!-- 중부 대전점 -->
+<div class="box_shop_C">
+	<div class="box_shop_C_left fl_left" >
+		<div class="box_shop_C_text">
+			|    대구 수성지점<br>
+|    Tel 053-768-5073<br>
+|    대구시 수성구 무학로 49 헷세드B/D <br>
+|    주차 완비<br>
+|    OPEN  AM 10:00~ PM 08:00<br>
+|    일요일 휴무
+		</div>
+	</div>
+	<div class="box_shop_C_right fl_right" >
+		<img src="/public_html/img/img-daegoo.png" border="0" alt="">
+	
+	</div>
+</div>
+
+<!-- 부산 해운대점 -->
+<div class="box_shop_B">
+	<div class="box_shop_B_left fl_left" ><img src="/public_html/img/img-haundae.png" border="0" alt=""></div>
+	<div class="box_shop_B_right fl_right" >
+	<div class="box_shop_B_text">
+부산 해운대지점    |     <br>
+Tel 051 - 743 - 5093    |     <br>
+부산 해운대구 좌동순환로 458 헷세드B/D    |  <br>   
+주차 완비 (B1)   |     <br>
+OPEN  AM 10:00~ PM 08:00    |     <br>
+일요일 휴무   |    </div>
+	</div>
+</div>
+
+
+<!-- 호남 광주점 -->
+<div class="box_shop_C">
+	<div class="box_shop_C_left fl_left" >
+		<div class="box_shop_C_text">
+|    호남 광주지점<br>
+|    Tel 02 - 401 - 5073<br>
+|    광주시 남구 대남대로 348 (월산동 1001-8)<br>
+|    주차 완비<br>
+|    OPEN  AM 10:00~ PM 08:00<br>
+|    일요일 휴무
+		</div>
+	</div>
+	<div class="box_shop_C_right fl_right" >
+		<img src="/public_html/img/img-gwangjoo.png" border="0" alt="">
+	
+	</div>
+</div>
+
+
+<!-- 부산 해운대점 -->
+<div class="box_shop_B">
+	<div class="box_shop_B_left fl_left" ><img src="/public_html/img/img-jeju.png" border="0" alt=""></div>
+	<div class="box_shop_B_right fl_right" >
+	<div class="box_shop_B_text">
+	 <br>
+	  <br>
+	   <br>
+	    <br>
+제주 지점    |     <br>
+COMING SOON   |       </div>
+	</div>
+</div>
+
+
+    <!-- 서울 본점 
     <div id="" class="box_shop">
         <div id="" class="box_shop_left">
             <div id="" class="box_shop_left_div01">
@@ -1044,7 +1092,7 @@
                     주&nbsp;&nbsp;&nbsp;&nbsp;차
                 </div>
                 <div class="box_shop_left_div03_in02">
-                    02 - 401 - 5073<br>
+                    02 - 401 - 5077<br>
                     서울시 송파구 중대로 271 헷세드B/D<br>
                     서울시 송파구 오금동 33-6 헷세드B/D<br>
                     주차 완비(B/D 지하)
@@ -1060,852 +1108,8 @@
             </div>
         </div>
     </div>
+-->
 
-
-    <!-- 대전 지점 -->
-    <div id="" class="box_shop">
-        <div id="" class="box_shop_left">
-            <div id="" class="box_shop_left_div01">
-                r&nbsp;o&nbsp;a&nbsp;d&nbsp; s&nbsp;h&nbsp;o&nbsp;p<br>
-                대전지점
-            </div>
-            <div id="" class="bt_mapstore">
-                <div id="bttoggleC" class="toggleC">
-                    <a href="#a">매장</a>
-                </div>
-                <div id="bttoggleD" class="toggleD">
-                    <a href="#b">약도</a>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div02">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div02_in01">
-                    월&nbsp;-&nbsp;토<br>
-                    일요일<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div02_in02">
-                    AM 10:00 ~ PM 08:00<br>
-                    휴무<br>
-                    부분개점 [휴일 전 공지]<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div03">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div03_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                    지&nbsp;&nbsp;&nbsp;&nbsp;번<br>
-                    주&nbsp;&nbsp;&nbsp;&nbsp;차
-                </div>
-                <div class="box_shop_left_div03_in02">
-                    042 - 542 - 7328<br>
-                    대전시 서구 계백로 1236<br>
-                    대전시 서구 정림동 396<br>
-                    주차 완비(B/D 마당)
-                </div>
-            </div>
-        </div>
-        <a href="#A"><div id="mapstoreB" class="box_shop_right">
-            <div id="" class="img_toggleC">
-                <img src="/public_html/img/store02_map.jpg" border="0" alt="">
-            </div>
-            <div id="" class="img_toggleD">
-                <img src="/public_html/img/store02_store.jpg" border="0" alt="">
-            </div>
-        </div>
-    </div>
-
-
-    <!-- 부산점 -->
-    <div id="" class="box_shop">
-        <div id="" class="box_shop_left">
-            <div id="" class="box_shop_left_div01">
-                r&nbsp;o&nbsp;a&nbsp;d&nbsp; s&nbsp;h&nbsp;o&nbsp;p<br>
-                부산 해운대지점
-            </div>
-            <div id="" class="bt_mapstore">
-                <div id="bttoggleE" class="toggleA">
-                    <a href="#a">매장</a>
-                </div>
-                <div id="bttoggleF" class="toggleB">
-                    <a href="#b">약도</a>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div02">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div02_in01">
-                    월&nbsp;-&nbsp;토<br>
-                    일요일<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div02_in02">
-                    AM 10:00 ~ PM 08:00<br>
-                    휴무<br>
-                    부분개점 [휴일 전 공지]<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div03">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div03_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                    지&nbsp;&nbsp;&nbsp;&nbsp;번<br>
-                    주&nbsp;&nbsp;&nbsp;&nbsp;차
-                </div>
-                <div class="box_shop_left_div03_in02">
-                    051 - 743 - 5093<br>
-                    부산 해운대구 좌동순환로 458 헷세드빌딩<br>
-                    부산 해운대구 중동 1780-1 헷세드빌딩<br>
-                    주차 완비(B/D 지하)
-                </div>
-            </div>
-        </div>
-        <a href="#A"><div id="mapstoreC" class="box_shop_right">
-            <div id="" class="img_toggleE">
-                <img src="/public_html/img/store03_map-20181102.jpg" border="0" alt="">
-            </div>
-            <div id="" class="img_toggleF">
-                <img src="/public_html/img/store03_store-20180809.jpg" border="0" alt="">
-            </div>
-        </div>
-    </div>
-
-    <!-- 대구 수성지점 -->
-    <div id="" class="box_shop">
-        <div id="" class="box_shop_left">
-            <div id="" class="box_shop_left_div01">
-                r&nbsp;o&nbsp;a&nbsp;d&nbsp; s&nbsp;h&nbsp;o&nbsp;p<br>
-                대구 수성지점
-            </div>
-            <div id="" class="bt_mapstore">
-                <div id="bttoggleG" class="toggleC">
-                    <a href="#a">매장</a>
-                </div>
-                <div id="bttoggleH" class="toggleD">
-                    <a href="#b">약도</a>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div02">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div02_in01">
-                    월&nbsp;-&nbsp;토<br>
-                    일요일<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div02_in02">
-                    AM 10:00 ~ PM 08:00<br>
-                    휴무<br>
-                    부분개점 [휴일 전 공지]<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div03">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div03_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                    지&nbsp;&nbsp;&nbsp;&nbsp;번<br>
-                    주&nbsp;&nbsp;&nbsp;&nbsp;차
-                </div>
-                <div class="box_shop_left_div03_in02">
-                    053-768-5073<br>
-                    대구시 수성구 무학로 49<br>
-                    대구시 수성구 상동 413-8<br>
-                    주차 완비(B/D 마당)
-                </div>
-            </div>
-        </div>
-        <a href="#A"><div id="mapstoreD" class="box_shop_right">
-            <div id="" class="img_toggleG">
-                <img src="/public_html/img/store04_map-20180809.jpg" border="0" alt="">
-            </div>
-            <div id="" class="img_toggleH">
-                <img src="/public_html/img/store04_store.jpg" border="0" alt="">
-            </div></a>
-        </div>
-    </div>
-
-    <div id="point_depart" class="box_space">
-        <a id="bt_depart"></a>
-    </div>
-
-
-    <div id="" class="box_2dept_menu">
-        <div id="" class="bt_2dept_left_menu bt_store">
-            <a href="#">road shop</a>
-        </div>
-        <div id="" class="bt_2dept_right_menu bt_depart">
-            <a href="#">department store</a>
-        </div>
-    </div>
-
-    <!-- 신세계백화점 대구점 -->
-    <div id="" class="box_shop">
-        <div id="" class="box_shop_leftB">
-            <div id="" class="box_shop_left_div01B">
-                <span class="" style="letter-spacing: 2px;">department store</span><br>
-                신세계백화점 대구점
-        </div>
-	<div id="" class="bt_mapstore">
-		<div id="departA1" class="toggleC">
-			<a href="#a">매장</a>
-		</div>
-		<div id="departA2" class="toggleD">
-			<a href="#b">약도</a>
-		</div>
-	</div>
-
-            <div id="" class="box_shop_left_div05">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div05_in01">
-                    정&nbsp;&nbsp;&nbsp;상<br>
-                    연&nbsp;&nbsp;&nbsp;장<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:00<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    각 백화점 휴무 일정에 따름<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div06" style="padding-top:0px;">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    053 - 661 - 6948<br>
-                    대구광역시 동구 동부로 149, 7F<br>
-                </div>
-            </div>
-        </div>
-	<a href=""><div id="mapstoreD1" class="box_shop_rightB">
-				<div id="" class="img_departA1">
-					<img src="/public_html/img/store12_map.jpg" border="0" alt="">
-				</div>
-				<div id="" class="img_departA2">
-					<img src="/public_html/img/depart01_store.jpg" border="0" alt="">
-				</div>
-			</div></a>
-    </div>
-
-    <!-- 신세계백화점 부산센텀시티점 -->
-    <div id="" class="box_shop">
-        <div id="" class="box_shop_leftB">
-            <div id="" class="box_shop_left_div01B">
-                <span class="" style="letter-spacing: 2px;">department store</span><br>
-                신세계백화점 부산센텀시티점
-            </div>
-	    <div id="" class="bt_mapstore">
-		<div id="departA3" class="toggleC">
-			<a href="#a">매장</a>
-		</div>
-		<div id="departA4" class="toggleD">
-			<a href="#b">약도</a>
-		</div>
-	</div>
-
-            <div id="" class="box_shop_left_div05">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div05_in01">
-                    정&nbsp;&nbsp;&nbsp;상<br>
-                    연&nbsp;&nbsp;&nbsp;장<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:00<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    각 백화점 휴무 일정에 따름<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div06" style="padding-top:0px;">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>F&nbsp;&nbsp;A&nbsp;&nbsp;X<br>
-                    도로명<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    051 - 745 - 2229<br>
-                    051 - 745 - 2715<br>
-                    부산시 해운대구 센텀남대로 35, 8F<br>
-                </div>
-            </div>
-        </div>
-	<a href=""><div id="mapstoreD2" class="box_shop_rightB">
-				<div id="" class="img_departA3">
-					<img src="/public_html/img/store13_map.jpg" border="0" alt="">
-				</div>
-				<div id="" class="img_departA4">
-					<img src="/public_html/img/depart02_store.jpg" border="0" alt="">
-				</div></a>
-			</div>
-    </div>
-
-
-
-
-
-    <!-- 롯데백화점 명동점 -->
-    <div id="" class="box_shop">
-        <div id="" class="box_shop_leftB">
-            <div id="" class="box_shop_left_div01C">
-                <span style="letter-spacing: 2px;">department store</span><br>
-                롯데백화점 명동점
-            </div>
-	    <div id="" class="bt_mapstore">
-					<div id="departA5" class="toggleC">
-						<a href="#a">매장</a>
-					</div>
-					<div id="departA6" class="toggleD">
-						<a href="#b">약도</a>
-					</div>
-				</div>
-
-            <div id="" class="box_shop_left_div05">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div05_in01">
-                    정&nbsp;&nbsp;&nbsp;상<br>
-                    연&nbsp;&nbsp;&nbsp;장<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:00<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    각 백화점 휴무 일정에 따름<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div06">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    02-772-3849<br>
-                    서울시 중구 남대문로 81, 8F<br>
-                </div>
-            </div>
-        </div>
-        <a href=""><div id="mapstoreD3" class="box_shop_rightB">
-				<div id="" class="img_departA5">
-					<img src="/public_html/img/store05_map.jpg" border="0" alt="">
-				</div>
-				<div id="" class="img_departA6">
-					<img src="/public_html/img/depart03_store.jpg" border="0" alt="">
-				</div>
-			</div></a>
-    </div>
-
-
-    <!-- 롯데백화점 잠실점 -->
-    <div id="" class="box_shop">
-       <div id="" class="box_shop_leftB">
-				<div id="" class="box_shop_left_div01C">
-					<span class="" style="letter-spacing: 2px;">department store</span>
-					<br>롯데백화점 잠실점
-				</div>
-				<div id="" class="bt_mapstore">
-					<div id="departA7" class="toggleC">
-						<a href="#a">매장</a>
-					</div>
-					<div id="departA8" class="toggleD">
-						<a href="#b">약도</a>
-					</div>
-				</div>
-
-            <div id="" class="box_shop_left_div05">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div05_in01">
-                    정&nbsp;&nbsp;&nbsp;상<br>
-                    연&nbsp;&nbsp;&nbsp;장<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:00<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    각 백화점 휴무 일정에 따름<br>
-                </div>
-            </div>
-           <div id="" class="box_shop_left_div06">
-					<b>매장정보</b><br>
-					<div class="box_shop_left_div06_in01">
-						T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-						도로명<br>
-					</div>
-					<div class="box_shop_left_div06_in02">
-						02-2143-1896<br>
-						서울시 송파구 올림픽로 240, 10F<br>
-					</div>
-				</div>
-        </div>
-       <a href=""><div id="mapstoreD4" class="box_shop_rightB">
-				<div id="" class="img_departA7">
-					<img src="/public_html/img/store11_map.jpg" border="0" alt="">
-				</div>
-				<div id="" class="img_departA8">
-					<img src="/public_html/img/depart04_store.jpg" border="0" alt="">
-				</div>
-			</div></a>
-    </div>
-
-
-    <!-- 롯데백화점 강남점 -->
-    <div id="" class="box_shop">
-        <div id="" class="box_shop_leftB">
-				<div id="" class="box_shop_left_div01C">
-					<span class="" style="letter-spacing: 2px;">department store</span>
-					<br>롯데백화점 강남점
-				</div>
-				<div id="" class="bt_mapstore">
-					<div id="departA9" class="toggleC">
-						<a href="#a">매장</a>
-					</div>
-					<div id="departA10" class="toggleD">
-						<a href="#b">약도</a>
-					</div>
-				</div>
-
-            <div id="" class="box_shop_left_div05">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div05_in01">
-                    정&nbsp;&nbsp;&nbsp;상<br>
-                    연&nbsp;&nbsp;&nbsp;장<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:00<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    각 백화점 휴무 일정에 따름<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div06">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    02-531-2813<br>
-                    서울시 강남구 도곡로 401, 8F<br>
-                </div>
-            </div>
-        </div>
-        <a href=""><div id="mapstoreD5" class="box_shop_rightB">
-				<div id="" class="img_departA9">
-					<img src="/public_html/img/store07_map.jpg" border="0" alt="">
-				</div>
-				<div id="" class="img_departA10">
-					<img src="/public_html/img/depart05_store.jpg" border="0" alt="">
-				</div>
-			</div></a>
-    </div>
-
-    <!-- 롯데백화점 영등포점
-    <div id="" class="box_shop">
-        <div id="" class="box_shop_left02">
-            <div id="" class="box_shop_left_div04">
-                <span class="" style="letter-spacing: 2px;">department store</span><br>
-                롯데백화점 영등포점
-            </div>
-
-            <div id="" class="box_shop_left_div05">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div05_in01">
-                    정&nbsp;&nbsp;&nbsp;상<br>
-                    연&nbsp;&nbsp;&nbsp;장<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:00<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    각 백화점 휴무 일정에 따름<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div06">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    02-2630-6966<br>
-                    영등포구 경인로 846, 9F<br>
-                </div>
-            </div>
-        </div>
-        <div id="" class="box_shop_right">
-            <div id="" class="">
-                <img src="/public_html/img/store10_map.jpg" border="0" alt="">
-            </div>
-        </div>
-    </div> -->
-
-    <!-- 롯데백화점 대전점 -->
-    <div id="" class="box_shop">
-       <div id="" class="box_shop_leftB">
-				<div id="" class="box_shop_left_div01C">
-					<span class="" style="letter-spacing: 2px;">department store</span>
-					<br>롯데백화점 대전점
-				</div>
-				<div id="" class="bt_mapstore">
-					<div id="departA11" class="toggleC">
-						<a href="#a">매장</a>
-					</div>
-					<div id="departA12" class="toggleD">
-						<a href="#b">약도</a>
-					</div>
-				</div>
-
-            <div id="" class="box_shop_left_div05">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div05_in01">
-                    정&nbsp;&nbsp;&nbsp;상<br>
-                    연&nbsp;&nbsp;&nbsp;장<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:00<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    각 백화점 휴무 일정에 따름<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div06">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    042-601-2034<br>
-                    대전시 서구 계룡로 598, B1<br>
-                </div>
-            </div>
-        </div>
-       <a href=""><div id="mapstoreD6" class="box_shop_rightB">
-				<div id="" class="img_departA11">
-					<img src="/public_html/img/store08_map.jpg" border="0" alt="">
-				</div>
-				<div id="" class="img_departA12">
-					<img src="/public_html/img/depart06_store.jpg" border="0" alt="">
-				</div>
-			</div></a>
-    </div>
-
-
-
-    <!-- 롯데백화점 광복점 
-    <div id="" class="box_shop">
-       <div id="" class="box_shop_leftB">
-				<div id="" class="box_shop_left_div01C">
-					<span class="" style="letter-spacing: 2px;">department store</span>
-					<br>롯데백화점 광복점
-				</div>
-				<div id="" class="bt_mapstore">
-					<div id="departA13" class="toggleC">
-						<a href="#a">매장</a>
-					</div>
-					<div id="departA14" class="toggleD">
-						<a href="#b">약도</a>
-					</div>
-				</div>
-
-            <div id="" class="box_shop_left_div05">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div05_in01">
-                    정&nbsp;&nbsp;&nbsp;상<br>
-                    연&nbsp;&nbsp;&nbsp;장<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:00<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    각 백화점 휴무 일정에 따름<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div06">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    051-678-3020<br>
-                    부산시 중구 중앙동 7가 20-1, 9F<br>
-                </div>
-            </div>
-        </div>
-        <a href=""><div id="mapstoreD7" class="box_shop_rightB">
-				<div id="" class="img_departA13">
-					<img src="/public_html/img/store09_map.jpg" border="0" alt="">
-				</div>
-				<div id="" class="img_departA14">
-					<img src="/public_html/img/depart07_store.jpg" border="0" alt="">
-				</div>
-			</div></a>
-    </div>-->
-
-     <!-- 롯데백화점 상인점 -->
-    <div id="" class="box_shop">
-       <div id="" class="box_shop_leftB">
-				<div id="" class="box_shop_left_div01C">
-					<span class="" style="letter-spacing: 2px;">department store</span>
-					<br>롯데백화점 상인점
-				</div>
-				<div id="" class="bt_mapstore">
-					<div id="departA23" class="toggleA">
-						<a href="#a">매장</a>
-					</div>
-					<div id="departA24" class="toggleB">
-						<a href="#b">약도</a>
-					</div>
-				</div>
-
-            <div id="" class="box_shop_left_div05">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div05_in01">
-                    정&nbsp;&nbsp;&nbsp;상<br>
-                    연&nbsp;&nbsp;&nbsp;장<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:00<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    각 백화점 휴무 일정에 따름<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div06">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    053-258-3674<br>
-                    대구광역시 달서구 월배로 232, 6F<br>
-                </div>
-            </div>
-        </div>
-        <a href=""><div id="mapstoreD12" class="box_shop_rightB">
-				<div id="" class="img_departA23">
-					<img src="/public_html/img/depart21_map.jpg" border="0" alt="">
-				</div>
-				<div id="" class="img_departA24">
-					<img src="/public_html/img/depart21_store.jpg" border="0" alt="">
-				</div>
-			</div></a>
-    </div>
-
-
-      <!-- 현대백화점 충청점
-    <div id="" class="box_shop">
-       <div id="" class="box_shop_leftB">
-		<div id="" class="box_shop_left_div01D">
-			<span class="" style="letter-spacing: 2px;">department store</span>
-					<br>현대백화점 충청점
-				</div>
-				<div id="" class="bt_mapstore">
-					<div id="departA15" class="toggleC">
-						<a href="#a">매장</a>
-					</div>
-					<div id="departA16" class="toggleD">
-						<a href="#b">약도</a>
-					</div>
-				</div>
-
-            <div id="" class="box_shop_left_div05">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div05_in01">
-                    정&nbsp;&nbsp;&nbsp;상<br>
-                    연&nbsp;&nbsp;&nbsp;장<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:00<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    각 백화점 휴무 일정에 따름<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div06">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    043-909-4541<br>
-                    충북 청주시 흥덕구 직지대로308, 5F<br>
-                </div>
-            </div>
-        </div>
-        <a href=""><div id="mapstoreD8" class="box_shop_rightB">
-				<div id="" class="img_departA15">
-					<img src="/public_html/img/depart12_map.jpg" border="0" alt="">
-				</div>
-				<div id="" class="img_departA16">
-					<img src="/public_html/img/depart12_store.jpg" border="0" alt="">
-				</div>
-			</div></a>
-    </div> -->
-
-     <!-- 현대백화점 목동점
-    <div id="" class="box_shop">
-       <div id="" class="box_shop_leftB">
-		<div id="" class="box_shop_left_div01D">
-			<span class="" style="letter-spacing: 2px;">department store</span>
-					<br>현대백화점 목동점
-				</div>
-				<div id="" class="bt_mapstore">
-					<div id="departA17" class="toggleC">
-						<a href="#a">매장</a>
-					</div>
-					<div id="departA18" class="toggleD">
-						<a href="#b">약도</a>
-					</div>
-				</div>
-
-            <div id="" class="box_shop_left_div05">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div05_in01">
-                    정&nbsp;&nbsp;&nbsp;상<br>
-                    연&nbsp;&nbsp;&nbsp;장<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:00<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    각 백화점 휴무 일정에 따름<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div06">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    02-2163-1045<br>
-                    서울 양천구 목동동로 257, 1B<br>
-                </div>
-            </div>
-        </div>
-        <a href=""><div id="mapstoreD9" class="box_shop_rightB">
-				<div id="" class="img_departA17">
-					<img src="/public_html/img/depart17_map.jpg" border="0" alt="">
-				</div>
-				<div id="" class="img_departA18">
-					<img src="/public_html/img/depart17_store.jpg" border="0" alt="">
-				</div>
-			</div></a>
-    </div> -->
-
-     <!-- 현대백화점 대구점
-    <div id="" class="box_shop">
-       <div id="" class="box_shop_leftB">
-		<div id="" class="box_shop_left_div01D">
-			<span class="" style="letter-spacing: 2px;">department store</span>
-					<br>현대백화점 대구점
-				</div>
-				<div id="" class="bt_mapstore">
-					<div id="departA19" class="toggleC">
-						<a href="#a">매장</a>
-					</div>
-					<div id="departA20" class="toggleD">
-						<a href="#b">약도</a>
-					</div>
-				</div>
-
-            <div id="" class="box_shop_left_div05">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div05_in01">
-                    정&nbsp;&nbsp;&nbsp;상<br>
-                    연&nbsp;&nbsp;&nbsp;장<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:00<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    각 백화점 휴무 일정에 따름<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div06">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-		    F&nbsp;&nbsp;A&nbsp;&nbsp;X<br>
-                    도로명<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    053-245-2788<br>
-		    053-245-3788<br>
-                    대구 중구 달구벌대로 2077, 7F<br>
-                </div>
-            </div>
-        </div>
-        <a href=""><div id="mapstoreD10" class="box_shop_rightB">
-				<div id="" class="img_departA19">
-					<img src="/public_html/img/depart18_map.jpg" border="0" alt="">
-				</div>
-				<div id="" class="img_departA20">
-					<img src="/public_html/img/depart18_store.jpg" border="0" alt="">
-				</div>
-			</div></a>
-    </div> -->
-
-
-     <!-- 현대백화점 미아점
-    <div id="" class="box_shop">
-       <div id="" class="box_shop_leftB">
-		<div id="" class="box_shop_left_div01D">
-			<span class="" style="letter-spacing: 2px;">department store</span>
-					<br>현대백화점 미아점
-				</div>
-				<div id="" class="bt_mapstore">
-					<div id="departA21" class="toggleC">
-						<a href="#a">매장</a>
-					</div>
-					<div id="departA22" class="toggleD">
-						<a href="#b">약도</a>
-					</div>
-				</div>
-
-            <div id="" class="box_shop_left_div05">
-                <b>영업시간</b><br>
-                <div class="box_shop_left_div05_in01">
-                    정&nbsp;&nbsp;&nbsp;상<br>
-                    연&nbsp;&nbsp;&nbsp;장<br>
-                    공휴일<br>
-                </div>
-                <div class="box_shop_left_div05_in02">
-                    AM 10:30 ~ PM 08:00<br>
-                    AM 10:30 ~ PM 08:30<br>
-                    각 백화점 휴무 일정에 따름<br>
-                </div>
-            </div>
-            <div id="" class="box_shop_left_div06">
-                <b>매장정보</b><br>
-                <div class="box_shop_left_div06_in01">
-                    T&nbsp;&nbsp;E&nbsp;&nbsp;L<br>
-                    도로명<br>
-                </div>
-                <div class="box_shop_left_div06_in02">
-                    02-2117-1734<br>
-                    서울 성북구 동소문로 315, 7F<br>
-                </div>
-            </div>
-        </div>
-
-
-
-        <a href=""><div id="mapstoreD11" class="box_shop_rightB">
-				<div id="" class="img_departA21">
-					<img src="/public_html/img/depart19_map.jpg" border="0" alt="">
-				</div>
-				<div id="" class="img_departA22">
-					<img src="/public_html/img/depart19_store.jpg" border="0" alt="">
-				</div>
-			</div></a>
-    </div> -->
 
 
 </div>
