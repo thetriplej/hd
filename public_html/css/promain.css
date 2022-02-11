@@ -35,8 +35,9 @@
 .modelname{
 	width:216px;
 	height:15px;
-	font-size:15px;
+	font-size:12px;
 	text-align:right;
+	color:#333333;
 }
 
 .dropdown{
