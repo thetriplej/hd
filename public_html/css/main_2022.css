@@ -1,0 +1,46 @@
+﻿
+.mainmovie
+{
+    width:100%;
+	display:block;
+	overflow:hidden;
+	z-index:-100;
+	margin-top:-80px;
+}
+
+#wrap_mainvideo
+{
+    width:699px;
+	height:330px;
+    margin:0 auto;
+    z-index:2;
+	display:block;
+	margin-top:30px;
+	text-align:center;
+}
+
+.box_brandstory
+{
+	text-align:center;
+	font-size:15px;
+	width:120px;
+	height:30px;
+	border:solid 1px #d4d4d4;
+	margin-left:70px;
+	margin-top:120px;
+	background-color:#fff;
+	line-height:30px;
+}
+
+.box_faq
+{
+	text-align:center;
+	font-size:15px;
+	width:120px;
+	height:30px;
+	border:solid 1px #d4d4d4;
+	margin-left:70px;
+	margin-top:120px;
+	background-color:#fff;
+	line-height:30px;
+}

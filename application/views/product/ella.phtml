@@ -1,62 +1,50 @@
 <link rel="stylesheet" type="text/css" href="/public_html/css/h_product.css" />
-<div id="" class="wrap_middle">
-    <div class="sub_img">
-        <img src="/public_html/imgpro/img_mors01.jpg" border="0" alt="">
-    </div>
-    <div class="box_title">
-        <img src="/public_html/imgpro/title_mors.png" border="0" alt="">
-    </div>
-    <div class="box_outline">
-        <div class="div_img_left_txt div90do1">
-            Modern and beautifully restrained styled design
-        </div>
-        <div id="" class="div_proimg_center">
-            <img src="/public_html/imgpro/mors.jpg" border="0" alt="">
-        </div>
-	<div id="" class="div_proimg_center-2">
-            <img src="/public_html/imgpro/mors_1.jpg" border="0" alt="">
-        </div>
-	<div id="" class="div_proimg_center-2">
-            <img src="/public_html/imgpro/mors_2.jpg" border="0" alt="">
-        </div>
-        <div class="div_img_right_txt div90do1">
-            green in color
-        </div>
-        <!-- frame_special ////////////////////////////// -->
-        <?php $this->load->view('frame_special.phtml');?>
-        <!-- frame_special ////////////////////////////// -->
-    </div>
+<link rel="stylesheet" type="text/css" href="/public_html/css/product_2021.css" />
 
 
-<!--
-    <div id="" class="box_colorfull">
-        <div class="box_contents3">
-            <div id="" class="fl_left">
-                <div id="" class="txt_concept">
-                    <div id="" class="txt_concept_div02">
-                        mors design concept
-                    </div>
-                    <div id="" class="txt_concept_div03">
-                        sky color
-                    </div>
-                    <div id="" class="txt_concept_div04">
-                        단정하고 깔끔한 팔걸이는 안정감을 주며 다용도로 활용
+<div id="viewer" style="overflow: hidden; height: 380px;" class="vrcontainer">
+<div class="vr" tabindex="0">
+<img src="/public_html/imgvr/feecore-green0000.jpg">
+</div>
+<div class="spinner spinLeft" style="height: 380px;"></div>
+<div class="spinner spinRight" style="height: 380px;"></div>
+</div>
 
-                    </div>
-                </div>
-            </div>
-            <div id="" class="fl_right conceptimg">
-                <img src="/public_html/imgpro/img_mors03.jpg" border="0" alt="">
-            </div>
-        </div>
-    </div>
--->
+<script type="text/javascript">
+  Firejune(function() {
+    window.jQuery && jQuery.noConflict() && (jQuery.noConflict = function() { return jQuery; });
+    
+    Firejune.main('2.73', !1);
 
-    <div id="" class="box_design">
-        <img src="/public_html/imgpro/dim-sofa-mors-200514.jpg" border="0" alt="">
-    </div>
+      try {
+ 
+threeSixty = {
+    init: function() {
+        this._vr = new AC.VR('viewer', '/public_html/imgvr/feecore-green00##.jpg', 72, {
+            invert: true
+        });
+    },
+    didShow: function() {
+        this.init();
+    },
+    willHide: function() {
+        recycleObjectValueForKey(this, "_vr");
+    },
+    shouldCache: function() {
+        return false;
+    }
+}
 
-    <!-- delivery ////////////////////////////// -->
-    <?php $this->load->view('frame_delivery.phtml');?>
-    <!-- delivery ////////////////////////////// -->
+if (!window.isLoaded) {
+    Event.observe(window, "load", function() {
+        threeSixty.init();
+    }, false);
+}
+
+ 
+} catch (e) { alert('ERROR: ' + e.message); }
+  });
+  </script>
+
+
 </div>
