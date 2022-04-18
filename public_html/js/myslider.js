@@ -119,9 +119,8 @@ imgnum = 0;
 			$('#bt_pointb03').css({"background-position":"0px 0px"});
 			$('#bt_pointb04').css({"background-position":"0px -13px"});
 			$('#bt_pointb05').css({"background-position":"0px 0px"});
-			imgnumb = 0;
 		}
-		/*else if(imgnumb == 5){
+		else if(imgnumb == 5){
 			//다섯번째 이미지 위치
 			$('.sliderb_img01').fadeOut();
 			$('.sliderb_img02').fadeOut();
@@ -134,7 +133,7 @@ imgnum = 0;
 			$('#bt_pointb04').css({"background-position":"0px 0px"});
 			$('#bt_pointb05').css({"background-position":"0px -13px"});
 			imgnumb = 0;
-		}*/
+		}
 		imgnumb = imgnumb + 1;
 	}
 

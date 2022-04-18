@@ -183,8 +183,8 @@
 	text-align:left;
 	font-size:18px;
 	width:100%;
-	/*height:80px;*/
-	line-height:60px;
+	height:60px;
+	line-height:40px;
 	text-indent:20px;
 }
 
@@ -194,7 +194,7 @@
 	font-size:18px;
 	width:100%;
 	height:80px;
-	line-height:60px;
+	line-height:40px;
 	text-indent:20px;
 	position:absolute;
 	left:2px;
