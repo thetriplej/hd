@@ -116,77 +116,29 @@ setInterval(imgslidec, 5000);
 		imgnumb = imgnumb + 1;
 	}*/
 	
+	// news sliding *************************//
 	function imgslideb(k){
 		if(k != null){imgnumb = k;}
 		if(imgnumb == 1){
-			//$('#slider_review').fadeOut(500);
 			//천번째 이미지 위치
-			$('.sliderb_img01').fadeIn();
-			$('.sliderb_img02').fadeOut();
+			$('.sliderb_img02').fadeIn();
 			$('.sliderb_img03').fadeOut();
-			$('.sliderb_img04').fadeOut();
-			$('.sliderb_img05').fadeOut();
-			$('#bt_pointb01').css({"background-position":"0px -13px"});
-			$('#bt_pointb02').css({"background-position":"0px 0px"});
-			$('#bt_pointb03').css({"background-position":"0px 0px"});
-			$('#bt_pointb04').css({"background-position":"0px 0px"});
-			$('#bt_pointb05').css({"background-position":"0px 0px"});
 		}
 		else if(imgnumb == 2){
 			//두번째 이미지 위치
-			$('.sliderb_img01').fadeOut();
-			$('.sliderb_img02').fadeIn();
-			$('.sliderb_img03').fadeOut();
-			$('.sliderb_img04').fadeOut();
-			$('.sliderb_img05').fadeOut();
-			$('#bt_pointb01').css({"background-position":"0px 0px"});
-			$('#bt_pointb02').css({"background-position":"0px -13px"});
-			$('#bt_pointb03').css({"background-position":"0px 0px"});
-			$('#bt_pointb04').css({"background-position":"0px 0px"});
-			$('#bt_pointb05').css({"background-position":"0px 0px"});
-		}
-		else if(imgnumb == 3){
-			//세번째 이미지 위치
-			$('.sliderb_img01').fadeOut();
 			$('.sliderb_img02').fadeOut();
 			$('.sliderb_img03').fadeIn();
-			$('.sliderb_img04').fadeOut();
-			$('.sliderb_img05').fadeOut();
-			$('#bt_pointb01').css({"background-position":"0px 0px"});
-			$('#bt_pointb02').css({"background-position":"0px 0px"});
-			$('#bt_pointb03').css({"background-position":"0px -13px"});
-			$('#bt_pointb04').css({"background-position":"0px 0px"});
-			$('#bt_pointb05').css({"background-position":"0px 0px"});
 		}
-		else if(imgnumb == 4){
-			//네번째 이미지 위치
-			$('.sliderb_img01').fadeOut();
+		else if(imgnumb == 3){
+			//두번째 이미지 위치
 			$('.sliderb_img02').fadeOut();
 			$('.sliderb_img03').fadeOut();
-			$('.sliderb_img04').fadeIn();
-			$('.sliderb_img05').fadeOut();
-			$('#bt_pointb01').css({"background-position":"0px 0px"});
-			$('#bt_pointb02').css({"background-position":"0px 0px"});
-			$('#bt_pointb03').css({"background-position":"0px 0px"});
-			$('#bt_pointb04').css({"background-position":"0px -13px"});
-			$('#bt_pointb05').css({"background-position":"0px 0px"});
-		}
-		else if(imgnumb == 5){
-			//다섯번째 이미지 위치
-			$('.sliderb_img01').fadeOut();
-			$('.sliderb_img02').fadeOut();
-			$('.sliderb_img03').fadeOut();
-			$('.sliderb_img04').fadeOut();
-			$('.sliderb_img05').fadeIn();
-			$('#bt_pointb01').css({"background-position":"0px 0px"});
-			$('#bt_pointb02').css({"background-position":"0px 0px"});
-			$('#bt_pointb03').css({"background-position":"0px 0px"});
-			$('#bt_pointb04').css({"background-position":"0px 0px"});
-			$('#bt_pointb05').css({"background-position":"0px -13px"});
 			imgnumb = 0;
 		}
+
 		imgnumb = imgnumb + 1;
 	}
+
 
 	$("#bt_pointb01").click(function(){
         //$("#bt_point01").addClass("bgupdown");
