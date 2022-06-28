@@ -35,22 +35,24 @@
 
 .wrap_menu
 {
-    width:1450px;
+    width:1000px;
     height:96px;
 	z-index:200;
-	float:right;
+	margin: 0 auto;
 }
 
 .box_logo
 {
-    width:200px;
+    width:130px;
     height:96px;
-	float:left;
+	position:absolute;
+	margin-left:400px;
+	margin-top:10px;
 }
 
 .box_menu
 {
-    width:1450px;
+    width:1000px;
     height:96px;
 	display:block;
 	/*background:url('/public_html/img/sasun3.png') 0 60px no-repeat;*/
@@ -61,11 +63,12 @@
 
 #main_header
 {
-    width:1099px;
+    width:1000px;
     /*margin:0 auto;*/
-	padding-top:10px;
+	padding-top:20px;
     height:96px;
 	float:left;
+	background-color:fff;
 }
 
 
@@ -75,9 +78,7 @@
 	font-family: "Kaisei", 'Noto Sans', serif;
 	font-family: 'Noto Sans', serif;
 	top:47px;
-	left:100px;
-    font-size:12px;
-	font-weight:500;
+    font-size: 0.8rem;
 }
 
 
@@ -87,132 +88,42 @@
 #main_gnb > ul > li{float:left; margin-top:1px;}
 #main_gnb > ul > li >a{
     display:block;
-    width:150px; 
+    width:160px; 
     text-align:center;
-    color:#454545;
-	font-size:11px;
+    color:#000;
 }
 
 #main_gnb > ul > li >a:hover{
     display:block;
 	font-weight:500;
-    color:#877e79;
+    color:#000;
 }
 
-
-/*subpage main menu*/
-#sub_gnb
-{
-    position:absolute;
-    left:100px;top:0px;
-    font-family:  "Noto Sans KR", "Malgun Gothic", '돋움', sans-serif;
-    font-size:12px;
-    color:#b6bea5;
-    background-color:#111;
-}
-
-
-/*subpage main manu list*/
-#sub_gnb > ul{overflow:hidden;}
-#sub_gnb > ul > li{float:left; top:14px;}
-#sub_gnb > ul > li >a{
-    display:block;
-    padding: 8px 8px;
-    width:150px; 
-    text-align:center;
-    color:#b6bea5;
-}
-
-#sub_gnb > ul > li >a:hover{
-    display:block;
-    background-color:#121212;
-    color:#444;
-}
 
 /*sub manu com list*/
 
 #sub_gnb01
 {
     position:relative;
-	top:75px;
-    left:112px;
-    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
-    color:#b6bea5;
+	top:56px;
+    left:0px;
     width:150px; 
-    height:148px; /*메뉴백 높이*/
+    height:2px; /*메뉴백 높이*/
     display:none;
-    padding-top:16px;
-	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
-	z-index:1000;
+	background-color: #000000;
 }
-
-
-#sub_gnb01 > ul{overflow:hidden;}
-#sub_gnb01 > ul > li{
-    font-size:12px;
-    line-height:26px;
-	padding-top:2px;
-	padding-left:8px;
-	padding-right:8px;
-	padding-bottom:2px;
-	text-align:left;
-	text-indent:25px;
-	height:30px;
-}
-#sub_gnb01 > ul > li >a{
-    display:block;
-    color:#ddd;
-	
-}
-
-#sub_gnb01 > ul > li >a:hover{
-    display:block;
-    /*background-color:#7f746a;*/
-	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
-    color:#fff;
-}
-
-
 
 
 /*sub manu pro list*/
 #sub_gnb02
 {
     position:relative;
-    top:75px;
-	left:262px;
-    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
-    color:#b6bea5;
+    top:56px;
+	left:150px;
     width:150px; 
-    height:0px; /*메뉴백 높이*/
+    height:2px; /*메뉴백 높이*/
     display:none;
-    padding-top:16px;
-    margin-left:0px;
-	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
-	z-index:1001;
-}
-
-#sub_gnb02 > ul{overflow:hidden;}
-#sub_gnb02 > ul > li{
-    font-size:11px;
-    line-height:26px;
-	padding-top:2px;
-	padding-left:8px;
-	padding-right:8px;
-	padding-bottom:2px;
-	text-align:left;
-	text-indent:25px;
-	height:30px;
-}
-#sub_gnb02 > ul > li >a{
-    display:block;
-    color:#ddd;
-}
-
-#sub_gnb02 > ul > li >a:hover{
-    display:block;
-	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
-    color:#fff;
+	background-color: #000000;
 }
 
 
@@ -221,79 +132,25 @@
 #sub_gnb03
 {
     position:relative;
-    top:75px;
+    top:56px;
 	left:412px;
-    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
-    color:#b6bea5;
     width:150px; 
-    height:120px; /*메뉴백 높이*/
+    height:2px; /*메뉴백 높이*/
     display:none;
-    padding-top:16px;
-    margin-left:0px;
-	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
-	z-index:1001;
+	background-color: #000000;
 }
 
-#sub_gnb03 > ul{overflow:hidden;}
-#sub_gnb03 > ul > li{
-    font-size:11px;
-    line-height:26px;
-	padding-top:2px;
-	padding-left:8px;
-	padding-right:8px;
-	padding-bottom:2px;
-	text-align:left;
-	text-indent:25px;
-	height:30px;
-}
-#sub_gnb03 > ul > li >a{
-    display:block;
-    color:#ddd;
-}
-
-#sub_gnb03 > ul > li >a:hover{
-    display:block;
-	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
-    color:#fff;
-}
 
 /*sub manu product list*/
 #sub_gnb04
 {
     position:relative;
     left:562px;
-	top:75px;
-    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
-    color:#b6bea5;
-    width:150px;
-    height:100px; /*메뉴백 높이*/
+	top:56px;
+    width:150px; 
+    height:2px; /*메뉴백 높이*/
     display:none;
-    padding-top:16px;
-	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
-	z-index:1002;
-}
-
-#sub_gnb04 > ul{overflow:hidden;}
-#sub_gnb04 > ul > li{
-	font-size:11px;
-    line-height:26px;
-	padding-top:2px;
-	padding-left:8px;
-	padding-right:8px;
-	padding-bottom:2px;
-	text-align:left;
-	text-indent:25px;
-	height:30px;
-}
-#sub_gnb04 > ul > li >a{
-    display:block;
-    color:#ddd;
-}
-
-#sub_gnb04 > ul > li >a:hover{
-    display:block;
-    color:#fff;
-	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
+	background-color: #000000;
 }
 
 /*sub manu Gallery list*/
@@ -302,42 +159,12 @@
 {
     position:relative;
     left:712px;
-	top:75px;
-    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
-    color:#b6bea5;
+	top:56px;
     width:150px; 
-    height:100px; /*메뉴백 높이*/
-    display:none; 
-	padding-top:16px;
-    margin-left:0px;
-	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
-	z-index:1004;
+    height:2px; /*메뉴백 높이*/
+    display:none;
+	background-color: #000000;
 }
-
-#sub_gnb05 > ul{overflow:hidden;}
-#sub_gnb05 > ul > li{
-    font-size:11px;
-    line-height:26px;
-	padding-top:2px;
-	padding-left:8px;
-	padding-right:8px;
-	padding-bottom:2px;
-	text-align:left;
-	text-indent:25px;
-	height:30px;
-	
-}
-#sub_gnb05 > ul > li >a{
-    display:block;
-    color:#ddd;
-}
-
-#sub_gnb05 > ul > li >a:hover{
-    display:block;
-    color:#fff;
-	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
-}
-
 
 
 /*sub manu notice list*/
@@ -346,39 +173,11 @@
 {
     position:relative;
     left:862px;
-	top:75px;
-    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
-    color:#b6bea5;
+	top:56px;
     width:150px; 
-    height:120px; /*메뉴백 높이*/
-    display:none; 
-	padding-top:16px;
-    margin-left:0px;
-	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
-	z-index:1005;
-}
-
-#sub_gnb06 > ul{overflow:hidden;}
-#sub_gnb06 > ul > li{
-    font-size:11px;
-    line-height:26px;
-	padding-top:2px;
-	padding-left:8px;
-	padding-right:8px;
-	padding-bottom:2px;
-	text-align:left;
-	text-indent:25px;
-	height:30px;
-}
-#sub_gnb06 > ul > li >a{
-    display:block;
-    color:#ddd;
-}
-
-#sub_gnb06 > ul > li >a:hover{
-    display:block;
-    color:#fff;
-	background: url('/public_html/img/submenu_tr.png') 0 0 repeat;
+    height:2px; /*메뉴백 높이*/
+    display:none;
+	background-color: #000000;
 }
 
 
