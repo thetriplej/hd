@@ -440,3 +440,18 @@
 {
 	background-position: 0px -74px;
 }
+
+
+.bottom_menu11
+{
+	background:url('/public_html/img/bt_youtube2.png') 0 0 no-repeat;
+	width:43px;
+	height:74px;
+	display: block;
+	text-indent:-2000px;
+}
+
+.bottom_menu11:hover
+{
+	background-position: 0px -74px;
+}
