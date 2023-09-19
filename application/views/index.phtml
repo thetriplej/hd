@@ -1,12 +1,13 @@
 <!-- video popup open  -->
 <!-- <script type="text/javascript" src="/public_html/js/open_video.js"></script>  -->
 <!-- mySlider script file -->
+
 <script src="/public_html/js/myslider.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- mySlider css file -->
 <SCRIPT LANGUAGE="JavaSCRIPT">
 	window.onload = function () {
-	   window.open('public_html/popup-20230505.html','대전 증축 공사 공지','left=20, top=300, width=450, height=510, titlebar=no, resizable=no, scrollbars=no, status=no, location=no ');
+	   //window.open('public_html/popup-20230722.html','대전 지점 확장 증축 공사','left=20, top=300, width=450, height=510, titlebar=no, resizable=no, scrollbars=no, status=no, location=no ');
        //window.open('public_html/popup-20220920.html','송도점 오픈 공지','left=20, top=300, width=450, height=510, titlebar=no, resizable=no, scrollbars=no, status=no, location=no ');
 	   //window.open('public_html/popup-20211231.html','강남점 오픈 공지','left=20, top=300, width=450, height=510, titlebar=no, resizable=no, scrollbars=no, status=no, location=no ');
 	   //window.open('public_html/popup-20220126.html','광주점 오픈 공지','left=450, top=300, width=450, height=510, titlebar=no, resizable=no, scrollbars=no, status=no, location=no ');
@@ -15,6 +16,53 @@
 </SCRIPT>
 
 <link rel="stylesheet" type="text/css" href="/public_html/css/myslider.css" />
+
+<!-- 새로운 레이어 팝업 2023.07.22 김현범 -->
+<style type="text/css">
+input[type="checkbox"] {
+	display:none;
+}
+input[type="checkbox"]:checked ~ .modal, input[type="checkbox"]:checked ~ .modal-background {
+	display: block;
+}
+.modal-background {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+	z-index: 9998;
+}
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	display: none;	
+	width: 567px;
+	height: 567px;
+	background-color: #fff;
+	box-sizing: border-box;
+	z-index: 9999;
+}
+.modal > p {
+	padding: 0px;
+	margin: 0;
+}
+.modal-header label {
+	cursor: pointer;
+}
+.modal-header label:hover img {
+	opacity: 0.6;
+}
+</style>
+<!-- 새로운 레이어 팝업 2023.07.22 김현범 -->
+
+
 <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>"/>
 
 
@@ -166,6 +214,16 @@
 		</div>
 		<a href="#1"><div id="hclose" class="pop_close"> close </div></a>
 	</div> -->
+
+
+
+
+<!-- 새로운 레이어 팝업 2023.09.14 김현범 -->
+<input type="checkbox" id="modal" checked>
+<label for="modal" class="modal-background"></label>
+<div class="modal"><div class="modal-header"><label for="modal"><img src="/public_html/img/popup_20230914.jpg"></label></div></div>
+<!-- 새로운 레이어 팝업 2023.09.14 김현범 -->
+
 
 
 
