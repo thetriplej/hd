@@ -1,4 +1,10 @@
-﻿.box_title3{
+﻿a {
+	color: inherit;
+	text-decoration: none;
+}
+
+
+.box_title3{
 	width:1080px;
 	height:107px;
 	margin: 0 auto;
@@ -530,8 +536,8 @@
 	width:354px;
 	margin-left:0px;
 	text-align:right;
-	font-size:12px;
-	margin-top:0px;
+	font-size:13px;
+	margin-top:200px;
 	padding-right:25px;
 	line-height:20px;
 }
@@ -542,8 +548,8 @@
 	width:354px;
 	margin-left:0px;
 	text-align:right;
-	font-size:12px;
-	margin-top:240px;
+	font-size:13px;
+	margin-top:200px;
 	padding-right:25px;
 	line-height:20px;
 }
@@ -602,8 +608,8 @@
 	width:354px;
 	margin-left:0px;
 	text-align:left;
-	font-size:12px;
-	margin-top:240px;
+	font-size:13px;
+	margin-top:200px;
 	padding-left:25px;
 	line-height:20px;
 }
