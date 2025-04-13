@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/public_html/m/css/main_2017.css" />
+<link rel="stylesheet" type="text/css" href="/public_html/m/css/main_2017-cb<?php echo CACHE_VERSION;?>.css" />
 <script>
 	$(document).ready(function() {
 		$('#pop1_close').click(function() {
@@ -206,7 +206,7 @@ if ($current_date <= $end_end_date) {
 	} else {
 		?>
 		<div>
-			<div id="pop1" class="main_pop" style="float:left;">
+			<div id="pop1" class="main_pop">
 				<div><img src="public_html/images/250411_0524_pop_up_460.jpg" usemap="#ex" border="0">
 					<map name="ex">
 						<area id="pop1_close" alt="닫기" title="닫기" href="javascript:void(0);" coords="580,13,591,1"
@@ -216,7 +216,7 @@ if ($current_date <= $end_end_date) {
 					</map>
 				</div>
 			</div>
-			<div id="pop2" class="main_pop"style="left:50%;">
+			<div id="pop2" class="main_pop2">
 				<div><img src="public_html/images/250424_0524_busan_595.jpg" usemap="#ex2" border="0"></div>
 				<map name="ex2">
 					<area id="pop2_close" alt="닫기" title="닫기" href="javascript:void(0);" coords="580,13,591,1"
