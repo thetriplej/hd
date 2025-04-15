@@ -905,14 +905,23 @@ b {display:inline;}
 	color:#867f7b;
 	padding-top:52px;
 }
-
+.main_pop2{
+	width: 500px;
+	height: 599px;
+	position: absolute;
+	top: 800px;
+	left: 50%;
+	margin-left:10%;
+	z-index: 2000;
+}
 
 .main_pop{
 	width: 500px;
 	height: 599px;
 	position: absolute;
-	top: 200px;
-	left: 180px;
+	top: 230px;
+	left: 50%;
+	margin-left:10%;
 	z-index: 2000;
 	}
 

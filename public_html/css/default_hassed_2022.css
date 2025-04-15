@@ -930,13 +930,25 @@ margin: 0 auto;}
 	padding-top:52px;
 }
 
+.main_pop_area{
+	width: 100%;
+	height: 503px;
+	position: absolute;
+	top: 200px;
+	margin: 0 auto;
+	text-align: center;
+	z-index: 1999;
+	display: table-cell;
+	vertical-align: middle;
+
+}
 
 .main_pop{
 		 width: 420px;
 		 height: 503px;
 		 position: absolute;
 		 top: 200px;
-		 left: 180px;
+	     left: 15%;
 		 z-index: 2000;
 	 }
 
@@ -953,9 +965,7 @@ margin: 0 auto;}
 	width: 420px;
 	height: 503px;
 	position: absolute;
-	top: 50%;
-	left: 35%;
-	margin: -50px 0 0 -50px;
+	top: 200px;
 	z-index: 2000;
 }
 
