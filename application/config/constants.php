@@ -95,6 +95,6 @@ define('CSS_MOBILE_DIR', '/public_html/m/css');
 define('IMG_MOBILE_DIR', '/public_html/m/images');
 define('JS_MOBILE_DIR', '/public_html/m/js');
 
-define('CACHE_VERSION', '20250409');
+define('CACHE_VERSION', '20250410');
 
 
