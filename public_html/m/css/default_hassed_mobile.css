@@ -911,7 +911,7 @@ b {display:inline;}
 	position: absolute;
 	top: 450px;
 	left: 70%;
-	margin-left:75%;
+	margin-left:70%;
 	z-index: 2000;
 }
 
@@ -920,8 +920,8 @@ b {display:inline;}
 	height: 599px;
 	position: absolute;
 	top: 300px;
-	left: 70%;
-	margin-left:90%;
+	left: 80%;
+	margin-left:78%;
 	z-index: 2000;
 	}
 
