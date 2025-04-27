@@ -947,8 +947,8 @@ margin: 0 auto;}
 		 width: 420px;
 		 height: 503px;
 		 position: absolute;
-		 top: 200px;
-	     left: 15%;
+		 top: 150px;
+	     left: 55%;
 		 z-index: 2000;
 	 }
 
@@ -965,7 +965,8 @@ margin: 0 auto;}
 	width: 420px;
 	height: 503px;
 	position: absolute;
-	top: 200px;
+	top: 300px;
+	left: 48.5%;
 	z-index: 2000;
 }
 
