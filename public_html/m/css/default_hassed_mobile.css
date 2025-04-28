@@ -906,21 +906,21 @@ b {display:inline;}
 	padding-top:52px;
 }
 .main_pop2{
-	width: 500px;
-	height: 599px;
+	width: 571px;
+	height: 503px;
 	position: absolute;
-	top: 450px;
-	left: 80%;
-	margin-left:20%;
+	top: 480px;
+	left: 90%;
+	margin-left:14%;
 	z-index: 2000;
 }
 
 .main_pop{
-	width: 500px;
-	height: 599px;
+	width: 571px;
+	height: 503px;
 	position: absolute;
-	top: 300px;
-	left: 80%;
+	top: 330px;
+	left: 90%;
 	margin-left:34%;
 	z-index: 2000;
 	}

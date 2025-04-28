@@ -944,10 +944,10 @@ margin: 0 auto;}
 }
 
 .main_pop{
-		 width: 420px;
+		 width: 571px;
 		 height: 503px;
 		 position: absolute;
-		 top: 150px;
+		 top: 80px;
 	     left: 55%;
 		 z-index: 2000;
 	 }
@@ -962,10 +962,10 @@ margin: 0 auto;}
 }
 
 .main_pop2{
-	width: 420px;
+	width: 571px;
 	height: 503px;
 	position: absolute;
-	top: 300px;
+	top: 230px;
 	left: 48.5%;
 	z-index: 2000;
 }
