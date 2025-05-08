@@ -59,6 +59,12 @@ input[type="checkbox"]:checked ~ .modal, input[type="checkbox"]:checked ~ .modal
 
 <!-- mySlider script file -->
 <script src="/public_html/m/js/myslider.js"></script>
+<script>
+    function vimeo_open(){
+        document.getElementById("vimeo_img").style.display='none';
+        document.getElementById("vimeo_frame").style.display='block';
+    }
+</script>
 <!-- mySlider css file -->
 <link rel="stylesheet" type="text/css" href="/public_html/m/css/myslider.css" />
 	<div id="" class="wrap_middle">
@@ -152,7 +158,8 @@ input[type="checkbox"]:checked ~ .modal, input[type="checkbox"]:checked ~ .modal
 			</div>
 			<div id="wrap_mainvideo_m" class="mainvideo">
 				<ul>
-					<iframe id="player" type="text/html" width="1080" height="610" src="https://player.vimeo.com/video/208591714?title=0&transparent=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <div id="vimeo_img" onclick="javascript:vimeo_open();"><img src="public_html/img/bt_youtube upscale.jpg" border="0" alt="" width="1080px" height="610px"></div>
+					<div id="vimeo_frame" class="" style="display:none;"><iframe  id="player" type="text/html" width="1080" height="610" src="https://player.vimeo.com/video/208591714?title=0&transparent=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
 				</ul>
 			</div>
 		</div>
