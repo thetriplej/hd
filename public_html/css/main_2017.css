@@ -14,7 +14,7 @@
 .movie
 {
     width:1080px;
-	height:550px;
+	height:650px;
 	display:block;
 	margin:0 auto;
 	margin-top:64px;
@@ -277,7 +277,7 @@
 #wrap_mainvideo
 {
     width:1080px;
-	height:430px;
+	height:530px;
     margin:0 auto;
     z-index:2;
 	display:block;
