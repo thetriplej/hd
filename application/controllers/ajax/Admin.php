@@ -7,7 +7,7 @@ class Admin extends Common {
     public function  __construct() {
         parent::__construct();
 
-        $this->load->model(array('member_model','board_model','visit_model'));
+        $this->load->model(array('member_model','board_model','visit_model','admin_model'));
         $this->load->helper('cookie');
     }
 
@@ -387,6 +387,29 @@ class Admin extends Common {
 
         return $result;
 
+    }
+
+    function pop_del(){
+
+        $post = $this->input->post(null, true);
+
+        $checkArray = explode(",",$post['checkArray']);
+
+        unset($checkArray[0]);
+        $checkArray = array_values($checkArray);
+
+        foreach ( $checkArray as $key => $value){
+            $send_data = array( 'seq' => $value);
+            $list =  $this->admin_model->set_pop_del($send_data);
+
+            if(empty($list)){
+                $result = "fail";
+                break;
+            }
+            $result = "success";
+        }
+
+        echo json_encode($result);
     }
 
 

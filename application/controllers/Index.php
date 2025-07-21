@@ -21,7 +21,7 @@ class Index extends Common {
     public function  __construct() {
         parent::__construct();
         $this->load->helper('url'); //Loading url helper
-
+        $this->load->model(array('admin_model'));
     }
     function _remap($method) {
 
@@ -48,11 +48,18 @@ class Index extends Common {
 
     public function index()
     {
-
+        $data = "";
         if ($this->lang_type == 'en') {
             $this->load->view('e_index.phtml');
         } else {
-            $this->load->view($this->type.'index.phtml');
+            if($this->type == 'm/'){
+
+                $list_result = $this->admin_model->get_content_pop_list();
+                $data = array(
+                    'list_result'   =>$list_result,
+                );
+            }
+            $this->load->view($this->type.'index.phtml',$data);
         }
 
 

@@ -1,33 +1,28 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Board_model extends CI_Model {
+class Admin_model extends CI_Model {
     function __construct() {
         parent::__construct();
         $this->db = $this->load->database('default', TRUE);
     }
 
 
-    function get_porpula_list() {
-        $query = "select board.b_index,board.b_title,board.b_writer,board.b_code,board.b_board_type,boardfile.f_name,boardfile.f_rename,boardfile.list_img,boardfile.f_index,boardfile.file_path
-
-                    from board 
-                    left join  boardfile on board.b_index = boardfile.b_index
-                    where board.b_index in(select popular_log.board_idx from popular_log where popular_log.show_flag =1) 
-                    and LEFT(f_type, 5) = 'image' 
-                    and boardfile.list_img = 'Y'
-                    order by f_show desc, f_index asc";
+    function get_content_pop_list() {
+        $query = "select seq,pop_link,file_name,file_type,file_size,file_reName,file_path,status,reg_date from content_list
+                    where status = 1                    
+                    order by seq desc";
         return $this->db->query($query)->result();
     }
 
-    function set_porpula_del($params) {
-        $idx = $params['idx'];
+    function set_pop_del($params) {
+        $seq = $params['seq'];
         $updata = array(
-             'show_flag'    => 0,
+            'status'    => 0,
         );
         $where = array(
-            'idx'		=> $idx,
+            'seq'		=> $seq,
         );
-        $result = $this->update_query('popular_log', $updata,$where);
+        $result = $this->update_query('content_list', $updata,$where);
 
         return $result;
     }
@@ -255,12 +250,12 @@ class Board_model extends CI_Model {
         return $result;
     }
 
-   function get_file_check($id){    // 게시글에 첨부된 파일 총갯수
-       $query = "select f_index
+    function get_file_check($id){    // 게시글에 첨부된 파일 총갯수
+        $query = "select f_index
                   from boardfile where b_index =? ";
-       $result =  $this->db->query($query,array($id))->num_rows();
-       return $result;
-   }
+        $result =  $this->db->query($query,array($id))->num_rows();
+        return $result;
+    }
 
     function set_bbs_save($params){
 
@@ -368,10 +363,10 @@ class Board_model extends CI_Model {
 
                 }
             }
-                $this->db->trans_commit();
-                $this->db->trans_complete();
-                return $id;
-            }
+            $this->db->trans_commit();
+            $this->db->trans_complete();
+            return $id;
+        }
 
 
     }

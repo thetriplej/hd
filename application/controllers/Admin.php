@@ -5,7 +5,7 @@ class Admin extends Common {
 
     public function  __construct() {
         parent::__construct();
-        $this->load->model(array('member_model','board_model'));
+        $this->load->model(array('member_model','board_model','admin_model'));
         $this->load->helper('cookie');
     }
 
@@ -192,6 +192,12 @@ class Admin extends Common {
             $send_data['menu_ajax_url'] = 'get_notice_list';
             $send_data['bbs_write']     = 'notice_write';
             $send_data['list_uri' ]     = '/admin/notice_list';
+        }else if($b_code == "POPMAIN"){
+            $send_data['sub_title'] = "POPMAIN";
+            $send_data['edit_uri'] = '/admin/pop_write';
+            $send_data['menu_ajax_url'] = 'get_pop_list';
+            $send_data['bbs_write']     = '/admin/pop_write';
+            $send_data['list_uri' ]     = '/admin/pop_list';
         }
         return $send_data;
     }
@@ -920,6 +926,85 @@ class Admin extends Common {
         );
 
         return $send_data;
+
+    }
+
+    public function pop_list()
+    {
+
+
+        $b_code = $this->input->get('b_code');
+        if(empty($b_code)) $b_code = 'POPMAIN';
+
+        if(!empty($b_index)){
+            $result = $this->bbs_file($b_index);
+            $file_data = $result['file_data'];
+            $b_board_type = $result['b_board_type'];
+        }else{
+            $file_data ="";
+            $b_board_type = "";
+        }
+        $uri_array = $this->get_uri($b_code);
+        $list_result = $this->admin_model->get_content_pop_list();
+
+        $send_data = array(
+            'list_result'   =>$list_result,
+            'b_code'        => $b_code,
+            'menu_title'    => $uri_array['sub_title'],
+            'menu_ajax_url' => $uri_array['menu_ajax_url'],
+            'list_uri'      => $uri_array['list_uri'],
+        );
+
+        $this->load->view('admin/pop_list.phtml',$send_data);
+
+
+    }
+
+    public function content_add(){
+        $click_link       =   $this->input->post("click_link");
+        $files       =   $_FILES;
+
+
+        ini_set("memory_limit", "-1");
+
+        $upload_file    = $_FILES['files']['name'];
+        $upload_tmp     = $_FILES['files']['tmp_name'];
+        $upload_type    = $_FILES['files']['type'];
+
+        $send_data = array();
+        $today = date('Y-m');
+
+        $bSuccessUpload = is_uploaded_file($_FILES['files']['tmp_name']);
+
+        if($bSuccessUpload) {
+            $tmp_name = $_FILES['files']['tmp_name'];
+            $name = $_FILES['files']['name'];
+            $size = $_FILES['files']['size'];
+            $upload_type = $_FILES['files']['type'];
+
+            $filename_ext = strtolower(substr(strrchr($name,"."),1));	//확장자앞 .을 제거하기 위하여 substr()함수를 이용
+
+            $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html/content_upload/main_pop/'.$today.'/';
+            if(!is_dir($upload_dir)){
+                mkdir($upload_dir, 0777);
+            }
+            $file_rename = date("Ymd")."_".time().rand(0,100000);
+            $setPath = $upload_dir.$file_rename;
+
+            if(move_uploaded_file($tmp_name, $setPath.'.'.$filename_ext)){
+                $send_data = array(
+                    'file_name'    => $name,
+                    'file_type'    => $upload_type,
+                    'file_size'    => $size,
+                    'file_reName'  => $file_rename.'.'.$filename_ext,
+                    'file_path' => '/public_html/content_upload/main_pop/'.$today.'/',
+                    'pop_link'  => $click_link,
+                );
+                $file_result2 = $this->board_model->set_files_pop($send_data);
+            }
+
+        }
+        redirect("/admin/pop_list");
 
     }
 

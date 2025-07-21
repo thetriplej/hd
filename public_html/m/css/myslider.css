@@ -114,7 +114,28 @@
 	position:absolute;
 	display:none;
 }
+.mysliderp
+{
+	width:337x;
+	height:393px;
+	display:block;
+	position:relative;
+}
 
+.sliderp_img01
+{
+	width:337x;
+	height:393px;
+	position:absolute;
+}
+
+.sliderp_img02
+{
+	width:337x;
+	height:393px;
+	position:absolute;
+	display:none;
+}
 
 /* /////// 가로 슬라이드 20170222
 .myslider

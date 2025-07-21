@@ -240,21 +240,37 @@ function admin_mode(mode){
 }
 
 $(document).on('change','.checking_file',(function() {
-	if($(this).val() !=""){
-		var file = $(this).val();
-		var fileExt = file.substring(file.lastIndexOf(".") +1);
-		var reg = /gif|jpg|jpeg|png|bmp|psd|tif|tga|pcx|pcd/i;
-		var reg2 = /pdf|mp4|hwp|txt|pptx|xlsx|xlsm|xlsb|xltx|xltxm|xls|xlt|ppt|doc|docx/i;
-		if(reg.test(fileExt) == true){
-			alert("사진파일은 에디터에서  업로드 가능합니다.");
-			$(this).val('');
-			return;
+		if($(this).val() !=""){
+			var file = $(this).val();
+			var fileExt = file.substring(file.lastIndexOf(".") +1);
+			var reg = /gif|jpg|jpeg|png|bmp|psd|tif|tga|pcx|pcd/i;
+			var reg2 = /pdf|mp4|hwp|txt|pptx|xlsx|xlsm|xlsb|xltx|xltxm|xls|xlt|ppt|doc|docx/i;
+			if(reg.test(fileExt) == true){
+				alert("사진파일은 에디터에서  업로드 가능합니다.");
+				$(this).val('');
+				return;
+			}
+			if(reg2.test(fileExt) == false){
+				alert("업로드가 불가능한 파일입니다.");
+				$(this).val('');
+				return;
+			}
 		}
-		if(reg2.test(fileExt) == false){
-			alert("업로드가 불가능한 파일입니다.");
-			$(this).val('');
-			return;
+	})
+);
+
+$(document).on('change','.checking_file_img',(function() {
+		if($(this).val() !=""){
+			var file = $(this).val();
+			var fileExt = file.substring(file.lastIndexOf(".") +1);
+			var reg = /gif|jpg|jpeg|png|/i;
+
+			if(reg.test(fileExt) == false){
+				alert("업로드가 불가능한 파일입니다.");
+				$(this).val('');
+				return;
+			}
+
 		}
-	}
 	})
 );

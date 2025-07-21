@@ -1,0 +1,153 @@
+<tr>
+    <td height="40" align="left" style="padding-right:20px;"><font color="#eeeeee">:: ADIMN + 게시판 > <?=$menu_title?></font><br></td>
+</tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td width="20">&nbsp;</td>
+        <td width="40" height="40" background="/public_html/images/cn_bg_dot.gif" align="right">
+        </td>
+        <td width="129" align="center"><span class="cntlt"><?=$menu_title?></span></td>
+        <td width="493" background="/public_html/images/cn_bg_dot.gif">
+        </td>
+    </tr>
+</table>
+<br><br>
+<?php echo form_open_multipart('/admin/content_add/',array('name'=>"frm01", 'id'=>"frm01")); ?>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+    <tr valign="top">
+        <td align="center" style="padding-left:20px; padding-right:20px;">
+            <table width="100%" cellpadding="0" cellspacing="5" border="0" bgcolor="#999999">
+                <tr><td>
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+                            <tr valign="top">
+                                <td align="center" style="padding-left:20px; padding-right:20px;">
+                                    <table width="100%" cellpadding=0 cellspacing=5 border=0 bgcolor="#999999">
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td align="right" style="padding-right:20px">
+                                                            <input type="button" value="선택삭제" id="pop_del"></td>
+                                                    </tr>
+                                                </table>
+                                                <table width="100%" cellpadding="5" cellspacing="1" border="0" bgcolor="#cccccc">
+                                                    <tr bgcolor="#dddddd" height="25" align=center>
+                                                        <td class="table" width=8%><input type="checkbox" id="chkALL">전체선택</td>
+                                                        <td class="table" width=50%>팝업 이미지</td>
+                                                        <td class="table" width=10%>파일명</td>
+                                                        <td class="table" width=10%>LINK</td>
+                                                        <td class="table" width=12%>등록일</td>
+                                                    </tr>
+                                                    <?php
+                                                    if(empty($list_result)){
+                                                        ?>
+                                                        <tr bgcolor="#FFFFFF" align="center"><td colspan="6">등록된 이미지가 없습니다.</td></tr>
+                                                        <?php
+                                                    }else {
+                                                        foreach ($list_result as $key => $value) {
+                                                            ?>
+                                                            <tr bgcolor="#FFFFFF" align="center">
+                                                                <td><input type="checkbox" name="chk" value="<?=$value->seq?>"></td>
+                                                                <td align="left">
+                                                                    <img width="300px" height="200px"src="<?=$value->file_path?>/<?=$value->file_reName?>"></td>
+                                                                <td><?=$value->file_reName?></td>
+                                                                <td><?=$value->pop_link?></td>
+                                                                <td><?=$value->reg_date?></td>
+                                                            </tr>
+                                                        <?php }
+                                                    }?>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                </td>
+                            </tr>
+                        </table>
+                    </td></tr>
+                <tr>
+                    <td>
+                        <table width="100%" cellpadding="5" cellspacing="1" border="0" bgcolor="#cccccc">
+                            <tr bgcolor="#eeeeee">
+                                <td width="120" valign="top"><font color="#666666"><b>| 파일</b></font></td>
+                                <td>
+                                    <font color="#333333">※ <b>파일 사용 방법</b><br><br>
+                                    <font color="red">이미지 파일 ('jpg', 'jpeg', 'png')만 업로드 해주세요.</font><br><br>
+                                    <ul id="FileDiv">
+                                        <li><input type="file" name="files" class="checking_file_img" size="50"">
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr bgcolor="#eeeeee">
+                                <td width="120" valign="top"><font color="#666666"><b>| 링크</b></font></td>
+                                <td><input type="text" id="click_link" name="click_link" class="textbox" style="vertical-align: middle; width:100%"  ></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr align="center">
+                    <td bgcolor="#dddddd" height="30">
+                        <input type="button" value="등록" onClick="save_content();">
+                    </td>
+                    </td>
+                </tr>
+            </table>
+            <br>
+        </td>
+    </tr>
+</table>
+</form>
+<br><br>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript">
+
+    function save_content(){
+
+        $("#frm01").submit();
+    }
+
+    $("#chkALL").click(function () {
+        if ($(this).is(":checked")) {
+            $("input[name=chk]").prop("checked", "checked");
+        } else {
+            $("input[name=chk]").removeAttr("checked");
+        }
+    });
+
+    $("#pop_del").click(function(){
+        if(confirm("삭제하시겠습니까?")){
+
+            var checkboxValues = "";
+            $("input[name=chk]:checked").each(function () {
+                checkboxValues = checkboxValues + "," + $(this).val();
+
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "/ajax/admin/pop_del",
+                dataType: 'json',
+                data: {
+                    csrf_token: $('input[name=csrf_token]').val(),
+                    checkArray: checkboxValues,
+                    mode: 'admin'
+                },
+                success: function (result) {
+                    console.log(result);
+                    if (result == "success") {
+                        alert("삭제되었습니다.");
+                        location.reload();
+                    } else if (result == "fail") {
+                        alert("실패하였습니다.");
+                    }
+
+                }
+            });
+        }
+    });
+
+</script>
