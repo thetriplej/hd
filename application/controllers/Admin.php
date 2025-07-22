@@ -985,8 +985,10 @@ class Admin extends Common {
             $filename_ext = strtolower(substr(strrchr($name,"."),1));	//확장자앞 .을 제거하기 위하여 substr()함수를 이용
 
             $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/public_html/content_upload/main_pop/'.$today.'/';
+
             if(!is_dir($upload_dir)){
-                mkdir($upload_dir, 0777);
+                mkdir($upload_dir, 0777, true);
+
             }
             $file_rename = date("Ymd")."_".time().rand(0,100000);
             $setPath = $upload_dir.$file_rename;
