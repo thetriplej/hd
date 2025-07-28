@@ -92,9 +92,31 @@ input[type="checkbox"]:checked ~ .modal, input[type="checkbox"]:checked ~ .modal
 }
 .swiper {
     width: 100%;
-    height: 700px;
+    height: 960px;
 }
-
+.close-wrap {
+    width: 100%;
+    position: relative;
+}
+.close-wrap ul {
+    display: flex;
+}
+.close-wrap ul li:nth-child(1) {
+    border-right: 1px solid #ddd;
+}
+.close-wrap ul li {
+    width: 50%;
+    text-align: center;
+    background: #fff;
+    box-sizing: border-box;
+    font-size: 44px;
+}
+.close-wrap ul li font {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+}
 
 
 </style>
@@ -328,14 +350,21 @@ if ($current_date <= $end_end_date) {
                 <!-- Slides -->
                 <?php foreach ($list_result as $key => $value){ ?>
                 <div class="swiper-slide" style="height:500px">
-                    <a href="<?php echo $value->pop_link;?>"> <img height="700px" width='100%' src="<?php echo $value->file_path?>/<?php echo $value->file_reName?>"></a>
+                    <a href="<?php echo $value->pop_link;?>"> <img height="960px" width='100%' src="<?php echo $value->file_path?>/<?php echo $value->file_reName?>"></a>
                 </div>
                 <?php } ?>
             </div>
           </div>
-        <div style="overflow: hidden; height:100px;">
-            <div style="float: left; width:50%;" id="day_close"><img src="public_html/images/Close_button_today.jpg" width="100%" height="100px"></div>
-            <div style="float: right; width:50%;" id="pop_close"><img src="public_html/images/Close_button_normal.jpg" width="100%" height="100px"></div>
+        <div class="close-wrap" style="height:100px;">
+            <ul  style="height:100px;">
+                <li class="btn-today-close" id="day_close"><font>오늘 하루 열지 않기</font></li>
+                <li class="btn-close"  id="pop_close"><font>닫기</font></li>
+            </ul>
+        </div>
+<!--        <div style="overflow: hidden; height:100px;">-->
+<!--            <div style="float: left;" id="day_close"><img src="public_html/images/Close_button_today.jpg" height="100px"></div>-->
+<!--            <div style="float: right;" id="pop_close"><img src="public_html/images/Close_button_normal.jpg" height="100px"></div>-->
+<!--        </div>-->
 
     </div>
 
