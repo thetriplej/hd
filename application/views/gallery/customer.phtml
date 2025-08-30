@@ -68,7 +68,7 @@
                     <div class="bbs_page paging"></div>
                     <!-- Pagination // -->
                     <div id="" class="gallery_write" style="height:0px;">
-                        <div class="bt_writebot"><a href="javascript:write();"><img src="/public_html/img/bt_review.png" border="0" alt="글쓰기"></a></div>
+                        <div class="bt_writebot"><img src="/public_html/img/bt_review.png" border="0" alt="글쓰기"></div>
                     </div>
                     <!-- BBS_find //-->
                     <div class="find_div"> <!-- style="height:22px;text-align:center;"-->
@@ -153,11 +153,11 @@
 
 
     });
-
+<?php /*
     function write(){
         location.href = '/gallery/customer_write/?page='+$("#page").val()+'&b_code='+$("#b_code").val()+'&search_type='+$("#search_type option:selected").val()+'&search_value='+$("#search_value").val()
     }
-
+*/ ?>
     function page_move(page){
         location.href = '/gallery/customer/?page='+page+'&search_type='+$("#search_type option:selected").val()+'&search_value='+$("#search_value").val();
     }
