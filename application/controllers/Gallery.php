@@ -62,6 +62,7 @@ class Gallery extends Common {
 
     public function customer_write()
     {
+        exit;
         $b_index = $this->input->get('b_index');
         $page = $this->input->get('page');
         $b_code = $this->input->get('b_code');
