@@ -148,11 +148,13 @@ class Board_model extends CI_Model {
     }
 
     function get_list_tot($params){ //리스트 페이징을 위한 토탈 카운트
-
+        $search_value	= $params['search_value'];
         $table_name = $params['table_name'];
         $board_type = $params['board_type'];
         $search_type = $params['search_type'];
         $search_value	= $params['search_value'];
+        $mode = $params['mode'];
+
         if(!empty($params['b_special']) && ($params['b_special']) == '1'){
             $where = " and b_special > 0 ";
         }else {
@@ -166,14 +168,13 @@ class Board_model extends CI_Model {
         }else{
             $like_word = "";
         }
-        if($board_type == "CEPILOGUE0"){
+        if($board_type == "CEPILOGUE0" && $mode != 'admin'){
             $where = $where." and b_sequence = '1' and b_depth = '0'";
         }
 
-        $main_query ="select b_index from ".$table_name. " where  b_code = '".$board_type."' ".$where.$like_word;
-        $tot_rows = $this->db->query($main_query)->num_rows();
-
-        return $tot_rows;
+        $main_query ="select count(*) as cnt from ".$table_name. " where  b_code = '".$board_type."' ".$where.$like_word.";";
+        $tot_rows = $this->db->query($main_query)->row();
+        return $tot_rows->cnt;
 
     }
 

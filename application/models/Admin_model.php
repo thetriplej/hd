@@ -148,6 +148,7 @@ class Admin_model extends CI_Model {
         $board_type = $params['board_type'];
         $search_type = $params['search_type'];
         $search_value	= $params['search_value'];
+        $mode = $params['mode'];
         if(!empty($params['b_special']) && ($params['b_special']) == '1'){
             $where = " and b_special > 0 ";
         }else {
@@ -161,7 +162,8 @@ class Admin_model extends CI_Model {
         }else{
             $like_word = "";
         }
-        if($board_type == "CEPILOGUE0"){
+
+        if($board_type == "CEPILOGUE0" && $mode != 'admin'){
             $where = $where." and b_sequence = '1' and b_depth = '0'";
         }
 
